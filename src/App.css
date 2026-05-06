@@ -1,3 +1,24 @@
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.main-nav a {
+  color: var(--text);
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--text-h);
+  background: var(--social-bg);
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
