@@ -2,7 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import { supabase } from './lib/supabase'
 import './App.css'
+
+supabase.auth
+  .getSession()
+  .then(({ data, error }) => {
+    if (error) {
+      console.error('Supabase connection error:', error.message)
+      return
+    }
+
+    console.log('Supabase connected:', {
+      hasSession: Boolean(data.session),
+    })
+  })
 
 function App() {
   const [count, setCount] = useState(0)
