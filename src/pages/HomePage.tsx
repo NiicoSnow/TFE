@@ -1,6 +1,6 @@
 export function HomePage() {
   return (
-    <section id="center">
+    <section className="center">
       <div>
         <h1>Accueil</h1>
         <p>La page d'accueil viendra ici.</p>

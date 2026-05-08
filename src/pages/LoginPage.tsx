@@ -1,6 +1,6 @@
 export function LoginPage() {
   return (
-    <section id="center">
+    <section className="center">
       <div>
         <h1>Connexion</h1>
         <p>La page de connexion viendra ici.</p>
