@@ -8,6 +8,7 @@
 
 :root {
   --text: #E5E7EB;
+  --text-secondary: #9CA3AF;
   --bg: #0F172A;
   --element-bg: #1E293B;
   --border: #6B728050; /* 50% d'opacité */
@@ -15,22 +16,18 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --base: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --category: 'Oswald', system-ui, 'Segoe UI', Roboto, sans-serif;
 
-  font: 18px/140% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  font-size: 62.5%;
+  line-height: 1.2;
+  font-family: var(--base);
 }
 
 .root {
@@ -51,30 +48,57 @@ body {
 
 h1,
 h2 {
-  font-family: var(--heading);
   font-weight: 500;
   color: var(--text);
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: 7.2rem;
 }
 h2 {
-  font-size: 24px;
-  line-height: 120%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: 5.1rem;
 }
+h3 {
+  font-size: 3.6rem;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+h5 {
+  font-size: 1.8rem;
+}
+
 p {
+  font-size: 1.8rem;
   margin: 0;
+  line-height: 1.4;
+}
+
+a {
+  font-size: 1.8rem;
+}
+
+/* -------------------------------- */
+/* Responsive */
+/* -------------------------------- */
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 5.1rem;
+  }
+  h2 {
+    font-size: 3.6rem;
+  }
+  h3 {
+    font-size: 2.5rem;
+  }
+  
+  h4 {
+    font-size: 1.8rem;
+  }
+  h5 {
+    font-size: 1.2rem;
+  }
 }
 
