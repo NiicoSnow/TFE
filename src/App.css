@@ -1,7 +1,6 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
   padding-inline: 24px;
   box-sizing: border-box;
   width: 100%;
@@ -18,6 +17,7 @@
   z-index: 30;
   gap: 8px;
   padding: 18px 20px;
+  text-align: center;
 }
 
 .nav-links { 
@@ -79,8 +79,9 @@
 .main-nav a {
   color: var(--text);
   border-radius: 6px;
-  padding: 8px 12px;
+  margin-bottom : 2.4rem;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .main-nav a:hover,
@@ -88,19 +89,60 @@
   color: var(--accent);
 }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-  padding: 32px 20px 24px;
-}
-
 .spacer {
   height: 48px;
   border-top: 1px solid var(--border);
+}
+.column {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.tuto__element-img {
+  background: var(--element-bg);
+  height: 20rem;
+  margin-top: 4.8rem;
+  margin-bottom: 2.4rem;
+}
+.tuto__element {
+  margin-bottom: 7.6rem;
+}
+.tuto h3, p {
+  margin-bottom: 2rem
+}
+.tuto h2{
+  text-align: center;
+}
+.tuto {
+  margin-bottom: 9.6rem;
+}
+
+.ministats h2 {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+.ministats__element {
+  background: var(--element-bg);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 2.4rem;
+  padding-top: 2.4rem;
+}
+.ministats__number {
+  font-size: 7.2rem;
+  flex-shrink: 0;
+}
+.ministats__element h4 {
+  max-width: 12rem;
+  min-width: 0;
+  text-align: left;
+}
+.column h4 {
+  max-width: 20rem;
 }
 
 @media (min-width: 1024px) {
