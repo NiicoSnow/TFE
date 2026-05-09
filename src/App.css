@@ -1,18 +1,79 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding-inline: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.grid > * {
+  grid-column: 1 / -1;
+}
+
 .main-nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  position: sticky;
+  top: 0;
+  z-index: 30;
   gap: 8px;
   padding: 18px 20px;
-  border-bottom: 1px solid var(--border);
 }
 
 .nav-links { 
-  display: flex;
-  gap: 8px;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  width: min(29.5rem, 80vw);
+  min-height: 100svh;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: var(--element-bg);
+  z-index: 20;
+  pointer-events: auto;
+  border-radius: 0 18px 18px 0;
 }
 
 .menu-button {
-  display: none;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.menu-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  z-index: 15;
+}
+
+.main-nav.menu-open {
+  pointer-events: none;
+}
+
+.menu-button span {
+  display: block;
+  width: 2.4rem;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--text);
+  border-radius: 1000px;
+}
+
+.nav-links.open {
+  display: flex;
 }
 
 .main-nav a {
@@ -30,62 +91,62 @@
 .center {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 18px;
   place-content: center;
   place-items: center;
   flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  padding: 32px 20px 24px;
 }
 
 .spacer {
-  height: 88px;
+  height: 48px;
   border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 40px;
+    padding-inline: 160px;
+  }
+
   .main-nav {
-    justify-content: flex-start;
-    position: relative;
+    justify-content: center;
+    position: static;
+    z-index: auto;
   }
 
   .menu-button {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 4rem;
-    height: 4rem;
-    cursor: pointer;
+    display: none;
   }
 
-  .menu-button span {
-    display: block;
-    width: 2.4rem;
-    height: 2px;
-    margin: 0 auto;
-    background: var(--text);
-    border-radius: 1000px;
+  .menu-backdrop {
+    display: none;
   }
 
   .nav-links {
-    display: none;
-    position: absolute;
-    top: calc(100% + 1px);
-    left: 20px;
-    flex-direction: column;
-    min-width: 18rem;
-    padding: 8px;
-    background: var(--element-bg);
+    display: flex;
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    gap: 8px;
   }
 
-  .nav-links.open {
-    display: flex;
+  .main-nav.menu-open {
+    pointer-events: auto;
+  }
+
+  .center {
+    gap: 25px;
+    padding: 0;
+  }
+
+  .spacer {
+    height: 88px;
   }
 }

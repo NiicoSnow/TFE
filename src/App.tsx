@@ -4,7 +4,8 @@ import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProfilePage } from './pages/ProfilePage'
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
 import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
 import { FriendsPage} from './pages/FriendsPage'
@@ -25,24 +26,81 @@ supabase.auth
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const backdropRef = useRef<HTMLButtonElement>(null)
+
+  const closeMenu = () => {
+    if (!isMenuOpen) {
+      return
+    }
+
+    if (!menuRef.current) {
+      setIsMenuOpen(false)
+      return
+    }
+
+    gsap.to(menuRef.current, {
+      xPercent: -100,
+      duration: 0.25,
+      ease: 'power3.in',
+      onComplete: () => setIsMenuOpen(false),
+    })
+
+    if (backdropRef.current) {
+      gsap.to(backdropRef.current, {
+        autoAlpha: 0,
+        duration: 0.25,
+        ease: 'power2.in',
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (!isMenuOpen || !menuRef.current) {
+      return
+    }
+
+    gsap.fromTo(
+      menuRef.current,
+      { xPercent: -100 },
+      { xPercent: 0, duration: 0.45, ease: 'power3.out' },
+    )
+
+    if (backdropRef.current) {
+      gsap.fromTo(
+        backdropRef.current,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.25, ease: 'power2.out' },
+      )
+    }
+  }, [isMenuOpen])
 
   return (
     <>
-      <nav className="main-nav">
-        <button className="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)}>
+      <nav className={isMenuOpen ? 'main-nav menu-open' : 'main-nav'}>
+        <button className="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded={isMenuOpen} onClick={() => isMenuOpen ? closeMenu() : setIsMenuOpen(true)}>
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <div className={isMenuOpen ? "nav-links open" : "nav-links"}>
-          <NavLink to="/" onClick ={ () => setIsMenuOpen(false)}>Accueil</NavLink>
-          <NavLink to="/catalogue" onClick ={ () => setIsMenuOpen(false)}>Catalogue</NavLink>
-          <NavLink to="/cartes" onClick ={ () => setIsMenuOpen(false)}>Cartes</NavLink>
-          <NavLink to="/stats" onClick ={ () => setIsMenuOpen(false)}>Stats</NavLink>
-          <NavLink to="/amis" onClick ={ () => setIsMenuOpen(false)}>Amis</NavLink>
-          <NavLink to="/profil" onClick ={ () => setIsMenuOpen(false)}>Profil</NavLink>
+        <div ref={menuRef} className={isMenuOpen ? "nav-links open" : "nav-links"}>
+          <NavLink to="/" onClick ={closeMenu}>Accueil</NavLink>
+          <NavLink to="/catalogue" onClick ={closeMenu}>Catalogue</NavLink>
+          <NavLink to="/cartes" onClick ={closeMenu}>Cartes</NavLink>
+          <NavLink to="/stats" onClick ={closeMenu}>Stats</NavLink>
+          <NavLink to="/amis" onClick ={closeMenu}>Amis</NavLink>
+          <NavLink to="/profil" onClick ={closeMenu}>Profil</NavLink>
         </div>
       </nav>
+      {isMenuOpen && (
+        <button
+          ref={backdropRef}
+          className="menu-backdrop"
+          type="button"
+          aria-label="Fermer le menu"
+          onClick={closeMenu}
+        />
+      )}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
