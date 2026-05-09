@@ -6,6 +6,15 @@
   border-bottom: 1px solid var(--border);
 }
 
+.nav-links { 
+  display: flex;
+  gap: 8px;
+}
+
+.menu-button {
+  display: none;
+}
+
 .main-nav a {
   color: var(--text);
   border-radius: 6px;
@@ -37,5 +46,46 @@
   border-top: 1px solid var(--border);
   @media (max-width: 1024px) {
     height: 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-nav {
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .menu-button {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+  }
+
+  .menu-button span {
+    display: block;
+    width: 2.4rem;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--text);
+    border-radius: 1000px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 20px;
+    flex-direction: column;
+    min-width: 18rem;
+    padding: 8px;
+    background: var(--element-bg);
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 }

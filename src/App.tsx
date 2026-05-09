@@ -1,10 +1,14 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { supabase } from './lib/supabase'
 import { HomePage } from './pages/HomePage'
-import { LoginPage } from './pages/LoginPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProfilePage } from './pages/ProfilePage'
 import './App.css'
+import { useState } from 'react'
+import { StatsPage } from './pages/StatsPage'
+import { CataloguePage} from './pages/CataloguePage'
+import { FriendsPage} from './pages/FriendsPage'
+import { CardsPage} from './pages/CardsPage'
 
 supabase.auth
   .getSession()
@@ -20,19 +24,34 @@ supabase.auth
   })
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <>
       <nav className="main-nav">
-        <NavLink to="/">Accueil</NavLink>
-        <NavLink to="/login">Connexion</NavLink>
-        <NavLink to="/profile">Profil</NavLink>
+        <button className="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div className={isMenuOpen ? "nav-links open" : "nav-links"}>
+          <NavLink to="/" onClick ={ () => setIsMenuOpen(false)}>Accueil</NavLink>
+          <NavLink to="/catalogue" onClick ={ () => setIsMenuOpen(false)}>Catalogue</NavLink>
+          <NavLink to="/cartes" onClick ={ () => setIsMenuOpen(false)}>Cartes</NavLink>
+          <NavLink to="/stats" onClick ={ () => setIsMenuOpen(false)}>Stats</NavLink>
+          <NavLink to="/amis" onClick ={ () => setIsMenuOpen(false)}>Amis</NavLink>
+          <NavLink to="/profil" onClick ={ () => setIsMenuOpen(false)}>Profil</NavLink>
+        </div>
       </nav>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profil" element={<ProfilePage />} />
+        <Route path="/stats" element={<StatsPage />} />
+        <Route path="/catalogue" element={<CataloguePage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/amis" element={<FriendsPage />} />
+        <Route path="/cartes" element={<CardsPage />} />
       </Routes>
     </>
   )
