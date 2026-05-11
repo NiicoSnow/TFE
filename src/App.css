@@ -5,8 +5,15 @@
   box-sizing: border-box;
   width: 100%;
 }
+
 .grid > * {
   grid-column: 1 / -1;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 19.2rem;
 }
 
 .main-nav {
@@ -93,35 +100,40 @@
   height: 48px;
   border-top: 1px solid var(--border);
 }
+
 .column {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
 }
+
 .tuto__element-img {
   background: var(--element-bg);
   height: 20rem;
   margin-top: 4.8rem;
   margin-bottom: 2.4rem;
-  border-radius: 18px;
 }
+
 .tuto__element {
   margin-bottom: 7.6rem;
 }
+
+.tuto__element:last-child {
+  margin-bottom: 0;
+}
+
 .tuto h3, p {
   margin-bottom: 2rem
 }
 .tuto h2{
   text-align: center;
 }
-.tuto {
-  margin-bottom: 9.6rem;
-}
 
-.ministats h2 {
+.ministats h2, .versus h2 {
   text-align: center;
   margin-bottom: 4.8rem;
 }
+
 .ministats__element {
   background: var(--element-bg);
   border-radius: 18px;
@@ -132,16 +144,64 @@
   margin-bottom: 2.4rem;
   padding-bottom: 2.4rem;
   padding-top: 2.4rem;
+  position: relative;
 }
+
 .ministats__number {
   font-size: 7.2rem;
   flex-shrink: 0;
+  font-weight: 700;
 }
+
 .ministats__element h4 {
   max-width: 12rem;
   min-width: 0;
   text-align: left;
 }
+
+.ministats__element-streak {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.ministats__element-streak .ministats__element-img {
+  position: absolute;
+  z-index: 0;
+  width: 10.5rem;
+  height: auto;
+  aspect-ratio: 105 / 120;
+  top: 35%;
+  left: 50%;
+  transform: translate(calc(-50% + 6.7rem), -50%);
+  pointer-events: none;
+}
+
+.ministats__element-infobulle {
+  align-self: flex-end;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 2.4rem;
+}
+.ministats__number--streak {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  text-shadow: 0.04em 0.04em 0 var(--accent);
+  font-size: 10.2rem;
+}
+
+.seemore {
+  font-family: var(--category);
+  font-weight: 400;
+}
+
+.streak {
+  padding-bottom: 4.8rem;
+}
+
 .column h4 {
   max-width: 20rem;
 }
