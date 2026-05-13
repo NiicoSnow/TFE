@@ -20,7 +20,7 @@ export function VersusSection() {
                     <h4 className="text-center">Tirages unique</h4>
                 </div>
             </div>
-            <h1 className="versus__vs text-center">VS</h1>
+            <h1 className="versus__vs">VS</h1>
             <div className="versus__element">
                 <h3 className="versus__name">Mirk</h3>
                 <span className="versus__line"></span>
@@ -37,6 +37,7 @@ export function VersusSection() {
                     <h4 className="text-center">Tirages unique</h4>
                 </div>
             </div>
+            <a href="/amis" className="seemore mt-[2.4rem]">Voir les amis</a>
         </section>
     )
 }

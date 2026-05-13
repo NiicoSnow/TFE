@@ -33,7 +33,7 @@
   top: 0;
   left: 0;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: min(29.5rem, 80vw);
   min-height: 100svh;
   padding: 2rem;
@@ -42,6 +42,15 @@
   z-index: 20;
   pointer-events: auto;
   border-radius: 0 18px 18px 0;
+}
+
+.nav-links__group {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-button {
@@ -94,6 +103,14 @@
 .main-nav a:hover,
 .main-nav a.active {
   color: var(--accent);
+}
+
+.main-nav__logo {
+  flex-shrink: 0;
+  height: 3.2rem;
+  width: auto;
+  align-self: center;
+  margin-bottom: 2.4rem;
 }
 
 .spacer {
@@ -168,6 +185,39 @@
 .seemore {
   font-family: var(--category);
   font-weight: 400;
+  text-decoration: underline;
+}
+
+.streak-display {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  margin-left: -6rem;
+  margin-top: 2.4rem;
+}
+
+.streak-display__img {
+  position: absolute;
+  z-index: 0;
+  width: 10.5rem;
+  height: auto;
+  aspect-ratio: 105 / 120;
+  top: 35%;
+  left: 50%;
+  transform: translate(calc(-50% + 6.7rem), -50%);
+  pointer-events: none;
+}
+
+.streak-display__value {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 10.2rem;
+  text-shadow: 0.04em 0.04em 0 var(--accent);
 }
 
 .streak {
@@ -180,6 +230,9 @@
 
 .versus__vs {
   font-size: 7.2rem;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
 }
 
 .versus__number {
@@ -201,6 +254,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
+  margin-top: 1.2rem;
 }
 
 .versus__line {
@@ -240,12 +294,23 @@
     position: static;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     width: auto;
     min-height: auto;
     padding: 0;
     background: transparent;
     border-radius: 0;
     gap: 8px;
+  }
+
+  .nav-links__cluster {
+    display: contents;
+  }
+
+  .main-nav__logo {
+    margin-top: 0;
+    margin-left: 0.4rem;
+    height: 2.8rem;
   }
 
   .main-nav.menu-open {

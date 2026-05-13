@@ -1,5 +1,3 @@
-import styles from './StreakDisplay.module.css'
-
 export type StreakDisplayProps = {
   value: number | string
   className?: string
@@ -14,9 +12,9 @@ export function StreakDisplay({
   alt = 'Flamme symbolisant un streak',
 }: StreakDisplayProps) {
   return (
-    <div className={[styles.root, className].filter(Boolean).join(' ')}>
-      <img src={src} alt={alt} className={styles.img} width={105} height={120} />
-      <span className={styles.value}>{value}</span>
+    <div className={['streak-display', className].filter(Boolean).join(' ')}>
+      <img src={src} alt={alt} className="streak-display__img" width={105} height={120} />
+      <span className="streak-display__value">{value}</span>
     </div>
   )
 }

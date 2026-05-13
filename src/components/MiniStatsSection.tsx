@@ -30,7 +30,7 @@ export function MiniStatsSection() {
         <StreakDisplay value={12} />
         <h4 className="text-center">Tirages unique</h4>
       </div>
-      <h4 className="seemore">Voir les statistiques complètes</h4>
+      <a href="/stats" className="seemore">Voir les statistiques complètes</a>
     </section>
   )
 }
