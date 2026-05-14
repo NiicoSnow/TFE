@@ -37,7 +37,7 @@ export function VersusSection() {
                     <h4 className="text-center">Tirages unique</h4>
                 </div>
             </div>
-            <a href="/amis" className="seemore mt-[2.4rem]">Voir les amis</a>
+            <a href="/amis" className="seemore mt-[2.4rem]">Voir sa liste d'amis</a>
         </section>
     )
 }

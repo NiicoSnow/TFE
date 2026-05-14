@@ -114,6 +114,10 @@ function App() {
         <Route path="/amis" element={<FriendsPage />} />
         <Route path="/cartes" element={<CardsPage />} />
       </Routes>
+
+      <footer className="footer grid">
+        <p>© 2026 Cardtaku. Tous droits réservés.</p>
+      </footer> 
     </>
   )
 }
