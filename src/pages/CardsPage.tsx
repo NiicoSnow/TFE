@@ -1,11 +1,11 @@
-import { Cards } from '../components/cards'
+import { Cards } from '../components/Cards'
 
 export function CardsPage() {
     return (
       <section className="center">
         <div>
-            <Cards />
-          </div>
+          <Cards />
+        </div>
       </section>
     )
   }

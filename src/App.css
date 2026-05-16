@@ -724,3 +724,119 @@
     gap: 2.4rem;
   }
 }
+
+.profile-page {
+  padding-block: 4rem 8rem;
+}
+
+.profile-auth,
+.profile-card {
+  max-width: 42rem;
+  margin-top: 2.4rem;
+  padding: 2.4rem;
+  background: var(--element-bg);
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+}
+
+.profile-auth__tabs {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.profile-auth__tab {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--element-bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--base);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.profile-auth__tab--active {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.profile-field span {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+}
+
+.profile-field input {
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--element-bg-secondary);
+  color: var(--text);
+  font-family: var(--base);
+  font-size: 1.6rem;
+}
+
+.profile-button {
+  padding: 1.2rem 1.6rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--base);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.profile-button--secondary {
+  margin-top: 1.2rem;
+  width: 100%;
+  background: var(--element-bg-secondary);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.profile-message {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.profile-message--error {
+  color: #f87171;
+}
+
+.profile-message--info {
+  color: var(--text-secondary);
+}
+
+.profile-card__email {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.profile-card__avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

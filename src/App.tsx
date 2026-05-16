@@ -1,5 +1,4 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
-import { supabase } from './lib/supabase'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProfilePage } from './pages/ProfilePage'
@@ -10,19 +9,6 @@ import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
 import { FriendsPage} from './pages/FriendsPage'
 import { CardsPage} from './pages/CardsPage'
-
-supabase.auth
-  .getSession()
-  .then(({ data, error }) => {
-    if (error) {
-      console.error('Supabase connection error:', error.message)
-      return
-    }
-
-    console.log('Supabase connected:', {
-      hasSession: Boolean(data.session),
-    })
-  })
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
