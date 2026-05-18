@@ -1,6 +1,5 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
-import { NotFoundPage } from './pages/NotFoundPage'
 import { ProfilePage } from './pages/ProfilePage'
 import './App.css'
 import { useEffect, useRef, useState } from 'react'
@@ -96,7 +95,6 @@ function App() {
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/catalogue" element={<CataloguePage />} />
-        <Route path="*" element={<NotFoundPage />} />
         <Route path="/amis" element={<FriendsPage />} />
         <Route path="/cartes" element={<CardsPage />} />
       </Routes>

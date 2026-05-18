@@ -12,6 +12,11 @@ function clearProfileState(
   setProfileError(null)
 }
 
+async function validateSessionClaims(): Promise<boolean> {
+  const { data, error } = await supabase.auth.getClaims()
+  return !error && Boolean(data?.claims?.sub)
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [authReady, setAuthReady] = useState(false)
@@ -20,31 +25,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [profileLoading, setProfileLoading] = useState(false)
 
   useEffect(() => {
-    let mounted = true
-
-    supabase.auth.getSession().then(({ data: { session: initialSession } }) => {
-      if (!mounted) {
-        return
-      }
-
-      setSession(initialSession)
-      if (!initialSession) {
-        clearProfileState(setProfile, setProfileError)
-      }
-      setAuthReady(true)
-    })
-
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+    } = supabase.auth.onAuthStateChange((event, nextSession) => {
       setSession(nextSession)
+
       if (!nextSession) {
         clearProfileState(setProfile, setProfileError)
+        setProfileLoading(false)
+      }
+
+      if (event === 'INITIAL_SESSION') {
+        setAuthReady(true)
       }
     })
 
     return () => {
-      mounted = false
       subscription.unsubscribe()
     }
   }, [])
@@ -78,6 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const userId = session?.user?.id
     if (!userId) {
+      setProfileLoading(false)
       return
     }
 
@@ -85,6 +82,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     void (async () => {
       setProfileLoading(true)
+
+      const claimsValid = await validateSessionClaims()
+      if (cancelled) {
+        return
+      }
+
+      if (!claimsValid) {
+        setProfile(null)
+        setProfileError('Session invalide ou expirée.')
+        setProfileLoading(false)
+        return
+      }
+
       await loadProfile(userId)
       if (!cancelled) {
         setProfileLoading(false)
@@ -177,6 +187,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     setProfileLoading(true)
+
+    const claimsValid = await validateSessionClaims()
+    if (!claimsValid) {
+      setProfile(null)
+      setProfileError('Session invalide ou expirée.')
+      setProfileLoading(false)
+      return
+    }
+
     await loadProfile(userId)
     setProfileLoading(false)
   }, [loadProfile, session?.user?.id])
