@@ -7,7 +7,7 @@ export function ProfilePage() {
   const { user, profile, profileError, loading, refreshProfile } = useAuth()
 
   return (
-    <section className="profile-page grid">
+    <section className="profile-page">
       <div>
         {loading ? (
           <>

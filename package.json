@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:anime": "node --env-file=.env.local scripts/sync-anime.mjs",
+    "sync:anime:test": "node --env-file=.env.local scripts/sync-anime.mjs --chunks 1 --pages 2"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.3",
