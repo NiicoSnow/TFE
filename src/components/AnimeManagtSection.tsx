@@ -79,14 +79,6 @@ function cloneLists(source: AnimePreview[][]) {
 
 type MoveContext = { fromIndex: number; anime: AnimePreview }
 
-function ArrowLeft({ className }: { className?: string }) {
-  return <svg className={className} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M15 18l-6-6 6-6" /></svg>
-}
-
-function ArrowRight({ className }: { className?: string }) {
-  return <svg className={className} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M9 18l6-6-6-6" /></svg>
-}
-
 export function AnimeManagtSection() {
   const [lists, setLists] = useState(() => cloneLists(MOCK_BY_CATEGORY))
   const [categoryIndex, setCategoryIndex] = useState(0)
@@ -144,9 +136,13 @@ export function AnimeManagtSection() {
       </div>
       <div className="anime-management__element">
         <div className="anime-management__nav anime-management__nav--mobile">
-          <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente"><ArrowLeft /></button>
+          <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
+            <img src="/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
+          </button>
           <p className="anime-management__category-title" aria-live="polite">{currentLabel}</p>
-          <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante"><ArrowRight /></button>
+          <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante">
+            <img src="/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
+          </button>
         </div>
 
         <nav className="anime-management__nav anime-management__nav--desktop" aria-label="Catégories de listes">

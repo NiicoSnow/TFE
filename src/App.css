@@ -282,8 +282,6 @@
   margin-top: 1.2rem;
 }
 
-/* --- Gestion des listes d'œuvre --- */
-
 .anime-management__heading {
   text-align: center;
   margin-bottom: 4.8rem;
@@ -333,8 +331,14 @@
   flex-shrink: 0;
 }
 
-.anime-management__arrow:hover {
-  color: var(--accent);
+.anime-management__arrow-icon {
+  display: block;
+  width: 1.7rem;
+  height: auto;
+}
+
+.anime-management__arrow-icon--left {
+  transform: scaleX(-1);
 }
 
 .anime-management__category-title {
@@ -639,7 +643,91 @@
     0 0 4px rgba(0, 0, 0, 0.8);
   pointer-events: none;
 }
+.catalog-theme-section__header {
+  margin-bottom: 2.4rem;
+}
 
+.catalog-theme-section__title {
+  font-family: var(--category);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.catalog-theme-section__seemore {
+  color: var(--text);
+  font-size: 1.4rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.catalog-theme-section__content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.4rem 1.2rem;
+}
+
+.catalog-theme-section__track {
+  display: contents;
+}
+
+.catalog-theme-section__card {
+  min-width: 0;
+}
+
+.catalog-theme-section__poster {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 63 / 88;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--element-bg);
+}
+
+.catalog-theme-section__poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-theme-section__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.8rem;
+}
+
+.catalog-theme-section__card-title {
+  color: var(--text-secondary);
+}
+
+.catalog-theme-section__nav {
+  grid-column: 3;
+  grid-row: 2;
+  align-self: center;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--element-bg-secondary);
+  color: var(--text);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.catalog-theme-section__nav-icon {
+  display: block;
+  width: 1.7rem;
+  height: auto;
+}
+
+.catalog-theme-section__nav:hover {
+  transform: scale(1.05);
+}
 
 @media (min-width: 1024px) {
   .grid {
