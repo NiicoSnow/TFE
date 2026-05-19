@@ -17,10 +17,16 @@
   );
 }
 
-.home-page, .profile-page {
+.home-page, .profile-page, {
   display: flex;
   flex-direction: column;
   gap: 19.2rem;
+}
+
+.catalogue-page {
+  display: flex;
+  flex-direction: column;
+  gap: 9.6rem;
 }
 
 .home-page__header {
@@ -655,16 +661,27 @@
 }
 
 .catalog-theme-section__seemore {
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--text);
   font-size: 1.4rem;
+  font-family: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.catalog-theme-section__seemore:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .catalog-theme-section__content {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.4rem 1.2rem;
+  align-items: start;
 }
 
 .catalog-theme-section__track {
@@ -699,12 +716,22 @@
 }
 
 .catalog-theme-section__card-title {
+  margin: 0;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.catalog-theme-section__status {
+  grid-column: 1 / -1;
+  margin: 0;
   color: var(--text-secondary);
 }
 
+.catalog-theme-section__status--error {
+  color: #f87171;
+}
+
 .catalog-theme-section__nav {
-  grid-column: 3;
-  grid-row: 2;
   align-self: center;
   justify-self: center;
   display: inline-flex;
