@@ -1,0 +1,324 @@
+{
+  "id": "quiz",
+  "questions": [
+    {
+      "id": "constructionNarrative",
+      "category": "constructionNarrative",
+      "title": "Quelle construction narrative choisis-tu ?",
+      "choices": [
+        {
+          "id": "ascensionProgressive",
+          "label": "Ascension progressive",
+          "image": "/ImgCards/constructionNarrative/ascensionProgressive.webp",
+          "alt": ""
+        },
+        {
+          "id": "boucleTemporelle",
+          "label": "Boucle temporelle",
+          "image": "/ImgCards/constructionNarrative/boucleTemporelle.webp",
+          "alt": ""
+        },
+        {
+          "id": "chuteDuHeros",
+          "label": "Chute du héros",
+          "image": "/ImgCards/constructionNarrative/chuteDuHeros.webp",
+          "alt": ""
+        },
+        {
+          "id": "multiPdv",
+          "label": "Multi points de vue",
+          "image": "/ImgCards/constructionNarrative/multiPdv.webp",
+          "alt": ""
+        },
+        {
+          "id": "mystereProgressif",
+          "label": "Mystère progressif",
+          "image": "/ImgCards/constructionNarrative/mystereProgressif.webp",
+          "alt": ""
+        },
+        {
+          "id": "objectifUnique",
+          "label": "Objectif unique",
+          "image": "/ImgCards/constructionNarrative/objectifUnique.webp",
+          "alt": ""
+        },
+        {
+          "id": "plotTwistFrequent",
+          "label": "Plot twist fréquent",
+          "image": "/ImgCards/constructionNarrative/plotTwistFrequent.webp",
+          "alt": ""
+        },
+        {
+          "id": "voyageInitiatique",
+          "label": "Voyage initiatique",
+          "image": "/ImgCards/constructionNarrative/voyageInitiatique.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "supernatural",
+      "category": "etresSurnaturel",
+      "title": "Quel être surnaturel choisis-tu ?",
+      "choices": [
+        {
+          "id": "aucuneCreature",
+          "label": "Aucune créature",
+          "image": "/ImgCards/etresSurnaturel/aucuneCreature.webp",
+          "alt": ""
+        },
+        {
+          "id": "creatureMignonne",
+          "label": "Créature mignonne",
+          "image": "/ImgCards/etresSurnaturel/creatureMignonne.webp",
+          "alt": ""
+        },
+        {
+          "id": "divinite",
+          "label": "Divinité",
+          "image": "/ImgCards/etresSurnaturel/divinite.webp",
+          "alt": ""
+        },
+        {
+          "id": "dragon",
+          "label": "Dragon",
+          "image": "/ImgCards/etresSurnaturel/dragon.webp",
+          "alt": ""
+        },
+        {
+          "id": "monstreGigantesque",
+          "label": "Monstre gigantesque",
+          "image": "/ImgCards/etresSurnaturel/monstreGigantesque.webp",
+          "alt": ""
+        },
+        {
+          "id": "vampire",
+          "label": "Vampire",
+          "image": "/ImgCards/etresSurnaturel/vampire.webp",
+          "alt": ""
+        },
+        {
+          "id": "zombie",
+          "label": "Zombie",
+          "image": "/ImgCards/etresSurnaturel/zombie.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "forcePouvoir",
+      "category": "forcePouvoir",
+      "title": "Quelle force ou pouvoir choisis-tu ?",
+      "choices": [
+        {
+          "id": "aucunPouvoir",
+          "label": "Aucun pouvoir",
+          "image": "/ImgCards/forcePouvoir/aucunPouvoir.webp",
+          "alt": ""
+        },
+        {
+          "id": "forceBrute",
+          "label": "Force brute",
+          "image": "/ImgCards/forcePouvoir/forceBrute.webp",
+          "alt": ""
+        },
+        {
+          "id": "intelligence",
+          "label": "Intelligence",
+          "image": "/ImgCards/forcePouvoir/intelligence.webp",
+          "alt": ""
+        },
+        {
+          "id": "magie",
+          "label": "Magie",
+          "image": "/ImgCards/forcePouvoir/magie.webp",
+          "alt": ""
+        },
+        {
+          "id": "technoAvancee",
+          "label": "Technologie avancée",
+          "image": "/ImgCards/forcePouvoir/technoAvancee.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "temporality",
+      "category": "temporalite",
+      "title": "Quelle temporalité choisis-tu ?",
+      "choices": [
+        {
+          "id": "cyberpunk",
+          "label": "Cyberpunk",
+          "image": "/ImgCards/temporalite/cyberpunk.webp",
+          "alt": ""
+        },
+        {
+          "id": "futur",
+          "label": "Futur",
+          "image": "/ImgCards/temporalite/futur.webp",
+          "alt": ""
+        },
+        {
+          "id": "moyenAge",
+          "label": "Moyen Âge",
+          "image": "/ImgCards/temporalite/moyenAge.webp",
+          "alt": ""
+        },
+        {
+          "id": "postapo",
+          "label": "Post-apocalyptique",
+          "image": "/ImgCards/temporalite/postapo.webp",
+          "alt": ""
+        },
+        {
+          "id": "present",
+          "label": "Présent",
+          "image": "/ImgCards/temporalite/present.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "tonaliteEmotionnelle",
+      "category": "tonaliteEmotionnelle",
+      "title": "Quelle tonalité émotionnelle choisis-tu ?",
+      "choices": [
+        {
+          "id": "atmosphereLumineuse",
+          "label": "Atmosphère lumineuse",
+          "image": "/ImgCards/tonaliteEmotionnelle/atmosphereLumineuse.webp",
+          "alt": ""
+        },
+        {
+          "id": "brutale",
+          "label": "Brutale",
+          "image": "/ImgCards/tonaliteEmotionnelle/brutale.webp",
+          "alt": ""
+        },
+        {
+          "id": "chill",
+          "label": "Chill",
+          "image": "/ImgCards/tonaliteEmotionnelle/chill.webp",
+          "alt": ""
+        },
+        {
+          "id": "epique",
+          "label": "Épique",
+          "image": "/ImgCards/tonaliteEmotionnelle/epique.webp",
+          "alt": ""
+        },
+        {
+          "id": "humoristique",
+          "label": "Humoristique",
+          "image": "/ImgCards/tonaliteEmotionnelle/humoristique.webp",
+          "alt": ""
+        },
+        {
+          "id": "melancolique",
+          "label": "Mélancolique",
+          "image": "/ImgCards/tonaliteEmotionnelle/melancolique.webp",
+          "alt": ""
+        },
+        {
+          "id": "philosophique",
+          "label": "Philosophique",
+          "image": "/ImgCards/tonaliteEmotionnelle/philosophique.webp",
+          "alt": ""
+        },
+        {
+          "id": "sombre",
+          "label": "Sombre",
+          "image": "/ImgCards/tonaliteEmotionnelle/sombre.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "typeDeProta",
+      "category": "typeDeProta",
+      "title": "Quel type de protagoniste choisis-tu ?",
+      "choices": [
+        {
+          "id": "antiHeros",
+          "label": "Anti-héros",
+          "image": "/ImgCards/typeDeProta/antiHeros.webp",
+          "alt": ""
+        },
+        {
+          "id": "duoInseparable",
+          "label": "Duo inséparable",
+          "image": "/ImgCards/typeDeProta/duoInseparable.webp",
+          "alt": ""
+        },
+        {
+          "id": "genieIncompris",
+          "label": "Génie incompris",
+          "image": "/ImgCards/typeDeProta/genieIncompris.webp",
+          "alt": ""
+        },
+        {
+          "id": "groupeSoude",
+          "label": "Groupe soudé",
+          "image": "/ImgCards/typeDeProta/groupeSoude.webp",
+          "alt": ""
+        },
+        {
+          "id": "herosPur",
+          "label": "Héros pur",
+          "image": "/ImgCards/typeDeProta/herosPur.webp",
+          "alt": ""
+        },
+        {
+          "id": "persoNaifQuiEvolue",
+          "label": "Personnage naïf qui évolue",
+          "image": "/ImgCards/typeDeProta/persoNaifQuiEvolue.webp",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "univers",
+      "category": "univers",
+      "title": "Dans quel univers choisis-tu vivre l'histoire ?",
+      "choices": [
+        {
+          "id": "mondeEnGuerre",
+          "label": "Monde en guerre",
+          "image": "/ImgCards/univers/mondeEnGuerre.webp",
+          "alt": ""
+        },
+        {
+          "id": "mondeEnPaixFragile",
+          "label": "Monde en paix fragile",
+          "image": "/ImgCards/univers/mondeEnPaixFragile.webp",
+          "alt": ""
+        },
+        {
+          "id": "mondeMagiqueCache",
+          "label": "Monde magique caché",
+          "image": "/ImgCards/univers/mondeMagiqueCache.webp",
+          "alt": ""
+        },
+        {
+          "id": "mondeParallele",
+          "label": "Monde parallèle",
+          "image": "/ImgCards/univers/mondeParallele.webp",
+          "alt": ""
+        },
+        {
+          "id": "mondeRealiste",
+          "label": "Monde réaliste",
+          "image": "/ImgCards/univers/mondeRealiste.webp",
+          "alt": ""
+        },
+        {
+          "id": "simulationVirtuel",
+          "label": "Simulation virtuelle",
+          "image": "/ImgCards/univers/simulationVirtuel.webp",
+          "alt": ""
+        }
+      ]
+    }
+  ]
+}
