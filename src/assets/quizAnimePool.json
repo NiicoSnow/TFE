@@ -1,0 +1,133 @@
+{
+  "animes": [
+    {
+      "anilistId": 99423,
+      "title": "Darling in the FranXX",
+      "weights": {
+        "futur": 2,
+        "technoAvancee": 3,
+        "duoInseparable": 2,
+        "epique": 2,
+        "mondeEnGuerre": 2,
+        "ascensionProgressive": 1,
+        "melancolique": 1
+      }
+    },
+    {
+      "anilistId": 9253,
+      "title": "Steins;Gate",
+      "weights": {
+        "boucleTemporelle": 3,
+        "present": 2,
+        "philosophique": 2,
+        "genieIncompris": 2,
+        "mystereProgressif": 2,
+        "plotTwistFrequent": 2,
+        "intelligence": 2
+      }
+    },
+    {
+      "anilistId": 16498,
+      "title": "Attack on Titan",
+      "weights": {
+        "mondeEnGuerre": 3,
+        "sombre": 2,
+        "brutale": 2,
+        "epique": 2,
+        "ascensionProgressive": 2,
+        "chuteDuHeros": 1,
+        "forceBrute": 1
+      }
+    },
+    {
+      "anilistId": 140960,
+      "title": "Spy x Family",
+      "weights": {
+        "humoristique": 3,
+        "mondeEnPaixFragile": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "groupeSoude": 1,
+        "atmosphereLumineuse": 2,
+        "aucuneCreature": 1
+      }
+    },
+    {
+      "anilistId": 154587,
+      "title": "Frieren: Beyond Journey's End",
+      "weights": {
+        "voyageInitiatique": 3,
+        "melancolique": 2,
+        "magie": 2,
+        "moyenAge": 2,
+        "philosophique": 1,
+        "chill": 2,
+        "persoNaifQuiEvolue": 1
+      }
+    },
+    {
+      "anilistId": 127230,
+      "title": "Chainsaw Man",
+      "weights": {
+        "sombre": 2,
+        "brutale": 2,
+        "antiHeros": 2,
+        "mondeEnGuerre": 1,
+        "forceBrute": 2,
+        "monstreGigantesque": 1,
+        "present": 1
+      }
+    },
+    {
+      "anilistId": 20665,
+      "title": "Your Lie in April",
+      "weights": {
+        "melancolique": 3,
+        "chill": 2,
+        "mondeRealiste": 2,
+        "present": 2,
+        "duoInseparable": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 21,
+      "title": "One Piece",
+      "weights": {
+        "ascensionProgressive": 3,
+        "epique": 3,
+        "groupeSoude": 2,
+        "voyageInitiatique": 2,
+        "humoristique": 1,
+        "objectifUnique": 2,
+        "forceBrute": 1
+      }
+    },
+    {
+      "anilistId": 30,
+      "title": "Neon Genesis Evangelion",
+      "weights": {
+        "philosophique": 3,
+        "technoAvancee": 2,
+        "futur": 2,
+        "monstreGigantesque": 2,
+        "sombre": 2,
+        "genieIncompris": 1,
+        "antiHeros": 1
+      }
+    },
+    {
+      "anilistId": 101922,
+      "title": "Mob Psycho 100",
+      "weights": {
+        "ascensionProgressive": 2,
+        "atmosphereLumineuse": 2,
+        "humoristique": 2,
+        "aucunPouvoir": 1,
+        "magie": 2,
+        "groupeSoude": 1,
+        "present": 1
+      }
+    }
+  ]
+}

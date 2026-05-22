@@ -8,7 +8,6 @@ import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
 import { FriendsPage} from './pages/FriendsPage'
 import { CardsPage} from './pages/CardsPage'
-
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)

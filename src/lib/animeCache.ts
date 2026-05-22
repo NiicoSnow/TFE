@@ -25,6 +25,22 @@ export async function getAnimeFromCache(anilistId: number) {
   return data as AnimeCacheRow | null
 }
 
+export async function getAnimeSummariesFromCache(anilistIds: number[]) {
+  if (anilistIds.length === 0) return [] as AnimeCacheSummary[]
+
+  const { data, error } = await supabase
+    .from('anime_cache')
+    .select(SUMMARY_COLUMNS)
+    .in('anilist_id', anilistIds)
+
+  if (error) throw error
+  const rows = (data ?? []) as AnimeCacheSummary[]
+  const byId = new Map(rows.map((row) => [row.anilist_id, row]))
+  return anilistIds
+    .map((id) => byId.get(id))
+    .filter((row): row is AnimeCacheSummary => row != null)
+}
+
 export async function searchAnimeFromCache(query: string, limit = 20) {
   const q = query.trim()
   if (!q) return [] as AnimeCacheSummary[]

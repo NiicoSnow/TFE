@@ -1,55 +1,36 @@
+import { useQuiz } from '../hooks/useQuiz'
+import { QuizQuestion } from './QuizQuestion'
+import { QuizResults } from './QuizResults'
+
 export function Cards() {
-    return (
-        <div className="cards grid">
-            <h2>Cartes</h2>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card1.jpg" alt="" />
-                    <h3>Card 1</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card2.jpg" alt="" />
-                    <h3>Card 2</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card3.jpg" alt="" />
-                    <h3>Card 3</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card4.jpg" alt="" />
-                    <h3>Card 4</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card5.jpg" alt="" />
-                    <h3>Card 5</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card6.jpg" alt="" />
-                    <h3>Card 6</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card7.jpg" alt="" />
-                    <h3>Card 7</h3>
-                </div>
-            </div>
-            <div className="cards__element">
-                <div className="cards__element--img">
-                    <img src="/card8.jpg" alt="" />
-                    <h3>Card 8</h3>
-                </div>
-            </div>
-        </div>
-    )
+  const {
+    phase,
+    currentQuestion,
+    selectedChoiceId,
+    progressLabel,
+    results,
+    selectChoice,
+    restart,
+    goBack,
+    canGoBack,
+  } = useQuiz()
+
+  if (phase === 'results') {
+    return <QuizResults results={results} onRestart={restart} />
+  }
+
+  if (!currentQuestion) {
+    return <p>Aucune question disponible pour le quiz.</p>
+  }
+
+  return (
+    <QuizQuestion
+      question={currentQuestion}
+      selectedChoiceId={selectedChoiceId}
+      progressLabel={progressLabel}
+      canGoBack={canGoBack}
+      onBack={goBack}
+      onSelect={selectChoice}
+    />
+  )
 }
