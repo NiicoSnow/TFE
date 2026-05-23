@@ -1,7 +1,4 @@
-import {
-  ADAPTIVE_FROM_QUESTION_INDEX,
-  FIXED_FIRST_QUESTION_ID,
-} from './quizConfig'
+import { ADAPTIVE_FROM_QUESTION_INDEX, FIXED_FIRST_QUESTION_ID, } from './quizConfig'
 import { rankAnimePool } from './quizScoring'
 import type { QuizAnimePoolEntry, QuizAnswers, QuizQuestion } from '../types/quiz'
 

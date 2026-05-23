@@ -795,6 +795,12 @@
   border-radius: 18px;
   overflow: hidden;
   background: var(--element-bg);
+  transform-origin: center center;
+  transition: transform 0.25s ease;
+}
+
+.cards__element:hover:not(:disabled) .cards__element--img {
+  transform: scale(1.05);
 }
 
 .cards__element--img h3 {
