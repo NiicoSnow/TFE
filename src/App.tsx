@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
+import { SingleAnimePage } from './pages/SingleAnimePage'
 import { FriendsPage} from './pages/FriendsPage'
 import { CardsPage} from './pages/CardsPage'
 function App() {
@@ -94,6 +95,7 @@ function App() {
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/catalogue" element={<CataloguePage />} />
+        <Route path="/catalogue/anime/:anilistId" element={<SingleAnimePage />} />
         <Route path="/amis" element={<FriendsPage />} />
         <Route path="/cartes" element={<CardsPage />} />
       </Routes>

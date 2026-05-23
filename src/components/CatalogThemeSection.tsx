@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { displayTitle, getCatalogSectionEmptyMessage, getCatalogSectionTitle, listForCatalogSection } from '../lib/animeCache'
 import type { CatalogSectionProps } from '../types/catalogSection'
 import type { AnimeCacheSummary } from '../types/animeCache'
@@ -29,10 +30,15 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const sectionMax = props.variant === 'similar' ? 5 : SECTION_MAX
   const title = getCatalogSectionTitle(props)
   const emptyMessage = getCatalogSectionEmptyMessage(props)
-  const maxVisible = Math.min(items.length, SECTION_MAX)
+  const maxVisible = Math.min(items.length, sectionMax)
   const tag = props.variant === 'tag' ? props.tag : null
+  const similarKey =
+    props.variant === 'similar'
+      ? `${props.anilistId}:${props.genres.join('\0')}`
+      : null
 
   useEffect(() => {
     let cancelled = false
@@ -41,7 +47,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
       setLoading(true)
       setError(null)
       try {
-        const rows = await listForCatalogSection(props, SECTION_MAX)
+        const rows = await listForCatalogSection(props, sectionMax)
         if (!cancelled) {
           setItems(rows.map(mapToTrendItem))
           setVisibleCount(PAGE_SIZE)
@@ -60,7 +66,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
     return () => {
       cancelled = true
     }
-  }, [props.variant, tag])
+  }, [props.variant, tag, similarKey, sectionMax])
 
   const showMore = () => {
     setVisibleCount((n) => Math.min(n + PAGE_SIZE, maxVisible))
@@ -109,14 +115,18 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
         <div className="catalog-theme-section__content">
           <div className="catalog-theme-section__track">
             {visibleItems.map((item) => (
-              <article key={item.id} className="catalog-theme-section__card">
+              <Link
+                key={item.id}
+                to={`/catalogue/anime/${item.id}`}
+                className="catalog-theme-section__card"
+              >
                 <figure className="catalog-theme-section__poster">
                   <img src={item.poster} alt="" loading="lazy" />
                 </figure>
                 <div className="catalog-theme-section__meta">
                   <h5 className="catalog-theme-section__card-title">{item.title}</h5>
                 </div>
-              </article>
+              </Link>
             ))}
             {canShowMore ? (
               <button

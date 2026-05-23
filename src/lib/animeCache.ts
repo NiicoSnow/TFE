@@ -104,6 +104,10 @@ export async function listForCatalogSection(config: CatalogSectionProps, limit =
     return listByTagFromCache(config.tag, limit)
   }
 
+  if (config.variant === 'similar') {
+    return listSimilarAnimeFromCache(config.anilistId, config.genres, limit)
+  }
+
   switch (config.variant) {
     case 'trending-year':
       return listTrendingFromCache(new Date().getFullYear(), limit)
@@ -121,6 +125,10 @@ export async function listForCatalogSection(config: CatalogSectionProps, limit =
 export function getCatalogSectionTitle(config: CatalogSectionProps): string {
   if (config.variant === 'tag') {
     return config.tag
+  }
+
+  if (config.variant === 'similar') {
+    return 'Anime similaire'
   }
 
   const titles: Record<CatalogSectionVariant, string> = {
@@ -141,12 +149,99 @@ export function getCatalogSectionEmptyMessage(config: CatalogSectionProps): stri
   if (config.variant === 'tag') {
     return `Aucun anime avec le tag « ${config.tag} ».`
   }
+  if (config.variant === 'similar') {
+    return 'Aucun anime similaire trouvé.'
+  }
   return EMPTY_MESSAGES[config.variant]
 }
 
 export function formatAnilistScore(score: number | null) {
   if (score == null) return null
   return (score / 10).toFixed(1)
+}
+
+const SEASON_LABELS: Record<string, string> = {
+  WINTER: 'Hiver',
+  SPRING: 'Printemps',
+  SUMMER: 'Été',
+  FALL: 'Automne',
+}
+
+export function formatSeasonRelease(season: string | null, seasonYear: number | null) {
+  if (!season && seasonYear == null) return null
+  const label = season ? (SEASON_LABELS[season] ?? season) : null
+  if (label && seasonYear != null) return `${label} ${seasonYear}`
+  return label ?? (seasonYear != null ? String(seasonYear) : null)
+}
+
+type SimilarCandidate = AnimeCacheSummary & {
+  genres: string[]
+}
+
+const SIMILAR_CANDIDATE_POOL = 80
+
+function countGenreOverlap(candidateGenres: string[], sourceGenres: string[]) {
+  const source = new Set(sourceGenres)
+  return candidateGenres.filter((genre) => source.has(genre)).length
+}
+
+function minGenreOverlapForSimilar(sourceGenreCount: number) {
+  if (sourceGenreCount <= 1) return 1
+  if (sourceGenreCount === 2) return 2
+  return 2
+}
+
+export async function listSimilarAnimeFromCache(
+  anilistId: number,
+  genres: string[],
+  limit = 5,
+) {
+  if (genres.length === 0) return [] as AnimeCacheSummary[]
+
+  const orFilter = genres
+    .slice(0, 6)
+    .map((genre) => `genres.cs.${JSON.stringify([genre])}`)
+    .join(',')
+
+  const { data, error } = await supabase
+    .from('anime_cache')
+    .select(`${SUMMARY_COLUMNS}, genres`)
+    .not('format', 'in', `(${CATALOG_EXCLUDED_FORMATS.join(',')})`)
+    .neq('anilist_id', anilistId)
+    .or(orFilter)
+    .limit(SIMILAR_CANDIDATE_POOL)
+
+  if (error) throw error
+
+  const minOverlap = minGenreOverlapForSimilar(genres.length)
+
+  const ranked = ((data ?? []) as SimilarCandidate[])
+    .map((row) => ({
+      row,
+      genreOverlap: countGenreOverlap(row.genres ?? [], genres),
+    }))
+    .filter(({ genreOverlap }) => genreOverlap >= minOverlap)
+    .sort((a, b) => {
+      if (b.genreOverlap !== a.genreOverlap) return b.genreOverlap - a.genreOverlap
+      return (b.row.average_score ?? 0) - (a.row.average_score ?? 0)
+    })
+    .slice(0, limit)
+    .map(({ row }) => row)
+
+  return ranked as AnimeCacheSummary[]
+}
+
+export function getQueryErrorMessage(err: unknown, fallback: string) {
+  if (err instanceof Error) return err.message
+  if (
+    typeof err === 'object' &&
+    err !== null &&
+    'message' in err &&
+    typeof (err as { message: unknown }).message === 'string'
+  ) {
+    return (err as { message: string }).message
+  }
+  return fallback
 }
 
 export function displayTitle(row: Pick<AnimeCacheSummary, 'title_english' | 'title_romaji' | 'title_native'>) {

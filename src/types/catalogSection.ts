@@ -6,3 +6,4 @@ export type CatalogSectionVariant =
 export type CatalogSectionProps =
   | { variant: CatalogSectionVariant }
   | { variant: 'tag'; tag: string }
+  | { variant: 'similar'; anilistId: number; genres: string[] }
