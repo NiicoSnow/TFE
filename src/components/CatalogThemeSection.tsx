@@ -82,8 +82,12 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
   const canShowMore = visibleCount < maxVisible
   const canToggleSeeAll = maxVisible > PAGE_SIZE
 
+  const sectionClassName = props.embedded
+    ? 'catalog-theme-section catalog-theme-section--embedded'
+    : 'catalog-theme-section grid'
+
   return (
-    <section className="catalog-theme-section grid" aria-busy={loading}>
+    <section className={sectionClassName} aria-busy={loading}>
       <header className="catalog-theme-section__header flex justify-between items-end">
         <h2 className="catalog-theme-section__title">{title}</h2>
         {canToggleSeeAll ? (

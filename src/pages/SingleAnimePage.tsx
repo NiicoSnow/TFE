@@ -8,6 +8,7 @@ import {
   getAnimeFromCache,
   getQueryErrorMessage,
 } from '../lib/animeCache'
+import { formatSynopsisForDisplay } from '../lib/synopsis'
 import type { AnimeCacheRow } from '../types/animeCache'
 
 const POSTER_FALLBACK =
@@ -22,9 +23,10 @@ type MetaCellProps = {
   label: string
   value: string | null
   accent?: boolean
+  valueSuffix?: string
 }
 
-function MetaCell({ label, value, accent }: MetaCellProps) {
+function MetaCell({ label, value, accent, valueSuffix }: MetaCellProps) {
   if (!value) return null
 
   return (
@@ -37,7 +39,10 @@ function MetaCell({ label, value, accent }: MetaCellProps) {
             : 'single-anime-page__meta-value'
         }
       >
-        {value}
+        <span className="single-anime-page__meta-value-main">{value}</span>
+        {valueSuffix ? (
+          <span className="single-anime-page__meta-value-suffix">{valueSuffix}</span>
+        ) : null}
       </span>
     </div>
   )
@@ -147,7 +152,7 @@ export function SingleAnimePage() {
         {!loading && !error && anime ? (
           <>
             <div className="single-anime-page__heading">
-              <h1 className="single-anime-page__title">{title}</h1>
+              <h2 className="single-anime-page__title">{title}</h2>
               <button type="button" className="single-anime-page__add" aria-label="Ajouter à une liste">
                 <img src="/adding.svg" alt="" width={40} height={40} />
               </button>
@@ -158,7 +163,7 @@ export function SingleAnimePage() {
               <MetaCell label="Année de sortie" value={seasonLabel} />
               <MetaCell label="Studios" value={studiosLabel} />
               <MetaCell label="Producteurs" value={producersLabel} />
-              <MetaCell label="Note" value={score ? `${score}/10` : null} accent />
+              <MetaCell label="Note" value={score} accent valueSuffix="/10" />
               <MetaCell label="Genres" value={genresLabel} />
             </div>
 
@@ -166,7 +171,7 @@ export function SingleAnimePage() {
               <section className="single-anime-page__section">
                 <h2 className="single-anime-page__section-title">Synopsis</h2>
                 <div className="single-anime-page__synopsis-box">
-                  <p>{anime.synopsis}</p>
+                  <p>{formatSynopsisForDisplay(anime.synopsis)}</p>
                 </div>
               </section>
             ) : null}
@@ -187,7 +192,7 @@ export function SingleAnimePage() {
 
             {watchLinks.length > 0 ? (
               <section className="single-anime-page__section">
-                <h2 className="single-anime-page__section-title">Où regarder ?</h2>
+                <h2 className="single-anime-page__section-title">Des liens utiles</h2>
                 <div className="single-anime-page__watch">
                   {watchLinks.map((link) => (
                     <a
@@ -207,17 +212,28 @@ export function SingleAnimePage() {
             {anime.characters.length > 0 ? (
               <section className="single-anime-page__section">
                 <h2 className="single-anime-page__section-title">Personnages</h2>
+                <div className="single-anime-page__characters-panel">
                 <ul className="single-anime-page__characters">
                   {anime.characters.slice(0, 8).map((character, index) => (
                     <li key={`${character.name ?? 'character'}-${index}`}>
                       <div className="single-anime-page__character">
-                        {character.image ? (
-                          <img src={character.image} alt="" loading="lazy" />
-                        ) : null}
+                        <div className="single-anime-page__character-media">
+                          {character.image ? (
+                            <img
+                              src={character.image}
+                              alt={character.name ?? ''}
+                              loading="lazy"
+                            />
+                          ) : null}
+                        </div>
+                        <span className="single-anime-page__character-name">
+                          {character.name ?? 'Inconnu'}
+                        </span>
                       </div>
                     </li>
                   ))}
                 </ul>
+                </div>
               </section>
             ) : null}
 
@@ -226,6 +242,7 @@ export function SingleAnimePage() {
                 variant="similar"
                 anilistId={anime.anilist_id}
                 genres={anime.genres}
+                embedded
               />
             ) : null}
           </>

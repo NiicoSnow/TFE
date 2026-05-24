@@ -3,7 +3,12 @@ export type CatalogSectionVariant =
   | 'trending-all-time'
   | 'upcoming'
 
+type CatalogSectionOptions = {
+  /** Sans la classe `.grid` (ex. section similaire dans la page single). */
+  embedded?: boolean
+}
+
 export type CatalogSectionProps =
-  | { variant: CatalogSectionVariant }
-  | { variant: 'tag'; tag: string }
-  | { variant: 'similar'; anilistId: number; genres: string[] }
+  | ({ variant: CatalogSectionVariant } & CatalogSectionOptions)
+  | ({ variant: 'tag'; tag: string } & CatalogSectionOptions)
+  | ({ variant: 'similar'; anilistId: number; genres: string[] } & CatalogSectionOptions)
