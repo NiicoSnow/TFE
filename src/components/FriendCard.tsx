@@ -16,10 +16,6 @@ export function FriendCard({ friend, onRemove }: FriendCardProps) {
         <div className="friend-card__avatar friend-card__avatar--placeholder" aria-hidden />
       )}
       <h3 className="friend-card__name">{name}</h3>
-      <p className="friend-card__status friend-card__status--offline">
-        <span className="friend-card__status-dot" aria-hidden />
-        hors ligne
-      </p>
       <div className="friend-card__actions">
         <button type="button" className="friend-card__action" aria-label={`Retirer ${name} de mes amis`} onClick={() => onRemove(friend.friendshipId)}>
           <img src="/delfriends.svg" alt="" width={30} height={30} />
