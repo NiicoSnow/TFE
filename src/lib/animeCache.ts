@@ -41,13 +41,11 @@ export async function getAnimeSummariesFromCache(anilistIds: number[]) {
     .filter((row): row is AnimeCacheSummary => row != null)
 }
 
-export async function searchAnimeFromCache(query: string, limit = 20) {
+export async function searchAnimeFromCache(query: string, limit = 24) {
   const q = query.trim()
   if (!q) return [] as AnimeCacheSummary[]
 
-  const { data, error } = await supabase
-    .from('anime_cache')
-    .select(SUMMARY_COLUMNS)
+  const { data, error } = await catalogSectionBaseQuery()
     .or(
       `title_romaji.ilike.%${q}%,title_english.ilike.%${q}%,title_native.ilike.%${q}%`,
     )

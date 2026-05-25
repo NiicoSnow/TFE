@@ -77,8 +77,8 @@ export function QuizQuestion({
         ref={choicesRef}
         className={
           isAnimating
-            ? 'cards grid quiz-question__choices quiz-question__choices--busy'
-            : 'cards grid quiz-question__choices'
+            ? 'cards quiz-question__choices quiz-question__choices--busy'
+            : 'cards quiz-question__choices'
         }
         role="group"
         aria-label={question.title}
