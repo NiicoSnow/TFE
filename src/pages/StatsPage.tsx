@@ -1,9 +1,9 @@
 export function StatsPage() {
     return (
-      <section className="center">
+      <section className="grid">
         <div>
           <h1>Statistiques</h1>
-          <p>La page de stats viendra ici.</p>
+          <p>Coming Soon</p>
         </div>
       </section>
     )

@@ -9,6 +9,8 @@ import { CataloguePage} from './pages/CataloguePage'
 import { SingleAnimePage } from './pages/SingleAnimePage'
 import { FriendsPage} from './pages/FriendsPage'
 import { CardsPage} from './pages/CardsPage'
+import { MainNavUser } from './components/MainNavUser'
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -79,6 +81,7 @@ function App() {
           </div>
           <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
         </div>
+        <MainNavUser />
       </nav>
       {isMenuOpen && (
         <button

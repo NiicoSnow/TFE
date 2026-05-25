@@ -89,11 +89,11 @@ export function FriendsPage() {
       <div className="friends-page__inner">
         <div className="friends-toolbar">
           <label className="friends-toolbar__search">
-            <img src="/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
             <input type="search" className="friends-toolbar__input" placeholder="Rechercher" value={search} onChange={(e) => setSearch(e.target.value)} />
+            <img src="/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
           </label>
           <button type="button" className="friends-toolbar__add" aria-label="Ajouter un ami" onClick={() => setShowAddPanel(true)}>
-            <img src="/adding.svg" alt="" width={24} height={24} />
+            <img src="/addfriends.svg" alt="" width={24} height={24} />
           </button>
         </div>
 
