@@ -97,7 +97,7 @@ export function AnimeManagtSection() {
   return (
     <section className="anime-management grid">
       <div className="anime-management__heading">
-        <h2>Gestion des animes</h2>
+        <h3>Gestion des animes</h3>
       </div>
       <div className="anime-management__element">
         {!authLoading && !user ? (
