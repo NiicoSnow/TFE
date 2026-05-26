@@ -75,10 +75,11 @@ function App() {
           <div className="nav-links__group">
             <NavLink to="/" onClick ={closeMenu}>Accueil</NavLink>
             <NavLink to="/catalogue" onClick ={closeMenu}>Catalogue</NavLink>
-            <NavLink to="/cartes" onClick ={closeMenu}>Cartes</NavLink>
+            <NavLink to="/cartes" className="nav-links__cartes" onClick={closeMenu} aria-label="Cartes">
+              <img src="/cards.svg" alt="" className="nav-links__cartes-icon" width={39} height={35} />
+            </NavLink>
             <NavLink to="/stats" onClick ={closeMenu}>Stats</NavLink>
             <NavLink to="/amis" onClick ={closeMenu}>Amis</NavLink>
-            <NavLink to="/profil" onClick ={closeMenu}>Profil</NavLink>
           </div>
           <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
         </div>

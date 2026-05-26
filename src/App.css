@@ -286,6 +286,29 @@
   color: var(--accent);
 }
 
+.nav-links__cartes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16rem;
+  height: 4rem;
+  margin-bottom: 2.4rem;
+  border-radius: 18px;
+  background: var(--accent);
+  line-height: 0;
+  flex-shrink: 0;
+  transition: scale 0.2s ease;
+}
+
+.nav-links__cartes-icon {
+  display: block;
+  width: 3.2rem;
+  height: auto;
+}
+.nav-links__cartes:hover {
+  scale: 1.05;
+}
+
 .main-nav__logo {
   flex-shrink: 0;
   height: 3.2rem;
@@ -1527,6 +1550,10 @@
   }
 
   .nav-links a {
+    margin-bottom: 0;
+  }
+
+  .nav-links__cartes {
     margin-bottom: 0;
   }
 
