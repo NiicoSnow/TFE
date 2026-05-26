@@ -66,24 +66,26 @@ function App() {
   return (
     <>
       <nav className={isMenuOpen ? 'main-nav menu-open' : 'main-nav'}>
-        <button className="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded={isMenuOpen} onClick={() => isMenuOpen ? closeMenu() : setIsMenuOpen(true)}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div ref={menuRef} className={isMenuOpen ? "nav-links open" : "nav-links"}>
-          <div className="nav-links__group">
-            <NavLink to="/" onClick ={closeMenu}>Accueil</NavLink>
-            <NavLink to="/catalogue" onClick ={closeMenu}>Catalogue</NavLink>
-            <NavLink to="/cartes" className="nav-links__cartes" onClick={closeMenu} aria-label="Cartes">
-              <img src="/cards.svg" alt="" className="nav-links__cartes-icon" width={39} height={35} />
-            </NavLink>
-            <NavLink to="/stats" onClick ={closeMenu}>Stats</NavLink>
-            <NavLink to="/amis" onClick ={closeMenu}>Amis</NavLink>
-          </div>
+        <div className="main-nav__wrapper">
+          <button className="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded={isMenuOpen} onClick={() => isMenuOpen ? closeMenu() : setIsMenuOpen(true)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div ref={menuRef} className={isMenuOpen ? "nav-links open" : "nav-links"}>
           <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
+            <div className="nav-links__group">
+              <NavLink to="/" onClick ={closeMenu}>Accueil</NavLink>
+              <NavLink to="/catalogue" onClick ={closeMenu}>Catalogue</NavLink>
+              <NavLink to="/cartes" className="nav-links__cartes" onClick={closeMenu} aria-label="Cartes">
+                <img src="/cards.svg" alt="" className="nav-links__cartes-icon" width={39} height={35} />
+              </NavLink>
+              <NavLink to="/stats" onClick ={closeMenu}>Stats</NavLink>
+              <NavLink to="/amis" onClick ={closeMenu}>Amis</NavLink>
+            </div>
+          </div>
+          <MainNavUser />
         </div>
-        <MainNavUser />
       </nav>
       {isMenuOpen && (
         <button
