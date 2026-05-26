@@ -69,9 +69,67 @@
   }
 }
 
-.home-page__header {
+.home-page__header{
+  margin-top: 2.4rem
+}
+.home-page__header-img{
   height: 20rem;
   background-color: var(--element-bg);
+}
+
+.home-page__header-title{
+  margin-bottom: 3rem;
+}
+
+.home-page__header-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 2.4rem;
+}
+
+.home-page__header-button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 1.2rem 1.6rem;
+  border: 0;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.home-page__header-button--muted {
+  background: var(--element-bg);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.home-page__header-button--muted:hover {
+  filter: brightness(1.08);
+}
+
+.home-page__header-button--accent {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.home-page__header-button--accent:hover {
+  filter: brightness(1.08);
+}
+
+.home-page__header-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .main-nav {
@@ -260,6 +318,10 @@
 
 .tuto__element:last-child {
   margin-bottom: 0;
+}
+
+#explications {
+  scroll-margin-top: 6rem;
 }
 
 .tuto h3, p {

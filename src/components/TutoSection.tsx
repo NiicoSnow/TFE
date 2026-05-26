@@ -1,6 +1,6 @@
 export function TutoSection() {
   return (
-    <section className="tuto grid">
+    <section id="explications" className="tuto grid">
       <h2>Explication du concept</h2>
       <div className="tuto__element">
         <div className="tuto__element-img"></div>
