@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { AnimeListPickerModal } from '../components/AnimeListPickerModal'
+import { useAuth } from '../hooks/useAuth'
+import { ANIME_LIST_LABELS } from '../lib/animeLibrary'
+import { getLibraryStatusForAnime, setAnimeListStatus } from '../lib/animeLibrary'
+import type { AnimeListStatus } from '../types/animeLibrary'
 import { CatalogThemeSection } from '../components/CatalogThemeSection'
 import {
   displayTitle,
@@ -50,9 +55,15 @@ function MetaCell({ label, value, accent, valueSuffix }: MetaCellProps) {
 
 export function SingleAnimePage() {
   const { anilistId } = useParams()
+  const navigate = useNavigate()
+  const { user, loading: authLoading } = useAuth()
   const [anime, setAnime] = useState<AnimeCacheRow | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [listPickerOpen, setListPickerOpen] = useState(false)
+  const [libraryStatus, setLibraryStatus] = useState<AnimeListStatus | null>(null)
+  const [listActionBusy, setListActionBusy] = useState(false)
+  const [listFeedback, setListFeedback] = useState<string | null>(null)
 
   useEffect(() => {
     const id = Number(anilistId)
@@ -92,6 +103,28 @@ export function SingleAnimePage() {
     }
   }, [anilistId])
 
+  useEffect(() => {
+    if (!user || !anime) {
+      setLibraryStatus(null)
+      return
+    }
+
+    let cancelled = false
+
+    void (async () => {
+      try {
+        const status = await getLibraryStatusForAnime(user.id, anime.anilist_id)
+        if (!cancelled) setLibraryStatus(status)
+      } catch {
+        if (!cancelled) setLibraryStatus(null)
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [user, anime])
+
   const title = anime ? displayTitle(anime) : ''
   const score = anime ? formatAnilistScore(anime.average_score) : null
   const trailerId = anime ? youtubeEmbedId(anime.trailer) : null
@@ -111,6 +144,37 @@ export function SingleAnimePage() {
     anime && anime.genres.length > 0 ? anime.genres.join(', ') : null
   const watchLinks =
     anime?.watch_links.filter((link) => !link.isDisabled && link.url) ?? []
+
+  const addButtonLabel = libraryStatus
+    ? `Dans la liste : ${ANIME_LIST_LABELS[libraryStatus]}. Changer de liste`
+    : 'Ajouter à une liste'
+
+  const openListPicker = () => {
+    if (authLoading) return
+    if (!user) {
+      navigate('/profil')
+      return
+    }
+    setListFeedback(null)
+    setListPickerOpen(true)
+  }
+
+  const handleListSelect = async (status: AnimeListStatus) => {
+    if (!user || !anime) return
+
+    setListActionBusy(true)
+    setListFeedback(null)
+    try {
+      await setAnimeListStatus(user.id, anime.anilist_id, status)
+      setLibraryStatus(status)
+      setListPickerOpen(false)
+      setListFeedback(`Ajouté à « ${ANIME_LIST_LABELS[status]} »`)
+    } catch (err) {
+      setListFeedback(getQueryErrorMessage(err, 'Impossible d’ajouter à la liste'))
+    } finally {
+      setListActionBusy(false)
+    }
+  }
 
   return (
     <main className="single-anime-page">
@@ -153,10 +217,13 @@ export function SingleAnimePage() {
           <>
             <div className="single-anime-page__heading">
               <h2 className="single-anime-page__title">{title}</h2>
-              <button type="button" className="single-anime-page__add" aria-label="Ajouter à une liste">
+              <button type="button" className="single-anime-page__add" aria-label={addButtonLabel} onClick={openListPicker}>
                 <img src="/adding.svg" alt="" width={40} height={40} />
               </button>
             </div>
+            {listFeedback ? (
+              <p className="single-anime-page__list-feedback" role="status">{listFeedback}</p>
+            ) : null}
 
             <div className="single-anime-page__meta">
               <MetaCell label={anime.format ?? 'Format'} value={episodesLabel} />
@@ -248,6 +315,17 @@ export function SingleAnimePage() {
           </>
         ) : null}
       </div>
+
+      {listPickerOpen && anime ? (
+        <AnimeListPickerModal
+          title="Ajouter à une liste"
+          animeTitle={title}
+          currentStatus={libraryStatus}
+          onSelect={(status) => void handleListSelect(status)}
+          onClose={() => !listActionBusy && setListPickerOpen(false)}
+          busy={listActionBusy}
+        />
+      ) : null}
     </main>
   )
 }

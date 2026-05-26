@@ -1,106 +1,55 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
+import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, setAnimeListStatus, statusToCategoryIndex, } from '../lib/animeLibrary'
+import type { AnimeListStatus } from '../types/animeLibrary'
+import type { LibraryAnimeItem } from '../types/animeLibrary'
+import { AnimeListPickerModal } from './AnimeListPickerModal'
 
-const CATEGORIES = [
-  "C'est prévu",
-  'En train de regarder',
-  'En pause',
-  'Fini',
-] as const
+const EMPTY_LISTS: LibraryAnimeItem[][] = [[], [], [], []]
 
-type AnimePreview = {
-  id: string
-  title: string
-  rating: string
-  poster: string
+type MoveContext = {
+  fromIndex: number
+  anime: LibraryAnimeItem
 }
-
-const MOCK_BY_CATEGORY: AnimePreview[][] = [
-  [
-    {
-      id: 'p1',
-      title: 'Darling In The FranXX',
-      rating: '6.9',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-    {
-      id: 'p2',
-      title: 'Steins;Gate',
-      rating: '9.0',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-  ],
-  [
-    {
-      id: 'w1',
-      title: 'Attack on Titan',
-      rating: '8.5',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-  ],
-  [
-    {
-      id: 's1',
-      title: 'One Piece',
-      rating: '9.1',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-    {
-      id: 's2',
-      title: 'Bleach',
-      rating: '8.2',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-  ],
-  [
-    {
-      id: 'd1',
-      title: 'Death Note',
-      rating: '8.6',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-    {
-      id: 'd2',
-      title: 'Fullmetal Alchemist: Brotherhood',
-      rating: '9.1',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-    {
-      id: 'd3',
-      title: 'Mob Psycho 100',
-      rating: '8.5',
-      poster: 'https://placehold.co/72x102/1e293b/ec4899?text=Poster',
-    },
-  ],
-]
-
-function cloneLists(source: AnimePreview[][]) {
-  return source.map((arr) => arr.map((a) => ({ ...a })))
-}
-
-type MoveContext = { fromIndex: number; anime: AnimePreview }
 
 export function AnimeManagtSection() {
-  const [lists, setLists] = useState(() => cloneLists(MOCK_BY_CATEGORY))
+  const { user, loading: authLoading } = useAuth()
+  const [lists, setLists] = useState<LibraryAnimeItem[][]>(EMPTY_LISTS)
+  const [libraryLoading, setLibraryLoading] = useState(false)
+  const [libraryError, setLibraryError] = useState<string | null>(null)
   const [categoryIndex, setCategoryIndex] = useState(0)
   const [moveTarget, setMoveTarget] = useState<MoveContext | null>(null)
+  const [moveBusy, setMoveBusy] = useState(false)
 
-  const n = CATEGORIES.length
-  const currentLabel = CATEGORIES[categoryIndex]
-  const items = lists[categoryIndex] ?? []
+  const loadLibrary = useCallback(async () => {
+    if (!user) {
+      setLists(EMPTY_LISTS)
+      setLibraryError(null)
+      return
+    }
+
+    setLibraryLoading(true)
+    setLibraryError(null)
+    try {
+      const grouped = await fetchUserLibraryByCategory(user.id)
+      setLists(grouped)
+    } catch (err) {
+      setLibraryError(getQueryErrorMessage(err, 'Impossible de charger tes listes'))
+      setLists(EMPTY_LISTS)
+    } finally {
+      setLibraryLoading(false)
+    }
+  }, [user])
 
   useEffect(() => {
-    if (!moveTarget) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMoveTarget(null)
-    }
-    window.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
-    }
-  }, [moveTarget])
+    if (authLoading) return
+    void loadLibrary()
+  }, [authLoading, loadLibrary])
+
+  const n = ANIME_LIST_LABELS_ORDERED.length
+  const currentLabel = ANIME_LIST_LABELS_ORDERED[categoryIndex]
+  const items = lists[categoryIndex] ?? []
 
   const goPrev = () => {
     setCategoryIndex((i) => (i - 1 + n) % n)
@@ -110,24 +59,40 @@ export function AnimeManagtSection() {
     setCategoryIndex((i) => (i + 1) % n)
   }
 
-  const openMovePicker = (anime: AnimePreview) => {
+  const openMovePicker = (anime: LibraryAnimeItem) => {
     setMoveTarget({ fromIndex: categoryIndex, anime })
   }
 
-  const confirmMoveTo = (toIndex: number) => {
-    if (!moveTarget || toIndex === moveTarget.fromIndex) {
+  const confirmMoveTo = async (status: AnimeListStatus) => {
+    if (!moveTarget || !user) return
+
+    const toIndex = statusToCategoryIndex(status)
+    if (toIndex === moveTarget.fromIndex) {
       setMoveTarget(null)
       return
     }
-    const { fromIndex, anime } = moveTarget
-    setLists((prev) => {
-      const next = prev.map((arr) => [...arr])
-      next[fromIndex] = next[fromIndex].filter((a) => a.id !== anime.id)
-      next[toIndex] = [...next[toIndex], anime]
-      return next
-    })
-    setMoveTarget(null)
+
+    setMoveBusy(true)
+    try {
+      await setAnimeListStatus(user.id, moveTarget.anime.anilistId, status)
+
+      setLists((prev) => {
+        const next = prev.map((arr) => [...arr])
+        const { fromIndex, anime } = moveTarget
+        next[fromIndex] = next[fromIndex].filter((a) => a.libraryId !== anime.libraryId)
+        next[toIndex] = [...next[toIndex], anime]
+        return next
+      })
+      setMoveTarget(null)
+    } catch (err) {
+      setLibraryError(getQueryErrorMessage(err, 'Impossible de déplacer cet anime'))
+    } finally {
+      setMoveBusy(false)
+    }
   }
+
+  const currentMoveStatus =
+    moveTarget != null ? categoryIndexToStatus(moveTarget.fromIndex) : null
 
   return (
     <section className="anime-management grid">
@@ -135,64 +100,81 @@ export function AnimeManagtSection() {
         <h2>Gestion des animes</h2>
       </div>
       <div className="anime-management__element">
-        <div className="anime-management__nav anime-management__nav--mobile">
-          <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
-            <img src="/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
-          </button>
-          <p className="anime-management__category-title" aria-live="polite">{currentLabel}</p>
-          <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante">
-            <img src="/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
-          </button>
-        </div>
+        {!authLoading && !user ? (
+          <p className="anime-management__status">
+            <Link to="/profil">Connecte-toi</Link> pour gérer tes listes d&apos;animes.
+          </p>
+        ) : null}
 
-        <nav className="anime-management__nav anime-management__nav--desktop" aria-label="Catégories de listes">
-          {CATEGORIES.map((label, i) => (
-            <Fragment key={label}>
-              {i > 0 ? <span className="anime-management__tab-sep" aria-hidden>|</span> : null}
-              <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => setCategoryIndex(i)}>{label}</button>
-            </Fragment>
-          ))}
-        </nav>
-        <div className="anime-management__divider" aria-hidden />
-        <ul className="anime-management__list">
-          {items.map((anime) => (
-            <li key={anime.id} className="anime-management__card">
-              <img className="anime-management__poster" src={anime.poster} alt="" />
-              <div className="anime-management__info">
-                <h3 className="anime-management__anime-title">{anime.title}</h3>
-                <p className="anime-management__rating">
-                  <span className="anime-management__rating-value">{anime.rating}</span>
-                  <span className="anime-management__rating-max">/10</span>
-                </p>
-                <button type="button" className="anime-management__changer" onClick={() => openMovePicker(anime)}>Changer</button>
-              </div>
-              <button type="button" className="anime-management__move-btn" onClick={() => openMovePicker(anime)} aria-label={`Changer de liste pour ${anime.title}`}>
-                <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
+        {libraryError ? (
+          <p className="anime-management__status anime-management__status--error">{libraryError}</p>
+        ) : null}
+
+        {authLoading || (user && libraryLoading) ? (
+          <p className="anime-management__status">Chargement de tes listes…</p>
+        ) : null}
+
+        {user && !libraryLoading ? (
+          <>
+            <div className="anime-management__nav anime-management__nav--mobile">
+              <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
+                <img src="/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
               </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <p className="anime-management__category-title" aria-live="polite">{currentLabel}</p>
+              <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante">
+                <img src="/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
+              </button>
+            </div>
 
-      {moveTarget ? (
-        <div className="anime-management__modal-root">
-          <button type="button" className="anime-management__modal-backdrop" aria-label="Fermer" onClick={() => setMoveTarget(null)} />
-          <div className="anime-management__modal" role="dialog" aria-modal="true" aria-labelledby="anime-move-dialog-title">
-            <h3 id="anime-move-dialog-title" className="anime-management__modal-title">Déplacer vers une liste</h3>
-            <p className="anime-management__modal-anime">{moveTarget.anime.title}</p>
-            <ul className="anime-management__modal-list">
-              {CATEGORIES.map((label, i) => (
-                <li key={label}>
-                  <button type="button" className="anime-management__modal-option" disabled={i === moveTarget.fromIndex} onClick={() => confirmMoveTo(i)}>
-                    {label}
-                    {i === moveTarget.fromIndex ? <span className="anime-management__modal-current"> (actuelle)</span> : null}
+            <nav className="anime-management__nav anime-management__nav--desktop" aria-label="Catégories de listes">
+              {ANIME_LIST_LABELS_ORDERED.map((label, i) => (
+                <Fragment key={label}>
+                  {i > 0 ? <span className="anime-management__tab-sep" aria-hidden>|</span> : null}
+                  <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => setCategoryIndex(i)}>{label}</button>
+                </Fragment>
+              ))}
+            </nav>
+            <div className="anime-management__divider" aria-hidden />
+            <ul className="anime-management__list">
+              {items.length === 0 ? (
+                <li className="anime-management__empty">Aucun anime dans cette liste.</li>
+              ) : null}
+              {items.map((anime) => (
+                <li key={anime.libraryId} className="anime-management__card">
+                  <Link to={`/catalogue/anime/${anime.anilistId}`} className="anime-management__poster-link">
+                    <img className="anime-management__poster" src={anime.poster} alt="" />
+                  </Link>
+                  <div className="anime-management__info">
+                    <h3 className="anime-management__anime-title">
+                      <Link to={`/catalogue/anime/${anime.anilistId}`} className="anime-management__title-link">{anime.title}</Link>
+                    </h3>
+                    {anime.rating ? (
+                      <p className="anime-management__rating">
+                        <span className="anime-management__rating-value">{anime.rating}</span>
+                        <span className="anime-management__rating-max">/10</span>
+                      </p>
+                    ) : null}
+                    <button type="button" className="anime-management__changer" onClick={() => openMovePicker(anime)}>Changer</button>
+                  </div>
+                  <button type="button" className="anime-management__move-btn" onClick={() => openMovePicker(anime)} aria-label={`Changer de liste pour ${anime.title}`}>
+                    <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
                   </button>
                 </li>
               ))}
             </ul>
-            <button type="button" className="anime-management__modal-cancel" onClick={() => setMoveTarget(null)}>Annuler</button>
-          </div>
-        </div>
+          </>
+        ) : null}
+      </div>
+
+      {moveTarget ? (
+        <AnimeListPickerModal
+          title="Déplacer vers une liste"
+          animeTitle={moveTarget.anime.title}
+          currentStatus={currentMoveStatus}
+          onSelect={(status) => void confirmMoveTo(status)}
+          onClose={() => !moveBusy && setMoveTarget(null)}
+          busy={moveBusy}
+        />
       ) : null}
     </section>
   )
