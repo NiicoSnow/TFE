@@ -1504,107 +1504,6 @@
   color: var(--text);
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(7, 1fr);
-    gap: 40px;
-    padding-inline: 160px;
-  }
-
-  .main-nav {
-    justify-content: flex-start;
-    position: static;
-    z-index: auto;
-    gap: 1.6rem;
-  }
-
-  .main-nav__user {
-    max-width: 22rem;
-  }
-
-  .main-nav__user-label {
-    font-size: 1.6rem;
-  }
-
-  .menu-button {
-    display: none;
-  }
-
-  .menu-backdrop {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-    position: static;
-    flex: 1;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    min-height: auto;
-    padding: 0;
-    background: transparent;
-    border-radius: 0;
-    gap: 8px;
-  }
-
-  .nav-links a {
-    margin-bottom: 0;
-  }
-
-  .nav-links__cartes {
-    margin-bottom: 0;
-  }
-
-  .nav-links__cluster {
-    display: contents;
-  }
-
-  .main-nav__logo {
-    margin: 0 0 0 0.4rem;
-    height: 2.8rem;
-  }
-
-  .main-nav.menu-open {
-    pointer-events: auto;
-  }
-
-  .center {
-    gap: 25px;
-    padding: 0;
-  }
-
-  .spacer {
-    height: 88px;
-  }
-
-  .anime-management__element {
-    padding: 2.4rem 2.8rem 3.2rem;
-  }
-
-  .anime-management__nav--mobile {
-    display: none;
-  }
-
-  .anime-management__nav--desktop {
-    display: flex;
-  }
-
-  .anime-management__changer {
-    display: inline-block;
-  }
-
-  .anime-management__list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .cards {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2.4rem;
-  }
-}
-
 .profile-page {
   padding-block: 4rem 8rem;
 }
@@ -2244,6 +2143,104 @@
 }
 
 @media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 40px;
+    padding-inline: 160px;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    position: static;
+    z-index: auto;
+    gap: 1.6rem;
+  }
+
+  .main-nav__user {
+    max-width: 22rem;
+  }
+
+  .main-nav__user-label {
+    font-size: 1.6rem;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .menu-backdrop {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    position: static;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    margin-bottom: 0;
+  }
+
+  .nav-links__cartes {
+    margin-bottom: 0;
+  }
+
+  .nav-links__cluster {
+    display: contents;
+  }
+
+  .main-nav__logo {
+    margin: 0 0 0 0.4rem;
+    height: 2.8rem;
+  }
+
+  .main-nav.menu-open {
+    pointer-events: auto;
+  }
+
+  .center {
+    gap: 25px;
+    padding: 0;
+  }
+
+  .spacer {
+    height: 88px;
+  }
+
+  .anime-management__element {
+    padding: 2.4rem 2.8rem 3.2rem;
+  }
+
+  .anime-management__nav--mobile {
+    display: none;
+  }
+
+  .anime-management__nav--desktop {
+    display: flex;
+  }
+
+  .anime-management__changer {
+    display: inline-block;
+  }
+
+  .anime-management__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+  }
   .friends-page__inner {
     max-width: 72rem;
   }
