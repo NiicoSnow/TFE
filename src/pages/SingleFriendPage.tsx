@@ -93,6 +93,8 @@ export function SingleFriendPage() {
             readOnly
             embedded
             heading={`Les listes de ${displayProfileName(profile)}`}
+            libraryPublic={profile.library_public ?? true}
+            ownerDisplayName={displayProfileName(profile)}
           />
         </>
       ) : null}

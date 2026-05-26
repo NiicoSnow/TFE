@@ -20,6 +20,7 @@ export type AuthContextValue = {
     username?: string
     display_name?: string
     avatar_url?: string
+    library_public?: boolean
   }) => Promise<void>
   refreshProfile: () => Promise<void>
 }

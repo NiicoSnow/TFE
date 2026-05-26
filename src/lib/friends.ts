@@ -11,7 +11,7 @@ type ProfileRow = Pick<Profile, 'id' | 'username' | 'display_name' | 'avatar_url
 
 export type FriendProfile = Pick<
   Profile,
-  'id' | 'username' | 'display_name' | 'avatar_url' | 'created_at'
+  'id' | 'username' | 'display_name' | 'avatar_url' | 'library_public' | 'created_at'
 >
 
 async function fetchProfilesByIds(ids: string[]): Promise<ProfileRow[]> {
@@ -128,7 +128,7 @@ export async function getFriendProfileForViewer(
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, username, display_name, avatar_url, created_at')
+    .select('id, username, display_name, avatar_url, library_public, created_at')
     .eq('id', targetUserId)
     .maybeSingle()
 

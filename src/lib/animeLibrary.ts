@@ -33,6 +33,26 @@ export function categoryIndexToStatus(index: number): AnimeListStatus {
 
 export { getQueryErrorMessage }
 
+export async function getLibraryPublic(userId: string): Promise<boolean> {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('library_public')
+    .eq('id', userId)
+    .maybeSingle()
+
+  if (error) throw error
+  return data?.library_public ?? true
+}
+
+export async function setLibraryPublic(userId: string, libraryPublic: boolean) {
+  const { error } = await supabase
+    .from('profiles')
+    .update({ library_public: libraryPublic, updated_at: new Date().toISOString() })
+    .eq('id', userId)
+
+  if (error) throw error
+}
+
 export async function getLibraryStatusesForAnimes(
   userId: string,
   anilistIds: number[],

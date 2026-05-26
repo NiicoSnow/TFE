@@ -157,6 +157,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       username?: string
       display_name?: string
       avatar_url?: string
+      library_public?: boolean
     }) => {
       const userId = session?.user?.id
       if (!userId) {
