@@ -2,14 +2,11 @@ import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { supabase } from '../lib/supabase'
 import { uploadAvatar } from '../lib/uploadAvatar'
 import { useAuth } from '../hooks/useAuth'
+import { formatMemberSince, displayProfileName } from '../lib/profileDisplay'
 import type { Profile } from '../types/profile'
 
 type ProfileViewProps = {
   profile: Profile
-}
-
-function formatMemberSince(dateStr: string) {
-  return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(dateStr))
 }
 
 export function ProfileView({ profile }: ProfileViewProps) {
@@ -21,7 +18,7 @@ export function ProfileView({ profile }: ProfileViewProps) {
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
   const [uploadingAvatar, setUploadingAvatar] = useState(false)
 
-  const displayName = profile.display_name ?? profile.username ?? 'Utilisateur'
+  const displayName = displayProfileName(profile)
   const avatarSrc = avatarPreview ?? profile.avatar_url
 
   const handleAvatarClick = () => {

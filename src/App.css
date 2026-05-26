@@ -1128,7 +1128,7 @@
   background-position: center;
 }
 
-.single-anime-page__back {
+.single-page__back {
   position: absolute;
   top: 2.4rem;
   left: 2.4rem;
@@ -1143,7 +1143,7 @@
   text-decoration: none;
 }
 
-.single-anime-page__back-icon {
+.single-page__back-icon {
   display: block;
   width: 1.4rem;
   height: auto;
@@ -1882,6 +1882,44 @@
   border: none;
   background: none;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.single-friend-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 9.2rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2.4rem 2.4rem 9.6rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.single-friend-page__status {
+  margin: 0;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.single-friend-page__status--error {
+  color: #f87171;
+}
+
+.single-friend-page .profile-view {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.single-friend-page .profile-view--readonly .profile-view__since {
+  margin-bottom: 0;
+}
+
+.single-friend-page .anime-management__heading {
+  text-align: center;
 }
 
 .friends-requests {

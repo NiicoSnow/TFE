@@ -8,6 +8,7 @@ import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
 import { SingleAnimePage } from './pages/SingleAnimePage'
 import { FriendsPage} from './pages/FriendsPage'
+import { SingleFriendPage } from './pages/SingleFriendPage'
 import { CardsPage} from './pages/CardsPage'
 import { MainNavUser } from './components/MainNavUser'
 
@@ -100,6 +101,7 @@ function App() {
         <Route path="/catalogue" element={<CataloguePage />} />
         <Route path="/catalogue/anime/:anilistId" element={<SingleAnimePage />} />
         <Route path="/amis" element={<FriendsPage />} />
+        <Route path="/amis/:userId" element={<SingleFriendPage />} />
         <Route path="/cartes" element={<CardsPage />} />
       </Routes>
 

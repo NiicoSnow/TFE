@@ -1,7 +1,7 @@
 import { AnimeManagtSection } from '../components/AnimeManagtSection'
-import { MiniStatsSection } from '../components/MiniStatsSection'
+// import { MiniStatsSection } from '../components/MiniStatsSection'
 import { TutoSection } from '../components/TutoSection'
-import { VersusSection } from '../components/VersusSection'
+// import { VersusSection } from '../components/VersusSection'
 
 export function HomePage() {
   return (
@@ -10,8 +10,8 @@ export function HomePage() {
         <h1>Cardtaku</h1>
       </header>
       <TutoSection />
-      <MiniStatsSection />  
-      <VersusSection />
+      {/* <MiniStatsSection />  
+      <VersusSection /> */}
       <AnimeManagtSection />
     </main>
   )

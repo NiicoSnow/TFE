@@ -189,11 +189,11 @@ export function SingleAnimePage() {
                 aria-hidden
               />
             ) : null}
-            <Link to="/catalogue" className="single-anime-page__back" aria-label="Retour au catalogue">
+            <Link to="/catalogue" className="single-page__back" aria-label="Retour au catalogue">
               <img
                 src="/fleche.svg"
                 alt=""
-                className="single-anime-page__back-icon"
+                className="single-page__back-icon"
                 width={17}
                 height={27}
               />

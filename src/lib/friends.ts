@@ -9,6 +9,11 @@ import type { Profile } from '../types/profile'
 
 type ProfileRow = Pick<Profile, 'id' | 'username' | 'display_name' | 'avatar_url'>
 
+export type FriendProfile = Pick<
+  Profile,
+  'id' | 'username' | 'display_name' | 'avatar_url' | 'created_at'
+>
+
 async function fetchProfilesByIds(ids: string[]): Promise<ProfileRow[]> {
   if (ids.length === 0) {
     return []
@@ -110,6 +115,28 @@ export async function searchProfiles(
   }
 
   return (data ?? []) as SearchProfileResult[]
+}
+
+export async function getFriendProfileForViewer(
+  viewerId: string,
+  targetUserId: string,
+): Promise<FriendProfile | null> {
+  const { relation } = await getRelation(viewerId, targetUserId)
+  if (relation !== 'accepted') {
+    return null
+  }
+
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, username, display_name, avatar_url, created_at')
+    .eq('id', targetUserId)
+    .maybeSingle()
+
+  if (error) {
+    throw error
+  }
+
+  return data as FriendProfile | null
 }
 
 export async function getRelation(

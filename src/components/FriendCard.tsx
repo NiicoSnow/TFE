@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import type { FriendListItem } from '../types/friendship'
+import { displayProfileName } from '../lib/profileDisplay'
 
 type FriendCardProps = {
   friend: FriendListItem
@@ -6,7 +8,7 @@ type FriendCardProps = {
 }
 
 export function FriendCard({ friend, onRemove }: FriendCardProps) {
-  const name = friend.profile.display_name ?? friend.profile.username ?? 'Utilisateur'
+  const name = displayProfileName(friend.profile)
 
   return (
     <article className="friend-card">
@@ -20,9 +22,13 @@ export function FriendCard({ friend, onRemove }: FriendCardProps) {
         <button type="button" className="friend-card__action" aria-label={`Retirer ${name} de mes amis`} onClick={() => onRemove(friend.friendshipId)}>
           <img src="/delfriends.svg" alt="" width={30} height={30} />
         </button>
-        <button type="button" className="friend-card__action" aria-label={`Voir le profil de ${name}`}>
+        <Link
+          to={`/amis/${friend.profile.id}`}
+          className="friend-card__action"
+          aria-label={`Voir le profil de ${name}`}
+        >
           <img src="/seefriends.svg" alt="" width={30} height={30} />
-        </button>
+        </Link>
       </div>
     </article>
   )

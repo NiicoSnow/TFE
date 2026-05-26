@@ -13,8 +13,21 @@ type MoveContext = {
   anime: LibraryAnimeItem
 }
 
-export function AnimeManagtSection() {
-  const { user, loading: authLoading } = useAuth()
+type AnimeManagtSectionProps = {
+  libraryUserId?: string
+  readOnly?: boolean
+  heading?: string
+  embedded?: boolean
+}
+
+export function AnimeManagtSection({
+  libraryUserId,
+  readOnly = false,
+  heading = 'Gestion des animes',
+  embedded = false,
+}: AnimeManagtSectionProps = {}) {
+  const { user: authUser, loading: authLoading } = useAuth()
+  const userId = libraryUserId ?? authUser?.id
   const [lists, setLists] = useState<LibraryAnimeItem[][]>(EMPTY_LISTS)
   const [libraryLoading, setLibraryLoading] = useState(false)
   const [libraryError, setLibraryError] = useState<string | null>(null)
@@ -23,7 +36,7 @@ export function AnimeManagtSection() {
   const [moveBusy, setMoveBusy] = useState(false)
 
   const loadLibrary = useCallback(async () => {
-    if (!user) {
+    if (!userId) {
       setLists(EMPTY_LISTS)
       setLibraryError(null)
       return
@@ -32,15 +45,20 @@ export function AnimeManagtSection() {
     setLibraryLoading(true)
     setLibraryError(null)
     try {
-      const grouped = await fetchUserLibraryByCategory(user.id)
+      const grouped = await fetchUserLibraryByCategory(userId)
       setLists(grouped)
     } catch (err) {
-      setLibraryError(getQueryErrorMessage(err, 'Impossible de charger tes listes'))
+      setLibraryError(
+        getQueryErrorMessage(
+          err,
+          readOnly ? 'Impossible de charger les listes' : 'Impossible de charger tes listes',
+        ),
+      )
       setLists(EMPTY_LISTS)
     } finally {
       setLibraryLoading(false)
     }
-  }, [user])
+  }, [userId, readOnly])
 
   useEffect(() => {
     if (authLoading) return
@@ -64,7 +82,7 @@ export function AnimeManagtSection() {
   }
 
   const confirmMoveTo = async (status: AnimeListStatus) => {
-    if (!moveTarget || !user) return
+    if (!moveTarget || !userId || readOnly) return
 
     const toIndex = statusToCategoryIndex(status)
     if (toIndex === moveTarget.fromIndex) {
@@ -74,7 +92,7 @@ export function AnimeManagtSection() {
 
     setMoveBusy(true)
     try {
-      await setAnimeListStatus(user.id, moveTarget.anime.anilistId, status)
+      await setAnimeListStatus(userId, moveTarget.anime.anilistId, status)
 
       setLists((prev) => {
         const next = prev.map((arr) => [...arr])
@@ -94,27 +112,35 @@ export function AnimeManagtSection() {
   const currentMoveStatus =
     moveTarget != null ? categoryIndexToStatus(moveTarget.fromIndex) : null
 
+  const sectionClassName = embedded ? 'anime-management' : 'anime-management grid'
+
   return (
-    <section className="anime-management grid">
+    <section className={sectionClassName}>
       <div className="anime-management__heading">
-        <h3>Gestion des animes</h3>
+        <h3>{heading}</h3>
       </div>
       <div className="anime-management__element">
-        {!authLoading && !user ? (
+        {!readOnly && !authLoading && !authUser ? (
           <p className="anime-management__status">
             <Link to="/profil">Connecte-toi</Link> pour gérer tes listes d&apos;animes.
           </p>
+        ) : null}
+
+        {readOnly && !userId ? (
+          <p className="anime-management__status">Profil introuvable.</p>
         ) : null}
 
         {libraryError ? (
           <p className="anime-management__status anime-management__status--error">{libraryError}</p>
         ) : null}
 
-        {authLoading || (user && libraryLoading) ? (
-          <p className="anime-management__status">Chargement de tes listes…</p>
+        {authLoading || (userId && libraryLoading) ? (
+          <p className="anime-management__status">
+            {readOnly ? 'Chargement des listes…' : 'Chargement de tes listes…'}
+          </p>
         ) : null}
 
-        {user && !libraryLoading ? (
+        {userId && !libraryLoading ? (
           <>
             <div className="anime-management__nav anime-management__nav--mobile">
               <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
@@ -154,11 +180,15 @@ export function AnimeManagtSection() {
                         <span className="anime-management__rating-max">/10</span>
                       </p>
                     ) : null}
-                    <button type="button" className="anime-management__changer" onClick={() => openMovePicker(anime)}>Changer</button>
+                    {!readOnly ? (
+                      <button type="button" className="anime-management__changer" onClick={() => openMovePicker(anime)}>Changer</button>
+                    ) : null}
                   </div>
-                  <button type="button" className="anime-management__move-btn" onClick={() => openMovePicker(anime)} aria-label={`Changer de liste pour ${anime.title}`}>
-                    <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
-                  </button>
+                  {!readOnly ? (
+                    <button type="button" className="anime-management__move-btn" onClick={() => openMovePicker(anime)} aria-label={`Changer de liste pour ${anime.title}`}>
+                      <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
+                    </button>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -166,7 +196,7 @@ export function AnimeManagtSection() {
         ) : null}
       </div>
 
-      {moveTarget ? (
+      {!readOnly && moveTarget ? (
         <AnimeListPickerModal
           title="Déplacer vers une liste"
           animeTitle={moveTarget.anime.title}
