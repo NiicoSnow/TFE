@@ -2145,7 +2145,9 @@
   .grid {
     grid-template-columns: repeat(7, 1fr);
     gap: 40px;
-    padding-inline: 160px;
+    max-width: 160rem;
+    margin-inline: auto;
+    padding-inline: 4rem;
   }
 
   .main-nav {
@@ -2153,16 +2155,17 @@
     position: static;
     z-index: auto;
     gap: 0;
-    padding-top: 3.2rem;
+    padding-top: 2.4rem;
     padding-bottom: 0;
   }
 
   .main-nav__wrapper {
-    margin-inline: 16rem;
+    margin-inline: auto;
     border-radius: 18px;
     background: var(--element-bg);
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
     height: 7rem;
+    max-width: 110rem;
   }
 
   .nav-links__group {

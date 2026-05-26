@@ -100,9 +100,5 @@ a {
   h5 {
     font-size: 1.8rem;
   }
-  body {
-    max-width: 160rem;
-    margin-inline: auto;
-  }
 }
 
