@@ -99,8 +99,17 @@
   color: #f87171;
 }
 
+.catalogue-search {
+  --search-card-min: 10.5rem;
+  --search-card-gap: 1.2rem;
+}
+
 .catalogue-search__grid {
   grid-column: 1 / -1;
+}
+
+.catalogue-search__grid.catalog-theme-section__content {
+  gap: 2.4rem var(--search-card-gap);
 }
 .main-nav__wrapper{
   display: flex;
@@ -1169,6 +1178,12 @@
     0 0 4px rgba(0, 0, 0, 0.8);
   pointer-events: none;
 }
+.catalog-theme-section {
+  --catalog-card-width: 11.8rem;
+  --catalog-card-gap: 1.2rem;
+  --catalog-track-width: calc(5 * var(--catalog-card-width) + 4 * var(--catalog-card-gap));
+}
+
 .catalog-theme-section--embedded {
   width: 100%;
   padding: 0;
@@ -1257,6 +1272,9 @@
 .catalog-theme-section__card-title {
   margin: 0;
   color: var(--text-secondary);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.25;
   text-align: left;
 }
 
@@ -1293,6 +1311,18 @@
 
 .catalog-theme-section__nav:hover {
   transform: scale(1.05);
+}
+
+@keyframes catalog-theme-slide-in {
+  from {
+    opacity: 0.35;
+    transform: translateX(1.2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .single-anime-page__header {
@@ -2269,7 +2299,7 @@
   }
 
   .catalogue-page__search-bar {
-    max-width: 72rem;
+    max-width: 100%;
   }
 
   .nav-links {
@@ -2456,5 +2486,136 @@
   }
   .footer__link{
     font-size: 1.8rem;
+  }
+  .catalogue-page__search {
+    margin-top: 9.6rem;
+    margin-bottom: -9.6rem;
+  }
+
+  .catalogue-search {
+    --search-card-min: 14rem;
+    --search-card-gap: 1.6rem;
+  }
+
+  .catalogue-search__grid.catalog-theme-section__content {
+    grid-template-columns: repeat(auto-fill, minmax(var(--search-card-min), 1fr));
+    gap: 2.4rem var(--search-card-gap);
+  }
+
+  .catalogue-search__grid .catalog-theme-section__poster {
+    border-radius: 12px;
+  }
+
+  .catalogue-search__grid .catalog-theme-section__card-title {
+    font-size: 1.8rem;
+  }
+
+  .catalog-theme-section {
+    --catalog-card-width: 20rem;
+    --catalog-card-gap: 2.4rem;
+  }
+
+  .catalog-theme-section.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .catalog-theme-section__block {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .catalog-theme-section__block:has(.catalog-theme-section__content--slider) {
+    display: grid;
+    grid-template-columns: auto var(--catalog-track-width) auto;
+    column-gap: var(--catalog-card-gap);
+    row-gap: 2.4rem;
+    align-items: center;
+  }
+
+  .catalog-theme-section__block:has(.catalog-theme-section__content--slider) .catalog-theme-section__header {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+    width: auto;
+  }
+
+  .catalog-theme-section__block:has(.catalog-theme-section__content--slider) .catalog-theme-section__status {
+    grid-column: 1 / -1;
+  }
+
+  .catalog-theme-section__title {
+    text-align: left;
+  }
+
+  .catalog-theme-section__seemore {
+    display: none;
+  }
+
+  .catalog-theme-section__content--slider {
+    display: contents;
+  }
+
+  .catalog-theme-section__content--slider .catalog-theme-section__nav--prev {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .catalog-theme-section__content--slider .catalog-theme-section__track {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex: 0 0 auto;
+    width: var(--catalog-track-width);
+    align-items: flex-start;
+    gap: var(--catalog-card-gap);
+    overflow: hidden;
+  }
+
+  .catalog-theme-section__content--slider .catalog-theme-section__nav--next {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .catalog-theme-section__content--slider .catalog-theme-section__card {
+    flex: 0 0 var(--catalog-card-width);
+    width: var(--catalog-card-width);
+    min-width: 0;
+    max-width: none;
+  }
+
+  .catalog-theme-section--embedded .catalog-theme-section__content--slider .catalog-theme-section__track {
+    width: auto;
+    max-width: var(--catalog-track-width);
+  }
+
+  .catalog-theme-section__track--slide {
+    animation: catalog-theme-slide-in 0.28s ease;
+  }
+
+  .catalog-theme-section__poster {
+    border-radius: 12px;
+  }
+
+  .catalog-theme-section__card-title {
+    font-size: 1.8rem;
+  }
+
+  .catalog-theme-section__nav {
+    flex: 0 0 auto;
+    align-self: center;
+    margin-top: 0;
+    padding: 1.2rem 1rem;
+  }
+
+  .catalog-theme-section__nav--prev .catalog-theme-section__nav-icon--left {
+    transform: scaleX(-1);
+  }
+
+  .catalog-theme-section__nav--placeholder {
+    visibility: hidden;
+    pointer-events: none;
   }
 }
