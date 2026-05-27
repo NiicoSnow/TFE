@@ -11,10 +11,50 @@
 }
 
 .footer {
-  height: 39rem;
   margin-top: 19.2rem;
-  background-color: var(--element-bg
-  );
+  padding: 4.8rem 2.4rem 3.2rem;
+  background-color: var(--element-bg);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.footer__link {
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer__link:hover,
+.footer__link.active {
+  color: var(--accent);
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+}
+
+.credits-page__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.credits-page__lead {
+  margin: 1.6rem 0 0;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  line-height: 1.5;
 }
 
 .home-page,

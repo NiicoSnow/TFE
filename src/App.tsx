@@ -10,6 +10,8 @@ import { SingleAnimePage } from './pages/SingleAnimePage'
 import { FriendsPage} from './pages/FriendsPage'
 import { SingleFriendPage } from './pages/SingleFriendPage'
 import { CardsPage} from './pages/CardsPage'
+import { CreditsPage } from './pages/CreditsPage'
+import { Footer } from './components/Footer'
 import { MainNavUser } from './components/MainNavUser'
 
 function App() {
@@ -106,11 +108,10 @@ function App() {
         <Route path="/amis" element={<FriendsPage />} />
         <Route path="/amis/:userId" element={<SingleFriendPage />} />
         <Route path="/cartes" element={<CardsPage />} />
+        <Route path="/credits" element={<CreditsPage />} />
       </Routes>
 
-      <footer className="footer grid">
-        <p>© 2026 Cardtaku. Tous droits réservés.</p>
-      </footer> 
+      <Footer />
     </>
   )
 }
