@@ -1,7 +1,7 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { ProfilePage } from './pages/ProfilePage'
-import './App.css'
+import './App.scss'
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { StatsPage } from './pages/StatsPage'
@@ -74,16 +74,39 @@ function App() {
             <span></span>
             <span></span>
           </button>
-          <div ref={menuRef} className={isMenuOpen ? "nav-links open" : "nav-links"}>
-          <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
-            <div className="nav-links__group">
-              <NavLink to="/" onClick ={closeMenu}>Accueil</NavLink>
-              <NavLink to="/catalogue" onClick ={closeMenu}>Catalogue</NavLink>
-              <NavLink to="/cartes" className="nav-links__cartes" onClick={closeMenu} aria-label="Cartes">
-                <img src="/cards.svg" alt="" className="nav-links__cartes-icon" width={39} height={35} />
+          <div ref={menuRef} className={isMenuOpen ? 'nav-links open' : 'nav-links'}>
+            <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
+            <div className="nav-links__center">
+              <div className="nav-links__group nav-links__group--start">
+                <NavLink to="/" onClick={closeMenu}>
+                  Accueil
+                </NavLink>
+                <NavLink to="/catalogue" onClick={closeMenu}>
+                  Catalogue
+                </NavLink>
+              </div>
+              <NavLink
+                to="/cartes"
+                className="nav-links__cartes"
+                onClick={closeMenu}
+                aria-label="Cartes"
+              >
+                <img
+                  src="/cards.svg"
+                  alt=""
+                  className="nav-links__cartes-icon"
+                  width={39}
+                  height={35}
+                />
               </NavLink>
-              <NavLink to="/stats" onClick ={closeMenu}>Stats</NavLink>
-              <NavLink to="/amis" onClick ={closeMenu}>Amis</NavLink>
+              <div className="nav-links__group nav-links__group--end">
+                <NavLink to="/stats" onClick={closeMenu}>
+                  Stats
+                </NavLink>
+                <NavLink to="/amis" onClick={closeMenu}>
+                  Amis
+                </NavLink>
+              </div>
             </div>
           </div>
           <MainNavUser />

@@ -11,7 +11,7 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="footer grid">
+    <footer className="footer">
       <nav className="footer__nav" aria-label="Navigation du pied de page">
         {FOOTER_LINKS.map(({ to, label }) => (
           <NavLink key={to} to={to} className="footer__link">

@@ -149,7 +149,7 @@ export function AnimeManagtSection({
   return (
     <section className={sectionClassName}>
       <div className="anime-management__heading">
-        <h3>{heading}</h3>
+        <h2>{heading}</h2>
         {isOwner ? (
           <button
             type="button"

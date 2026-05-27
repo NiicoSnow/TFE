@@ -111,9 +111,15 @@
 .home-page__header{
   margin-top: 2.4rem
 }
+
+.home-page__header-content {
+  width: 100%;
+}
+
 .home-page__header-img{
   height: 20rem;
   background-color: var(--element-bg);
+  margin-top: 2.4rem;
 }
 
 .home-page__header-title{
@@ -257,9 +263,16 @@
   border-radius: 0 18px 18px 0;
 }
 
-.nav-links__group {
+.nav-links__center {
   flex: 1 1 auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links__group {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -372,6 +385,11 @@
   height: 20rem;
   margin-top: 4.8rem;
   margin-bottom: 2.4rem;
+  border-radius: 18px;
+}
+
+.tuto__element-content {
+  min-width: 0;
 }
 
 .tuto__element {
@@ -2184,7 +2202,7 @@
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(7, 1fr);
-    gap: 40px;
+    column-gap: 40px;
     max-width: 160rem;
     margin-inline: auto;
     padding-inline: 4rem;
@@ -2208,12 +2226,29 @@
     max-width: 110rem;
   }
 
-  .nav-links__group {
-    display: flex;
-    flex-direction: row;
+  .nav-links__center {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: center;
+    column-gap: 2.4rem;
+  }
+
+  .nav-links__group {
+    flex-direction: row;
     gap: 2.4rem;
+  }
+
+  .nav-links__group--start {
+    justify-content: flex-end;
+  }
+
+  .nav-links__group--end {
+    justify-content: flex-start;
+  }
+
+  .nav-links__cartes {
+    justify-self: center;
   }
 
   .main-nav__user {
@@ -2333,5 +2368,93 @@
   .friends-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+  }
+  .home-page__header{
+    margin-top: 9.6rem;
+  }
+
+  .home-page__header-content {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .home-page__header-title{
+    margin-bottom: 3rem;
+  }
+
+  .home-page__header p {
+    margin-bottom: 2.4rem;
+  }
+
+  .home-page__header-img {
+    grid-column: 5 / 8;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 0;
+    height: 30rem;
+  }
+  .home-page__header-buttons {
+    margin-top: 9.6rem;
+    max-width: 30rem;
+  }
+
+  .tuto h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4.8rem;
+  }
+
+  .tuto__element {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    grid-column: 1 / -1;
+    margin-bottom: 9.6rem;
+  }
+
+  .tuto__element--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .tuto__element-img {
+    width: 40rem;
+    height: 24rem;
+    margin: 0;
+  }
+
+  .tuto__element-content {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 50rem;
+  }
+
+  .tuto__element-content h3 {
+    margin-top: 0;
+  }
+  .anime-management__card {
+    width: 60rem;
+    align-self: center;
+    justify-self: center;
+    height: 12rem;
+  }
+  .anime-management__poster{
+    height: 12rem;
+    width: 9rem;
+  }
+  .footer {
+    height: 24rem;
+    padding-top: 9.6rem;
+  }
+  .footer__copy{
+    margin-top: 9.6rem;
+  }
+  .anime-management__heading{
+    margin-bottom: 2.4rem;
+  }
+  .anime-management__visibility-icon {
+    width: 3.2rem;
+  }
+  .footer__link{
+    font-size: 1.8rem;
   }
 }
