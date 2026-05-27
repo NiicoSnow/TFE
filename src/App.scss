@@ -2425,13 +2425,14 @@
   }
 
   .friends-page__inner {
-    max-width: 72rem;
+    max-width: 160rem;
   }
 
   .friends-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     gap: 2rem;
   }
+
   .home-page__header{
     margin-top: 9.6rem;
   }
