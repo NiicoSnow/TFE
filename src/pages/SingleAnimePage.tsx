@@ -218,7 +218,12 @@ export function SingleAnimePage() {
             <div className="single-anime-page__heading">
               <h2 className="single-anime-page__title">{title}</h2>
               <button type="button" className="single-anime-page__add" aria-label={addButtonLabel} onClick={openListPicker}>
-                <img src="/adding.svg" alt="" width={40} height={40} />
+                <img
+                  src={libraryStatus ? '/inlist.svg' : '/adding.svg'}
+                  alt=""
+                  width={40}
+                  height={40}
+                />
               </button>
             </div>
             {listFeedback ? (

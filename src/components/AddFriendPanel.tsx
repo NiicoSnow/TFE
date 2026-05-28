@@ -25,6 +25,21 @@ export function AddFriendPanel({
   const [actionId, setActionId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  const busy = actionId !== null
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && !busy) onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [onClose, busy])
+
   useEffect(() => {
     const trimmed = query.trim()
     if (trimmed.length < 2) {
@@ -109,18 +124,37 @@ export function AddFriendPanel({
   }
 
   return (
-    <div className="friends-add-panel" role="dialog" aria-labelledby="friends-add-title">
-      <button type="button" className="friends-add-panel__backdrop" aria-label="Fermer" onClick={onClose} />
-      <div className="friends-add-panel__sheet">
-        <div className="friends-add-panel__header">
-          <h2 id="friends-add-title">Ajouter un ami</h2>
-          <button type="button" className="friends-add-panel__close" onClick={onClose}>Fermer</button>
-        </div>
-        <input className="friends-add-panel__input" type="search" placeholder="Pseudo ou nom affiché…" value={query} onChange={(e) => setQuery(e.target.value)} autoFocus />
-        {error && <p className="profile-message profile-message--error">{error}</p>}
-        {loading && <p className="friends-add-panel__hint">Recherche…</p>}
-        {!loading && query.trim().length < 2 && <p className="friends-add-panel__hint">Tape au moins 2 caractères.</p>}
-        <ul className="friends-add-panel__list">
+    <div className="anime-management__modal-root">
+      <button
+        type="button"
+        className="anime-management__modal-backdrop"
+        aria-label="Fermer"
+        onClick={onClose}
+        disabled={busy}
+      />
+      <div
+        className="anime-management__modal friends-add-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="friends-add-title"
+      >
+        <h3 id="friends-add-title" className="anime-management__modal-title">
+          Ajouter un ami
+        </h3>
+        <input
+          className="friends-add-modal__input"
+          type="search"
+          placeholder="Pseudo ou nom affiché…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          autoFocus
+        />
+        {error ? <p className="profile-message profile-message--error">{error}</p> : null}
+        {loading ? <p className="friends-add-modal__hint">Recherche…</p> : null}
+        {!loading && query.trim().length < 2 ? (
+          <p className="friends-add-modal__hint">Tape au moins 2 caractères.</p>
+        ) : null}
+        <ul className="friends-add-modal__list">
           {results.map((user) => {
             const name = user.display_name ?? user.username ?? 'Utilisateur'
             const relation = relations[user.id]
@@ -129,20 +163,36 @@ export function AddFriendPanel({
               relation === 'pending_sent' ||
               actionId === user.id
             return (
-              <li key={user.id} className="friends-add-panel__item">
+              <li key={user.id} className="friends-add-modal__item">
                 {user.avatar_url ? (
-                  <img className="friends-add-panel__avatar" src={user.avatar_url} alt="" />
+                  <img className="friends-add-modal__avatar" src={user.avatar_url} alt="" />
                 ) : (
-                  <div className="friends-add-panel__avatar friends-add-panel__avatar--placeholder" aria-hidden />
+                  <div
+                    className="friends-add-modal__avatar friends-add-modal__avatar--placeholder"
+                    aria-hidden
+                  />
                 )}
-                <span className="friends-add-panel__name">{name}</span>
-                <button type="button" className="profile-button friends-add-panel__action" disabled={disabled} onClick={() => handleAction(user)}>
+                <span className="friends-add-modal__name">{name}</span>
+                <button
+                  type="button"
+                  className="profile-button friends-add-modal__action"
+                  disabled={disabled}
+                  onClick={() => handleAction(user)}
+                >
                   {actionId === user.id ? '…' : actionLabel(relation)}
                 </button>
               </li>
             )
           })}
         </ul>
+        <button
+          type="button"
+          className="anime-management__modal-cancel"
+          onClick={onClose}
+          disabled={busy}
+        >
+          Annuler
+        </button>
       </div>
     </div>
   )

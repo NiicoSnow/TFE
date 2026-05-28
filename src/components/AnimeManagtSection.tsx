@@ -1,7 +1,8 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, setAnimeListStatus, setLibraryPublic, statusToCategoryIndex } from '../lib/animeLibrary'
+import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, removeAnimeFromLibrary, setAnimeListStatus, setLibraryPublic, statusToCategoryIndex } from '../lib/animeLibrary'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 import type { AnimeListStatus, LibraryAnimeItem } from '../types/animeLibrary'
 import { AnimeListPickerModal } from './AnimeListPickerModal'
 
@@ -30,6 +31,7 @@ export function AnimeManagtSection({
   ownerDisplayName,
 }: AnimeManagtSectionProps = {}) {
   const { user: authUser, profile, updateProfile, loading: authLoading } = useAuth()
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const userId = libraryUserId ?? authUser?.id
   const isOwner = !readOnly && Boolean(authUser?.id) && userId === authUser?.id
 
@@ -115,6 +117,30 @@ export function AnimeManagtSection({
       setMoveTarget(null)
     } catch (err) {
       setLibraryError(getQueryErrorMessage(err, 'Impossible de déplacer cet anime'))
+    } finally {
+      setMoveBusy(false)
+    }
+  }
+
+  const confirmRemove = async (anime: LibraryAnimeItem, fromIndex: number) => {
+    if (!userId || readOnly) return
+
+    const confirmed = window.confirm(
+      `Êtes-vous sûr de vouloir supprimer « ${anime.title} » de ta liste ?`,
+    )
+    if (!confirmed) return
+
+    setMoveBusy(true)
+    try {
+      await removeAnimeFromLibrary(userId, anime.anilistId)
+      setLists((prev) => {
+        const next = prev.map((arr) => [...arr])
+        next[fromIndex] = next[fromIndex].filter((a) => a.libraryId !== anime.libraryId)
+        return next
+      })
+      setMoveTarget(null)
+    } catch (err) {
+      setLibraryError(getQueryErrorMessage(err, 'Impossible de supprimer cet anime'))
     } finally {
       setMoveBusy(false)
     }
@@ -248,9 +274,25 @@ export function AnimeManagtSection({
                       ) : null}
                     </div>
                     {!readOnly ? (
-                      <button type="button" className="anime-management__move-btn" onClick={() => openMovePicker(anime)} aria-label={`Changer de liste pour ${anime.title}`}>
-                        <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
-                      </button>
+                      <>
+                        <button
+                          type="button"
+                          className="anime-management__move-btn anime-management__move-btn--mobile"
+                          onClick={() => openMovePicker(anime)}
+                          aria-label={`Changer de liste pour ${anime.title}`}
+                        >
+                          <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
+                        </button>
+                        <button
+                          type="button"
+                          className="anime-management__move-btn anime-management__delete-btn"
+                          onClick={() => void confirmRemove(anime, categoryIndex)}
+                          disabled={moveBusy}
+                          aria-label={`Retirer ${anime.title} de la liste`}
+                        >
+                          <img className="anime-management__icon-slot" src="/delete.svg" alt="" width={30} height={30} />
+                        </button>
+                      </>
                     ) : null}
                   </li>
                 ))
@@ -266,6 +308,11 @@ export function AnimeManagtSection({
           animeTitle={moveTarget.anime.title}
           currentStatus={currentMoveStatus}
           onSelect={(status) => void confirmMoveTo(status)}
+          onDelete={
+            !isDesktop
+              ? () => void confirmRemove(moveTarget.anime, moveTarget.fromIndex)
+              : undefined
+          }
           onClose={() => !moveBusy && setMoveTarget(null)}
           busy={moveBusy}
         />

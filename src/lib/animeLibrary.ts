@@ -106,6 +106,16 @@ export async function setAnimeListStatus(
   if (error) throw error
 }
 
+export async function removeAnimeFromLibrary(userId: string, anilistId: number) {
+  const { error } = await supabase
+    .from('user_anime_library')
+    .delete()
+    .eq('user_id', userId)
+    .eq('anilist_id', anilistId)
+
+  if (error) throw error
+}
+
 function summaryToLibraryItem(
   row: UserAnimeLibraryRow,
   summary: Awaited<ReturnType<typeof getAnimeSummariesFromCache>>[number],

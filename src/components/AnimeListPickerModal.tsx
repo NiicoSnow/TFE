@@ -7,6 +7,7 @@ type AnimeListPickerModalProps = {
   animeTitle?: string
   currentStatus?: AnimeListStatus | null
   onSelect: (status: AnimeListStatus) => void
+  onDelete?: () => void
   onClose: () => void
   busy?: boolean
 }
@@ -16,6 +17,7 @@ export function AnimeListPickerModal({
   animeTitle,
   currentStatus,
   onSelect,
+  onDelete,
   onClose,
   busy = false,
 }: AnimeListPickerModalProps) {
@@ -55,6 +57,18 @@ export function AnimeListPickerModal({
               </button>
             </li>
           ))}
+          {onDelete ? (
+            <li>
+              <button
+                type="button"
+                className="anime-management__modal-option anime-management__modal-option--danger"
+                disabled={busy}
+                onClick={onDelete}
+              >
+                Supprimer
+              </button>
+            </li>
+          ) : null}
         </ul>
         <button type="button" className="anime-management__modal-cancel" onClick={onClose} disabled={busy}>Annuler</button>
       </div>

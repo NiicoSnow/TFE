@@ -160,7 +160,12 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
                 aria-label={addLabel}
                 onClick={() => openListPicker(result.anilistId, title)}
               >
-                <img src="/adding.svg" alt="" width={40} height={40} />
+                <img
+                  src={libraryStatus ? '/inlist.svg' : '/adding.svg'}
+                  alt=""
+                  width={40}
+                  height={40}
+                />
               </button>
             </li>
           )

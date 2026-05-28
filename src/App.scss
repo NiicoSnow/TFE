@@ -840,6 +840,24 @@
   background: color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
+.anime-management__delete-btn {
+  display: none;
+}
+
+.anime-management__delete-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, #f87171 12%, transparent);
+}
+
+.anime-management__modal-option--danger {
+  color: #f87171;
+  border-color: color-mix(in srgb, #f87171 35%, var(--border));
+}
+
+.anime-management__modal-option--danger:hover:not(:disabled) {
+  border-color: #f87171;
+  color: #f87171;
+}
+
 .anime-management__modal-root {
   position: fixed;
   inset: 0;
@@ -2170,81 +2188,35 @@
   color: var(--text);
 }
 
-.friends-add-panel {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+.friends-add-modal.anime-management__modal {
+  width: min(100%, 42rem);
 }
 
-.friends-add-panel__backdrop {
-  position: absolute;
-  inset: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.friends-add-panel__sheet {
-  position: relative;
-  z-index: 1;
-  width: min(48rem, 100%);
-  max-height: 80svh;
-  overflow: auto;
-  padding: 2rem;
-  background: var(--element-bg);
-  border-radius: 1.6rem 1.6rem 0 0;
-}
-
-.friends-add-panel__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.6rem;
-}
-
-.friends-add-panel__header h2 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-.friends-add-panel__close {
-  border: none;
-  background: none;
-  color: var(--text-secondary);
-  font-family: var(--base);
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-.friends-add-panel__input {
+.friends-add-modal__input {
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 1.2rem;
   padding: 1.2rem 1.4rem;
   border: 1px solid var(--border);
-  border-radius: 0.8rem;
+  border-radius: 18px;
   background: var(--element-bg-secondary);
-  color: var(--text);
-  font-family: var(--base);
   font-size: 1.6rem;
 }
 
-.friends-add-panel__hint {
+.friends-add-modal__hint {
   margin: 0 0 1rem;
   font-size: 1.4rem;
   color: var(--text-secondary);
+  text-align: center;
 }
 
-.friends-add-panel__list {
-  margin: 0;
+.friends-add-modal__list {
+  margin: 0 0 1.6rem;
   padding: 0;
   list-style: none;
 }
 
-.friends-add-panel__item {
+.friends-add-modal__item {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -2252,7 +2224,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.friends-add-panel__avatar {
+.friends-add-modal__avatar {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -2260,19 +2232,21 @@
   flex-shrink: 0;
 }
 
-.friends-add-panel__avatar--placeholder {
+.friends-add-modal__avatar--placeholder {
   background: #c4c9d4;
 }
 
-.friends-add-panel__name {
+.friends-add-modal__name {
   flex: 1;
+  min-width: 0;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
-.friends-add-panel__action {
+.friends-add-modal__action {
   padding: 0.8rem 1.2rem;
   font-size: 1.4rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {
@@ -2427,6 +2401,14 @@
 
   .anime-management__changer {
     display: inline-block;
+  }
+
+  .anime-management__move-btn--mobile {
+    display: none;
+  }
+
+  .anime-management__delete-btn {
+    display: inline-flex;
   }
 
   .anime-management__list {
