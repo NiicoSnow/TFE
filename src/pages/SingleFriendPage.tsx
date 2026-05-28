@@ -57,46 +57,49 @@ export function SingleFriendPage() {
 
   return (
     <main className="single-friend-page">
-      <Link to="/amis" className="single-page__back" aria-label="Retour aux amis">
-        <img
-          src="/fleche.svg"
-          alt=""
-          className="single-page__back-icon"
-          width={17}
-          height={27}
-        />
-      </Link>
+      <div className="single-friend-page__intro">
+        <Link to="/amis" className="single-friend-page__back" aria-label="Retour aux amis">
+          <img
+            src="/fleche.svg"
+            alt=""
+            className="single-friend-page__back-icon"
+            width={17}
+            height={27}
+          />
+        </Link>
 
-      {loading ? <p className="single-friend-page__status">Chargement…</p> : null}
-      {error ? (
-        <p className="single-friend-page__status single-friend-page__status--error">{error}</p>
-      ) : null}
+        <div className="single-friend-page__profile">
+          {loading ? <p className="single-friend-page__status">Chargement…</p> : null}
+          {error ? (
+            <p className="single-friend-page__status single-friend-page__status--error">{error}</p>
+          ) : null}
+
+          {!loading && !error && profile ? (
+            <header className="profile-view profile-view--readonly">
+              <h3 className="profile-view__name">{displayProfileName(profile)}</h3>
+              <div className="profile-view__avatar-wrap">
+                {profile.avatar_url ? (
+                  <img className="profile-view__avatar" src={profile.avatar_url} alt="" />
+                ) : (
+                  <div className="profile-view__avatar profile-view__avatar--placeholder" aria-hidden />
+                )}
+              </div>
+              <h5 className="profile-view__since">
+                Membre depuis le {formatMemberSince(profile.created_at)}
+              </h5>
+            </header>
+          ) : null}
+        </div>
+      </div>
 
       {!loading && !error && profile ? (
-        <>
-          <header className="profile-view profile-view--readonly">
-            <h3 className="profile-view__name">{displayProfileName(profile)}</h3>
-            <div className="profile-view__avatar-wrap">
-              {profile.avatar_url ? (
-                <img className="profile-view__avatar" src={profile.avatar_url} alt="" />
-              ) : (
-                <div className="profile-view__avatar profile-view__avatar--placeholder" aria-hidden />
-              )}
-            </div>
-            <h5 className="profile-view__since">
-              Membre depuis le {formatMemberSince(profile.created_at)}
-            </h5>
-          </header>
-
-          <AnimeManagtSection
-            libraryUserId={profile.id}
-            readOnly
-            embedded
-            heading={`Les listes de ${displayProfileName(profile)}`}
-            libraryPublic={profile.library_public ?? true}
-            ownerDisplayName={displayProfileName(profile)}
-          />
-        </>
+        <AnimeManagtSection
+          libraryUserId={profile.id}
+          readOnly
+          heading={`Les listes de ${displayProfileName(profile)}`}
+          libraryPublic={profile.library_public ?? true}
+          ownerDisplayName={displayProfileName(profile)}
+        />
       ) : null}
     </main>
   )
