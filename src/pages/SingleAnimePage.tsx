@@ -13,6 +13,7 @@ import {
   getAnimeFromCache,
   getQueryErrorMessage,
 } from '../lib/animeCache'
+import { publicAsset } from '../lib/publicPath'
 import { formatSynopsisForDisplay } from '../lib/synopsis'
 import type { AnimeCacheRow } from '../types/animeCache'
 
@@ -191,7 +192,7 @@ export function SingleAnimePage() {
             ) : null}
             <Link to="/catalogue" className="single-page__back" aria-label="Retour au catalogue">
               <img
-                src="/assets/fleche.svg"
+                src={publicAsset('assets/fleche.svg')}
                 alt=""
                 className="single-page__back-icon"
                 width={17}
@@ -219,7 +220,7 @@ export function SingleAnimePage() {
               <h2 className="single-anime-page__title">{title}</h2>
               <button type="button" className="single-anime-page__add" aria-label={addButtonLabel} onClick={openListPicker}>
                 <img
-                  src={libraryStatus ? '/assets/inlist.svg' : '/assets/adding.svg'}
+                  src={libraryStatus ? publicAsset('assets/inlist.svg') : publicAsset('assets/adding.svg')}
                   alt=""
                   width={40}
                   height={40}

@@ -5,6 +5,7 @@ import { FriendCard } from '../components/FriendCard'
 import { PendingFriendRequests } from '../components/PendingFriendRequests'
 import { useAuth } from '../hooks/useAuth'
 import { useFriends } from '../hooks/useFriends'
+import { publicAsset } from '../lib/publicPath'
 
 function formatFriendsCount(count: number) {
   if (count <= 1) {
@@ -90,10 +91,10 @@ export function FriendsPage() {
         <div className="friends-toolbar">
           <label className="friends-toolbar__search">
             <input type="search" className="friends-toolbar__input" placeholder="Rechercher" value={search} onChange={(e) => setSearch(e.target.value)} />
-            <img src="/assets/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
+            <img src={publicAsset('assets/loupe.svg')} alt="" className="friends-toolbar__search-icon" width={21} height={21} />
           </label>
           <button type="button" className="friends-toolbar__add" aria-label="Ajouter un ami" onClick={() => setShowAddPanel(true)}>
-            <img src="/assets/addfriends.svg" alt="" width={24} height={24} />
+            <img src={publicAsset('assets/addfriends.svg')} alt="" width={24} height={24} />
           </button>
         </div>
 

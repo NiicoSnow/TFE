@@ -1,3 +1,4 @@
+import { publicAsset } from '../lib/publicPath'
 import type { QuizChoice } from '../types/quiz'
 
 type QuizChoiceCardProps = {
@@ -23,7 +24,7 @@ export function QuizChoiceCard({
       aria-pressed={selected}
     >
       <div className="cards__element--img">
-        <img src={choice.image} alt={choice.alt || choice.label} loading="lazy" />
+        <img src={publicAsset(choice.image)} alt={choice.alt || choice.label} loading="lazy" />
         <h3>{choice.label}</h3>
       </div>
     </button>

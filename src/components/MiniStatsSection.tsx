@@ -1,3 +1,4 @@
+import { publicAsset } from '../lib/publicPath'
 import { StreakDisplay } from './StreakDisplay'
 
 export function MiniStatsSection() {
@@ -26,7 +27,7 @@ export function MiniStatsSection() {
         <h4 className="text-center">Parmi ta liste d'amis</h4>
       </div>
       <div className="ministats__element streak column">
-        <img src="/assets/infobulle.svg" alt="bulle d'information" className="ministats__element-infobulle" />
+        <img src={publicAsset('assets/infobulle.svg')} alt="bulle d'information" className="ministats__element-infobulle" />
         <StreakDisplay value={12} />
         <h4 className="text-center">Tirages unique</h4>
       </div>

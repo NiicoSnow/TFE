@@ -6,6 +6,7 @@ import { getFriendProfileForViewer } from '../lib/friends'
 import { getQueryErrorMessage } from '../lib/animeCache'
 import { displayProfileName, formatMemberSince } from '../lib/profileDisplay'
 import type { FriendProfile } from '../lib/friends'
+import { publicAsset } from '../lib/publicPath'
 
 export function SingleFriendPage() {
   const { userId: friendUserId } = useParams()
@@ -60,7 +61,7 @@ export function SingleFriendPage() {
       <div className="single-friend-page__intro">
         <Link to="/amis" className="single-friend-page__back" aria-label="Retour aux amis">
           <img
-            src="/assets/fleche.svg"
+            src={publicAsset('assets/fleche.svg')}
             alt=""
             className="single-friend-page__back-icon"
             width={17}

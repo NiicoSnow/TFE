@@ -13,6 +13,7 @@ import { CardsPage} from './pages/CardsPage'
 import { CreditsPage } from './pages/CreditsPage'
 import { Footer } from './components/Footer'
 import { MainNavUser } from './components/MainNavUser'
+import { publicAsset } from './lib/publicPath'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -75,7 +76,7 @@ function App() {
             <span></span>
           </button>
           <div ref={menuRef} className={isMenuOpen ? 'nav-links open' : 'nav-links'}>
-            <img src="/assets/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
+            <img src={publicAsset('assets/Cardtaku.svg')} alt="Cardtaku" className="main-nav__logo" />
             <div className="nav-links__center">
               <div className="nav-links__group nav-links__group--start">
                 <NavLink to="/" onClick={closeMenu}>
@@ -92,7 +93,7 @@ function App() {
                 aria-label="Cartes"
               >
                 <img
-                  src="/assets/cards.svg"
+                  src={publicAsset('assets/cards.svg')}
                   alt=""
                   className="nav-links__cartes-icon"
                   width={39}

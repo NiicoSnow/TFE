@@ -2,6 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, removeAnimeFromLibrary, setAnimeListStatus, setLibraryPublic, statusToCategoryIndex } from '../lib/animeLibrary'
+import { publicAsset } from '../lib/publicPath'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import type { AnimeListStatus, LibraryAnimeItem } from '../types/animeLibrary'
 import { AnimeListPickerModal } from './AnimeListPickerModal'
@@ -191,7 +192,7 @@ export function AnimeManagtSection({
           >
             <img
               className="anime-management__visibility-icon"
-              src={libraryPublic ? '/assets/visible.svg' : '/assets/notvisible.svg'}
+              src={libraryPublic ? publicAsset('assets/visible.svg') : publicAsset('assets/notvisible.svg')}
               alt=""
               width={24}
               height={16}
@@ -231,11 +232,11 @@ export function AnimeManagtSection({
           <>
             <div className="anime-management__nav anime-management__nav--mobile">
               <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
-                <img src="/assets/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
+                <img src={publicAsset('assets/fleche.svg')} alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
               </button>
               <p className="anime-management__category-title" aria-live="polite">{currentLabel}</p>
               <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante">
-                <img src="/assets/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
+                <img src={publicAsset('assets/fleche.svg')} alt="" className="anime-management__arrow-icon" width={17} height={27} />
               </button>
             </div>
 
@@ -281,7 +282,7 @@ export function AnimeManagtSection({
                           onClick={() => openMovePicker(anime)}
                           aria-label={`Changer de liste pour ${anime.title}`}
                         >
-                          <img className="anime-management__icon-slot" src="/assets/switch.svg" alt="" width={30} height={30} />
+                          <img className="anime-management__icon-slot" src={publicAsset('assets/switch.svg')} alt="" width={30} height={30} />
                         </button>
                         <button
                           type="button"
@@ -290,7 +291,7 @@ export function AnimeManagtSection({
                           disabled={moveBusy}
                           aria-label={`Retirer ${anime.title} de la liste`}
                         >
-                          <img className="anime-management__icon-slot" src="/assets/delete.svg" alt="" width={30} height={30} />
+                          <img className="anime-management__icon-slot" src={publicAsset('assets/delete.svg')} alt="" width={30} height={30} />
                         </button>
                       </>
                     ) : null}

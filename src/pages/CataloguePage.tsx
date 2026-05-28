@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CatalogSearchResults } from '../components/CatalogSearchResults'
 import { CatalogThemeSection } from '../components/CatalogThemeSection'
 import { getQueryErrorMessage, searchAnimeFromCache } from '../lib/animeCache'
+import { publicAsset } from '../lib/publicPath'
 import type { AnimeCacheSummary } from '../types/animeCache'
 
 const MIN_QUERY_LENGTH = 2
@@ -53,7 +54,7 @@ export function CataloguePage() {
       <div className="catalogue-page__search grid">
         <label className="friends-toolbar__search catalogue-page__search-bar">
           <input type="search" className="friends-toolbar__input" placeholder="Rechercher" value={query} onChange={(e) => setQuery(e.target.value)} />
-          <img src="/assets/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
+          <img src={publicAsset('assets/loupe.svg')} alt="" className="friends-toolbar__search-icon" width={21} height={21} />
         </label>
       </div>
 

@@ -3,8 +3,17 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
+const appBase = '/projets/TFE/'
+
 export default defineConfig({
+  base: appBase,
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `$app-base: '${appBase}';`,
+      },
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),

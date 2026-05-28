@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { publicAsset } from '../lib/publicPath'
 import type { FriendListItem } from '../types/friendship'
 import { displayProfileName } from '../lib/profileDisplay'
 
@@ -20,14 +21,14 @@ export function FriendCard({ friend, onRemove }: FriendCardProps) {
       <h3 className="friend-card__name">{name}</h3>
       <div className="friend-card__actions">
         <button type="button" className="friend-card__action" aria-label={`Retirer ${name} de mes amis`} onClick={() => onRemove(friend.friendshipId)}>
-          <img src="/assets/delfriends.svg" alt="" width={30} height={30} />
+          <img src={publicAsset('assets/delfriends.svg')} alt="" width={30} height={30} />
         </button>
         <Link
           to={`/amis/${friend.profile.id}`}
           className="friend-card__action"
           aria-label={`Voir le profil de ${name}`}
         >
-          <img src="/assets/seefriends.svg" alt="" width={30} height={30} />
+          <img src={publicAsset('assets/seefriends.svg')} alt="" width={30} height={30} />
         </Link>
       </div>
     </article>

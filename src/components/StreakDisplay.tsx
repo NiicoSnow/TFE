@@ -1,3 +1,5 @@
+import { publicAsset } from '../lib/publicPath'
+
 export type StreakDisplayProps = {
   value: number | string
   className?: string
@@ -8,7 +10,7 @@ export type StreakDisplayProps = {
 export function StreakDisplay({
   value,
   className,
-  src = '/assets/streak.svg',
+  src = publicAsset('assets/streak.svg'),
   alt = 'Flamme symbolisant un streak',
 }: StreakDisplayProps) {
   return (

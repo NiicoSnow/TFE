@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { displayTitle, getCatalogSectionEmptyMessage, getCatalogSectionTitle, listForCatalogSection } from '../lib/animeCache'
+import { publicAsset } from '../lib/publicPath'
 import type { CatalogSectionProps } from '../types/catalogSection'
 import type { AnimeCacheSummary } from '../types/animeCache'
 
@@ -158,7 +159,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={() => setSlideIndex((i) => i - 1)}
             >
               <img
-                src="/assets/fleche.svg"
+                src={publicAsset('assets/fleche.svg')}
                 alt=""
                 className="catalog-theme-section__nav-icon catalog-theme-section__nav-icon--left"
                 width={17}
@@ -206,7 +207,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={() => setSlideIndex((i) => i + 1)}
             >
               <img
-                src="/assets/fleche.svg"
+                src={publicAsset('assets/fleche.svg')}
                 alt=""
                 className="catalog-theme-section__nav-icon"
                 width={17}
@@ -223,7 +224,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={showMore}
             >
               <img
-                src="/assets/fleche.svg"
+                src={publicAsset('assets/fleche.svg')}
                 alt=""
                 className="catalog-theme-section__nav-icon"
                 width={17}

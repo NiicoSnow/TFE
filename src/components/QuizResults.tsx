@@ -6,6 +6,7 @@ import type { AnimeCacheSummary } from '../types/animeCache'
 import type { AnimeListStatus } from '../types/animeLibrary'
 import type { ScoredAnime } from '../types/quiz'
 import { useAuth } from '../hooks/useAuth'
+import { publicAsset } from '../lib/publicPath'
 import { AnimeListPickerModal } from './AnimeListPickerModal'
 
 const POSTER_FALLBACK =
@@ -161,7 +162,7 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
                 onClick={() => openListPicker(result.anilistId, title)}
               >
                 <img
-                  src={libraryStatus ? '/assets/inlist.svg' : '/assets/adding.svg'}
+                  src={libraryStatus ? publicAsset('assets/inlist.svg') : publicAsset('assets/adding.svg')}
                   alt=""
                   width={40}
                   height={40}
