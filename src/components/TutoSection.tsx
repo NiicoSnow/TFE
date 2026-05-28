@@ -29,7 +29,7 @@ export function TutoSection() {
         <div className="tuto__element-content">
           <h3>Ton résultat personnalisé</h3>
           <p>
-            À la fin du tirage, tu obtiens une sélection unique qui te correspond vraiment. Chaque résultat est construit à partir de tes choix, pour te proposer quelque chose de cohérent, mais aussi surprenant.
+          À la fin du tirage, tu obtiens une sélection unique, pensée pour vraiment te correspondre. Chaque résultat est généré à partir de tes choix et traduit sous forme d'affinités avec différents animes, afin de te proposer quelque chose à la fois cohérent et surprenant. <span className="font-bold">Plus une affinité est élevée, plus l'anime correspondra à tes choix.</span>
           </p>
         </div>
       </div>
