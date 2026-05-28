@@ -767,10 +767,15 @@
 
 .anime-management__anime-title {
   margin: 0;
+  width: 100%;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.25;
   text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .anime-management__rating {
@@ -1593,19 +1598,27 @@
 }
 
 .profile-page {
-  padding-block: 4rem 8rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+}
+
+.profile-page > div:first-child {
+  align-self: center;
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+  box-sizing: border-box;
 }
 
 .profile-auth,
 .profile-card {
-  max-width: 42rem;
+  width: 100%;
   margin-top: 2.4rem;
   padding: 2.4rem;
   background: var(--element-bg);
   border-radius: 1.2rem;
   border: 1px solid var(--border);
-  margin-left: 2.4rem;
-  margin-right: 2.4rem;
 }
 
 .profile-auth__tabs {
@@ -1714,8 +1727,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 42rem;
-  margin: 0 2.4rem;
+  width: 100%;
+  margin: 0;
   text-align: center;
 }
 
@@ -2236,7 +2249,7 @@
     column-gap: 40px;
     max-width: 160rem;
     margin-inline: auto;
-    padding-inline: 0;
+    padding-inline: 4rem;
   }
 
   .main-nav {
@@ -2385,7 +2398,10 @@
   }
 
   .anime-management__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.4rem 20rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .quiz-question {
@@ -2497,12 +2513,13 @@
     margin-top: 0;
   }
   .anime-management__card {
-    width: 60rem;
-    align-self: center;
-    justify-self: center;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
     height: 12rem;
   }
-  .anime-management__poster{
+
+  .anime-management__poster {
     height: 12rem;
     width: 9rem;
   }
@@ -2825,5 +2842,8 @@
   .quiz-results {
     padding-right: 20rem;
     padding-left: 20rem;
+  }
+  .profile-page {
+    padding-top: 9.6rem;
   }
 }
