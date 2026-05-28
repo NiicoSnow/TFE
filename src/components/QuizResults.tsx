@@ -161,7 +161,7 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
                 onClick={() => openListPicker(result.anilistId, title)}
               >
                 <img
-                  src={libraryStatus ? '/inlist.svg' : '/adding.svg'}
+                  src={libraryStatus ? '/assets/inlist.svg' : '/assets/adding.svg'}
                   alt=""
                   width={40}
                   height={40}

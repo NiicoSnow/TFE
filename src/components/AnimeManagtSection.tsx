@@ -191,7 +191,7 @@ export function AnimeManagtSection({
           >
             <img
               className="anime-management__visibility-icon"
-              src={libraryPublic ? '/visible.svg' : '/notvisible.svg'}
+              src={libraryPublic ? '/assets/visible.svg' : '/assets/notvisible.svg'}
               alt=""
               width={24}
               height={16}
@@ -231,11 +231,11 @@ export function AnimeManagtSection({
           <>
             <div className="anime-management__nav anime-management__nav--mobile">
               <button type="button" className="anime-management__arrow" onClick={goPrev} aria-label="Catégorie précédente">
-                <img src="/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
+                <img src="/assets/fleche.svg" alt="" className="anime-management__arrow-icon anime-management__arrow-icon--left" width={17} height={27} />
               </button>
               <p className="anime-management__category-title" aria-live="polite">{currentLabel}</p>
               <button type="button" className="anime-management__arrow" onClick={goNext} aria-label="Catégorie suivante">
-                <img src="/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
+                <img src="/assets/fleche.svg" alt="" className="anime-management__arrow-icon" width={17} height={27} />
               </button>
             </div>
 
@@ -281,7 +281,7 @@ export function AnimeManagtSection({
                           onClick={() => openMovePicker(anime)}
                           aria-label={`Changer de liste pour ${anime.title}`}
                         >
-                          <img className="anime-management__icon-slot" src="/switch.svg" alt="" width={30} height={30} />
+                          <img className="anime-management__icon-slot" src="/assets/switch.svg" alt="" width={30} height={30} />
                         </button>
                         <button
                           type="button"
@@ -290,7 +290,7 @@ export function AnimeManagtSection({
                           disabled={moveBusy}
                           aria-label={`Retirer ${anime.title} de la liste`}
                         >
-                          <img className="anime-management__icon-slot" src="/delete.svg" alt="" width={30} height={30} />
+                          <img className="anime-management__icon-slot" src="/assets/delete.svg" alt="" width={30} height={30} />
                         </button>
                       </>
                     ) : null}

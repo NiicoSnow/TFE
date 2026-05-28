@@ -8,7 +8,7 @@ export type StreakDisplayProps = {
 export function StreakDisplay({
   value,
   className,
-  src = '/streak.svg',
+  src = '/assets/streak.svg',
   alt = 'Flamme symbolisant un streak',
 }: StreakDisplayProps) {
   return (

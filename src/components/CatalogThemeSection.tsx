@@ -158,7 +158,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={() => setSlideIndex((i) => i - 1)}
             >
               <img
-                src="/fleche.svg"
+                src="/assets/fleche.svg"
                 alt=""
                 className="catalog-theme-section__nav-icon catalog-theme-section__nav-icon--left"
                 width={17}
@@ -206,7 +206,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={() => setSlideIndex((i) => i + 1)}
             >
               <img
-                src="/fleche.svg"
+                src="/assets/fleche.svg"
                 alt=""
                 className="catalog-theme-section__nav-icon"
                 width={17}
@@ -223,7 +223,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
               onClick={showMore}
             >
               <img
-                src="/fleche.svg"
+                src="/assets/fleche.svg"
                 alt=""
                 className="catalog-theme-section__nav-icon"
                 width={17}

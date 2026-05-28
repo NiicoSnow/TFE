@@ -9,49 +9,49 @@
         {
           "id": "ascensionProgressive",
           "label": "Ascension progressive",
-          "image": "/ImgCards/constructionNarrative/ascensionProgressive.webp",
+          "image": "/assets/ImgCards/constructionNarrative/ascensionProgressive.webp",
           "alt": ""
         },
         {
           "id": "boucleTemporelle",
           "label": "Boucle temporelle",
-          "image": "/ImgCards/constructionNarrative/boucleTemporelle.webp",
+          "image": "/assets/ImgCards/constructionNarrative/boucleTemporelle.webp",
           "alt": ""
         },
         {
           "id": "chuteDuHeros",
           "label": "Chute du héros",
-          "image": "/ImgCards/constructionNarrative/chuteDuHeros.webp",
+          "image": "/assets/ImgCards/constructionNarrative/chuteDuHeros.webp",
           "alt": ""
         },
         {
           "id": "multiPdv",
           "label": "Multi points de vue",
-          "image": "/ImgCards/constructionNarrative/multiPdv.webp",
+          "image": "/assets/ImgCards/constructionNarrative/multiPdv.webp",
           "alt": ""
         },
         {
           "id": "mystereProgressif",
           "label": "Mystère progressif",
-          "image": "/ImgCards/constructionNarrative/mystereProgressif.webp",
+          "image": "/assets/ImgCards/constructionNarrative/mystereProgressif.webp",
           "alt": ""
         },
         {
           "id": "objectifUnique",
           "label": "Objectif unique",
-          "image": "/ImgCards/constructionNarrative/objectifUnique.webp",
+          "image": "/assets/ImgCards/constructionNarrative/objectifUnique.webp",
           "alt": ""
         },
         {
           "id": "plotTwistFrequent",
           "label": "Plot twist fréquent",
-          "image": "/ImgCards/constructionNarrative/plotTwistFrequent.webp",
+          "image": "/assets/ImgCards/constructionNarrative/plotTwistFrequent.webp",
           "alt": ""
         },
         {
           "id": "voyageInitiatique",
           "label": "Voyage initiatique",
-          "image": "/ImgCards/constructionNarrative/voyageInitiatique.webp",
+          "image": "/assets/ImgCards/constructionNarrative/voyageInitiatique.webp",
           "alt": ""
         }
       ]
@@ -64,43 +64,43 @@
         {
           "id": "aucuneCreature",
           "label": "Aucune créature",
-          "image": "/ImgCards/etresSurnaturel/aucuneCreature.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/aucuneCreature.webp",
           "alt": ""
         },
         {
           "id": "creatureMignonne",
           "label": "Créature mignonne",
-          "image": "/ImgCards/etresSurnaturel/creatureMignonne.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/creatureMignonne.webp",
           "alt": ""
         },
         {
           "id": "divinite",
           "label": "Divinité",
-          "image": "/ImgCards/etresSurnaturel/divinite.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/divinite.webp",
           "alt": ""
         },
         {
           "id": "dragon",
           "label": "Dragon",
-          "image": "/ImgCards/etresSurnaturel/dragon.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/dragon.webp",
           "alt": ""
         },
         {
           "id": "monstreGigantesque",
           "label": "Monstre gigantesque",
-          "image": "/ImgCards/etresSurnaturel/monstreGigantesque.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/monstreGigantesque.webp",
           "alt": ""
         },
         {
           "id": "vampire",
           "label": "Vampire",
-          "image": "/ImgCards/etresSurnaturel/vampire.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/vampire.webp",
           "alt": ""
         },
         {
           "id": "zombie",
           "label": "Zombie",
-          "image": "/ImgCards/etresSurnaturel/zombie.webp",
+          "image": "/assets/ImgCards/etresSurnaturel/zombie.webp",
           "alt": ""
         }
       ]
@@ -113,31 +113,31 @@
         {
           "id": "aucunPouvoir",
           "label": "Aucun pouvoir",
-          "image": "/ImgCards/forcePouvoir/aucunPouvoir.webp",
+          "image": "/assets/ImgCards/forcePouvoir/aucunPouvoir.webp",
           "alt": ""
         },
         {
           "id": "forceBrute",
           "label": "Force brute",
-          "image": "/ImgCards/forcePouvoir/forceBrute.webp",
+          "image": "/assets/ImgCards/forcePouvoir/forceBrute.webp",
           "alt": ""
         },
         {
           "id": "intelligence",
           "label": "Intelligence",
-          "image": "/ImgCards/forcePouvoir/intelligence.webp",
+          "image": "/assets/ImgCards/forcePouvoir/intelligence.webp",
           "alt": ""
         },
         {
           "id": "magie",
           "label": "Magie",
-          "image": "/ImgCards/forcePouvoir/magie.webp",
+          "image": "/assets/ImgCards/forcePouvoir/magie.webp",
           "alt": ""
         },
         {
           "id": "technoAvancee",
           "label": "Technologie avancée",
-          "image": "/ImgCards/forcePouvoir/technoAvancee.webp",
+          "image": "/assets/ImgCards/forcePouvoir/technoAvancee.webp",
           "alt": ""
         }
       ]
@@ -150,31 +150,31 @@
         {
           "id": "cyberpunk",
           "label": "Cyberpunk",
-          "image": "/ImgCards/temporalite/cyberpunk.webp",
+          "image": "/assets/ImgCards/temporalite/cyberpunk.webp",
           "alt": ""
         },
         {
           "id": "futur",
           "label": "Futur",
-          "image": "/ImgCards/temporalite/futur.webp",
+          "image": "/assets/ImgCards/temporalite/futur.webp",
           "alt": ""
         },
         {
           "id": "moyenAge",
           "label": "Moyen Âge",
-          "image": "/ImgCards/temporalite/moyenAge.webp",
+          "image": "/assets/ImgCards/temporalite/moyenAge.webp",
           "alt": ""
         },
         {
           "id": "postapo",
           "label": "Post-apocalyptique",
-          "image": "/ImgCards/temporalite/postapo.webp",
+          "image": "/assets/ImgCards/temporalite/postapo.webp",
           "alt": ""
         },
         {
           "id": "present",
           "label": "Présent",
-          "image": "/ImgCards/temporalite/present.webp",
+          "image": "/assets/ImgCards/temporalite/present.webp",
           "alt": ""
         }
       ]
@@ -187,49 +187,49 @@
         {
           "id": "atmosphereLumineuse",
           "label": "Atmosphère lumineuse",
-          "image": "/ImgCards/tonaliteEmotionnelle/atmosphereLumineuse.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/atmosphereLumineuse.webp",
           "alt": ""
         },
         {
           "id": "brutale",
           "label": "Brutale",
-          "image": "/ImgCards/tonaliteEmotionnelle/brutale.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/brutale.webp",
           "alt": ""
         },
         {
           "id": "chill",
           "label": "Chill",
-          "image": "/ImgCards/tonaliteEmotionnelle/chill.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/chill.webp",
           "alt": ""
         },
         {
           "id": "epique",
           "label": "Épique",
-          "image": "/ImgCards/tonaliteEmotionnelle/epique.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/epique.webp",
           "alt": ""
         },
         {
           "id": "humoristique",
           "label": "Humoristique",
-          "image": "/ImgCards/tonaliteEmotionnelle/humoristique.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/humoristique.webp",
           "alt": ""
         },
         {
           "id": "melancolique",
           "label": "Mélancolique",
-          "image": "/ImgCards/tonaliteEmotionnelle/melancolique.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/melancolique.webp",
           "alt": ""
         },
         {
           "id": "philosophique",
           "label": "Philosophique",
-          "image": "/ImgCards/tonaliteEmotionnelle/philosophique.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/philosophique.webp",
           "alt": ""
         },
         {
           "id": "sombre",
           "label": "Sombre",
-          "image": "/ImgCards/tonaliteEmotionnelle/sombre.webp",
+          "image": "/assets/ImgCards/tonaliteEmotionnelle/sombre.webp",
           "alt": ""
         }
       ]
@@ -242,37 +242,37 @@
         {
           "id": "antiHeros",
           "label": "Anti-héros",
-          "image": "/ImgCards/typeDeProta/antiHeros.webp",
+          "image": "/assets/ImgCards/typeDeProta/antiHeros.webp",
           "alt": ""
         },
         {
           "id": "duoInseparable",
           "label": "Duo inséparable",
-          "image": "/ImgCards/typeDeProta/duoInseparable.webp",
+          "image": "/assets/ImgCards/typeDeProta/duoInseparable.webp",
           "alt": ""
         },
         {
           "id": "genieIncompris",
           "label": "Génie incompris",
-          "image": "/ImgCards/typeDeProta/genieIncompris.webp",
+          "image": "/assets/ImgCards/typeDeProta/genieIncompris.webp",
           "alt": ""
         },
         {
           "id": "groupeSoude",
           "label": "Groupe soudé",
-          "image": "/ImgCards/typeDeProta/groupeSoude.webp",
+          "image": "/assets/ImgCards/typeDeProta/groupeSoude.webp",
           "alt": ""
         },
         {
           "id": "herosPur",
           "label": "Héros pur",
-          "image": "/ImgCards/typeDeProta/herosPur.webp",
+          "image": "/assets/ImgCards/typeDeProta/herosPur.webp",
           "alt": ""
         },
         {
           "id": "persoNaifQuiEvolue",
           "label": "Personnage naïf qui évolue",
-          "image": "/ImgCards/typeDeProta/persoNaifQuiEvolue.webp",
+          "image": "/assets/ImgCards/typeDeProta/persoNaifQuiEvolue.webp",
           "alt": ""
         }
       ]
@@ -285,37 +285,37 @@
         {
           "id": "mondeEnGuerre",
           "label": "Monde en guerre",
-          "image": "/ImgCards/univers/mondeEnGuerre.webp",
+          "image": "/assets/ImgCards/univers/mondeEnGuerre.webp",
           "alt": ""
         },
         {
           "id": "mondeEnPaixFragile",
           "label": "Monde en paix fragile",
-          "image": "/ImgCards/univers/mondeEnPaixFragile.webp",
+          "image": "/assets/ImgCards/univers/mondeEnPaixFragile.webp",
           "alt": ""
         },
         {
           "id": "mondeMagiqueCache",
           "label": "Monde magique caché",
-          "image": "/ImgCards/univers/mondeMagiqueCache.webp",
+          "image": "/assets/ImgCards/univers/mondeMagiqueCache.webp",
           "alt": ""
         },
         {
           "id": "mondeParallele",
           "label": "Monde parallèle",
-          "image": "/ImgCards/univers/mondeParallele.webp",
+          "image": "/assets/ImgCards/univers/mondeParallele.webp",
           "alt": ""
         },
         {
           "id": "mondeRealiste",
           "label": "Monde réaliste",
-          "image": "/ImgCards/univers/mondeRealiste.webp",
+          "image": "/assets/ImgCards/univers/mondeRealiste.webp",
           "alt": ""
         },
         {
           "id": "simulationVirtuel",
           "label": "Simulation virtuelle",
-          "image": "/ImgCards/univers/simulationVirtuel.webp",
+          "image": "/assets/ImgCards/univers/simulationVirtuel.webp",
           "alt": ""
         }
       ]

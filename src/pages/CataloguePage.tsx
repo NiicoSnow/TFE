@@ -53,7 +53,7 @@ export function CataloguePage() {
       <div className="catalogue-page__search grid">
         <label className="friends-toolbar__search catalogue-page__search-bar">
           <input type="search" className="friends-toolbar__input" placeholder="Rechercher" value={query} onChange={(e) => setQuery(e.target.value)} />
-          <img src="/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
+          <img src="/assets/loupe.svg" alt="" className="friends-toolbar__search-icon" width={21} height={21} />
         </label>
       </div>
 

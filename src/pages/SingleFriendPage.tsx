@@ -60,7 +60,7 @@ export function SingleFriendPage() {
       <div className="single-friend-page__intro">
         <Link to="/amis" className="single-friend-page__back" aria-label="Retour aux amis">
           <img
-            src="/fleche.svg"
+            src="/assets/fleche.svg"
             alt=""
             className="single-friend-page__back-icon"
             width={17}

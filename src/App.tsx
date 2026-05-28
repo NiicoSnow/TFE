@@ -75,7 +75,7 @@ function App() {
             <span></span>
           </button>
           <div ref={menuRef} className={isMenuOpen ? 'nav-links open' : 'nav-links'}>
-            <img src="/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
+            <img src="/assets/Cardtaku.svg" alt="Cardtaku" className="main-nav__logo" />
             <div className="nav-links__center">
               <div className="nav-links__group nav-links__group--start">
                 <NavLink to="/" onClick={closeMenu}>
@@ -92,7 +92,7 @@ function App() {
                 aria-label="Cartes"
               >
                 <img
-                  src="/cards.svg"
+                  src="/assets/cards.svg"
                   alt=""
                   className="nav-links__cartes-icon"
                   width={39}
