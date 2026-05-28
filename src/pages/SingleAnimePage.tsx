@@ -177,7 +177,7 @@ export function SingleAnimePage() {
   }
 
   return (
-    <main className="single-anime-page">
+    <main className="single-anime-page grid">
       {!loading && !error && anime ? (
         <header className="single-anime-page__header">
           <div className="single-anime-page__banner-wrap">
@@ -234,27 +234,31 @@ export function SingleAnimePage() {
               <MetaCell label="Genres" value={genresLabel} />
             </div>
 
-            {anime.synopsis ? (
-              <section className="single-anime-page__section">
-                <h2 className="single-anime-page__section-title">Synopsis</h2>
-                <div className="single-anime-page__synopsis-box">
-                  <p>{formatSynopsisForDisplay(anime.synopsis)}</p>
-                </div>
-              </section>
-            ) : null}
+            {anime.synopsis || trailerId ? (
+              <div className="single-anime-page__overview">
+                {anime.synopsis ? (
+                  <section className="single-anime-page__section">
+                    <h2 className="single-anime-page__section-title">Synopsis</h2>
+                    <div className="single-anime-page__synopsis-box">
+                      <p>{formatSynopsisForDisplay(anime.synopsis)}</p>
+                    </div>
+                  </section>
+                ) : null}
 
-            {trailerId ? (
-              <section className="single-anime-page__section">
-                <h2 className="single-anime-page__section-title">Trailer</h2>
-                <div className="single-anime-page__trailer-frame">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${trailerId}`}
-                    title={`Bande-annonce — ${title}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              </section>
+                {trailerId ? (
+                  <section className="single-anime-page__section">
+                    <h2 className="single-anime-page__section-title">Trailer</h2>
+                    <div className="single-anime-page__trailer-frame">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${trailerId}`}
+                        title={`Bande-annonce — ${title}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </section>
+                ) : null}
+              </div>
             ) : null}
 
             {watchLinks.length > 0 ? (
