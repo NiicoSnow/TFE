@@ -1,9 +1,19 @@
+import { publicAsset } from '../lib/publicPath'
+
 export function TutoSection() {
   return (
     <section id="explications" className="tuto grid">
       <h2>Explications du concept</h2>
       <div className="tuto__element">
-        <div className="tuto__element-img" aria-hidden="true"></div>
+        <div className="tuto__element-media">
+          <img
+            className="tuto__element-img"
+            src={publicAsset('assets/Tuto1.webp')}
+            alt="Illustration : lancer le tirage de cartes sur Cardtaku"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <div className="tuto__element-content">
           <h3>Lance ton tirage</h3>
           <p>
@@ -13,7 +23,15 @@ export function TutoSection() {
         </div>
       </div>
       <div className="tuto__element tuto__element--reverse">
-        <div className="tuto__element-img" aria-hidden="true"></div>
+        <div className="tuto__element-media">
+          <img
+            className="tuto__element-img"
+            src={publicAsset('assets/Tuto2.webp')}
+            alt="Illustration : choisir entre les cartes du quiz"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <div className="tuto__element-content">
           <h3>Fais tes choix</h3>
           <p>
@@ -25,7 +43,15 @@ export function TutoSection() {
         </div>
       </div>
       <div className="tuto__element">
-        <div className="tuto__element-img" aria-hidden="true"></div>
+        <div className="tuto__element-media">
+          <img
+            className="tuto__element-img"
+            src={publicAsset('assets/Tuto3.webp')}
+            alt="Illustration : résultats personnalisés avec affinités"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <div className="tuto__element-content">
           <h3>Ton résultat personnalisé</h3>
           <p>

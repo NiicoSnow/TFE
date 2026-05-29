@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { AnimeManagtSection } from '../components/AnimeManagtSection'
+import { publicAsset } from '../lib/publicPath'
 // import { MiniStatsSection } from '../components/MiniStatsSection'
 import { TutoSection } from '../components/TutoSection'
 // import { VersusSection } from '../components/VersusSection'
@@ -29,7 +30,17 @@ export function HomePage() {
             </button>
           </div>
         </div>
-        <div className="home-page__header-img"></div>
+        <div className="home-page__header-media">
+          <img
+            className="home-page__header-img"
+            src={publicAsset('assets/mockup.webp')}
+            alt="Aperçu de l'application Cardtaku sur mobile"
+            width={600}
+            height={800}
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </header>
       <TutoSection />
       {/* <MiniStatsSection />  
