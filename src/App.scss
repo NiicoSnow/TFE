@@ -2971,7 +2971,7 @@
     flex: 0 0 auto;
     align-self: center;
     margin-top: 0;
-    padding: 1.2rem 1rem;
+    padding: 1.6rem 1.4rem;
   }
 
   .catalog-theme-section__nav--prev .catalog-theme-section__nav-icon--left {
@@ -3013,5 +3013,8 @@
   }
   .anime-management__visibility-label {
     font-size: 1.6rem;
+  }
+  .catalog-theme-section__nav-icon {
+    width: 1.2rem;
   }
 }
