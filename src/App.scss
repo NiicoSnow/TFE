@@ -543,10 +543,6 @@
 }
 
 .anime-management__heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
   text-align: center;
   margin-bottom: 1.2rem;
 }
@@ -557,10 +553,13 @@
   margin: 0;
 }
 
-.anime-management__visibility {
+.anime-management__visibility-control {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  width: fit-content;
+  max-width: 100%;
   padding: 0.4rem;
   border: 0;
   border-radius: 8px;
@@ -568,26 +567,47 @@
   cursor: pointer;
   flex-shrink: 0;
   line-height: 0;
+  font-family: var(--base);
 }
 
-.anime-management__visibility:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+.anime-management__visibility-label {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-secondary);
 }
 
-.anime-management__visibility:disabled {
+@media (hover: hover) and (pointer: fine) {
+  .anime-management__visibility-control:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--text) 10%, transparent);
+  }
+
+  .anime-management__visibility-control:hover:not(:disabled) .anime-management__visibility-label {
+    color: var(--text);
+  }
+}
+
+.anime-management__visibility-control:active:not(:disabled) {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.anime-management__visibility-control:disabled {
   opacity: 0.5;
   cursor: wait;
 }
 
-.anime-management__visibility:focus-visible {
+.anime-management__visibility-control:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
 .anime-management__visibility-icon {
   display: block;
-  width: 2.4rem;
-  height: auto;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  object-position: center;
   filter: invert(1);
 }
 
@@ -597,10 +617,15 @@
 }
 
 .anime-management__element {
+  position: relative;
   background: var(--element-bg);
   border-radius: 18px;
   padding: 2rem 1.6rem 2.4rem;
   box-sizing: border-box;
+}
+
+.anime-management__element--owner {
+  padding-bottom: 6.4rem;
 }
 
 .anime-management__status {
@@ -649,12 +674,30 @@
   margin-bottom: 1.2rem;
 }
 
+.anime-management__nav-row {
+  display: none;
+}
+
 .anime-management__nav--desktop {
   display: none;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.4rem 0;
-  margin-bottom: 1.2rem;
+}
+
+.anime-management__visibility-slot--mobile {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 2rem;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 20rem;
+  max-width: calc(100% - 3.2rem);
+}
+
+.anime-management__visibility-slot--desktop {
+  display: none;
 }
 
 .anime-management__arrow {
@@ -971,6 +1014,10 @@
 
 .cards-page__header {
   margin-bottom: 3.2rem;
+}
+
+.cards-page__header h1 {
+  margin-bottom: 2.4rem;
 }
 
 .cards-page__header p {
@@ -1690,6 +1737,37 @@
   font-size: 1.6rem;
 }
 
+.profile-password {
+  position: relative;
+}
+
+.profile-password input {
+  width: 100%;
+  padding-right: 4.8rem;
+  box-sizing: border-box;
+}
+
+.profile-password__toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.profile-password__toggle img {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  filter: invert(1);
+}
+
 .profile-button {
   padding: 1.2rem 1.6rem;
   border: none;
@@ -2395,8 +2473,37 @@
     display: none;
   }
 
+  .anime-management__nav-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    margin-bottom: 1.2rem;
+    width: 100%;
+  }
+
   .anime-management__nav--desktop {
+    grid-column: 2;
     display: flex;
+    min-width: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .anime-management__visibility-slot--mobile {
+    display: none;
+  }
+
+  .anime-management__visibility-slot--desktop {
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end;
+    justify-self: end;
+    min-width: 0;
+  }
+
+  .anime-management__element--owner {
+    padding-bottom: 3.2rem;
   }
 
   .anime-management__changer {
@@ -2434,7 +2541,7 @@
   .quiz-question__title {
     width: 100%;
     max-width: calc(4 * 18rem + 3 * 2rem);
-    text-align: center;
+    text-align: start;
   }
 
   .quiz-question__choices {
@@ -2547,8 +2654,13 @@
   .anime-management__heading{
     margin-bottom: 2.4rem;
   }
+  .anime-management__visibility-label {
+    font-size: 1.4rem;
+  }
+
   .anime-management__visibility-icon {
     width: 3.2rem;
+    height: 3.2rem;
   }
   .footer__link{
     font-size: 1.8rem;
@@ -2845,6 +2957,7 @@
     margin-bottom: 7.6rem;
     text-align: center;
   }
+
   .cards-page__header p {
     margin-inline: auto;
   }
@@ -2867,5 +2980,8 @@
 
   .single-friend-page__back {
     left: 9.6rem;
+  }
+  .anime-management__visibility-label {
+    font-size: 1.6rem;
   }
 }

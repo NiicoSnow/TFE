@@ -173,35 +173,43 @@ export function AnimeManagtSection({
   const privateOwnerLabel = ownerDisplayName?.trim() || 'Cet utilisateur'
   const showLibraryContent = userId && canShowLibrary && !libraryLoading
 
+  const visibilityControl = isOwner ? (
+    <button
+      type="button"
+      className="anime-management__visibility-control"
+      onClick={() => void toggleLibraryVisibility()}
+      disabled={visibilityBusy}
+      aria-label={
+        libraryPublic
+          ? 'Tes listes sont visibles par tes amis. Cliquer pour les rendre privées.'
+          : 'Tes listes sont privées. Cliquer pour les rendre visibles par tes amis.'
+      }
+      aria-pressed={libraryPublic}
+    >
+      <span className="anime-management__visibility-label">
+        {libraryPublic ? 'Masquer à tes amis' : 'Montrer à tes amis'}
+      </span>
+      <img
+        className="anime-management__visibility-icon"
+        src={libraryPublic ? publicAsset('assets/visible.svg') : publicAsset('assets/notvisible.svg')}
+        alt=""
+        width={24}
+        height={16}
+      />
+    </button>
+  ) : null
+
+  const elementClassName = isOwner
+    ? 'anime-management__element anime-management__element--owner'
+    : 'anime-management__element'
+
   return (
     <section className={sectionClassName}>
       <div className="anime-management__heading">
         <h2>{heading}</h2>
-        {isOwner ? (
-          <button
-            type="button"
-            className="anime-management__visibility"
-            onClick={() => void toggleLibraryVisibility()}
-            disabled={visibilityBusy}
-            aria-label={
-              libraryPublic
-                ? 'Tes listes sont visibles par tes amis. Cliquer pour les rendre privées.'
-                : 'Tes listes sont privées. Cliquer pour les rendre visibles par tes amis.'
-            }
-            aria-pressed={libraryPublic}
-          >
-            <img
-              className="anime-management__visibility-icon"
-              src={libraryPublic ? publicAsset('assets/visible.svg') : publicAsset('assets/notvisible.svg')}
-              alt=""
-              width={24}
-              height={16}
-            />
-          </button>
-        ) : null}
       </div>
 
-      <div className="anime-management__element">
+      <div className={elementClassName}>
         {!readOnly && !authLoading && !authUser ? (
           <p className="anime-management__status">
             <Link to="/profil">Connecte-toi</Link> pour gérer tes listes d&apos;animes.
@@ -240,14 +248,21 @@ export function AnimeManagtSection({
               </button>
             </div>
 
-            <nav className="anime-management__nav anime-management__nav--desktop" aria-label="Catégories de listes">
-              {ANIME_LIST_LABELS_ORDERED.map((label, i) => (
-                <Fragment key={label}>
-                  {i > 0 ? <span className="anime-management__tab-sep" aria-hidden>|</span> : null}
-                  <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => setCategoryIndex(i)}>{label}</button>
-                </Fragment>
-              ))}
-            </nav>
+            <div className="anime-management__nav-row">
+              <nav className="anime-management__nav anime-management__nav--desktop" aria-label="Catégories de listes">
+                {ANIME_LIST_LABELS_ORDERED.map((label, i) => (
+                  <Fragment key={label}>
+                    {i > 0 ? <span className="anime-management__tab-sep" aria-hidden>|</span> : null}
+                    <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => setCategoryIndex(i)}>{label}</button>
+                  </Fragment>
+                ))}
+              </nav>
+              {visibilityControl ? (
+                <div className="anime-management__visibility-slot anime-management__visibility-slot--desktop">
+                  {visibilityControl}
+                </div>
+              ) : null}
+            </div>
 
             <div className="anime-management__divider" aria-hidden />
 
@@ -299,6 +314,12 @@ export function AnimeManagtSection({
                 ))
               )}
             </ul>
+
+            {visibilityControl ? (
+              <div className="anime-management__visibility-slot anime-management__visibility-slot--mobile">
+                {visibilityControl}
+              </div>
+            ) : null}
           </>
         ) : null}
       </div>

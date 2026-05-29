@@ -63,7 +63,7 @@ export function QuizQuestion({
             onClick={onBack}
             disabled={isAnimating}
           >
-            Retour
+            Question précédente
           </button>
         ) : (
           <span className="quiz-question__back-spacer" aria-hidden />

@@ -12,6 +12,7 @@ type ProfileViewProps = {
 export function ProfileView({ profile }: ProfileViewProps) {
   const { user, updateProfile, signOut } = useAuth()
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [editingDisplayName, setEditingDisplayName] = useState(false)
   const [editingPassword, setEditingPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [info, setInfo] = useState<string | null>(null)
@@ -92,6 +93,38 @@ export function ProfileView({ profile }: ProfileViewProps) {
       </div>
 
       <div className="profile-view__section">
+        <p className="profile-view__label">Nom affiché</p>
+        {editingDisplayName ? (
+          <DisplayNameEditForm
+            initialValue={profile.display_name ?? profile.username ?? ''}
+            onCancel={() => setEditingDisplayName(false)}
+            onSuccess={() => {
+              setEditingDisplayName(false)
+              setError(null)
+              setInfo('Nom affiché mis à jour.')
+            }}
+            onError={setError}
+          />
+        ) : (
+          <div className="profile-view__row">
+            <p className="profile-view__value">{displayName}</p>
+            <button
+              type="button"
+              className="profile-view__edit"
+              aria-label="Modifier le nom affiché"
+              onClick={() => {
+                setEditingDisplayName(true)
+                setError(null)
+                setInfo(null)
+              }}
+            >
+              <span className="profile-view__edit-icon" aria-hidden />
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="profile-view__section">
         <p className="profile-view__label">Mot de passe</p>
         {editingPassword ? (
           <PasswordEditForm onCancel={() => setEditingPassword(false)} onSuccess={() => { setEditingPassword(false); setError(null); setInfo('Mot de passe mis à jour.') }} onError={setError} />
@@ -105,6 +138,65 @@ export function ProfileView({ profile }: ProfileViewProps) {
 
       <button className="profile-button profile-button--secondary profile-view__signout" type="button" onClick={handleSignOut}>Se déconnecter</button>
     </div>
+  )
+}
+
+type DisplayNameEditFormProps = {
+  initialValue: string
+  onCancel: () => void
+  onSuccess: () => void
+  onError: (message: string) => void
+}
+
+function DisplayNameEditForm({ initialValue, onCancel, onSuccess, onError }: DisplayNameEditFormProps) {
+  const { updateProfile } = useAuth()
+  const [displayName, setDisplayName] = useState(initialValue)
+  const [submitting, setSubmitting] = useState(false)
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault()
+    const trimmed = displayName.trim()
+    if (!trimmed) {
+      onError('Le nom affiché ne peut pas être vide.')
+      return
+    }
+    if (trimmed.length > 50) {
+      onError('Le nom affiché ne peut pas dépasser 50 caractères.')
+      return
+    }
+
+    setSubmitting(true)
+    try {
+      await updateProfile({ display_name: trimmed })
+      onSuccess()
+    } catch (err) {
+      onError(err instanceof Error ? err.message : 'Impossible de mettre à jour le nom affiché.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <form className="profile-form profile-view__edit-form" onSubmit={handleSubmit}>
+      <input
+        className="profile-view__input"
+        type="text"
+        value={displayName}
+        onChange={(e) => setDisplayName(e.target.value)}
+        required
+        maxLength={50}
+        autoComplete="nickname"
+        placeholder="Ton nom affiché"
+      />
+      <div className="profile-view__edit-actions">
+        <button className="profile-button" type="submit" disabled={submitting}>
+          {submitting ? 'Enregistrement…' : 'Enregistrer'}
+        </button>
+        <button className="profile-button profile-button--secondary" type="button" onClick={onCancel}>
+          Annuler
+        </button>
+      </div>
+    </form>
   )
 }
 

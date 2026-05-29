@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { PasswordField } from './PasswordField'
 import { useAuth } from '../hooks/useAuth'
 
 type Mode = 'signin' | 'signup'
@@ -64,10 +65,13 @@ export function ProfileAuthForm() {
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
         </label>
 
-        <label className="profile-field">
-          <span>Mot de passe</span>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} autoComplete={mode === 'signin' ? 'current-password' : 'new-password'} />
-        </label>
+        <PasswordField
+          id="profile-auth-password"
+          label="Mot de passe"
+          value={password}
+          onChange={setPassword}
+          autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
+        />
 
         {error && <p className="profile-message profile-message--error">{error}</p>}
         {info && <p className="profile-message profile-message--info">{info}</p>}
