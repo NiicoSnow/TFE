@@ -6,6 +6,13 @@
   --text-3xl: 28px;
 } */
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --text: #E5E7EB;
   --text-secondary: #9CA3AF;
@@ -35,11 +42,17 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 

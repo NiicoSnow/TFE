@@ -1,9 +1,11 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   padding-inline: 24px;
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .grid > * {
@@ -1426,7 +1428,7 @@
 .single-anime-page__banner-wrap {
   position: relative;
   height: 22rem;
-  margin-inline: calc(50% - 50vw);
+  margin-inline: calc(50% - 50dvw);
   overflow: hidden;
 }
 
@@ -2351,7 +2353,7 @@
 
 @media (min-width: 500px) and (max-width: 1023.98px) {
   .grid {
-    max-width: 50rem;
+    max-width: min(500px, 100%);
     margin-inline: auto;
     width: 100%;
   }
@@ -2360,16 +2362,16 @@
   .profile-page,
   .catalogue-page,
   .single-friend-page {
-    max-width: 50rem;
+    max-width: min(500px, 100%);
     margin-inline: auto;
     width: 100%;
     box-sizing: border-box;
   }
 
   .single-anime-page__banner-wrap {
-    margin-inline: calc(50% - 50vw);
-    width: 100vw;
-    max-width: 100vw;
+    margin-inline: calc(50% - 50dvw);
+    width: 100dvw;
+    max-width: 100dvw;
   }
 
   .footer {
