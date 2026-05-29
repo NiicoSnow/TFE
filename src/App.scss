@@ -2619,7 +2619,10 @@
   .friends-page__inner {
     max-width: 160rem;
   }
-
+  .friends-page {
+    margin-top: 7.6rem;
+  }
+  
   .friends-grid {
     grid-template-columns: repeat(8, minmax(0, 1fr));
     gap: 2rem;
