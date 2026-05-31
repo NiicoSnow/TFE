@@ -1,3 +1,7 @@
+// ===========================================================================
+// 1. GLOBAL & LAYOUT
+// ===========================================================================
+
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -10,190 +14,40 @@
   grid-column: 1 / -1;
 }
 
-.footer {
-  margin-top: 19.2rem;
-  padding: 4.8rem 2.4rem 3.2rem;
-  background-color: var(--element-bg);
-  text-align: center;
-  box-sizing: border-box;
+.spacer {
+  height: 48px;
+  border-top: 1px solid var(--border);
 }
 
-.footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.column {
+  flex-direction: column;
   align-items: center;
-  gap: 1.2rem 2.4rem;
-  margin-bottom: 2.4rem;
+  gap: 0.8rem;
 }
 
-.footer__link {
-  color: var(--text);
-  font-size: 1.6rem;
-  font-weight: 500;
-  text-decoration: none;
+#explications {
+  scroll-margin-top: 6rem;
 }
 
-.footer__link:hover,
-.footer__link.active {
-  color: var(--accent);
+.seemore {
+  font-family: var(--category);
+  font-weight: 400;
+  text-decoration: underline;
 }
 
-.footer__copy {
-  margin: 0;
-  font-size: 1.4rem;
-  color: var(--text-secondary);
+.column h4 {
+  max-width: 20rem;
 }
 
-.credits-page__inner {
-  max-width: 72rem;
-  margin: 0 auto;
-}
+// ===========================================================================
+// 2. LAYOUT — Navigation
+// ===========================================================================
 
-.credits-page__lead {
-  margin: 1.6rem 0 0;
-  color: var(--text-secondary);
-  font-size: 1.8rem;
-  line-height: 1.5;
-}
-
-.home-page,
-.profile-page{
-  display: flex;
-  flex-direction: column;
-  gap: 19.2rem;
-}
-
-.catalogue-page {
-  display: flex;
-  flex-direction: column;
-  gap: 9.6rem;
-}
-
-.catalogue-page__search {
-  margin-bottom: -5.6rem;
-}
-
-.catalogue-page__search-bar {
-  grid-column: 1 / -1;
-  max-width: 48rem;
-  margin: 1.2rem auto 4.8rem ;
-  width: 100%;
-}
-
-.catalogue-search__count {
-  grid-column: 1 / -1;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 2.4rem;
-}
-
-.catalogue-search__status {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 1.6rem;
-  color: var(--text-secondary);
-}
-
-.catalogue-search__status--error {
-  color: #f87171;
-}
-
-.catalogue-search {
-  --search-card-min: 10.5rem;
-  --search-card-gap: 1.2rem;
-}
-
-.catalogue-search__grid {
-  grid-column: 1 / -1;
-}
-
-.catalogue-search__grid.catalog-theme-section__content {
-  gap: 2.4rem var(--search-card-gap);
-}
-.main-nav__wrapper{
+.main-nav__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
-.home-page__header{
-  margin-top: 2.4rem
-}
-
-.home-page__header-content {
-  width: 100%;
-}
-
-.home-page__header-media {
-  overflow: hidden;
-  width: 100%;
-  height: 24rem;
-  margin: 2.4rem auto 0;
-}
-
-.home-page__header-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.1);
-}
-
-.home-page__header-title{
-  margin-bottom: 3rem;
-}
-
-.home-page__header-buttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  width: 100%;
-  margin-top: 2.4rem;
-}
-
-.home-page__header-button {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 1.2rem 1.6rem;
-  border: 0;
-  border-radius: 999px;
-  font-family: inherit;
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.2;
-  cursor: pointer;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.home-page__header-button--muted {
-  background: var(--element-bg);
-  color: var(--text);
-  font-weight: 700;
-}
-
-.home-page__header-button--muted:hover {
-  filter: brightness(1.08);
-}
-
-.home-page__header-button--accent {
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 700;
-}
-
-.home-page__header-button--accent:hover {
-  filter: brightness(1.08);
-}
-
-.home-page__header-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
 }
 
 .main-nav {
@@ -376,6 +230,7 @@
   width: 3.2rem;
   height: auto;
 }
+
 .nav-links__cartes:hover {
   scale: 1.05;
 }
@@ -388,181 +243,48 @@
   margin-top: 2.4rem;
 }
 
-.spacer {
-  height: 48px;
-  border-top: 1px solid var(--border);
-}
+// ===========================================================================
+// 3. LAYOUT — Footer
+// ===========================================================================
 
-.column {
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.tuto__element-media {
-  overflow: hidden;
-  width: 100%;
-  height: 20rem;
-  margin-top: 4.8rem;
-  margin-bottom: 2.4rem;
-  border: 2px solid var(--border);
-  border-radius: 18px;
-  flex-shrink: 0;
-}
-
-.tuto__element-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.2);
-}
-
-.tuto__element-content {
-  min-width: 0;
-}
-
-.tuto__element {
-  margin-bottom: 7.6rem;
-}
-
-.tuto__element:last-child {
-  margin-bottom: 0;
-}
-
-#explications {
-  scroll-margin-top: 6rem;
-}
-
-.tuto h3, p {
-  margin-bottom: 2rem
-}
-.tuto h2{
+.footer {
+  margin-top: 19.2rem;
+  padding: 4.8rem 2.4rem 3.2rem;
+  background-color: var(--element-bg);
   text-align: center;
+  box-sizing: border-box;
 }
 
-.ministats h2, .versus h2 {
-  text-align: center;
-  margin-bottom: 4.8rem;
-}
-
-.ministats__element {
-  background: var(--element-bg);
-  border-radius: 18px;
+.footer__nav {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1.2rem;
+  align-items: center;
+  gap: 1.2rem 2.4rem;
   margin-bottom: 2.4rem;
-  padding-bottom: 2.4rem;
-  padding-top: 2.4rem;
-  position: relative;
 }
 
-.ministats__number {
-  font-size: 7.2rem;
-  flex-shrink: 0;
-  font-weight: 700;
+.footer__link {
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
 }
 
-.ministats__element h4 {
-  max-width: 12rem;
-  min-width: 0;
-  text-align: left;
+.footer__link:hover,
+.footer__link.active {
+  color: var(--accent);
 }
 
-.ministats__element-infobulle {
-  align-self: flex-end;
-  width: 3rem;
-  height: 3rem;
-  margin-right: 2.4rem;
-}
-.seemore {
-  font-family: var(--category);
-  font-weight: 400;
-  text-decoration: underline;
+.footer__copy {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
 }
 
-.streak-display {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  isolation: isolate;
-  margin-left: -6rem;
-  margin-top: 2.4rem;
-}
-
-.streak-display__img {
-  position: absolute;
-  z-index: 0;
-  width: 10.5rem;
-  height: auto;
-  aspect-ratio: 105 / 120;
-  top: 35%;
-  left: 50%;
-  transform: translate(calc(-50% + 6.7rem), -50%);
-  pointer-events: none;
-}
-
-.streak-display__value {
-  position: relative;
-  z-index: 1;
-  line-height: 1;
-  flex-shrink: 0;
-  font-weight: 700;
-  font-size: 10.2rem;
-  text-shadow: 0.04em 0.04em 0 var(--accent);
-}
-
-.streak {
-  padding-bottom: 4.8rem;
-}
-
-.column h4 {
-  max-width: 20rem;
-}
-
-.versus__vs {
-  font-size: 7.2rem;
-  text-align: center;
-  margin-bottom: 2.4rem;
-  margin-top: 2.4rem;
-}
-
-.versus__number {
-  font-size: 7.2rem;
-  font-weight: 700;
-}
-
-.versus__element {
-  background: var(--element-bg);
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.versus__number-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 1.2rem;
-}
-
-.versus__line {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-.versus__name {
-  text-align: center;
-  margin-bottom: 1.2rem;
-  margin-top: 1.2rem;
-}
+// ===========================================================================
+// 4. COMPOSANTS PARTAGÉS — Anime management
+// ===========================================================================
 
 .anime-management__heading {
   text-align: center;
@@ -1030,6 +752,173 @@
   color: var(--accent);
 }
 
+.single-friend-page .anime-management__heading {
+  text-align: center;
+}
+
+.friends-add-modal.anime-management__modal {
+  width: min(100%, 42rem);
+}
+
+// ===========================================================================
+// 5. COMPOSANTS PARTAGÉS — Catalog theme section
+// ===========================================================================
+
+.catalogue-search__grid.catalog-theme-section__content {
+  gap: 2.4rem var(--search-card-gap);
+}
+
+.catalog-theme-section {
+  --catalog-card-width: 11.8rem;
+  --catalog-card-gap: 1.2rem;
+  --catalog-track-width: calc(5 * var(--catalog-card-width) + 4 * var(--catalog-card-gap));
+}
+
+.catalog-theme-section--embedded {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catalog-theme-section__header {
+  margin-bottom: 2.4rem;
+}
+
+.catalog-theme-section__title {
+  font-family: var(--category);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.catalog-theme-section__seemore {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.catalog-theme-section__seemore:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.catalog-theme-section__content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.4rem 1.2rem;
+  align-items: start;
+}
+
+.catalog-theme-section__track {
+  display: contents;
+}
+
+.catalog-theme-section__card {
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.catalog-theme-section__card:hover {
+  transform: translateY(-4px);
+}
+
+.catalog-theme-section__card:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+.catalog-theme-section__poster {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 63 / 88;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--element-bg);
+}
+
+.catalog-theme-section__poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-theme-section__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.8rem;
+}
+
+.catalog-theme-section__card-title {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.catalog-theme-section__status {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.catalog-theme-section__status--error {
+  color: #f87171;
+}
+
+.catalog-theme-section__nav {
+  align-self: center;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--element-bg);
+  color: var(--text);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.catalog-theme-section__nav-icon {
+  display: block;
+  width: 1.7rem;
+  height: auto;
+}
+
+.catalog-theme-section__nav:hover {
+  transform: scale(1.05);
+}
+
+@keyframes catalog-theme-slide-in {
+  from {
+    opacity: 0.35;
+    transform: translateX(1.2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ===========================================================================
+// 6. COMPOSANTS PARTAGÉS — Cartes & Quiz
+// ===========================================================================
+
 .cards-page {
   padding-block: 4rem 8rem;
 }
@@ -1270,152 +1159,301 @@
     0 0 4px rgba(0, 0, 0, 0.8);
   pointer-events: none;
 }
-.catalog-theme-section {
-  --catalog-card-width: 11.8rem;
-  --catalog-card-gap: 1.2rem;
-  --catalog-track-width: calc(5 * var(--catalog-card-width) + 4 * var(--catalog-card-gap));
+
+// ===========================================================================
+// 7. PAGE — Home
+// ===========================================================================
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 19.2rem;
 }
 
-.catalog-theme-section--embedded {
+.home-page__header {
+  margin-top: 2.4rem;
+}
+
+.home-page__header-content {
   width: 100%;
-  padding: 0;
-  box-sizing: border-box;
 }
 
-.catalog-theme-section__header {
-  margin-bottom: 2.4rem;
-}
-
-.catalog-theme-section__title {
-  font-family: var(--category);
-  font-size: 2.5rem;
-  font-weight: 400;
-  margin: 0;
-}
-
-.catalog-theme-section__seemore {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--text);
-  font-size: 1.4rem;
-  font-family: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-
-.catalog-theme-section__seemore:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.catalog-theme-section__content {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.4rem 1.2rem;
-  align-items: start;
-}
-
-.catalog-theme-section__track {
-  display: contents;
-}
-
-.catalog-theme-section__card {
-  min-width: 0;
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.catalog-theme-section__card:hover {
-  transform: translateY(-4px);
-}
-
-.catalog-theme-section__card:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: 4px;
-  border-radius: 16px;
-}
-
-.catalog-theme-section__poster {
-  margin: 0;
-  width: 100%;
-  aspect-ratio: 63 / 88;
-  border-radius: 16px;
+.home-page__header-media {
   overflow: hidden;
-  background: var(--element-bg);
+  width: 100%;
+  height: 24rem;
+  margin: 2.4rem auto 0;
 }
 
-.catalog-theme-section__poster img {
+.home-page__header-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
+  transform: scale(1.1);
 }
 
-.catalog-theme-section__meta {
+.home-page__header-title {
+  margin-bottom: 3rem;
+}
+
+.home-page__header-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  margin-top: 0.8rem;
-}
-
-.catalog-theme-section__card-title {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1.25;
-  text-align: left;
-}
-
-.catalog-theme-section__status {
-  grid-column: 1 / -1;
-  margin: 0;
-  color: var(--text-secondary);
-}
-
-.catalog-theme-section__status--error {
-  color: #f87171;
-}
-
-.catalog-theme-section__nav {
-  align-self: center;
-  justify-self: center;
-  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  padding: 1.4rem;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 2.4rem;
+}
+
+.home-page__header-button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 1.2rem 1.6rem;
   border: 0;
-  border-radius: 12px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.home-page__header-button--muted {
   background: var(--element-bg);
   color: var(--text);
-  cursor: pointer;
+  font-weight: 700;
+}
+
+.home-page__header-button--muted:hover {
+  filter: brightness(1.08);
+}
+
+.home-page__header-button--accent {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.home-page__header-button--accent:hover {
+  filter: brightness(1.08);
+}
+
+.home-page__header-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.tuto__element-media {
+  overflow: hidden;
+  width: 100%;
+  height: 20rem;
+  margin-top: 4.8rem;
+  margin-bottom: 2.4rem;
+  border: 2px solid var(--border);
+  border-radius: 18px;
   flex-shrink: 0;
 }
 
-.catalog-theme-section__nav-icon {
+.tuto__element-img {
   display: block;
-  width: 1.7rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.2);
+}
+
+.tuto__element-content {
+  min-width: 0;
+}
+
+.tuto__element {
+  margin-bottom: 7.6rem;
+}
+
+.tuto__element:last-child {
+  margin-bottom: 0;
+}
+
+.tuto h3, p {
+  margin-bottom: 2rem;
+}
+
+.tuto h2{
+  text-align: center;
+}
+
+.ministats h2, .versus h2 {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+
+.ministats__element {
+  background: var(--element-bg);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 2.4rem;
+  padding-top: 2.4rem;
+  position: relative;
+}
+
+.ministats__number {
+  font-size: 7.2rem;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.ministats__element h4 {
+  max-width: 12rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.ministats__element-infobulle {
+  align-self: flex-end;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 2.4rem;
+}
+
+.streak-display {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  margin-left: -6rem;
+  margin-top: 2.4rem;
+}
+
+.streak-display__img {
+  position: absolute;
+  z-index: 0;
+  width: 10.5rem;
   height: auto;
+  aspect-ratio: 105 / 120;
+  top: 35%;
+  left: 50%;
+  transform: translate(calc(-50% + 6.7rem), -50%);
+  pointer-events: none;
 }
 
-.catalog-theme-section__nav:hover {
-  transform: scale(1.05);
+.streak-display__value {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 10.2rem;
+  text-shadow: 0.04em 0.04em 0 var(--accent);
 }
 
-@keyframes catalog-theme-slide-in {
-  from {
-    opacity: 0.35;
-    transform: translateX(1.2rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.streak {
+  padding-bottom: 4.8rem;
 }
+
+.versus__vs {
+  font-size: 7.2rem;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.versus__number {
+  font-size: 7.2rem;
+  font-weight: 700;
+}
+
+.versus__element {
+  background: var(--element-bg);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.versus__number-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.versus__line {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+.versus__name {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+// ===========================================================================
+// 8. PAGE — Catalogue
+// ===========================================================================
+
+.catalogue-page {
+  display: flex;
+  flex-direction: column;
+  gap: 9.6rem;
+}
+
+.catalogue-page__search {
+  margin-bottom: -5.6rem;
+}
+
+.catalogue-page__search-bar {
+  grid-column: 1 / -1;
+  max-width: 48rem;
+  margin: 1.2rem auto 4.8rem ;
+  width: 100%;
+}
+
+.catalogue-search__count {
+  grid-column: 1 / -1;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+}
+
+.catalogue-search__status {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+}
+
+.catalogue-search__status--error {
+  color: #f87171;
+}
+
+.catalogue-search {
+  --search-card-min: 10.5rem;
+  --search-card-gap: 1.2rem;
+}
+
+.catalogue-search__grid {
+  grid-column: 1 / -1;
+}
+
+// ===========================================================================
+// 9. PAGE — Single anime
+// ===========================================================================
 
 .single-anime-page__header {
   position: relative;
@@ -1684,7 +1722,14 @@
   color: var(--text);
 }
 
+// ===========================================================================
+// 10. PAGE — Profil
+// ===========================================================================
+
 .profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 19.2rem;
   padding-top: 4rem;
   padding-bottom: 8rem;
 }
@@ -2008,6 +2053,19 @@
   width: 100%;
 }
 
+.single-friend-page .profile-view {
+  width: 100%;
+  margin: 0;
+}
+
+.single-friend-page .profile-view--readonly .profile-view__since {
+  margin-bottom: 0;
+}
+
+// ===========================================================================
+// 11. PAGE — Amis
+// ===========================================================================
+
 .friends-page {
   padding-block: 2rem 8rem;
 }
@@ -2194,19 +2252,6 @@
   color: #f87171;
 }
 
-.single-friend-page .profile-view {
-  width: 100%;
-  margin: 0;
-}
-
-.single-friend-page .profile-view--readonly .profile-view__since {
-  margin-bottom: 0;
-}
-
-.single-friend-page .anime-management__heading {
-  text-align: center;
-}
-
 .friends-requests {
   margin-bottom: 2.4rem;
 }
@@ -2290,10 +2335,6 @@
   color: var(--text);
 }
 
-.friends-add-modal.anime-management__modal {
-  width: min(100%, 42rem);
-}
-
 .friends-add-modal__input {
   width: 100%;
   box-sizing: border-box;
@@ -2350,8 +2391,32 @@
   font-size: 1.4rem;
   flex-shrink: 0;
 }
+.friends-add-modal__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  background: var(--text-secondary);
+}
 
-@media (min-width: 500px) and (max-width: 1023.98px) {
+// ===========================================================================
+// 12. PAGE — Crédits
+// ===========================================================================
+
+.credits-page__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.credits-page__lead {
+  margin: 1.6rem 0 0;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+// ===========================================================================
+// 13. RESPONSIVE — Tablette
+// ===========================================================================
+
+@media (min-width: 500px) and (max-width: 1023px) {
   .grid {
     max-width: min(500px, 100%);
     margin-inline: auto;
@@ -2381,7 +2446,14 @@
   }
 }
 
+// ===========================================================================
+// 14. RESPONSIVE — Desktop
+// ===========================================================================
+
 @media (min-width: 1024px) {
+
+  // --- Layout global ---
+
   .grid {
     grid-template-columns: repeat(7, 1fr);
     column-gap: 40px;
@@ -2389,6 +2461,12 @@
     margin-inline: auto;
     padding-inline: 4rem;
   }
+
+  .spacer {
+    height: 88px;
+  }
+
+  // --- Navigation ---
 
   .main-nav {
     justify-content: center;
@@ -2431,6 +2509,9 @@
 
   .nav-links__cartes {
     justify-self: center;
+    margin-bottom: 0;
+    width: 13rem;
+    height: 4rem;
   }
 
   .main-nav__user {
@@ -2448,10 +2529,6 @@
 
   .menu-backdrop {
     display: none;
-  }
-
-  .catalogue-page__search-bar {
-    max-width: 100%;
   }
 
   .nav-links {
@@ -2491,12 +2568,6 @@
     transition: width 0.2s ease;
   }
 
-  .nav-links__cartes {
-    margin-bottom: 0;
-    width: 13rem;
-    height: 4rem;
-  }
-
   .nav-links__cluster {
     display: contents;
   }
@@ -2510,14 +2581,22 @@
     pointer-events: auto;
   }
 
-  .center {
-    gap: 25px;
-    padding: 0;
+  // --- Footer ---
+
+  .footer {
+    height: 24rem;
+    padding-top: 9.6rem;
   }
 
-  .spacer {
-    height: 88px;
+  .footer__copy {
+    margin-top: 9.6rem;
   }
+
+  .footer__link {
+    font-size: 1.8rem;
+  }
+
+  // --- Composant : anime-management ---
 
   .anime-management__element {
     padding: 2.4rem 2.8rem 3.2rem;
@@ -2579,127 +2658,6 @@
     max-width: 100%;
   }
 
-  .quiz-question {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .quiz-question__header {
-    width: 100%;
-    max-width: calc(4 * 18rem + 3 * 2rem);
-  }
-
-  .quiz-question__title {
-    width: 100%;
-    max-width: calc(4 * 18rem + 3 * 2rem);
-    text-align: start;
-  }
-
-  .quiz-question__choices {
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-    grid-template-columns: repeat(4, 18rem);
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .quiz-question__choices .cards__element {
-    width: 18rem;
-    max-width: 18rem;
-  }
-
-  .quiz-question__choices .cards__element--img h3 {
-    font-size: 1.8rem;
-  }
-
-  .friends-page__inner {
-    max-width: 160rem;
-  }
-  .friends-page {
-    margin-top: 7.6rem;
-  }
-  
-  .friends-grid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 2rem;
-  }
-
-  .home-page__header{
-    margin-top: 9.6rem;
-  }
-
-  .home-page__header-content {
-    grid-column: 1 / 4;
-    grid-row: 1;
-    align-self: start;
-  }
-
-  .home-page__header-title{
-    margin-bottom: 3rem;
-  }
-
-  .home-page__header p {
-    margin-bottom: 2.4rem;
-  }
-
-  .home-page__header-media {
-    grid-column: 4 / -1;
-    grid-row: 1;
-    align-self: center;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-  }
-
-  .home-page__header-img {
-    width: 100%;
-    height: auto;
-    transform: none;
-    object-fit: contain;
-    object-position: center;
-  }
-  .home-page__header-buttons {
-    margin-top: 9.6rem;
-    max-width: 30rem;
-  }
-
-  .tuto h2 {
-    grid-column: 1 / -1;
-    margin-bottom: 4.8rem;
-  }
-
-  .tuto__element {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    grid-column: 1 / -1;
-    margin-bottom: 9.6rem;
-  }
-
-  .tuto__element--reverse {
-    flex-direction: row-reverse;
-  }
-
-  .tuto__element-media {
-    width: 40rem;
-    max-width: 100%;
-    height: 24rem;
-    margin: 0;
-  }
-
-  .tuto__element-content {
-    flex: 1 1 0;
-    min-width: 0;
-    max-width: 50rem;
-  }
-
-  .tuto__element-content h3 {
-    margin-top: 0;
-  }
   .anime-management__card {
     width: 100%;
     min-width: 0;
@@ -2711,192 +2669,21 @@
     height: 12rem;
     width: 9rem;
   }
-  .footer {
-    height: 24rem;
-    padding-top: 9.6rem;
-  }
-  .footer__copy{
-    margin-top: 9.6rem;
-  }
-  .anime-management__heading{
+
+  .anime-management__heading {
     margin-bottom: 2.4rem;
-  }
-  .anime-management__visibility-label {
-    font-size: 1.4rem;
   }
 
   .anime-management__visibility-icon {
     width: 3.2rem;
     height: 3.2rem;
   }
-  .footer__link{
-    font-size: 1.8rem;
-  }
-  .catalogue-page__search {
-    margin-top: 9.6rem;
-    margin-bottom: -9.6rem;
-  }
 
-  .single-anime-page__header {
-    width: 100%;
-  }
-
-  .single-anime-page__banner-wrap {
-    margin-top: -9.4rem;
-    height: calc(32rem + 9.4rem);
-  }
-  .single-anime-page__poster {
-    width: 19rem;
-    margin: -9rem 0 0 2.4rem;
-  }
-
-  .single-anime-page__body {
-    position: relative;
-    z-index: 2;
-    pointer-events: auto;
-    display: grid;
-    grid-template-columns: 19rem minmax(0, 1fr);
-    column-gap: 2.4rem;
-    row-gap: 0;
-    align-items: start;
-    margin-top: -16rem;
-    padding: 0 2.4rem;
-    box-sizing: border-box;
-  }
-
-  .single-anime-page__body > .single-anime-page__status,
-  .single-anime-page__body > .single-anime-page__section,
-  .single-anime-page__overview {
-    grid-column: 1 / -1;
-  }
-
-  .single-anime-page__overview {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    column-gap: 40px;
-    row-gap: 0;
-    align-items: start;
-  }
-
-  .single-anime-page__overview .single-anime-page__section {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-
-  .single-anime-page__overview .single-anime-page__section:nth-child(1) {
-    grid-column: span 4;
-  }
-
-  .single-anime-page__overview .single-anime-page__section:nth-child(2) {
-    grid-column: span 3;
-  }
-
-  .single-anime-page__overview:has(> :only-child) .single-anime-page__section {
-    grid-column: 1 / -1;
-  }
-
-  .single-anime-page__overview .single-anime-page__synopsis-box {
-    flex: 1;
-  }
-
-  .single-anime-page__section {
-    margin-top: 9.6rem;
-  }
-
-  .single-anime-page__heading {
-    grid-column: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-center;
-    gap: 1.6rem;
-    margin: 0;
-    padding: 2.4rem 2.4rem 1.2rem;
-  }
-
-  .single-anime-page__title {
-    min-width: 0;
-    text-align: left;
-    font-size: 7.2rem;
-  }
-
-  .single-anime-page__watch-link {
-    padding: 2.4rem 1.6rem
-  }
-  .single-anime-page__add {
-    flex-shrink: 0;
-  }
-
-  .single-anime-page__list-feedback {
-    grid-column: 2;
-    margin: 0;
-    padding: 0 2.4rem;
-    text-align: left;
-  }
-
-  .single-anime-page__meta {
-    grid-column: 2;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    column-gap: 1.6rem;
-    row-gap: 0;
-    margin: 0;
-    padding: 0 2.4rem 2.4rem;
-    background: var(--bg);
-    border-radius: 0 0 18px 18px;
-  }
-
-  .single-anime-page__meta-label {
-    padding-left: 1rem;
-    font-size: 2.5rem;
-  }
-
-  .single-anime-page__meta-value {
-    font-size: 2.5rem;
-    max-width: 20rem;
-  }
-
-  .single-anime-page__body > .catalog-theme-section,
-  .single-anime-page__body > .catalog-theme-section.grid {
-    grid-column: 1 / -1;
-    margin-top: 9.6rem;
-  }
-
-  .single-anime-page__characters-panel {
-    padding: 2.4rem;
-  }
-
-  .single-anime-page__characters {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.2rem 1.6rem;
-  }
-
-  .single-anime-page__character {
-    min-height: 6.4rem;
-    gap: 1rem;
-    padding-right: 1.2rem;
-    border-radius: 14px;
-  }
-
-  .single-anime-page__character-media {
-    width: 6.4rem;
-    height: 6.4rem;
-    border-radius: 12px;
-  }
-
-  .single-anime-page__character-name {
+  .anime-management__visibility-label {
     font-size: 1.6rem;
   }
 
-  .single-page__back {
-    top: 9.6rem;
-    left: 9.6rem;
-  }
-
-  .catalogue-search {
-    --search-card-min: 14rem;
-    --search-card-gap: 1.6rem;
-  }
+  // --- Composant : catalog-theme-section ---
 
   .catalogue-search__grid.catalog-theme-section__content {
     grid-template-columns: repeat(auto-fill, minmax(var(--search-card-min), 1fr));
@@ -3019,6 +2806,50 @@
     visibility: hidden;
     pointer-events: none;
   }
+
+  .catalog-theme-section__nav-icon {
+    width: 1.2rem;
+  }
+
+  // --- Cartes / Quiz ---
+
+  .quiz-question {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .quiz-question__header {
+    width: 100%;
+    max-width: calc(4 * 18rem + 3 * 2rem);
+  }
+
+  .quiz-question__title {
+    width: 100%;
+    max-width: calc(4 * 18rem + 3 * 2rem);
+    text-align: start;
+  }
+
+  .quiz-question__choices {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    grid-template-columns: repeat(4, 18rem);
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .quiz-question__choices .cards__element {
+    width: 18rem;
+    max-width: 18rem;
+  }
+
+  .quiz-question__choices .cards__element--img h3 {
+    font-size: 1.8rem;
+  }
+
   .cards-page__header {
     margin-top: 9.6rem;
     margin-bottom: 7.6rem;
@@ -3028,17 +2859,285 @@
   .cards-page__header p {
     margin-inline: auto;
   }
+
   .cards-page {
     padding-top:0;
     padding-right: 20rem;
     padding-left: 20rem;
   }
+
   .quiz-results {
     padding-right: 20rem;
     padding-left: 20rem;
   }
+
+  // --- Page : Home ---
+
+  .home-page__header {
+    margin-top: 9.6rem;
+  }
+
+  .home-page__header-content {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .home-page__header p {
+    margin-bottom: 2.4rem;
+  }
+
+  .home-page__header-media {
+    grid-column: 4 / -1;
+    grid-row: 1;
+    align-self: center;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .home-page__header-img {
+    width: 100%;
+    height: auto;
+    transform: none;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .home-page__header-buttons {
+    margin-top: 9.6rem;
+    max-width: 30rem;
+  }
+
+  .tuto h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4.8rem;
+  }
+
+  .tuto__element {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    grid-column: 1 / -1;
+    margin-bottom: 9.6rem;
+  }
+
+  .tuto__element--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .tuto__element-media {
+    width: 40rem;
+    max-width: 100%;
+    height: 24rem;
+    margin: 0;
+  }
+
+  .tuto__element-content {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 50rem;
+  }
+
+  .tuto__element-content h3 {
+    margin-top: 0;
+  }
+
+  // --- Page : Catalogue ---
+
+  .catalogue-page__search-bar {
+    max-width: 100%;
+  }
+
+  .catalogue-page__search {
+    margin-top: 9.6rem;
+    margin-bottom: -9.6rem;
+  }
+
+  .catalogue-search {
+    --search-card-min: 14rem;
+    --search-card-gap: 1.6rem;
+  }
+
+  // --- Page : Single anime ---
+
+  .single-anime-page__header {
+    width: 100%;
+  }
+
+  .single-anime-page__banner-wrap {
+    margin-top: -9.4rem;
+    height: calc(32rem + 9.4rem);
+  }
+
+  .single-anime-page__poster {
+    width: 19rem;
+    margin: -9rem 0 0 2.4rem;
+  }
+
+  .single-anime-page__body {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: 19rem minmax(0, 1fr);
+    column-gap: 2.4rem;
+    row-gap: 0;
+    align-items: start;
+    margin-top: -16rem;
+    padding: 0 2.4rem;
+    box-sizing: border-box;
+  }
+
+  .single-anime-page__body > .single-anime-page__status,
+  .single-anime-page__body > .single-anime-page__section {
+    grid-column: 1 / -1;
+  }
+
+  .single-anime-page__overview {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .single-anime-page__overview .single-anime-page__section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .single-anime-page__overview .single-anime-page__section:nth-child(1) {
+    grid-column: span 4;
+  }
+
+  .single-anime-page__overview .single-anime-page__section:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  .single-anime-page__overview:has(> :only-child) .single-anime-page__section {
+    grid-column: 1 / -1;
+  }
+
+  .single-anime-page__overview .single-anime-page__synopsis-box {
+    flex: 1;
+  }
+
+  .single-anime-page__section {
+    margin-top: 9.6rem;
+  }
+
+  .single-anime-page__heading {
+    grid-column: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.6rem;
+    margin: 0;
+    padding: 2.4rem 2.4rem 1.2rem;
+  }
+
+  .single-anime-page__title {
+    min-width: 0;
+    text-align: left;
+    font-size: 7.2rem;
+  }
+
+  .single-anime-page__watch-link {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .single-anime-page__add {
+    flex-shrink: 0;
+  }
+
+  .single-anime-page__list-feedback {
+    grid-column: 2;
+    margin: 0;
+    padding: 0 2.4rem;
+    text-align: left;
+  }
+
+  .single-anime-page__meta {
+    grid-column: 2;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 1.6rem;
+    row-gap: 0;
+    margin: 0;
+    padding: 0 2.4rem 2.4rem;
+    background: var(--bg);
+    border-radius: 0 0 18px 18px;
+  }
+
+  .single-anime-page__meta-label {
+    padding-left: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .single-anime-page__meta-value {
+    font-size: 2.5rem;
+    max-width: 20rem;
+  }
+
+  .single-anime-page__body > .catalog-theme-section,
+  .single-anime-page__body > .catalog-theme-section.grid {
+    grid-column: 1 / -1;
+    margin-top: 9.6rem;
+  }
+
+  .single-anime-page__characters-panel {
+    padding: 2.4rem;
+  }
+
+  .single-anime-page__characters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem 1.6rem;
+  }
+
+  .single-anime-page__character {
+    min-height: 6.4rem;
+    gap: 1rem;
+    padding-right: 1.2rem;
+    border-radius: 14px;
+  }
+
+  .single-anime-page__character-media {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 12px;
+  }
+
+  .single-anime-page__character-name {
+    font-size: 1.6rem;
+  }
+
+  .single-page__back {
+    top: 9.6rem;
+    left: 9.6rem;
+  }
+
+  // --- Page : Profil ---
+
   .profile-page {
     padding-top: 9.6rem;
+  }
+
+  // --- Page : Amis ---
+
+  .friends-page__inner {
+    max-width: 160rem;
+  }
+
+  .friends-page {
+    margin-top: 7.6rem;
+  }
+
+  .friends-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 2rem;
   }
 
   .single-friend-page {
@@ -3047,11 +3146,5 @@
 
   .single-friend-page__back {
     left: 9.6rem;
-  }
-  .anime-management__visibility-label {
-    font-size: 1.6rem;
-  }
-  .catalog-theme-section__nav-icon {
-    width: 1.2rem;
   }
 }
