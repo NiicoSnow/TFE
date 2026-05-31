@@ -2391,10 +2391,6 @@
   font-size: 1.4rem;
   flex-shrink: 0;
 }
-.friends-add-modal__input::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  background: var(--text-secondary);
-}
 
 // ===========================================================================
 // 12. PAGE — Crédits
@@ -2947,6 +2943,7 @@
 
   .catalogue-page__search-bar {
     max-width: 100%;
+    margin-top: 0
   }
 
   .catalogue-page__search {
