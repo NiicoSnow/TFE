@@ -73,3 +73,9 @@ export default defineConfig([
   },
 ])
 ```
+Un compte Admin est mis en place
+Adresse mail
+=> admin@heaj.be
+
+Mot de passe
+=> adminheaj
