@@ -17,7 +17,7 @@ export function VersusSection() {
                 </div>
                 <div className="versus__number-container column streak ">
                     <StreakDisplay value={12} />
-                    <h4 className="text-center">Tirages unique</h4>
+                    <h4>Tirages unique</h4>
                 </div>
             </div>
             <h1 className="versus__vs">VS</h1>
@@ -34,10 +34,10 @@ export function VersusSection() {
                 </div>
                 <div className="versus__number-container column streak ">
                     <StreakDisplay value={12} />
-                    <h4 className="text-center">Tirages unique</h4>
+                    <h4>Tirages unique</h4>
                 </div>
             </div>
-            <a href="/amis" className="seemore mt-[2.4rem]">Voir sa liste d'amis</a>
+            <a href="/amis" className="seemore">Voir sa liste d'amis</a>
         </section>
     )
 }

@@ -24,12 +24,12 @@ export function MiniStatsSection() {
       <div className="ministats__element column">
         <h4>Tu es</h4>
         <span className="ministats__number">1/12</span>
-        <h4 className="text-center">Parmi ta liste d'amis</h4>
+        <h4>Parmi ta liste d'amis</h4>
       </div>
       <div className="ministats__element streak column">
         <img src={publicAsset('assets/infobulle.svg')} alt="bulle d'information" className="ministats__element-infobulle" />
         <StreakDisplay value={12} />
-        <h4 className="text-center">Tirages unique</h4>
+        <h4>Tirages unique</h4>
       </div>
       <a href="/stats" className="seemore">Voir les statistiques complètes</a>
     </section>

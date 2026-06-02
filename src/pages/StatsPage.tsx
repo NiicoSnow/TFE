@@ -1,8 +1,8 @@
 export function StatsPage() {
     return (
-      <section className="grid mb-100 mt-[9.6rem]">
+      <section className="stats-page grid">
         <div>
-          <h1>Statistiques</h1>
+          <h1 className="stats-page__header-title">Statistiques</h1>
           <p>Coming Soon</p>
         </div>
       </section>

@@ -115,7 +115,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
   return (
     <section className={sectionClassName} aria-busy={loading}>
       <div className={blockClassName}>
-        <header className="catalog-theme-section__header flex justify-between items-end">
+        <header className="catalog-theme-section__header">
           <h2 className="catalog-theme-section__title">{title}</h2>
           {canToggleSeeAll ? (
             <button

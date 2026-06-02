@@ -781,6 +781,9 @@
 }
 
 .catalog-theme-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 2.4rem;
 }
 
@@ -1196,6 +1199,7 @@
 
 .home-page__header-title {
   margin-bottom: 3rem;
+  margin-top: 0;
 }
 
 .home-page__header-buttons {
@@ -1319,6 +1323,10 @@
   text-align: left;
 }
 
+.ministats__element.column h4 {
+  text-align: center;
+}
+
 .ministats__element-infobulle {
   align-self: flex-end;
   width: 3rem;
@@ -1401,6 +1409,14 @@
   text-align: center;
   margin-bottom: 1.2rem;
   margin-top: 1.2rem;
+}
+
+.versus__number-container.column h4 {
+  text-align: center;
+}
+
+.versus .seemore {
+  margin-top: 2.4rem;
 }
 
 // ===========================================================================
@@ -2406,6 +2422,20 @@
   color: var(--text-secondary);
   font-size: 1.8rem;
   line-height: 1.5;
+}
+
+// ===========================================================================
+// 12. PAGE — Stats
+// ===========================================================================
+
+.stats-page {
+  margin-top: 9.6rem;
+  padding-bottom: 20rem;
+}
+
+.stats-page__header-title {
+  margin-bottom: 1.2rem;
+  margin-top: 0;
 }
 
 // ===========================================================================
