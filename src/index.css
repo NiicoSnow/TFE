@@ -14,14 +14,18 @@ html {
   --element-bg-secondary: #273449;
   --border: #6B728050; /* 50% d'opacité */
   --accent: #EC4899;
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
+  --bg-gradient:
+    radial-gradient(ellipse 100% 45% at 15% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 72%),
+    radial-gradient(ellipse 85% 40% at 88% 22%, color-mix(in srgb, #4548ff 8%, transparent), transparent 68%),
+    radial-gradient(ellipse 95% 42% at 12% 52%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%),
+    radial-gradient(ellipse 90% 38% at 92% 78%, color-mix(in srgb, #4548ff 8%, transparent), transparent 68%),
+    linear-gradient(180deg, #111827 0%, var(--bg) 35%, var(--bg) 65%, #0c1222 100%);
+  --shadow:rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   --base: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
   --category: 'Oswald', system-ui, 'Segoe UI', Roboto, sans-serif;
 
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -35,11 +39,14 @@ html {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg);
+  background-image: var(--bg-gradient);
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
+  background: transparent;
 }
 
 h1,
