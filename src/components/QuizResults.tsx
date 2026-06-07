@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import poolData from '../assets/quizAnimePool.json'
 import { displayTitle, getAnimeSummariesFromCache } from '../lib/animeCache'
 import { ANIME_LIST_LABELS, getLibraryStatusesForAnimes, getQueryErrorMessage, setAnimeListStatus } from '../lib/animeLibrary'
+import { getAffinityBreakdown } from '../lib/quizScoring'
 import type { AnimeCacheSummary } from '../types/animeCache'
 import type { AnimeListStatus } from '../types/animeLibrary'
-import type { ScoredAnime } from '../types/quiz'
+import type { QuizAnimePool, QuizAnswers, QuizQuestion, ScoredAnime } from '../types/quiz'
 import { useAuth } from '../hooks/useAuth'
 import { publicAsset } from '../lib/publicPath'
 import { AnimeListPickerModal } from './AnimeListPickerModal'
@@ -12,8 +14,12 @@ import { AnimeListPickerModal } from './AnimeListPickerModal'
 const POSTER_FALLBACK =
   'https://placehold.co/126x176/1e293b/9ca3af?text=Poster'
 
+const animePool = poolData as QuizAnimePool
+
 type QuizResultsProps = {
   results: ScoredAnime[]
+  answers: QuizAnswers
+  askedQuestions: QuizQuestion[]
   onRestart: () => void
 }
 
@@ -22,7 +28,7 @@ type PickerTarget = {
   title: string
 }
 
-export function QuizResults({ results, onRestart }: QuizResultsProps) {
+export function QuizResults({ results, answers, askedQuestions, onRestart }: QuizResultsProps) {
   const navigate = useNavigate()
   const { user, loading: authLoading } = useAuth()
   const [rows, setRows] = useState<AnimeCacheSummary[]>([])
@@ -34,6 +40,12 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
   const [pickerTarget, setPickerTarget] = useState<PickerTarget | null>(null)
   const [listActionBusy, setListActionBusy] = useState(false)
   const [listFeedbackById, setListFeedbackById] = useState<Map<number, string>>(() => new Map())
+  const [expandedAffinityId, setExpandedAffinityId] = useState<number | null>(null)
+
+  const poolByAnilistId = useMemo(
+    () => new Map(animePool.animes.map((entry) => [entry.anilistId, entry])),
+    [],
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -96,6 +108,10 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
     setPickerTarget({ anilistId, title })
   }
 
+  const toggleAffinityDetails = (anilistId: number) => {
+    setExpandedAffinityId((current) => (current === anilistId ? null : anilistId))
+  }
+
   const handleListSelect = async (status: AnimeListStatus) => {
     if (!user || !pickerTarget) return
 
@@ -141,33 +157,92 @@ export function QuizResults({ results, onRestart }: QuizResultsProps) {
           const addLabel = libraryStatus
             ? `Dans la liste : ${ANIME_LIST_LABELS[libraryStatus]}. Changer`
             : 'Ajouter à une liste'
+          const poolEntry = poolByAnilistId.get(result.anilistId)
+          const breakdown = poolEntry
+            ? getAffinityBreakdown(poolEntry, answers, askedQuestions)
+            : []
+          const isAffinityExpanded = expandedAffinityId === result.anilistId
+          const affinityDetailsId = `quiz-affinity-${result.anilistId}`
 
           return (
             <li key={result.anilistId} className="quiz-results__item">
-              <span className="quiz-results__rank">#{index + 1}</span>
-              <img className="quiz-results__poster" src={poster} alt="" />
-              <div className="quiz-results__info">
-                <h3>{title}</h3>
-                {result.score > 0 ? (
-                  <p className="quiz-results__score">Affinité : {result.score} pts</p>
-                ) : null}
-                {listFeedback ? (
-                  <p className="quiz-results__list-feedback" role="status">{listFeedback}</p>
-                ) : null}
+              <div className="quiz-results__item-row">
+                <span className="quiz-results__rank">#{index + 1}</span>
+                <img className="quiz-results__poster" src={poster} alt="" />
+                <div className="quiz-results__info">
+                  <h3>{title}</h3>
+                  {result.score > 0 && breakdown.length > 0 ? (
+                    <button
+                      type="button"
+                      className="quiz-results__affinity"
+                      aria-expanded={isAffinityExpanded}
+                      aria-controls={affinityDetailsId}
+                      onClick={() => toggleAffinityDetails(result.anilistId)}
+                    >
+                      <span className="quiz-results__affinity-text">
+                        Affinité : {result.score} pts
+                      </span>
+                      <span className="quiz-results__affinity-more">
+                        {isAffinityExpanded ? 'Masquer' : 'Voir plus'}
+                      </span>
+                    </button>
+                  ) : result.score > 0 ? (
+                    <p className="quiz-results__score">Affinité : {result.score} pts</p>
+                  ) : null}
+                  {listFeedback ? (
+                    <p className="quiz-results__list-feedback" role="status">{listFeedback}</p>
+                  ) : null}
+                </div>
+                <button
+                  type="button"
+                  className="quiz-results__add"
+                  aria-label={addLabel}
+                  onClick={() => openListPicker(result.anilistId, title)}
+                >
+                  <img
+                    src={libraryStatus ? publicAsset('assets/inlist.svg') : publicAsset('assets/adding.svg')}
+                    alt=""
+                    width={40}
+                    height={40}
+                  />
+                </button>
               </div>
-              <button
-                type="button"
-                className="quiz-results__add"
-                aria-label={addLabel}
-                onClick={() => openListPicker(result.anilistId, title)}
-              >
-                <img
-                  src={libraryStatus ? publicAsset('assets/inlist.svg') : publicAsset('assets/adding.svg')}
-                  alt=""
-                  width={40}
-                  height={40}
-                />
-              </button>
+
+              {isAffinityExpanded && breakdown.length > 0 ? (
+                <div
+                  id={affinityDetailsId}
+                  className="quiz-results__breakdown"
+                  role="region"
+                  aria-label={`Détail de l'affinité pour ${title}`}
+                >
+                  <p className="quiz-results__breakdown-title">Détail par carte choisie</p>
+                  <ul className="quiz-results__breakdown-list">
+                    {breakdown.map((item) => (
+                      <li
+                        key={`${result.anilistId}-${item.questionTitle}-${item.choiceLabel}`}
+                        className="quiz-results__breakdown-item"
+                      >
+                        <div className="quiz-results__breakdown-choice">
+                          <p className="quiz-results__breakdown-label">{item.choiceLabel}</p>
+                          <p className="quiz-results__breakdown-question">{item.questionTitle}</p>
+                        </div>
+                        <span
+                          className={
+                            item.points > 0
+                              ? 'quiz-results__breakdown-points'
+                              : 'quiz-results__breakdown-points quiz-results__breakdown-points--zero'
+                          }
+                        >
+                          {item.points > 0 ? `+${item.points} pt${item.points > 1 ? 's' : ''}` : '0 pt'}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="quiz-results__breakdown-total">
+                    Total : <strong>{result.score} pts</strong>
+                  </p>
+                </div>
+              ) : null}
             </li>
           )
         })}

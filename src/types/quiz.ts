@@ -35,4 +35,10 @@ export type ScoredAnime = {
   score: number
 }
 
+export type AffinityBreakdownItem = {
+  questionTitle: string
+  choiceLabel: string
+  points: number
+}
+
 export type QuizPhase = 'quiz' | 'results'

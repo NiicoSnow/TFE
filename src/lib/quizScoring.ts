@@ -1,4 +1,4 @@
-import type { QuizAnimePoolEntry, QuizAnswers, ScoredAnime } from '../types/quiz'
+import type { AffinityBreakdownItem, QuizAnimePoolEntry, QuizAnswers, QuizQuestion, ScoredAnime} from '../types/quiz'
 
 export function scoreAnimeEntry(
   entry: QuizAnimePoolEntry,
@@ -33,4 +33,25 @@ export function rankAnimePool(
   }
 
   return scored.slice(0, limit)
+}
+
+export function getAffinityBreakdown(
+  entry: QuizAnimePoolEntry,
+  answers: QuizAnswers,
+  askedQuestions: QuizQuestion[],
+): AffinityBreakdownItem[] {
+  return askedQuestions.flatMap((question) => {
+    const choiceId = answers[question.id]
+    if (!choiceId) return []
+
+    const choice = question.choices.find((c) => c.id === choiceId)
+
+    return [
+      {
+        questionTitle: question.title,
+        choiceLabel: choice?.label ?? choiceId,
+        points: entry.weights[choiceId] ?? 0,
+      },
+    ]
+  })
 }

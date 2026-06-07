@@ -5,9 +5,11 @@ import { QuizResults } from './QuizResults'
 export function Cards() {
   const {
     phase,
+    questions,
     currentQuestion,
     selectedChoiceId,
     progressLabel,
+    answers,
     results,
     selectChoice,
     restart,
@@ -16,7 +18,14 @@ export function Cards() {
   } = useQuiz()
 
   if (phase === 'results') {
-    return <QuizResults results={results} onRestart={restart} />
+    return (
+      <QuizResults
+        results={results}
+        answers={answers}
+        askedQuestions={questions}
+        onRestart={restart}
+      />
+    )
   }
 
   if (!currentQuestion) {
