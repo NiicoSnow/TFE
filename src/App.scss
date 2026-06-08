@@ -2577,9 +2577,32 @@
 // 12. PAGE — Crédits
 // ===========================================================================
 
+.credits-page {
+  margin-top: 9.6rem;
+  padding-bottom: 20rem;
+}
+
 .credits-page__inner {
   max-width: 72rem;
   margin: 0 auto;
+}
+
+.credits-page__group {
+  margin-bottom: 7.2rem;
+}
+
+.credits-page__group h2 {
+  margin: 0 0 1.2rem;
+  font-size: 2.4rem;
+}
+
+.credits-page__group a,
+.credits-page__group a:visited {
+  display: block;
+  color: var(--text);
+  text-decoration: underline;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
 }
 
 .credits-page__lead {
