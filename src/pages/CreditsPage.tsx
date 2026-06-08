@@ -138,6 +138,9 @@ export function CreditsPage() {
           <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/confirm" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/API/Window/confirm</a>
           <a href="https://react.dev/learn/updating-arrays-in-state" target="_blank" rel="noreferrer">https://react.dev/learn/updating-arrays-in-state</a>
           <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Map</a>
+          <a href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed</a>
+          <a href="https://supabase.com/docs/reference/javascript/maybesingle" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/maybesingle</a>
+          <a href="https://react.dev/learn/passing-props-to-a-component" target="_blank" rel="noreferrer">https://react.dev/learn/passing-props-to-a-component</a>
         </div>
 
         <div className="credits-page__group">
