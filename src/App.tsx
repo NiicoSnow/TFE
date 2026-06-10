@@ -82,7 +82,9 @@ function App() {
             <span></span>
           </button>
           <div ref={menuRef} className={isMenuOpen ? 'nav-links open' : 'nav-links'}>
-            <img src={publicAsset('assets/Cardtaku.svg')} alt="Cardtaku" className="main-nav__logo" />
+            <NavLink to="/" className="main-nav__logo-link" onClick={closeMenu} aria-label="Accueil">
+              <img src={publicAsset('assets/Cardtaku.svg')} alt="" className="main-nav__logo" />
+            </NavLink>
             <div className="nav-links__center">
               <div className="nav-links__group nav-links__group--start">
                 <NavLink to="/" onClick={closeMenu}>

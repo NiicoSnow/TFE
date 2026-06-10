@@ -235,12 +235,24 @@
   scale: 1.05;
 }
 
-.main-nav__logo {
+.main-nav__logo-link {
   flex-shrink: 0;
-  height: 3.2rem;
-  width: auto;
   align-self: center;
   margin-top: 2.4rem;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.main-nav__logo-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.main-nav__logo {
+  display: block;
+  height: 3.2rem;
+  width: auto;
 }
 
 // ===========================================================================
@@ -1388,6 +1400,12 @@
 .home-page__header-title {
   margin-bottom: 3rem;
   margin-top: 0;
+}
+
+.home-page__header-logo {
+  display: block;
+  width: auto;
+  height: 5.1rem;
 }
 
 .home-page__header-buttons {
@@ -2819,8 +2837,11 @@
     display: contents;
   }
 
-  .main-nav__logo {
+  .main-nav__logo-link {
     margin: 0 0 0 2.4rem;
+  }
+
+  .main-nav__logo {
     height: 3.2rem;
   }
 
@@ -3206,6 +3227,10 @@
   .home-page__header-buttons {
     margin-top: 9.6rem;
     max-width: 30rem;
+  }
+
+  .home-page__header-logo {
+    height: 7.2rem;
   }
 
   .tuto h2 {

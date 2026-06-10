@@ -16,7 +16,15 @@ export function HomePage() {
     <main className="home-page">
       <header className="home-page__header grid">
         <div className="home-page__header-content">
-          <h1 className="home-page__header-title">Cardtaku</h1>
+          <h1 className="home-page__header-title">
+            <img
+              className="home-page__header-logo"
+              src={publicAsset('assets/Cardtaku.svg')}
+              alt="Cardtaku"
+              width={148}
+              height={28}
+            />
+          </h1>
           <p>Tu en as marre de ne jamais savoir quoi regarder ? Cardtaku est la solution !
             Grâce à Cardtaku, découvre de nouveaux animes adaptés à tes goûts et à tes envies.
             Ajoute ensuite les animes recommandés dans l’une de tes 4 listes pour les retrouver facilement et organiser tes découvertes !
