@@ -135,6 +135,13 @@ export function getCatalogSectionTitle(config: CatalogSectionProps): string {
   return titles[config.variant]
 }
 
+export function getCatalogSectionSubtitle(config: CatalogSectionProps): string | null {
+  if (config.variant === 'trending-year' || config.variant === 'trending-all-time') {
+    return "Basé sur la note de l'animé"
+  }
+  return null
+}
+
 const EMPTY_MESSAGES: Record<CatalogSectionVariant, string> = {
   'trending-year': 'Aucun anime pour cette année dans le cache.',
   'trending-all-time': 'Aucun anime dans le cache.',

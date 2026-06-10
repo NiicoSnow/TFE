@@ -43,6 +43,10 @@ html {
   background-image: var(--bg-gradient);
 }
 
+.root--plain-bg {
+  background-image: none;
+}
+
 body {
   margin: 0;
   overflow-x: hidden;

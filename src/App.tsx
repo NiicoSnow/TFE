@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { ProfilePage } from './pages/ProfilePage'
 import './App.scss'
@@ -16,9 +16,15 @@ import { MainNavUser } from './components/MainNavUser'
 import { publicAsset } from './lib/publicPath'
 
 function App() {
+  const { pathname } = useLocation()
+  const isSingleAnimePage = /^\/catalogue\/anime\/\d+/.test(pathname)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const backdropRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    document.querySelector('.root')?.classList.toggle('root--no-gradient-bg', isSingleAnimePage)
+  }, [isSingleAnimePage])
 
   const closeMenu = () => {
     if (!isMenuOpen) {

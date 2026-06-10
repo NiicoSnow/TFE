@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { displayTitle, getCatalogSectionEmptyMessage, getCatalogSectionTitle, listForCatalogSection } from '../lib/animeCache'
+import {
+  displayTitle,
+  getCatalogSectionEmptyMessage,
+  getCatalogSectionSubtitle,
+  getCatalogSectionTitle,
+  listForCatalogSection,
+} from '../lib/animeCache'
 import { publicAsset } from '../lib/publicPath'
 import type { CatalogSectionProps } from '../types/catalogSection'
 import type { AnimeCacheSummary } from '../types/animeCache'
@@ -37,6 +43,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
 
   const sectionMax = props.variant === 'similar' ? 5 : SECTION_MAX
   const title = getCatalogSectionTitle(props)
+  const subtitle = getCatalogSectionSubtitle(props)
   const emptyMessage = getCatalogSectionEmptyMessage(props)
   const maxVisible = Math.min(items.length, sectionMax)
   const tag = props.variant === 'tag' ? props.tag : null
@@ -116,7 +123,12 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
     <section className={sectionClassName} aria-busy={loading}>
       <div className={blockClassName}>
         <header className="catalog-theme-section__header">
-          <h2 className="catalog-theme-section__title">{title}</h2>
+          <div className="catalog-theme-section__heading">
+            <h2 className="catalog-theme-section__title">{title}</h2>
+            {subtitle ? (
+              <span className="catalog-theme-section__subtitle">{subtitle}</span>
+            ) : null}
+          </div>
           {canToggleSeeAll ? (
             <button
               type="button"
