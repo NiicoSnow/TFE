@@ -1,29 +1,94 @@
 {
   "animes": [
     {
-      "anilistId": 99423,
-      "title": "Darling in the FranXX",
+      "anilistId": 21711,
+      "title": "91 Days",
       "weights": {
-        "futur": 2,
-        "technoAvancee": 3,
-        "duoInseparable": 2,
-        "epique": 2,
-        "mondeEnGuerre": 2,
-        "ascensionProgressive": 1,
-        "melancolique": 1
+        "sombre": 2,
+        "present": 2,
+        "antiHeros": 2,
+        "brutale": 1,
+        "chuteDuHeros": 1,
+        "mystereProgressif": 1,
+        "mondeRealiste": 1
       }
     },
     {
-      "anilistId": 9253,
-      "title": "Steins;Gate",
+      "anilistId": 20954,
+      "title": "A Silent Voice",
       "weights": {
-        "boucleTemporelle": 3,
+        "melancolique": 2,
+        "philosophique": 1,
         "present": 2,
+        "mondeRealiste": 2,
+        "duoInseparable": 2,
+        "persoNaifQuiEvolue": 2,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 47,
+      "title": "Akira",
+      "weights": {
+        "cyberpunk": 2,
+        "futur": 2,
+        "brutale": 2,
+        "philosophique": 1,
+        "sombre": 2,
+        "technoAvancee": 2,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 6547,
+      "title": "Angel Beats!",
+      "weights": {
         "philosophique": 2,
-        "genieIncompris": 2,
-        "mystereProgressif": 2,
-        "plotTwistFrequent": 2,
-        "intelligence": 2
+        "epique": 1,
+        "groupeSoude": 2,
+        "melancolique": 2,
+        "mondeParallele": 2,
+        "humoristique": 1,
+        "plotTwistFrequent": 1
+      }
+    },
+    {
+      "anilistId": 9989,
+      "title": "Anohana: The Flower We Saw That Day",
+      "weights": {
+        "melancolique": 3,
+        "groupeSoude": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "atmosphereLumineuse": 1,
+        "persoNaifQuiEvolue": 1,
+        "aucuneCreature": 2
+      }
+    },
+    {
+      "anilistId": 11111,
+      "title": "Another",
+      "weights": {
+        "mystereProgressif": 3,
+        "sombre": 2,
+        "present": 2,
+        "plotTwistFrequent": 1,
+        "groupeSoude": 1,
+        "mondeRealiste": 1,
+        "brutale": 1
+      }
+    },
+    {
+      "anilistId": 20755,
+      "title": "Assassination Classroom",
+      "weights": {
+        "humoristique": 2,
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "epique": 1,
+        "persoNaifQuiEvolue": 1,
+        "mondeEnPaixFragile": 1
       }
     },
     {
@@ -35,34 +100,164 @@
         "brutale": 2,
         "epique": 2,
         "ascensionProgressive": 2,
-        "chuteDuHeros": 1,
-        "forceBrute": 1
+        "mystereProgressif": 2,
+        "chuteDuHeros": 1
       }
     },
     {
-      "anilistId": 140960,
-      "title": "Spy x Family",
+      "anilistId": 2251,
+      "title": "Baccano!",
       "weights": {
-        "humoristique": 3,
-        "mondeEnPaixFragile": 2,
+        "multiPdv": 3,
+        "plotTwistFrequent": 2,
+        "brutale": 1,
+        "humoristique": 1,
+        "present": 1,
+        "groupeSoude": 1,
+        "mystereProgressif": 1
+      }
+    },
+    {
+      "anilistId": 5081,
+      "title": "Bakemonogatari",
+      "weights": {
+        "mystereProgressif": 2,
+        "philosophique": 1,
+        "humoristique": 1,
+        "present": 1,
+        "vampire": 1,
+        "mondeMagiqueCache": 2,
+        "duoInseparable": 1
+      }
+    },
+    {
+      "anilistId": 100388,
+      "title": "BANANA FISH",
+      "weights": {
+        "sombre": 2,
+        "brutale": 2,
         "duoInseparable": 2,
         "present": 2,
-        "groupeSoude": 1,
-        "atmosphereLumineuse": 2,
-        "aucuneCreature": 1
+        "mondeRealiste": 1,
+        "epique": 1,
+        "chuteDuHeros": 1
       }
     },
     {
-      "anilistId": 154587,
-      "title": "Frieren: Beyond Journey's End",
+      "anilistId": 107660,
+      "title": "BEASTARS",
       "weights": {
-        "voyageInitiatique": 3,
-        "melancolique": 2,
-        "magie": 2,
+        "philosophique": 2,
+        "mondeRealiste": 1,
+        "present": 1,
+        "duoInseparable": 2,
+        "mystereProgressif": 1,
+        "brutale": 1,
+        "melancolique": 1
+      }
+    },
+    {
+      "anilistId": 33,
+      "title": "Berserk",
+      "weights": {
+        "sombre": 3,
+        "brutale": 3,
+        "epique": 2,
+        "chuteDuHeros": 2,
         "moyenAge": 2,
-        "philosophique": 1,
-        "chill": 2,
-        "persoNaifQuiEvolue": 1
+        "antiHeros": 2,
+        "philosophique": 1
+      }
+    },
+    {
+      "anilistId": 97940,
+      "title": "Black Clover",
+      "weights": {
+        "ascensionProgressive": 3,
+        "magie": 2,
+        "groupeSoude": 2,
+        "epique": 1,
+        "persoNaifQuiEvolue": 2,
+        "herosPur": 1,
+        "moyenAge": 1
+      }
+    },
+    {
+      "anilistId": 889,
+      "title": "Black Lagoon",
+      "weights": {
+        "brutale": 3,
+        "sombre": 2,
+        "groupeSoude": 1,
+        "present": 2,
+        "antiHeros": 2,
+        "intelligence": 1,
+        "mondeEnGuerre": 1
+      }
+    },
+    {
+      "anilistId": 269,
+      "title": "Bleach",
+      "weights": {
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "forceBrute": 2,
+        "groupeSoude": 1,
+        "mondeMagiqueCache": 2,
+        "herosPur": 1,
+        "present": 1
+      }
+    },
+    {
+      "anilistId": 9919,
+      "title": "Blue Exorcist",
+      "weights": {
+        "magie": 2,
+        "duoInseparable": 1,
+        "ascensionProgressive": 2,
+        "present": 1,
+        "groupeSoude": 1,
+        "herosPur": 1,
+        "mondeMagiqueCache": 2
+      }
+    },
+    {
+      "anilistId": 137822,
+      "title": "BLUE LOCK",
+      "weights": {
+        "ascensionProgressive": 2,
+        "objectifUnique": 3,
+        "intelligence": 1,
+        "present": 2,
+        "epique": 1,
+        "groupeSoude": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 130003,
+      "title": "BOCCHI THE ROCK!",
+      "weights": {
+        "humoristique": 2,
+        "melancolique": 1,
+        "present": 2,
+        "groupeSoude": 2,
+        "mondeRealiste": 2,
+        "persoNaifQuiEvolue": 2,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 21311,
+      "title": "Bungo Stray Dogs",
+      "weights": {
+        "groupeSoude": 2,
+        "mystereProgressif": 2,
+        "present": 1,
+        "forceBrute": 1,
+        "magie": 1,
+        "epique": 1,
+        "duoInseparable": 1
       }
     },
     {
@@ -72,35 +267,920 @@
         "sombre": 2,
         "brutale": 2,
         "antiHeros": 2,
-        "mondeEnGuerre": 1,
         "forceBrute": 2,
-        "monstreGigantesque": 1,
-        "present": 1
+        "present": 1,
+        "mondeEnGuerre": 1,
+        "monstreGigantesque": 1
       }
     },
     {
-      "anilistId": 20665,
-      "title": "Your Lie in April",
+      "anilistId": 20997,
+      "title": "Charlotte",
+      "weights": {
+        "groupeSoude": 2,
+        "present": 2,
+        "plotTwistFrequent": 2,
+        "ascensionProgressive": 1,
+        "melancolique": 1,
+        "philosophique": 1,
+        "herosPur": 1
+      }
+    },
+    {
+      "anilistId": 10800,
+      "title": "Chihayafuru",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "objectifUnique": 2,
+        "duoInseparable": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 4181,
+      "title": "Clannad: After Story",
       "weights": {
         "melancolique": 3,
+        "duoInseparable": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "philosophique": 1,
+        "atmosphereLumineuse": 1,
+        "chuteDuHeros": 1
+      }
+    },
+    {
+      "anilistId": 1575,
+      "title": "Code Geass: Lelouch of the Rebellion",
+      "weights": {
+        "intelligence": 3,
+        "plotTwistFrequent": 2,
+        "epique": 2,
+        "antiHeros": 2,
+        "futur": 1,
+        "mondeEnGuerre": 2,
+        "genieIncompris": 1
+      }
+    },
+    {
+      "anilistId": 1,
+      "title": "Cowboy Bebop",
+      "weights": {
         "chill": 2,
+        "duoInseparable": 1,
+        "futur": 2,
+        "philosophique": 1,
+        "groupeSoude": 1,
+        "melancolique": 2,
+        "voyageInitiatique": 1
+      }
+    },
+    {
+      "anilistId": 120377,
+      "title": "Cyberpunk: Edgerunners",
+      "weights": {
+        "cyberpunk": 3,
+        "futur": 2,
+        "sombre": 2,
+        "brutale": 2,
+        "technoAvancee": 2,
+        "duoInseparable": 1,
+        "chuteDuHeros": 2
+      }
+    },
+    {
+      "anilistId": 11843,
+      "title": "Daily Lives of High School Boys",
+      "weights": {
+        "humoristique": 3,
+        "present": 2,
+        "groupeSoude": 2,
+        "mondeRealiste": 2,
+        "aucunPouvoir": 2,
+        "chill": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 171018,
+      "title": "DAN DA DAN",
+      "weights": {
+        "humoristique": 2,
+        "brutale": 1,
+        "present": 2,
+        "duoInseparable": 2,
+        "atmosphereLumineuse": 1,
+        "monstreGigantesque": 1,
+        "ascensionProgressive": 1
+      }
+    },
+    {
+      "anilistId": 99423,
+      "title": "DARLING in the FRANXX",
+      "weights": {
+        "futur": 2,
+        "technoAvancee": 3,
+        "duoInseparable": 2,
+        "epique": 2,
+        "mondeEnGuerre": 2,
+        "ascensionProgressive": 1,
+        "melancolique": 1
+      }
+    },
+    {
+      "anilistId": 1535,
+      "title": "Death Note",
+      "weights": {
+        "intelligence": 3,
+        "mystereProgressif": 2,
+        "sombre": 2,
+        "plotTwistFrequent": 2,
+        "genieIncompris": 2,
+        "present": 2,
+        "antiHeros": 1
+      }
+    },
+    {
+      "anilistId": 20931,
+      "title": "Death Parade",
+      "weights": {
+        "philosophique": 3,
+        "mystereProgressif": 2,
+        "mondeParallele": 2,
+        "sombre": 1,
+        "multiPdv": 1,
+        "present": 1,
+        "plotTwistFrequent": 1
+      }
+    },
+    {
+      "anilistId": 153518,
+      "title": "Delicious in Dungeon",
+      "weights": {
+        "humoristique": 2,
+        "voyageInitiatique": 2,
+        "groupeSoude": 2,
+        "moyenAge": 2,
+        "magie": 1,
+        "creatureMignonne": 1,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 101922,
+      "title": "Demon Slayer: Kimetsu no Yaiba",
+      "weights": {
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "herosPur": 2,
+        "groupeSoude": 1,
+        "brutale": 1,
+        "moyenAge": 1,
+        "forceBrute": 1
+      }
+    },
+    {
+      "anilistId": 98460,
+      "title": "Devilman Crybaby",
+      "weights": {
+        "sombre": 3,
+        "brutale": 2,
+        "philosophique": 2,
+        "present": 1,
+        "chuteDuHeros": 2,
+        "monstreGigantesque": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 105333,
+      "title": "Dr. STONE",
+      "weights": {
+        "intelligence": 3,
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "postapo": 2,
+        "present": 1,
+        "humoristique": 1,
+        "objectifUnique": 2
+      }
+    },
+    {
+      "anilistId": 813,
+      "title": "Dragon Ball Z",
+      "weights": {
+        "forceBrute": 3,
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "humoristique": 1,
+        "groupeSoude": 1,
+        "herosPur": 1,
+        "objectifUnique": 1
+      }
+    },
+    {
+      "anilistId": 6746,
+      "title": "Durarara!!",
+      "weights": {
+        "mystereProgressif": 2,
+        "multiPdv": 2,
+        "present": 2,
+        "groupeSoude": 1,
+        "plotTwistFrequent": 1,
+        "mondeRealiste": 1,
+        "humoristique": 1
+      }
+    },
+    {
+      "anilistId": 21234,
+      "title": "ERASED",
+      "weights": {
+        "mystereProgressif": 2,
+        "boucleTemporelle": 1,
+        "present": 2,
+        "sombre": 1,
+        "duoInseparable": 1,
+        "mondeRealiste": 2,
+        "plotTwistFrequent": 2
+      }
+    },
+    {
+      "anilistId": 790,
+      "title": "Ergo Proxy",
+      "weights": {
+        "postapo": 2,
+        "philosophique": 2,
+        "sombre": 2,
+        "mystereProgressif": 2,
+        "futur": 1,
+        "antiHeros": 1,
+        "zombie": 1
+      }
+    },
+    {
+      "anilistId": 6702,
+      "title": "Fairy Tail",
+      "weights": {
+        "magie": 2,
+        "groupeSoude": 3,
+        "ascensionProgressive": 1,
+        "epique": 1,
+        "humoristique": 1,
+        "herosPur": 1,
+        "moyenAge": 1
+      }
+    },
+    {
+      "anilistId": 105310,
+      "title": "Fire Force",
+      "weights": {
+        "forceBrute": 2,
+        "groupeSoude": 2,
+        "present": 1,
+        "epique": 1,
+        "humoristique": 1,
+        "ascensionProgressive": 1,
+        "magie": 1
+      }
+    },
+    {
+      "anilistId": 227,
+      "title": "FLCL",
+      "weights": {
+        "humoristique": 2,
+        "philosophique": 1,
+        "persoNaifQuiEvolue": 2,
+        "present": 1,
+        "plotTwistFrequent": 2,
+        "atmosphereLumineuse": 1,
+        "technoAvancee": 1
+      }
+    },
+    {
+      "anilistId": 20923,
+      "title": "Food Wars!",
+      "weights": {
+        "humoristique": 2,
+        "ascensionProgressive": 2,
+        "present": 2,
+        "groupeSoude": 1,
+        "epique": 1,
+        "atmosphereLumineuse": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 18507,
+      "title": "Free! -Iwatobi Swim Club-",
+      "weights": {
+        "groupeSoude": 2,
+        "present": 2,
+        "atmosphereLumineuse": 2,
+        "ascensionProgressive": 1,
+        "mondeRealiste": 2,
+        "aucunPouvoir": 2,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 154587,
+      "title": "Frieren: Beyond Journey’s End",
+      "weights": {
+        "voyageInitiatique": 3,
+        "melancolique": 2,
+        "magie": 2,
+        "moyenAge": 2,
+        "chill": 2,
+        "philosophique": 1,
+        "persoNaifQuiEvolue": 1
+      }
+    },
+    {
+      "anilistId": 105334,
+      "title": "Fruits Basket (2019)",
+      "weights": {
+        "melancolique": 1,
+        "humoristique": 1,
+        "groupeSoude": 2,
+        "present": 2,
+        "persoNaifQuiEvolue": 2,
+        "atmosphereLumineuse": 1,
+        "mondeRealiste": 1
+      }
+    },
+    {
+      "anilistId": 5114,
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "weights": {
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "groupeSoude": 2,
+        "mondeEnGuerre": 2,
+        "philosophique": 1,
+        "herosPur": 2,
+        "magie": 1
+      }
+    },
+    {
+      "anilistId": 467,
+      "title": "Ghost in the Shell: Stand Alone Complex",
+      "weights": {
+        "cyberpunk": 2,
+        "futur": 2,
+        "philosophique": 2,
+        "intelligence": 2,
+        "technoAvancee": 2,
+        "mystereProgressif": 1,
+        "groupeSoude": 1
+      }
+    },
+    {
+      "anilistId": 9969,
+      "title": "Gintama Season 2",
+      "weights": {
+        "humoristique": 3,
+        "present": 2,
+        "groupeSoude": 2,
+        "epique": 1,
+        "antiHeros": 1,
+        "ascensionProgressive": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 99420,
+      "title": "Girls' Last Tour",
+      "weights": {
+        "postapo": 3,
+        "philosophique": 2,
+        "chill": 2,
+        "duoInseparable": 2,
+        "melancolique": 2,
+        "voyageInitiatique": 1,
+        "aucuneCreature": 1
+      }
+    },
+    {
+      "anilistId": 108430,
+      "title": "given",
+      "weights": {
+        "melancolique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "chill": 1,
+        "persoNaifQuiEvolue": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 100922,
+      "title": "Grand Blue Dreaming",
+      "weights": {
+        "humoristique": 3,
+        "groupeSoude": 2,
+        "present": 2,
+        "atmosphereLumineuse": 1,
+        "mondeRealiste": 1,
+        "aucunPouvoir": 2,
+        "duoInseparable": 1
+      }
+    },
+    {
+      "anilistId": 110349,
+      "title": "Great Pretender",
+      "weights": {
+        "humoristique": 2,
+        "plotTwistFrequent": 2,
+        "groupeSoude": 1,
+        "present": 2,
+        "intelligence": 2,
+        "voyageInitiatique": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 245,
+      "title": "GTO: Great Teacher Onizuka",
+      "weights": {
+        "humoristique": 3,
+        "present": 2,
+        "groupeSoude": 1,
+        "mondeRealiste": 2,
+        "atmosphereLumineuse": 1,
+        "herosPur": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 2001,
+      "title": "Gurren Lagann",
+      "weights": {
+        "epique": 3,
+        "ascensionProgressive": 2,
+        "forceBrute": 2,
+        "humoristique": 1,
+        "groupeSoude": 2,
+        "futur": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 20464,
+      "title": "HAIKYU!!",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "atmosphereLumineuse": 2,
         "mondeRealiste": 2,
         "present": 2,
+        "epique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 263,
+      "title": "Hajime no Ippo: The Fighting!",
+      "weights": {
+        "ascensionProgressive": 3,
+        "present": 2,
+        "mondeRealiste": 2,
+        "forceBrute": 1,
+        "persoNaifQuiEvolue": 2,
+        "epique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 128893,
+      "title": "Hell’s Paradise",
+      "weights": {
+        "brutale": 2,
+        "ascensionProgressive": 2,
+        "mystereProgressif": 1,
+        "groupeSoude": 1,
+        "epique": 1,
+        "moyenAge": 1,
+        "forceBrute": 2
+      }
+    },
+    {
+      "anilistId": 777,
+      "title": "Hellsing Ultimate",
+      "weights": {
+        "brutale": 3,
+        "sombre": 2,
+        "vampire": 3,
+        "forceBrute": 1,
+        "antiHeros": 1,
+        "epique": 1,
+        "mondeEnGuerre": 1
+      }
+    },
+    {
+      "anilistId": 124080,
+      "title": "Horimiya",
+      "weights": {
+        "humoristique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 2,
+        "persoNaifQuiEvolue": 1,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 11061,
+      "title": "Hunter x Hunter (2011)",
+      "weights": {
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "groupeSoude": 2,
+        "persoNaifQuiEvolue": 2,
+        "mystereProgressif": 1,
+        "forceBrute": 1,
+        "mondeMagiqueCache": 1
+      }
+    },
+    {
+      "anilistId": 12189,
+      "title": "Hyouka",
+      "weights": {
+        "mystereProgressif": 2,
+        "chill": 2,
+        "intelligence": 2,
+        "present": 2,
+        "mondeRealiste": 2,
         "duoInseparable": 1,
         "atmosphereLumineuse": 1
       }
     },
     {
-      "anilistId": 21,
-      "title": "One Piece",
+      "anilistId": 20735,
+      "title": "I Can't Understand What My Husband Is Saying",
+      "weights": {
+        "chill": 3,
+        "voyageInitiatique": 1,
+        "persoNaifQuiEvolue": 2,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 1,
+        "humoristique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 185,
+      "title": "Initial D 1st Stage",
+      "weights": {
+        "ascensionProgressive": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "objectifUnique": 2,
+        "chill": 1,
+        "duoInseparable": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 249,
+      "title": "InuYasha",
+      "weights": {
+        "voyageInitiatique": 2,
+        "magie": 1,
+        "duoInseparable": 2,
+        "ascensionProgressive": 1,
+        "epique": 1,
+        "moyenAge": 1,
+        "humoristique": 1
+      }
+    },
+    {
+      "anilistId": 20474,
+      "title": "JoJo's Bizarre Adventure: Stardust Crusaders",
+      "weights": {
+        "voyageInitiatique": 2,
+        "epique": 2,
+        "groupeSoude": 2,
+        "forceBrute": 1,
+        "plotTwistFrequent": 2,
+        "humoristique": 1,
+        "herosPur": 1
+      }
+    },
+    {
+      "anilistId": 113415,
+      "title": "JUJUTSU KAISEN",
+      "weights": {
+        "ascensionProgressive": 2,
+        "brutale": 2,
+        "epique": 2,
+        "forceBrute": 2,
+        "present": 1,
+        "groupeSoude": 2,
+        "mondeMagiqueCache": 1
+      }
+    },
+    {
+      "anilistId": 7791,
+      "title": "K-ON! Season 2",
+      "weights": {
+        "chill": 3,
+        "humoristique": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 101921,
+      "title": "Kaguya-sama: Love is War",
+      "weights": {
+        "humoristique": 3,
+        "intelligence": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "plotTwistFrequent": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 153288,
+      "title": "Kaiju No. 8",
+      "weights": {
+        "ascensionProgressive": 2,
+        "forceBrute": 2,
+        "monstreGigantesque": 2,
+        "present": 1,
+        "groupeSoude": 1,
+        "epique": 1,
+        "humoristique": 1
+      }
+    },
+    {
+      "anilistId": 18679,
+      "title": "Kill la Kill",
+      "weights": {
+        "epique": 2,
+        "humoristique": 2,
+        "forceBrute": 2,
+        "ascensionProgressive": 1,
+        "plotTwistFrequent": 1,
+        "groupeSoude": 1,
+        "present": 1
+      }
+    },
+    {
+      "anilistId": 21202,
+      "title": "KONOSUBA -God's blessing on this wonderful world!",
+      "weights": {
+        "humoristique": 3,
+        "mondeParallele": 2,
+        "groupeSoude": 2,
+        "magie": 1,
+        "atmosphereLumineuse": 2,
+        "persoNaifQuiEvolue": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 11771,
+      "title": "Kuroko's Basketball",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "epique": 1,
+        "objectifUnique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 98444,
+      "title": "Laid-Back Camp",
+      "weights": {
+        "chill": 3,
+        "groupeSoude": 2,
+        "voyageInitiatique": 1,
+        "present": 2,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 98707,
+      "title": "Land of the Lustrous",
+      "weights": {
+        "philosophique": 2,
+        "melancolique": 2,
+        "ascensionProgressive": 1,
+        "groupeSoude": 1,
+        "futur": 1,
+        "magie": 1,
+        "sombre": 1
+      }
+    },
+    {
+      "anilistId": 820,
+      "title": "Legend of the Galactic Heroes",
+      "weights": {
+        "epique": 3,
+        "philosophique": 2,
+        "multiPdv": 2,
+        "mondeEnGuerre": 3,
+        "futur": 2,
+        "intelligence": 2,
+        "plotTwistFrequent": 1
+      }
+    },
+    {
+      "anilistId": 17265,
+      "title": "Log Horizon",
+      "weights": {
+        "simulationVirtuel": 3,
+        "intelligence": 2,
+        "groupeSoude": 2,
+        "mondeParallele": 1,
+        "ascensionProgressive": 1,
+        "present": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 143270,
+      "title": "Lycoris Recoil",
+      "weights": {
+        "duoInseparable": 2,
+        "present": 2,
+        "humoristique": 1,
+        "brutale": 1,
+        "atmosphereLumineuse": 1,
+        "groupeSoude": 1,
+        "mondeEnPaixFragile": 1
+      }
+    },
+    {
+      "anilistId": 97986,
+      "title": "Made in Abyss",
+      "weights": {
+        "voyageInitiatique": 2,
+        "mystereProgressif": 2,
+        "sombre": 2,
+        "duoInseparable": 2,
+        "persoNaifQuiEvolue": 2,
+        "epique": 1,
+        "mondeMagiqueCache": 1
+      }
+    },
+    {
+      "anilistId": 14513,
+      "title": "Magi: The Labyrinth of Magic",
+      "weights": {
+        "magie": 2,
+        "voyageInitiatique": 2,
+        "epique": 2,
+        "ascensionProgressive": 1,
+        "groupeSoude": 2,
+        "moyenAge": 1,
+        "herosPur": 1
+      }
+    },
+    {
+      "anilistId": 21366,
+      "title": "March comes in like a lion",
+      "weights": {
+        "melancolique": 2,
+        "chill": 2,
+        "ascensionProgressive": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "persoNaifQuiEvolue": 2,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 100298,
+      "title": "Megalobox",
+      "weights": {
+        "ascensionProgressive": 2,
+        "postapo": 1,
+        "futur": 1,
+        "forceBrute": 2,
+        "epique": 1,
+        "antiHeros": 1,
+        "mondeEnGuerre": 1
+      }
+    },
+    {
+      "anilistId": 21507,
+      "title": "Mob Psycho 100",
+      "weights": {
+        "ascensionProgressive": 2,
+        "atmosphereLumineuse": 2,
+        "humoristique": 2,
+        "magie": 2,
+        "persoNaifQuiEvolue": 2,
+        "groupeSoude": 1,
+        "present": 1
+      }
+    },
+    {
+      "anilistId": 19,
+      "title": "Monster",
+      "weights": {
+        "mystereProgressif": 3,
+        "sombre": 2,
+        "philosophique": 2,
+        "intelligence": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "multiPdv": 1
+      }
+    },
+    {
+      "anilistId": 457,
+      "title": "MUSHI-SHI",
+      "weights": {
+        "chill": 3,
+        "voyageInitiatique": 2,
+        "philosophique": 1,
+        "moyenAge": 1,
+        "atmosphereLumineuse": 1,
+        "aucuneCreature": 1,
+        "magie": 1
+      }
+    },
+    {
+      "anilistId": 127720,
+      "title": "Mushoku Tensei: Jobless Reincarnation Cour 2",
+      "weights": {
+        "ascensionProgressive": 2,
+        "mondeParallele": 2,
+        "magie": 2,
+        "persoNaifQuiEvolue": 2,
+        "epique": 1,
+        "voyageInitiatique": 1,
+        "philosophique": 1
+      }
+    },
+    {
+      "anilistId": 21459,
+      "title": "My Hero Academia",
       "weights": {
         "ascensionProgressive": 3,
-        "epique": 3,
+        "herosPur": 2,
         "groupeSoude": 2,
-        "voyageInitiatique": 2,
+        "epique": 1,
+        "present": 1,
+        "forceBrute": 1,
+        "mondeEnPaixFragile": 1
+      }
+    },
+    {
+      "anilistId": 14813,
+      "title": "My Teen Romantic Comedy SNAFU",
+      "weights": {
+        "philosophique": 2,
         "humoristique": 1,
-        "objectifUnique": 2,
-        "forceBrute": 1
+        "present": 2,
+        "mondeRealiste": 2,
+        "groupeSoude": 1,
+        "melancolique": 1,
+        "persoNaifQuiEvolue": 2
+      }
+    },
+    {
+      "anilistId": 877,
+      "title": "NANA",
+      "weights": {
+        "melancolique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "groupeSoude": 1,
+        "philosophique": 1,
+        "chuteDuHeros": 1
+      }
+    },
+    {
+      "anilistId": 20,
+      "title": "Naruto",
+      "weights": {
+        "ascensionProgressive": 3,
+        "groupeSoude": 2,
+        "persoNaifQuiEvolue": 2,
+        "epique": 2,
+        "objectifUnique": 1,
+        "forceBrute": 1,
+        "mondeEnGuerre": 1
       }
     },
     {
@@ -117,16 +1197,679 @@
       }
     },
     {
-      "anilistId": 101922,
-      "title": "Mob Psycho 100",
+      "anilistId": 10165,
+      "title": "Nichijou - My Ordinary Life",
+      "weights": {
+        "humoristique": 3,
+        "present": 2,
+        "groupeSoude": 2,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 1,
+        "chill": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 19815,
+      "title": "No Game, No Life",
+      "weights": {
+        "intelligence": 3,
+        "mondeParallele": 2,
+        "duoInseparable": 2,
+        "humoristique": 1,
+        "simulationVirtuel": 1,
+        "epique": 1,
+        "magie": 1
+      }
+    },
+    {
+      "anilistId": 20447,
+      "title": "Noragami",
+      "weights": {
+        "magie": 2,
+        "duoInseparable": 2,
+        "humoristique": 1,
+        "ascensionProgressive": 1,
+        "present": 1,
+        "divinite": 2,
+        "mondeMagiqueCache": 2
+      }
+    },
+    {
+      "anilistId": 128547,
+      "title": "ODDTAXI",
+      "weights": {
+        "mystereProgressif": 3,
+        "present": 2,
+        "mondeRealiste": 2,
+        "plotTwistFrequent": 2,
+        "humoristique": 1,
+        "multiPdv": 1,
+        "intelligence": 1
+      }
+    },
+    {
+      "anilistId": 21,
+      "title": "ONE PIECE",
+      "weights": {
+        "ascensionProgressive": 3,
+        "epique": 3,
+        "groupeSoude": 2,
+        "voyageInitiatique": 2,
+        "objectifUnique": 2,
+        "humoristique": 1,
+        "forceBrute": 1
+      }
+    },
+    {
+      "anilistId": 21087,
+      "title": "One-Punch Man",
+      "weights": {
+        "humoristique": 3,
+        "forceBrute": 2,
+        "antiHeros": 1,
+        "present": 2,
+        "epique": 1,
+        "ascensionProgressive": 1,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 150672,
+      "title": "Oshi No Ko",
+      "weights": {
+        "mystereProgressif": 2,
+        "plotTwistFrequent": 2,
+        "present": 2,
+        "sombre": 1,
+        "mondeRealiste": 1,
+        "ascensionProgressive": 1,
+        "philosophique": 1
+      }
+    },
+    {
+      "anilistId": 20832,
+      "title": "Overlord",
+      "weights": {
+        "antiHeros": 3,
+        "mondeParallele": 2,
+        "magie": 2,
+        "ascensionProgressive": 1,
+        "epique": 1,
+        "intelligence": 1,
+        "groupeSoude": 1
+      }
+    },
+    {
+      "anilistId": 20623,
+      "title": "Parasyte -the maxim-",
+      "weights": {
+        "sombre": 2,
+        "philosophique": 2,
+        "brutale": 2,
+        "present": 2,
+        "antiHeros": 1,
+        "mystereProgressif": 1,
+        "aucuneCreature": 1
+      }
+    },
+    {
+      "anilistId": 99693,
+      "title": "PERSONA5 the Animation",
       "weights": {
         "ascensionProgressive": 2,
-        "atmosphereLumineuse": 2,
-        "humoristique": 2,
-        "aucunPouvoir": 1,
+        "mondeParallele": 2,
+        "antiHeros": 1,
+        "groupeSoude": 1,
+        "epique": 1,
+        "persoNaifQuiEvolue": 1,
+        "magie": 1
+      }
+    },
+    {
+      "anilistId": 20607,
+      "title": "Ping Pong the Animation",
+      "weights": {
+        "ascensionProgressive": 2,
+        "philosophique": 1,
+        "present": 2,
+        "mondeRealiste": 2,
+        "duoInseparable": 1,
+        "chill": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 329,
+      "title": "Planetes",
+      "weights": {
+        "philosophique": 2,
+        "futur": 2,
+        "groupeSoude": 2,
+        "chill": 1,
+        "present": 1,
+        "mondeRealiste": 1,
+        "technoAvancee": 1
+      }
+    },
+    {
+      "anilistId": 20872,
+      "title": "Plastic Memories",
+      "weights": {
+        "melancolique": 3,
+        "duoInseparable": 2,
+        "futur": 1,
+        "present": 1,
+        "philosophique": 1,
+        "mondeRealiste": 1,
+        "chuteDuHeros": 1
+      }
+    },
+    {
+      "anilistId": 13601,
+      "title": "PSYCHO-PASS",
+      "weights": {
+        "cyberpunk": 2,
+        "futur": 2,
+        "philosophique": 2,
+        "sombre": 2,
+        "intelligence": 2,
+        "mondeEnGuerre": 1,
+        "technoAvancee": 2
+      }
+    },
+    {
+      "anilistId": 9756,
+      "title": "Puella Magi Madoka Magica",
+      "weights": {
         "magie": 2,
+        "sombre": 3,
+        "philosophique": 2,
+        "plotTwistFrequent": 2,
+        "chuteDuHeros": 2,
         "groupeSoude": 1,
         "present": 1
+      }
+    },
+    {
+      "anilistId": 113717,
+      "title": "Ranking of Kings",
+      "weights": {
+        "persoNaifQuiEvolue": 3,
+        "ascensionProgressive": 2,
+        "epique": 1,
+        "moyenAge": 2,
+        "atmosphereLumineuse": 2,
+        "herosPur": 1,
+        "voyageInitiatique": 1
+      }
+    },
+    {
+      "anilistId": 101291,
+      "title": "Rascal Does Not Dream of Bunny Girl Senpai",
+      "weights": {
+        "philosophique": 2,
+        "mystereProgressif": 2,
+        "present": 2,
+        "duoInseparable": 2,
+        "mondeRealiste": 1,
+        "melancolique": 1,
+        "persoNaifQuiEvolue": 1
+      }
+    },
+    {
+      "anilistId": 21355,
+      "title": "Re:ZERO -Starting Life in Another World-",
+      "weights": {
+        "boucleTemporelle": 2,
+        "ascensionProgressive": 2,
+        "mystereProgressif": 2,
+        "sombre": 1,
+        "mondeParallele": 2,
+        "persoNaifQuiEvolue": 2,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 101903,
+      "title": "Run with the Wind",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 3,
+        "present": 2,
+        "mondeRealiste": 2,
+        "objectifUnique": 1,
+        "epique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 205,
+      "title": "Samurai Champloo",
+      "weights": {
+        "voyageInitiatique": 3,
+        "duoInseparable": 1,
+        "groupeSoude": 2,
+        "humoristique": 1,
+        "moyenAge": 1,
+        "epique": 1,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 339,
+      "title": "Serial Experiments Lain",
+      "weights": {
+        "philosophique": 3,
+        "cyberpunk": 2,
+        "mystereProgressif": 2,
+        "sombre": 2,
+        "present": 1,
+        "simulationVirtuel": 2,
+        "genieIncompris": 1
+      }
+    },
+    {
+      "anilistId": 20972,
+      "title": "Showa Genroku Rakugo Shinju",
+      "weights": {
+        "melancolique": 2,
+        "philosophique": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "multiPdv": 1,
+        "chuteDuHeros": 1,
+        "duoInseparable": 1
+      }
+    },
+    {
+      "anilistId": 170,
+      "title": "Slam Dunk",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "humoristique": 1,
+        "epique": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 151807,
+      "title": "Solo Leveling",
+      "weights": {
+        "ascensionProgressive": 3,
+        "forceBrute": 2,
+        "epique": 2,
+        "antiHeros": 1,
+        "present": 1,
+        "mondeMagiqueCache": 1,
+        "herosPur": 1
+      }
+    },
+    {
+      "anilistId": 132126,
+      "title": "Sonny Boy",
+      "weights": {
+        "philosophique": 2,
+        "mondeParallele": 2,
+        "mystereProgressif": 2,
+        "groupeSoude": 2,
+        "chill": 1,
+        "persoNaifQuiEvolue": 1,
+        "simulationVirtuel": 1
+      }
+    },
+    {
+      "anilistId": 3588,
+      "title": "Soul Eater",
+      "weights": {
+        "magie": 2,
+        "groupeSoude": 2,
+        "humoristique": 1,
+        "ascensionProgressive": 1,
+        "forceBrute": 1,
+        "present": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 199,
+      "title": "Spirited Away",
+      "weights": {
+        "voyageInitiatique": 2,
+        "magie": 2,
+        "persoNaifQuiEvolue": 2,
+        "divinite": 1,
+        "creatureMignonne": 1,
+        "mondeMagiqueCache": 2,
+        "atmosphereLumineuse": 1
+      }
+    },
+    {
+      "anilistId": 140960,
+      "title": "SPY x FAMILY",
+      "weights": {
+        "humoristique": 3,
+        "mondeEnPaixFragile": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "atmosphereLumineuse": 2,
+        "aucuneCreature": 1,
+        "groupeSoude": 1
+      }
+    },
+    {
+      "anilistId": 9253,
+      "title": "Steins;Gate",
+      "weights": {
+        "boucleTemporelle": 3,
+        "present": 2,
+        "philosophique": 2,
+        "genieIncompris": 2,
+        "mystereProgressif": 2,
+        "plotTwistFrequent": 2,
+        "intelligence": 2
+      }
+    },
+    {
+      "anilistId": 21127,
+      "title": "Steins;Gate 0",
+      "weights": {
+        "boucleTemporelle": 3,
+        "sombre": 2,
+        "philosophique": 2,
+        "present": 2,
+        "genieIncompris": 2,
+        "melancolique": 2,
+        "plotTwistFrequent": 1
+      }
+    },
+    {
+      "anilistId": 129201,
+      "title": "Summer Time Rendering",
+      "weights": {
+        "mystereProgressif": 2,
+        "boucleTemporelle": 2,
+        "plotTwistFrequent": 2,
+        "present": 1,
+        "duoInseparable": 1,
+        "sombre": 1,
+        "ascensionProgressive": 1
+      }
+    },
+    {
+      "anilistId": 142770,
+      "title": "Suzume",
+      "weights": {
+        "voyageInitiatique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "epique": 1,
+        "atmosphereLumineuse": 1,
+        "persoNaifQuiEvolue": 1,
+        "divinite": 1
+      }
+    },
+    {
+      "anilistId": 11757,
+      "title": "Sword Art Online",
+      "weights": {
+        "simulationVirtuel": 3,
+        "ascensionProgressive": 2,
+        "epique": 1,
+        "duoInseparable": 1,
+        "present": 1,
+        "futur": 1,
+        "groupeSoude": 1
+      }
+    },
+    {
+      "anilistId": 20661,
+      "title": "Terror in Resonance",
+      "weights": {
+        "mystereProgressif": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "philosophique": 1,
+        "sombre": 1,
+        "intelligence": 2,
+        "plotTwistFrequent": 1
+      }
+    },
+    {
+      "anilistId": 26,
+      "title": "Texhnolyze",
+      "weights": {
+        "sombre": 3,
+        "philosophique": 2,
+        "postapo": 1,
+        "cyberpunk": 1,
+        "chuteDuHeros": 2,
+        "brutale": 1,
+        "mystereProgressif": 1
+      }
+    },
+    {
+      "anilistId": 101280,
+      "title": "That Time I Got Reincarnated as a Slime",
+      "weights": {
+        "mondeParallele": 2,
+        "ascensionProgressive": 2,
+        "magie": 2,
+        "groupeSoude": 2,
+        "humoristique": 1,
+        "epique": 1,
+        "herosPur": 1
+      }
+    },
+    {
+      "anilistId": 130298,
+      "title": "The Eminence in Shadow",
+      "weights": {
+        "humoristique": 2,
+        "mondeParallele": 2,
+        "ascensionProgressive": 1,
+        "magie": 1,
+        "antiHeros": 1,
+        "groupeSoude": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 10620,
+      "title": "The Future Diary",
+      "weights": {
+        "plotTwistFrequent": 2,
+        "sombre": 2,
+        "mystereProgressif": 2,
+        "duoInseparable": 1,
+        "brutale": 1,
+        "present": 1,
+        "ascensionProgressive": 1
+      }
+    },
+    {
+      "anilistId": 101759,
+      "title": "The Promised Neverland",
+      "weights": {
+        "mystereProgressif": 3,
+        "intelligence": 2,
+        "plotTwistFrequent": 2,
+        "sombre": 2,
+        "groupeSoude": 2,
+        "persoNaifQuiEvolue": 1,
+        "ascensionProgressive": 1
+      }
+    },
+    {
+      "anilistId": 20789,
+      "title": "The Seven Deadly Sins",
+      "weights": {
+        "magie": 2,
+        "epique": 2,
+        "groupeSoude": 2,
+        "ascensionProgressive": 1,
+        "moyenAge": 2,
+        "forceBrute": 1,
+        "humoristique": 1
+      }
+    },
+    {
+      "anilistId": 7785,
+      "title": "The Tatami Galaxy",
+      "weights": {
+        "philosophique": 2,
+        "humoristique": 2,
+        "boucleTemporelle": 2,
+        "present": 2,
+        "persoNaifQuiEvolue": 2,
+        "duoInseparable": 1,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 20605,
+      "title": "Tokyo Ghoul",
+      "weights": {
+        "sombre": 3,
+        "antiHeros": 2,
+        "brutale": 2,
+        "present": 1,
+        "chuteDuHeros": 1,
+        "mystereProgressif": 1,
+        "mondeEnGuerre": 1
+      }
+    },
+    {
+      "anilistId": 120120,
+      "title": "Tokyo Revengers",
+      "weights": {
+        "boucleTemporelle": 2,
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "present": 2,
+        "brutale": 1,
+        "objectifUnique": 2,
+        "mystereProgressif": 1
+      }
+    },
+    {
+      "anilistId": 4224,
+      "title": "Toradora!",
+      "weights": {
+        "duoInseparable": 2,
+        "humoristique": 2,
+        "atmosphereLumineuse": 2,
+        "present": 2,
+        "mondeRealiste": 2,
+        "persoNaifQuiEvolue": 1,
+        "chill": 1
+      }
+    },
+    {
+      "anilistId": 6,
+      "title": "Trigun",
+      "weights": {
+        "voyageInitiatique": 2,
+        "humoristique": 2,
+        "futur": 2,
+        "antiHeros": 1,
+        "epique": 1,
+        "duoInseparable": 1,
+        "postapo": 1
+      }
+    },
+    {
+      "anilistId": 101348,
+      "title": "Vinland Saga",
+      "weights": {
+        "ascensionProgressive": 2,
+        "epique": 2,
+        "brutale": 2,
+        "philosophique": 1,
+        "moyenAge": 2,
+        "mondeEnGuerre": 2,
+        "chuteDuHeros": 1
+      }
+    },
+    {
+      "anilistId": 21827,
+      "title": "Violet Evergarden",
+      "weights": {
+        "melancolique": 2,
+        "voyageInitiatique": 2,
+        "moyenAge": 2,
+        "chill": 2,
+        "philosophique": 1,
+        "mondeEnGuerre": 1,
+        "persoNaifQuiEvolue": 2
+      }
+    },
+    {
+      "anilistId": 106286,
+      "title": "Weathering With You",
+      "weights": {
+        "melancolique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "magie": 1,
+        "atmosphereLumineuse": 1,
+        "mondeRealiste": 1,
+        "epique": 1
+      }
+    },
+    {
+      "anilistId": 934,
+      "title": "When They Cry",
+      "weights": {
+        "mystereProgressif": 3,
+        "plotTwistFrequent": 2,
+        "sombre": 2,
+        "boucleTemporelle": 1,
+        "present": 1,
+        "mondeRealiste": 1,
+        "groupeSoude": 1
+      }
+    },
+    {
+      "anilistId": 20665,
+      "title": "Your lie in April",
+      "weights": {
+        "melancolique": 3,
+        "chill": 2,
+        "mondeRealiste": 2,
+        "present": 2,
+        "duoInseparable": 1,
+        "atmosphereLumineuse": 1,
+        "aucunPouvoir": 2
+      }
+    },
+    {
+      "anilistId": 21519,
+      "title": "Your Name.",
+      "weights": {
+        "melancolique": 2,
+        "duoInseparable": 2,
+        "present": 2,
+        "boucleTemporelle": 1,
+        "atmosphereLumineuse": 2,
+        "mondeRealiste": 1,
+        "philosophique": 1
+      }
+    },
+    {
+      "anilistId": 392,
+      "title": "Yu Yu Hakusho: Ghostfiles",
+      "weights": {
+        "ascensionProgressive": 2,
+        "groupeSoude": 2,
+        "forceBrute": 1,
+        "epique": 1,
+        "persoNaifQuiEvolue": 1,
+        "present": 1,
+        "herosPur": 1
       }
     }
   ]

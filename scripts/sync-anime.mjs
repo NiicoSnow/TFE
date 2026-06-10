@@ -1,5 +1,5 @@
 /**
- * Import / mise à jour du cache AniList → Supabase
+ * Import / mise à jour du cache AniList => Supabase
  *
  * L'API publique AniList limite à 100 pages (50 entrées/page) par requête.
  * Le mode par défaut découpe le catalogue : année × format × saison.
@@ -13,13 +13,10 @@
 import { createClient } from '@supabase/supabase-js'
 
 const ANILIST_GRAPHQL_ENDPOINT = 'https://graphql.anilist.co'
-/** Pause entre pages d’un même lot */
 const PAGE_DELAY_MS = 3000
-/** Pause entre chaque lot (année/format/saison) — évite le 429 en rafale */
 const CHUNK_DELAY_MS = 2500
 const PER_PAGE = 50
 const MAX_RATE_LIMIT_RETRIES = 8
-/** Limite API publique AniList */
 const ANILIST_MAX_PAGE = 100
 const TAG_MIN_RANK = 60
 
@@ -179,7 +176,6 @@ function parseArgs() {
   return { fromYear, toYear, maxPages, maxChunks, warmupSec }
 }
 
-/** Ne pas envoyer null : AniList interprète ça comme un filtre « vide » → 0 résultats */
 function buildQueryVariables(page, filters) {
   const variables = { page, perPage: PER_PAGE }
   if (filters.seasonYear != null) variables.seasonYear = filters.seasonYear
@@ -321,10 +317,7 @@ async function main() {
   let chunksDone = 0
 
   console.log(
-    `Sync AniList → anime_cache (${fromYear}–${toYear}, découpé par année/format/saison)…`,
-  )
-  console.log(
-    'Si vous voyez "Rate limited" tout de suite : quota IP encore plein après un run précédent (normal).',
+    `Sync AniList => anime_cache (${fromYear}–${toYear}, découpé par année/format/saison)…`,
   )
 
   if (warmupSec > 0) {
@@ -347,7 +340,6 @@ async function main() {
   }
 
   console.log(`Terminé : ~${totalUpserted} upserts (${chunksDone} lots traités).`)
-  console.log('Vérifiez le nombre de lignes uniques dans Supabase (Table Editor).')
 }
 
 main().catch((err) => {
