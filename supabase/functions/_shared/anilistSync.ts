@@ -1,11 +1,6 @@
 export const ANILIST_GRAPHQL_ENDPOINT = 'https://graphql.anilist.co'
-
-/** Délai entre pages (respecte ~30 req/min en mode dégradé) */
 export const PAGE_DELAY_MS = 2100
-
-/** Tags avec rank < seuil sont ignorés */
 export const TAG_MIN_RANK = 60
-
 export const ANIME_PAGE_QUERY = `
   query AnimeCachePage($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
