@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import poolData from '../assets/quizAnimePool.json'
 import { displayTitle, getAnimeSummariesFromCache } from '../lib/animeCache'
@@ -15,6 +15,7 @@ const POSTER_FALLBACK =
   'https://placehold.co/126x176/1e293b/9ca3af?text=Poster'
 
 const animePool = poolData as QuizAnimePool
+const poolByAnilistId = new Map(animePool.animes.map((entry) => [entry.anilistId, entry]))
 
 type QuizResultsProps = {
   results: ScoredAnime[]
@@ -42,11 +43,6 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
   const [listFeedbackById, setListFeedbackById] = useState<Map<number, string>>(() => new Map())
   const [expandedAffinityId, setExpandedAffinityId] = useState<number | null>(null)
 
-  const poolByAnilistId = useMemo(
-    () => new Map(animePool.animes.map((entry) => [entry.anilistId, entry])),
-    [],
-  )
-
   useEffect(() => {
     let cancelled = false
     const ids = results.map((r) => r.anilistId)
@@ -59,7 +55,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
         if (!cancelled) setRows(data)
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'Impossible de charger les animes')
+          setError(err instanceof Error ? err.message : 'Erreur chargement.')
           setRows([])
         }
       } finally {
@@ -127,7 +123,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
       setListFeedbackById((prev) =>
         new Map(prev).set(
           pickerTarget.anilistId,
-          getQueryErrorMessage(err, 'Impossible d’ajouter à la liste'),
+          getQueryErrorMessage(err, 'Ajout à la liste échoué'),
         ),
       )
     } finally {

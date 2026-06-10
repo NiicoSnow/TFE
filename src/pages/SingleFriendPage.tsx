@@ -38,7 +38,7 @@ export function SingleFriendPage() {
         }
       } catch (err) {
         if (!cancelled) {
-          setError(getQueryErrorMessage(err, 'Impossible de charger ce profil'))
+          setError(getQueryErrorMessage(err, 'Profil introuvable'))
           setProfile(null)
         }
       } finally {

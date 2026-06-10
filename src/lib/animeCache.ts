@@ -113,10 +113,8 @@ export async function listForCatalogSection(config: CatalogSectionProps, limit =
       return listTopRatedAllTimeFromCache(limit)
     case 'upcoming':
       return listUpcomingFromCache(limit)
-    default: {
-      const _exhaustive: never = config
-      return _exhaustive
-    }
+    default:
+      return []
   }
 }
 
@@ -230,15 +228,7 @@ export async function listSimilarAnimeFromCache(
 }
 
 export function getQueryErrorMessage(err: unknown, fallback: string) {
-  if (err instanceof Error) return err.message
-  if (
-    typeof err === 'object' &&
-    err !== null &&
-    'message' in err &&
-    typeof (err as { message: unknown }).message === 'string'
-  ) {
-    return (err as { message: string }).message
-  }
+  if (err instanceof Error && err.message) return err.message
   return fallback
 }
 

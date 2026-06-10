@@ -181,7 +181,14 @@ export function CreditsPage() {
           <a href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Guides/Live_regions" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Guides/Live_regions</a>
           <a href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded</a>
         </div>
+          <div className="credits-page__group">
+          <h2>API</h2>
+          <p>
+            <a href="https://anilist.co/home" target="_blank" rel="noreferrer">Tous les animés proposés sur Cardtaku proviennent de l'API Anilist</a>
+          </p>
+        </div>
       </div>
+      
     </section>
   )
 }

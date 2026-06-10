@@ -60,7 +60,7 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'Impossible de charger le catalogue')
+          setError(err instanceof Error ? err.message : 'Erreur catalogue')
           setItems([])
         }
       } finally {

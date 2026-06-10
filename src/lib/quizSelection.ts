@@ -27,7 +27,7 @@ export function pickRandomQuestion(
   return remaining[randomIndex(remaining.length)]!
 }
 
-/** Écart moyen 1er / 2e anime selon les réponses possibles à cette question. */
+// question qui sépare le mieux les animes selon les réponses possibles
 export function questionDiscriminationScore(
   question: QuizQuestion,
   answers: QuizAnswers,

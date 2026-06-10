@@ -1,4 +1,3 @@
-/** Date partielle AniList (mois/jour parfois null) */
 export type AnilistFuzzyDate = {
   year: number | null
   month: number | null
@@ -27,7 +26,6 @@ export type AnimeCacheWatchLink = {
   isDisabled: boolean
 }
 
-/** Ligne `public.anime_cache` */
 export type AnimeCacheRow = {
   anilist_id: number
   title_romaji: string | null
@@ -48,7 +46,6 @@ export type AnimeCacheRow = {
   adaptation_source: string | null
   synopsis: string | null
   genres: string[]
-  /** Noms des tags AniList uniquement (ex. Dragons, Isekai) */
   tags: string[]
   studios: AnimeCacheNamedEntry[]
   producers: AnimeCacheNamedEntry[]
@@ -60,7 +57,6 @@ export type AnimeCacheRow = {
   synced_at: string
 }
 
-/** Champs utiles pour cartes catalogue / listes */
 export type AnimeCacheSummary = Pick<
   AnimeCacheRow,
   | 'anilist_id'

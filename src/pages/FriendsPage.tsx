@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { AddFriendPanel } from '../components/AddFriendPanel'
 import { FriendCard } from '../components/FriendCard'
@@ -33,17 +33,14 @@ export function FriendsPage() {
   const [busyId, setBusyId] = useState<string | null>(null)
   const [actionError, setActionError] = useState<string | null>(null)
 
-  const filteredFriends = useMemo(() => {
-    const q = search.trim().toLowerCase()
-    if (!q) {
-      return friends
-    }
-    return friends.filter((friend) => {
-      const username = friend.profile.username?.toLowerCase() ?? ''
-      const displayName = friend.profile.display_name?.toLowerCase() ?? ''
-      return username.includes(q) || displayName.includes(q)
-    })
-  }, [friends, search])
+  const q = search.trim().toLowerCase()
+  const filteredFriends = !q
+    ? friends
+    : friends.filter((friend) => {
+        const username = friend.profile.username?.toLowerCase() ?? ''
+        const displayName = friend.profile.display_name?.toLowerCase() ?? ''
+        return username.includes(q) || displayName.includes(q)
+      })
 
   if (!authLoading && !user) {
     return <Navigate to="/profil" replace />
@@ -55,7 +52,7 @@ export function FriendsPage() {
     try {
       await removeFriendById(friendshipId)
     } catch (err) {
-      setActionError(err instanceof Error ? err.message : 'Impossible de retirer cet ami.')
+      setActionError(err instanceof Error ? err.message : 'Erreur.')
     } finally {
       setBusyId(null)
     }
@@ -79,7 +76,7 @@ export function FriendsPage() {
     try {
       await rejectRequest(friendshipId)
     } catch (err) {
-      setActionError(err instanceof Error ? err.message : 'Impossible de refuser la demande.')
+      setActionError(err instanceof Error ? err.message : 'Erreur.')
     } finally {
       setBusyId(null)
     }

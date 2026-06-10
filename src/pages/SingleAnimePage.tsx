@@ -90,7 +90,7 @@ export function SingleAnimePage() {
         }
       } catch (err) {
         if (!cancelled) {
-          setError(getQueryErrorMessage(err, 'Impossible de charger cet anime'))
+          setError(getQueryErrorMessage(err, 'Anime introuvable'))
           setAnime(null)
         }
       } finally {
@@ -171,7 +171,7 @@ export function SingleAnimePage() {
       setListPickerOpen(false)
       setListFeedback(`Ajouté à « ${ANIME_LIST_LABELS[status]} »`)
     } catch (err) {
-      setListFeedback(getQueryErrorMessage(err, 'Impossible d’ajouter à la liste'))
+      setListFeedback(getQueryErrorMessage(err, 'Ajout à la liste échoué'))
     } finally {
       setListActionBusy(false)
     }

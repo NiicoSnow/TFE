@@ -36,7 +36,7 @@ export function useFriends(userId: string | undefined) {
       setFriends(friendsList)
       setPendingReceived(pendingList)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Impossible de charger les amis.')
+      setError(err instanceof Error ? err.message : 'Erreur chargement amis.')
     } finally {
       setLoading(false)
     }
@@ -46,70 +46,40 @@ export function useFriends(userId: string | undefined) {
     void refresh()
   }, [refresh])
 
-  const acceptRequest = useCallback(
-    async (friendshipId: string) => {
-      if (!userId) {
-        return
-      }
-      await acceptFriendRequest(friendshipId, userId)
-      await refresh()
-    },
-    [refresh, userId],
-  )
+  async function acceptRequest(friendshipId: string) {
+    if (!userId) return
+    await acceptFriendRequest(friendshipId, userId)
+    await refresh()
+  }
 
-  const rejectRequest = useCallback(
-    async (friendshipId: string) => {
-      if (!userId) {
-        return
-      }
-      await rejectFriendRequest(friendshipId, userId)
-      await refresh()
-    },
-    [refresh, userId],
-  )
+  async function rejectRequest(friendshipId: string) {
+    if (!userId) return
+    await rejectFriendRequest(friendshipId, userId)
+    await refresh()
+  }
 
-  const removeFriendById = useCallback(
-    async (friendshipId: string) => {
-      if (!userId) {
-        return
-      }
-      await removeFriend(friendshipId, userId)
-      await refresh()
-    },
-    [refresh, userId],
-  )
+  async function removeFriendById(friendshipId: string) {
+    if (!userId) return
+    await removeFriend(friendshipId, userId)
+    await refresh()
+  }
 
-  const sendRequest = useCallback(
-    async (addresseeId: string) => {
-      if (!userId) {
-        return
-      }
-      await sendFriendRequest(userId, addresseeId)
-      await refresh()
-    },
-    [refresh, userId],
-  )
+  async function sendRequest(addresseeId: string) {
+    if (!userId) return
+    await sendFriendRequest(userId, addresseeId)
+    await refresh()
+  }
 
-  const cancelRequest = useCallback(
-    async (friendshipId: string) => {
-      if (!userId) {
-        return
-      }
-      await cancelFriendRequest(friendshipId, userId)
-      await refresh()
-    },
-    [refresh, userId],
-  )
+  async function cancelRequest(friendshipId: string) {
+    if (!userId) return
+    await cancelFriendRequest(friendshipId, userId)
+    await refresh()
+  }
 
-  const searchUsers = useCallback(
-    async (query: string): Promise<SearchProfileResult[]> => {
-      if (!userId) {
-        return []
-      }
-      return searchProfiles(query, userId)
-    },
-    [userId],
-  )
+  async function searchUsers(query: string): Promise<SearchProfileResult[]> {
+    if (!userId) return []
+    return searchProfiles(query, userId)
+  }
 
   return {
     friends,

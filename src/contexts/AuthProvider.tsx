@@ -1,20 +1,28 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
 import type { Profile } from '../types/profile'
 import { AuthContext, type AuthContextValue } from './auth-context'
 
-function clearProfileState(
-  setProfile: (value: Profile | null) => void,
-  setProfileError: (value: string | null) => void,
-) {
-  setProfile(null)
-  setProfileError(null)
-}
-
-async function validateSessionClaims(): Promise<boolean> {
+async function validateSessionClaims() {
   const { data, error } = await supabase.auth.getClaims()
   return !error && Boolean(data?.claims?.sub)
+}
+
+async function loadProfileForUser(userId: string) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .maybeSingle()
+
+  if (error) {
+    return { profile: null as Profile | null, error: error.message }
+  }
+  if (!data) {
+    return { profile: null, error: 'Profil introuvable.' }
+  }
+  return { profile: data as Profile, error: null }
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -31,7 +39,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setSession(nextSession)
 
       if (!nextSession) {
-        clearProfileState(setProfile, setProfileError)
+        setProfile(null)
+        setProfileError(null)
         setProfileLoading(false)
       }
 
@@ -45,32 +54,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  const loadProfile = useCallback(async (userId: string) => {
-    setProfileError(null)
-
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .maybeSingle()
-
-    if (error) {
-      setProfile(null)
-      setProfileError(error.message)
-      return
-    }
-
-    if (!data) {
-      setProfile(null)
-      setProfileError(
-        'Aucune ligne dans profiles pour cet utilisateur. Vérifiez que l’id correspond à Authentication → Users.',
-      )
-      return
-    }
-
-    setProfile(data as Profile)
-  }, [])
-
   useEffect(() => {
     const userId = session?.user?.id
     if (!userId) {
@@ -78,15 +61,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return
     }
 
-    let cancelled = false
+    let active = true
+    setProfileLoading(true)
+    setProfileError(null)
 
     void (async () => {
-      setProfileLoading(true)
-
       const claimsValid = await validateSessionClaims()
-      if (cancelled) {
-        return
-      }
+      if (!active) return
 
       if (!claimsValid) {
         setProfile(null)
@@ -95,99 +76,101 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return
       }
 
-      await loadProfile(userId)
-      if (!cancelled) {
-        setProfileLoading(false)
+      const { profile: nextProfile, error } = await loadProfileForUser(userId)
+      if (!active) return
+
+      if (error) {
+        setProfile(null)
+        setProfileError(error)
+      } else {
+        setProfile(nextProfile)
       }
+
+      setProfileLoading(false)
     })()
 
     return () => {
-      cancelled = true
+      active = false
     }
-  }, [session?.user?.id, loadProfile])
+  }, [session?.user?.id])
 
-  const signUp = useCallback(
-    async ({
+  async function signUp({
+    email,
+    password,
+    username,
+    displayName,
+  }: {
+    email: string
+    password: string
+    username: string
+    displayName: string
+  }) {
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      username,
-      displayName,
-    }: {
-      email: string
-      password: string
-      username: string
-      displayName: string
-    }) => {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            username,
-            display_name: displayName,
-          },
+      options: {
+        data: {
+          username,
+          display_name: displayName,
         },
-      })
+      },
+    })
 
-      if (error) {
-        throw error
-      }
+    if (error) {
+      throw error
+    }
 
-      return { needsEmailConfirmation: !data.session }
-    },
-    [],
-  )
+    return { needsEmailConfirmation: !data.session }
+  }
 
-  const signIn = useCallback(async (email: string, password: string) => {
+  async function signIn(email: string, password: string) {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
       throw error
     }
-  }, [])
+  }
 
-  const signOut = useCallback(async () => {
+  async function signOut() {
     const { error } = await supabase.auth.signOut()
     if (error) {
       throw error
     }
-  }, [])
+  }
 
-  const updateProfile = useCallback(
-    async (updates: {
-      username?: string
-      display_name?: string
-      avatar_url?: string
-      library_public?: boolean
-    }) => {
-      const userId = session?.user?.id
-      if (!userId) {
-        throw new Error('Non connecté')
-      }
+  async function updateProfile(updates: {
+    username?: string
+    display_name?: string
+    avatar_url?: string
+    library_public?: boolean
+  }) {
+    const userId = session?.user?.id
+    if (!userId) {
+      throw new Error('Non connecté')
+    }
 
-      const { data, error } = await supabase
-        .from('profiles')
-        .update({ ...updates, updated_at: new Date().toISOString() })
-        .eq('id', userId)
-        .select()
-        .single()
+    const { data, error } = await supabase
+      .from('profiles')
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', userId)
+      .select()
+      .single()
 
-      if (error) {
-        throw error
-      }
+    if (error) {
+      throw error
+    }
 
-      setProfile(data as Profile)
-      setProfileError(null)
-    },
-    [session?.user?.id],
-  )
+    setProfile(data as Profile)
+    setProfileError(null)
+  }
 
-  const refreshProfile = useCallback(async () => {
+  async function refreshProfile() {
     const userId = session?.user?.id
     if (!userId) {
       return
     }
 
     setProfileLoading(true)
+    setProfileError(null)
 
     const claimsValid = await validateSessionClaims()
     if (!claimsValid) {
@@ -197,37 +180,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return
     }
 
-    await loadProfile(userId)
+    const { profile: nextProfile, error } = await loadProfileForUser(userId)
+
+    if (error) {
+      setProfile(null)
+      setProfileError(error)
+    } else {
+      setProfile(nextProfile)
+    }
+
     setProfileLoading(false)
-  }, [loadProfile, session?.user?.id])
+  }
 
   const loading = !authReady || profileLoading
 
-  const value = useMemo<AuthContextValue>(
-    () => ({
-      session,
-      user: session?.user ?? null,
-      profile,
-      profileError,
-      loading,
-      signUp,
-      signIn,
-      signOut,
-      updateProfile,
-      refreshProfile,
-    }),
-    [
-      session,
-      profile,
-      profileError,
-      loading,
-      signUp,
-      signIn,
-      signOut,
-      updateProfile,
-      refreshProfile,
-    ],
-  )
+  const value: AuthContextValue = {
+    session,
+    user: session?.user ?? null,
+    profile,
+    profileError,
+    loading,
+    signUp,
+    signIn,
+    signOut,
+    updateProfile,
+    refreshProfile,
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

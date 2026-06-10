@@ -34,7 +34,7 @@ export function CataloguePage() {
       } catch (err) {
         if (!cancelled) {
           setResults([])
-          setError(getQueryErrorMessage(err, 'Impossible de rechercher dans le catalogue.'))
+          setError(getQueryErrorMessage(err, 'Recherche échouée'))
         }
       } finally {
         if (!cancelled) {

@@ -204,9 +204,7 @@ export async function acceptFriendRequest(friendshipId: string, userId: string) 
   }
 
   if (!data) {
-    throw new Error(
-      'La demande n’a pas pu être acceptée. Vérifiez la policy RLS « Répondre à une demande » (WITH CHECK).',
-    )
+    throw new Error('Impossible d’accepter la demande.')
   }
 }
 

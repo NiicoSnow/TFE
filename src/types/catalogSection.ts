@@ -4,7 +4,6 @@ export type CatalogSectionVariant =
   | 'upcoming'
 
 type CatalogSectionOptions = {
-  /** Sans la classe `.grid` (ex. section similaire dans la page single). */
   embedded?: boolean
 }
 

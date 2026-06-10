@@ -67,12 +67,12 @@ export async function anilistRequest<TData>(
   const result = (await response.json()) as AnilistGraphqlResponse<TData>
 
   if (!response.ok || result.errors?.length) {
-    const message = result.errors?.[0]?.message ?? 'AniList request failed'
+    const message = result.errors?.[0]?.message ?? 'Erreur AniList'
     throw new Error(message)
   }
 
   if (!result.data) {
-    throw new Error('AniList returned no data')
+    throw new Error('Pas de données AniList')
   }
 
   return result.data

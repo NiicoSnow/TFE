@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, removeAnimeFromLibrary, setAnimeListStatus, setLibraryPublic, statusToCategoryIndex } from '../lib/animeLibrary'
@@ -55,35 +55,36 @@ export function AnimeManagtSection({
     }
   }, [isOwner, readOnly, profile?.library_public, libraryPublicProp])
 
-  const loadLibrary = useCallback(async () => {
-    if (!userId || !canShowLibrary) {
-      setLists(EMPTY_LISTS)
-      if (!canShowLibrary) setLibraryError(null)
-      return
-    }
-
-    setLibraryLoading(true)
-    setLibraryError(null)
-    try {
-      const grouped = await fetchUserLibraryByCategory(userId)
-      setLists(grouped)
-    } catch (err) {
-      setLibraryError(
-        getQueryErrorMessage(
-          err,
-          readOnly ? 'Impossible de charger les listes' : 'Impossible de charger tes listes',
-        ),
-      )
-      setLists(EMPTY_LISTS)
-    } finally {
-      setLibraryLoading(false)
-    }
-  }, [userId, readOnly, canShowLibrary])
-
   useEffect(() => {
     if (authLoading) return
+
+    async function loadLibrary() {
+      if (!userId || !canShowLibrary) {
+        setLists(EMPTY_LISTS)
+        if (!canShowLibrary) setLibraryError(null)
+        return
+      }
+
+      setLibraryLoading(true)
+      setLibraryError(null)
+      try {
+        const grouped = await fetchUserLibraryByCategory(userId)
+        setLists(grouped)
+      } catch (err) {
+        setLibraryError(
+          getQueryErrorMessage(
+            err,
+            readOnly ? 'Erreur chargement listes' : 'Erreur chargement tes listes',
+          ),
+        )
+        setLists(EMPTY_LISTS)
+      } finally {
+        setLibraryLoading(false)
+      }
+    }
+
     void loadLibrary()
-  }, [authLoading, loadLibrary])
+  }, [authLoading, userId, readOnly, canShowLibrary])
 
   const n = ANIME_LIST_LABELS_ORDERED.length
   const currentLabel = ANIME_LIST_LABELS_ORDERED[categoryIndex]
@@ -117,7 +118,7 @@ export function AnimeManagtSection({
       })
       setMoveTarget(null)
     } catch (err) {
-      setLibraryError(getQueryErrorMessage(err, 'Impossible de déplacer cet anime'))
+      setLibraryError(getQueryErrorMessage(err, 'Déplacement échoué'))
     } finally {
       setMoveBusy(false)
     }
@@ -141,7 +142,7 @@ export function AnimeManagtSection({
       })
       setMoveTarget(null)
     } catch (err) {
-      setLibraryError(getQueryErrorMessage(err, 'Impossible de supprimer cet anime'))
+      setLibraryError(getQueryErrorMessage(err, 'Suppression échouée'))
     } finally {
       setMoveBusy(false)
     }
@@ -159,7 +160,7 @@ export function AnimeManagtSection({
       await updateProfile({ library_public: next })
     } catch (err) {
       setLibraryError(
-        getQueryErrorMessage(err, 'Impossible de modifier la visibilité des listes'),
+        getQueryErrorMessage(err, 'Visibilité non modifiée'),
       )
     } finally {
       setVisibilityBusy(false)
@@ -179,11 +180,7 @@ export function AnimeManagtSection({
       className="anime-management__visibility-control"
       onClick={() => void toggleLibraryVisibility()}
       disabled={visibilityBusy}
-      aria-label={
-        libraryPublic
-          ? 'Tes listes sont visibles par tes amis. Cliquer pour les rendre privées.'
-          : 'Tes listes sont privées. Cliquer pour les rendre visibles par tes amis.'
-      }
+      aria-label="Changer la visibilité des listes"
       aria-pressed={libraryPublic}
     >
       <span className="anime-management__visibility-label">
