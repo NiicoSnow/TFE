@@ -1,10 +1,5 @@
 import { supabase } from './supabase'
-import type {
-  FriendListItem,
-  FriendRelation,
-  FriendRequestItem,
-  SearchProfileResult,
-} from '../types/friendship'
+import type { FriendListItem, FriendRelation, FriendRequestItem, SearchProfileResult, } from '../types/friendship'
 import type { Profile } from '../types/profile'
 
 type ProfileRow = Pick<Profile, 'id' | 'username' | 'display_name' | 'avatar_url'>

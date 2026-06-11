@@ -1,9 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.49.1'
-import {
-  fetchAnilistPage,
-  PAGE_DELAY_MS,
-  sleep,
-} from '../_shared/anilistSync.ts'
+import { fetchAnilistPage, PAGE_DELAY_MS, sleep, } from '../_shared/anilistSync.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',

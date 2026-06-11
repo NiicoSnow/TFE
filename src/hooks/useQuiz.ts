@@ -4,14 +4,7 @@ import poolData from '../assets/quizAnimePool.json'
 import { QUIZ_QUESTION_COUNT } from '../lib/quizConfig'
 import { getFixedFirstQuestion, pickNextQuestion } from '../lib/quizSelection'
 import { rankAnimePool } from '../lib/quizScoring'
-import type {
-  QuizAnswers,
-  QuizData,
-  QuizAnimePool,
-  QuizPhase,
-  QuizQuestion,
-  ScoredAnime,
-} from '../types/quiz'
+import type { QuizAnswers, QuizData, QuizAnimePool, QuizPhase, QuizQuestion, ScoredAnime, } from '../types/quiz'
 
 const quizData = questionsData as QuizData
 const animePool = poolData as QuizAnimePool

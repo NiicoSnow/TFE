@@ -1,14 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import {
-  acceptFriendRequest,
-  cancelFriendRequest,
-  getFriends,
-  getPendingReceived,
-  rejectFriendRequest,
-  removeFriend,
-  searchProfiles,
-  sendFriendRequest,
-} from '../lib/friends'
+import { acceptFriendRequest, cancelFriendRequest, getFriends, getPendingReceived, rejectFriendRequest, removeFriend, searchProfiles, sendFriendRequest, } from '../lib/friends'
 import type { FriendListItem, FriendRequestItem, SearchProfileResult } from '../types/friendship'
 
 export function useFriends(userId: string | undefined) {
