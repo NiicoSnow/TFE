@@ -2095,6 +2095,135 @@
   color: var(--text-secondary);
 }
 
+.modal-account-demo {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 40;
+  width: min(36rem, calc(100vw - 4rem));
+  padding: 2rem 2rem 1.6rem;
+  box-sizing: border-box;
+  background: var(--element-bg);
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow);
+  animation: modal-account-demo-in 0.35s ease;
+}
+
+.modal-account-demo__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.modal-account-demo__title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.modal-account-demo__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--element-bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--base);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.modal-account-demo__text {
+  margin: 0 0 1.6rem;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.modal-account-demo__creds {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 0;
+}
+
+.modal-account-demo__creds div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.modal-account-demo__creds dt {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+}
+
+.modal-account-demo__creds dd {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--element-bg-secondary);
+  font-family: var(--base);
+  font-size: 1.6rem;
+  color: var(--text);
+}
+
+.modal-account-demo__creds dd span {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+}
+
+.modal-account-demo__copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: none;
+  cursor: pointer;
+}
+
+.modal-account-demo__copy-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--text-secondary);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+@keyframes modal-account-demo-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .profile-card__email {
   font-size: 1.4rem;
   color: var(--text-secondary);
