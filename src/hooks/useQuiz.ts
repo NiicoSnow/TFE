@@ -1,21 +1,41 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import questionsData from '../assets/questionsCards.json'
 import poolData from '../assets/quizAnimePool.json'
 import { QUIZ_QUESTION_COUNT } from '../lib/quizConfig'
 import { getFixedFirstQuestion, pickNextQuestion } from '../lib/quizSelection'
 import { rankAnimePool } from '../lib/quizScoring'
-import type { QuizAnswers, QuizData, QuizAnimePool, QuizPhase, QuizQuestion, ScoredAnime, } from '../types/quiz'
+import type {
+  QuizAnswers,
+  QuizData,
+  QuizAnimePool,
+  QuizPhase,
+  QuizQuestion,
+  ScoredAnime,
+} from '../types/quiz'
 
 const quizData = questionsData as QuizData
 const animePool = poolData as QuizAnimePool
 const allQuestions = quizData.questions
+
+export type QuizCompletePayload = {
+  askedQuestions: QuizQuestion[]
+  answers: QuizAnswers
+  results: ScoredAnime[]
+}
+
+type UseQuizOptions = {
+  onComplete?: (payload: QuizCompletePayload) => void
+}
 
 function createFirstQuestion(): QuizQuestion[] {
   const first = getFixedFirstQuestion(allQuestions)
   return first ? [first] : []
 }
 
-export function useQuiz() {
+export function useQuiz(options?: UseQuizOptions) {
+  const onCompleteRef = useRef(options?.onComplete)
+  onCompleteRef.current = options?.onComplete
+
   const [phase, setPhase] = useState<QuizPhase>('quiz')
   const [questions, setQuestions] = useState<QuizQuestion[]>(createFirstQuestion)
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -40,8 +60,14 @@ export function useQuiz() {
       setAnswers(nextAnswers)
 
       if (isLastQuestion) {
-        setResults(rankAnimePool(animePool.animes, nextAnswers))
+        const ranked = rankAnimePool(animePool.animes, nextAnswers)
+        setResults(ranked)
         setPhase('results')
+        onCompleteRef.current?.({
+          askedQuestions: questions,
+          answers: nextAnswers,
+          results: ranked,
+        })
         return
       }
 
@@ -58,7 +84,7 @@ export function useQuiz() {
       setQuestions((prev) => [...prev.slice(0, nextIndex), nextQuestion])
       setQuestionIndex(nextIndex)
     },
-    [answers, currentQuestion, isLastQuestion, phase, questionIndex],
+    [answers, currentQuestion, isLastQuestion, phase, questionIndex, questions],
   )
 
   const restart = useCallback(() => {

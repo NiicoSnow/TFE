@@ -1,8 +1,29 @@
-import { useQuiz } from '../hooks/useQuiz'
+import { useCallback, useRef } from 'react'
+import { useAuth } from '../hooks/useAuth'
+import { useQuiz, type QuizCompletePayload } from '../hooks/useQuiz'
+import { saveCompletedQuizSession } from '../lib/quizStats'
 import { QuizQuestion } from './QuizQuestion'
 import { QuizResults } from './QuizResults'
 
 export function Cards() {
+  const { user } = useAuth()
+  const savingRef = useRef(false)
+
+  const handleComplete = useCallback(
+    (payload: QuizCompletePayload) => {
+      if (!user?.id || savingRef.current) return
+      savingRef.current = true
+      void saveCompletedQuizSession({ userId: user.id, ...payload })
+        .catch((err) => {
+          console.error('Échec enregistrement du tirage:', err)
+        })
+        .finally(() => {
+          savingRef.current = false
+        })
+    },
+    [user?.id],
+  )
+
   const {
     phase,
     questions,
@@ -15,7 +36,12 @@ export function Cards() {
     restart,
     goBack,
     canGoBack,
-  } = useQuiz()
+  } = useQuiz({ onComplete: handleComplete })
+
+  const handleRestart = useCallback(() => {
+    savingRef.current = false
+    restart()
+  }, [restart])
 
   if (phase === 'results') {
     return (
@@ -23,7 +49,7 @@ export function Cards() {
         results={results}
         answers={answers}
         askedQuestions={questions}
-        onRestart={restart}
+        onRestart={handleRestart}
       />
     )
   }
