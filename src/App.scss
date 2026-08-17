@@ -2839,9 +2839,20 @@
   max-width: 48rem;
 }
 
+.stats-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .stats-block__title {
-  margin: 0 0 1.6rem;
+  margin: 0 0 1.2rem;
   font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.stats-block > .stats-card {
+  flex: 1;
 }
 
 .stats-card {
@@ -2870,8 +2881,8 @@
 
 .stats-streak .info-tooltip {
   position: absolute;
-  top: 1.6rem;
-  right: 1.6rem;
+  top: 2.4rem;
+  right: 2.4rem;
   z-index: 4;
 }
 
@@ -2942,7 +2953,7 @@
   align-self: flex-end;
   width: 100%;
   margin: 2.4rem 0 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--text-secondary);
   text-align: right;
 }
@@ -3131,7 +3142,7 @@
 .stats-prefs__intro {
   margin: 0 0 2.4rem;
   max-width: 28rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.4;
   color: var(--text);
   font-weight: 600;
@@ -3276,6 +3287,12 @@
   font-weight: 700;
 }
 
+.stats-perf__metrics {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .stats-perf__row {
   display: flex;
   flex-direction: column;
@@ -3328,12 +3345,6 @@
   font-weight: 700;
   font-size: 2.5rem;
   text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .stats-page__content {
-    max-width: 56rem;
-  }
 }
 
 // ===========================================================================
@@ -4141,4 +4152,238 @@
   .single-friend-page__back {
     left: 9.6rem;
   }
+
+  // --- Page : Stats ---
+
+  .stats-page__content {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 9.2rem;
+    max-width: none;
+    width: 100%;
+  }
+  .stats-page {
+    margin-top: 19.2rem;
+  }
+  .stats-block--streak {
+    grid-column: span 2;
+  }
+
+  .stats-block--chart {
+    grid-column: span 5;
+  }
+
+  .stats-block--activity {
+    grid-column: span 2;
+  }
+
+  .stats-block--prefs {
+    grid-column: span 3;
+  }
+
+  .stats-block--friends {
+    grid-column: span 2;
+  }
+
+  .stats-block--perf {
+    grid-column: 1 / -1;
+  }
+
+  .stats-block__title {
+    font-size: 3.6rem;
+  }
+
+  .stats-streak {
+    padding: 2.4rem 2.4rem 2.4rem;
+  }
+
+  .stats-streak .info-tooltip__btn svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .stats-streak__week {
+    text-align: right;
+    margin-top: auto;
+  }
+
+  .stats-streak .streak-display {
+    margin-top: 9.6rem;
+  }
+
+  .stats-chart__switch {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .stats-chart__switch-title {
+    font-size: 3.6rem;
+    gap: 1.2rem;
+  }
+
+  .stats-chart__switch-title img {
+    width: 2.4rem;
+    height: auto;
+  }
+
+  .stats-chart__switch-sub {
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+
+  .stats-chart__axis-label {
+    margin-bottom: 2.4rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .stats-chart__y,
+  .stats-chart__track {
+    height: 22rem;
+  }
+
+  .stats-chart__y {
+    font-size: 1.4rem;
+  }
+
+  .stats-chart__bars {
+    gap: 2.4rem;
+  }
+
+  .stats-chart__bar {
+    width: 100%;
+    border-radius: 1.6rem 1.6rem 0.4rem 0.4rem;
+  }
+
+  .stats-chart__value {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .stats-chart__label {
+    font-size: 1.3rem;
+    min-height: 3.6rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .stats-activity {
+    align-content: center;
+    row-gap: 3.2rem;
+  }
+
+  .stats-prefs {
+    justify-content: flex-start;
+  }
+
+  .stats-prefs__intro {
+    max-width: none;
+    margin-bottom: 4.8rem;
+    font-size: 2.5rem;
+  }
+
+  .stats-prefs__list {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.4rem;
+  }
+
+  .stats-prefs__item {
+    max-width: 18rem;
+    flex: 1;
+  }
+
+  .stats-prefs__img {
+    width: 100%;
+    max-width: 18rem;
+    height: auto;
+    aspect-ratio: 120 / 168;
+  }
+
+  .stats-prefs__cat{ 
+    font-weight: 400;
+  }
+
+  .stats-friends {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-friends__headline {
+    margin-bottom: 2.4rem;
+    font-size: 2.5rem;
+  }
+
+  .stats-friends__list--cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    grid-template-rows: repeat(var(--friends-rows, 5), auto);
+    grid-auto-flow: column;
+    justify-content: center;
+    column-gap: 3.2rem;
+    row-gap: 1.2rem;
+    width: 100%;
+  }
+  .stats-friends__list {
+    margin-top: auto;
+  }
+  .stats-friends__footnote {
+    margin-top: auto;
+    padding-top: 2.4rem;
+  }
+
+  .stats-card.stats-perf {
+    padding-bottom: 4.8rem;
+  } 
+
+  .stats-perf__intro {
+    margin-bottom: 4.8rem;
+    font-size: 2.5rem;
+  }
+
+  .stats-perf__metrics {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .stats-perf__row {
+    flex: 1;
+    min-width: 0;
+    padding: 0 1.6rem;
+    justify-content: flex-start;
+  }
+
+  .stats-perf__row:not(:last-child) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .stats-perf__row:not(:last-child)::after {
+    left: auto;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 10rem;
+    border-radius: 999px;
+  }
+
+  .stats-perf__num {
+    font-size: 7.2rem;
+  }
+  .stats-perf__text {
+    font-size: 2.5rem;
+    max-width: 16rem;
+  }
+  .stats-perf__status {
+    font-size: 2.2rem;
+  }
+  
 }
