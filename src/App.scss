@@ -2925,6 +2925,7 @@
 }
 
 .info-tooltip__bubble {
+  display: none;
   position: absolute;
   top: calc(100% + 0.8rem);
   right: 0;
@@ -2939,6 +2940,10 @@
   line-height: 1.4;
   text-align: left;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.info-tooltip.is-open .info-tooltip__bubble {
+  display: block;
 }
 
 .stats-streak .streak-display__value {
@@ -4264,6 +4269,20 @@
   .stats-streak .info-tooltip__btn svg {
     width: 2.4rem;
     height: 2.4rem;
+  }
+
+  .info-tooltip:hover .info-tooltip__bubble,
+  .info-tooltip:focus-within .info-tooltip__bubble {
+    display: block;
+  }
+
+  .info-tooltip__bubble::before {
+    content: '';
+    position: absolute;
+    top: -0.8rem;
+    left: 0;
+    right: 0;
+    height: 0.8rem;
   }
 
   .stats-streak__week {

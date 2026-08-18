@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 
 type InfoTooltipProps = {
   text: string
@@ -9,9 +10,10 @@ export function InfoTooltip({ text, className }: InfoTooltipProps) {
   const [open, setOpen] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
   const tooltipId = useId()
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
 
   useEffect(() => {
-    if (!open) return
+    if (!open || isDesktop) return
 
     const onPointerDown = (event: PointerEvent) => {
       if (!rootRef.current?.contains(event.target as Node)) {
@@ -30,17 +32,23 @@ export function InfoTooltip({ text, className }: InfoTooltipProps) {
       document.removeEventListener('pointerdown', onPointerDown)
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [open])
+  }, [open, isDesktop])
 
   return (
-    <div ref={rootRef} className={['info-tooltip', className].filter(Boolean).join(' ')}>
+    <div
+      ref={rootRef}
+      className={['info-tooltip', open ? 'is-open' : '', className].filter(Boolean).join(' ')}
+    >
       <button
         type="button"
         className="info-tooltip__btn"
-        aria-expanded={open}
+        aria-expanded={isDesktop ? undefined : open}
         aria-controls={tooltipId}
         aria-label="Plus d’informations"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          if (isDesktop) return
+          setOpen((value) => !value)
+        }}
       >
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
           <path
@@ -49,11 +57,9 @@ export function InfoTooltip({ text, className }: InfoTooltipProps) {
           />
         </svg>
       </button>
-      {open ? (
-        <p id={tooltipId} className="info-tooltip__bubble" role="tooltip">
-          {text}
-        </p>
-      ) : null}
+      <p id={tooltipId} className="info-tooltip__bubble" role="tooltip">
+        {text}
+      </p>
     </div>
   )
 }

@@ -132,7 +132,7 @@ function buildCharts(
       bars,
       total,
     }
-  }).filter((chart) => chart.total > 0 || chart.category === 'etresSurnaturel')
+  })
 }
 
 function buildTopChoices(
