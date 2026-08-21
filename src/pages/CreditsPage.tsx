@@ -10,7 +10,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Stack projet</h2>
+          <h2>Stack&nbsp;projet</h2>
           <a href="https://react.dev/learn" target="_blank" rel="noreferrer">https://react.dev/learn</a>
           <a href="https://vite.dev/guide/" target="_blank" rel="noreferrer">https://vite.dev/guide/</a>
           <a href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank" rel="noreferrer">https://www.typescriptlang.org/docs/handbook/intro.html</a>
@@ -105,7 +105,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Synchronisation AniList</h2>
+          <h2>Synchronisation&nbsp;AniList</h2>
           <a href="https://docs.anilist.co/" target="_blank" rel="noreferrer">https://docs.anilist.co/</a>
           <a href="https://docs.anilist.co/guide/graphql" target="_blank" rel="noreferrer">https://docs.anilist.co/guide/graphql</a>
           <a href="https://docs.anilist.co/guide/graphql/queries/media" target="_blank" rel="noreferrer">https://docs.anilist.co/guide/graphql/queries/media</a>
@@ -116,7 +116,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Import cache anime</h2>
+          <h2>Import cache&nbsp;anime</h2>
           <a href="https://docs.anilist.co/guide/rate-limiting" target="_blank" rel="noreferrer">https://docs.anilist.co/guide/rate-limiting</a>
           <a href="https://docs.anilist.co/guide/graphql/pagination" target="_blank" rel="noreferrer">https://docs.anilist.co/guide/graphql/pagination</a>
           <a href="https://developer.mozilla.org/fr/docs/Web/API/fetch" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/API/fetch</a>
@@ -129,7 +129,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Listes d&apos;animes</h2>
+          <h2>Listes&nbsp;d&apos;animes</h2>
           <a href="https://docs.anilist.co/reference/enum/medialiststatus" target="_blank" rel="noreferrer">https://docs.anilist.co/reference/enum/medialiststatus</a>
           <a href="https://www.postgresql.org/docs/current/ddl-constraints.html" target="_blank" rel="noreferrer">https://www.postgresql.org/docs/current/ddl-constraints.html</a>
           <a href="https://www.toptal.com/external-blogs/adeva/building-crud-app-with-react-js-supabase" target="_blank" rel="noreferrer">https://www.toptal.com/external-blogs/adeva/building-crud-app-with-react-js-supabase</a>
@@ -144,7 +144,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Modal choix de liste</h2>
+          <h2>Modal choix de&nbsp;liste</h2>
           <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" target="_blank" rel="noreferrer">https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/</a>
           <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/keydown_event" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/API/Element/keydown_event</a>
           <a href="https://www.youtube.com/watch?v=FSY2A0vzwko" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=FSY2A0vzwko</a>
@@ -159,7 +159,7 @@ export function CreditsPage() {
         </div>
 
         <div className="credits-page__group">
-          <h2>Fiche anime</h2>
+          <h2>Fiche&nbsp;anime</h2>
           <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/replace</a>
           <a href="https://developer.mozilla.org/fr/docs/Glossary/Entity" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Glossary/Entity</a>
           <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe</a>

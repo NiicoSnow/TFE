@@ -139,7 +139,7 @@ export function AddFriendPanel({
         aria-labelledby="friends-add-title"
       >
         <h3 id="friends-add-title" className="anime-management__modal-title">
-          Ajouter un ami
+          Ajouter un&nbsp;ami
         </h3>
         <input
           className="friends-add-modal__input"

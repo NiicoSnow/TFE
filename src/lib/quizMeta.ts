@@ -5,12 +5,12 @@ import { publicAsset } from './publicPath'
 const quizData = questionsData as QuizData
 
 export const QUIZ_CATEGORY_LABELS: Record<string, string> = {
-  constructionNarrative: 'Construction narrative',
-  etresSurnaturel: 'Êtres surnaturels',
-  forcePouvoir: 'Forces / pouvoirs',
+  constructionNarrative: 'Construction\u00A0narrative',
+  etresSurnaturel: 'Êtres\u00A0surnaturels',
+  forcePouvoir: 'Forces\u00A0/\u00A0pouvoirs',
   temporalite: 'Temporalité',
-  tonaliteEmotionnelle: 'Tonalité émotionnelle',
-  typeDeProta: 'Type de protagoniste',
+  tonaliteEmotionnelle: 'Tonalité\u00A0émotionnelle',
+  typeDeProta: 'Type de\u00A0protagoniste',
   univers: 'Univers',
 }
 

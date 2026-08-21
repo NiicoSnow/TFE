@@ -3,7 +3,7 @@ import { publicAsset } from '../lib/publicPath'
 export function TutoSection() {
   return (
     <section id="explications" className="tuto grid">
-      <h2>Explications du concept</h2>
+      <h2>Explications du&nbsp;concept</h2>
       <div className="tuto__element">
         <div className="tuto__element-media">
           <img
@@ -15,7 +15,7 @@ export function TutoSection() {
           />
         </div>
         <div className="tuto__element-content">
-          <h3>Lance ton tirage</h3>
+          <h3>Lance ton&nbsp;tirage</h3>
           <p>
             Appuie sur le bouton central pour démarrer l'expérience. En un seul clic, tu accèdes à un parcours interactif basé sur des choix simples, mais révélateurs.
           </p>
@@ -33,7 +33,7 @@ export function TutoSection() {
           />
         </div>
         <div className="tuto__element-content">
-          <h3>Fais tes choix</h3>
+          <h3>Fais tes&nbsp;choix</h3>
           <p>
             Découvre une série de cartes avec des questions originales et inattendues. Chaque choix que tu fais affine ton profil et influence les recommandations.
           </p>
@@ -53,7 +53,7 @@ export function TutoSection() {
           />
         </div>
         <div className="tuto__element-content">
-          <h3>Ton résultat personnalisé</h3>
+          <h3>Ton résultat&nbsp;personnalisé</h3>
           <p>
           À la fin du tirage, tu obtiens une sélection unique, pensée pour vraiment te correspondre. Chaque résultat est généré à partir de tes choix et traduit sous forme d'affinités avec différents animes, afin de te proposer quelque chose à la fois cohérent et surprenant. <span className="font-bold">Plus une affinité est élevée, plus l'anime correspondra à tes choix.</span>
           </p>

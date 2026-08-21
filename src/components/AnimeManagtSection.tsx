@@ -26,7 +26,7 @@ type AnimeManagtSectionProps = {
 export function AnimeManagtSection({
   libraryUserId,
   readOnly = false,
-  heading = 'Gestion des animes',
+  heading = 'Gestion des\u00A0animes',
   embedded = false,
   libraryPublic: libraryPublicProp = true,
   ownerDisplayName,
@@ -321,7 +321,7 @@ export function AnimeManagtSection({
 
       {!readOnly && moveTarget ? (
         <AnimeListPickerModal
-          title="Déplacer vers une liste"
+          title="Déplacer vers une\u00A0liste"
           animeTitle={moveTarget.anime.title}
           currentStatus={currentMoveStatus}
           onSelect={(status) => void confirmMoveTo(status)}

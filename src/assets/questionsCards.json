@@ -4,53 +4,53 @@
     {
       "id": "constructionNarrative",
       "category": "constructionNarrative",
-      "title": "Quelle construction narrative choisis-tu ?",
+      "title": "Quelle construction narrative\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "ascensionProgressive",
-          "label": "Ascension progressive",
+          "label": "Ascension\u00A0progressive",
           "image": "/assets/ImgCards/constructionNarrative/ascensionProgressive.webp",
           "alt": ""
         },
         {
           "id": "boucleTemporelle",
-          "label": "Boucle temporelle",
+          "label": "Boucle\u00A0temporelle",
           "image": "/assets/ImgCards/constructionNarrative/boucleTemporelle.webp",
           "alt": ""
         },
         {
           "id": "chuteDuHeros",
-          "label": "Chute du héros",
+          "label": "Chute du\u00A0héros",
           "image": "/assets/ImgCards/constructionNarrative/chuteDuHeros.webp",
           "alt": ""
         },
         {
           "id": "multiPdv",
-          "label": "Multi points de vue",
+          "label": "Multi points de\u00A0vue",
           "image": "/assets/ImgCards/constructionNarrative/multiPdv.webp",
           "alt": ""
         },
         {
           "id": "mystereProgressif",
-          "label": "Mystère progressif",
+          "label": "Mystère\u00A0progressif",
           "image": "/assets/ImgCards/constructionNarrative/mystereProgressif.webp",
           "alt": ""
         },
         {
           "id": "objectifUnique",
-          "label": "Objectif unique",
+          "label": "Objectif\u00A0unique",
           "image": "/assets/ImgCards/constructionNarrative/objectifUnique.webp",
           "alt": ""
         },
         {
           "id": "plotTwistFrequent",
-          "label": "Plot twist fréquent",
+          "label": "Plot twist\u00A0fréquent",
           "image": "/assets/ImgCards/constructionNarrative/plotTwistFrequent.webp",
           "alt": ""
         },
         {
           "id": "voyageInitiatique",
-          "label": "Voyage initiatique",
+          "label": "Voyage\u00A0initiatique",
           "image": "/assets/ImgCards/constructionNarrative/voyageInitiatique.webp",
           "alt": ""
         }
@@ -59,17 +59,17 @@
     {
       "id": "supernatural",
       "category": "etresSurnaturel",
-      "title": "Quel être surnaturel choisis-tu ?",
+      "title": "Quel être surnaturel\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "aucuneCreature",
-          "label": "Aucune créature",
+          "label": "Aucune\u00A0créature",
           "image": "/assets/ImgCards/etresSurnaturel/aucuneCreature.webp",
           "alt": ""
         },
         {
           "id": "creatureMignonne",
-          "label": "Créature mignonne",
+          "label": "Créature\u00A0mignonne",
           "image": "/assets/ImgCards/etresSurnaturel/creatureMignonne.webp",
           "alt": ""
         },
@@ -87,7 +87,7 @@
         },
         {
           "id": "monstreGigantesque",
-          "label": "Monstre gigantesque",
+          "label": "Monstre\u00A0gigantesque",
           "image": "/assets/ImgCards/etresSurnaturel/monstreGigantesque.webp",
           "alt": ""
         },
@@ -108,17 +108,17 @@
     {
       "id": "forcePouvoir",
       "category": "forcePouvoir",
-      "title": "Quelle force ou pouvoir choisis-tu ?",
+      "title": "Quelle force ou pouvoir\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "aucunPouvoir",
-          "label": "Aucun pouvoir",
+          "label": "Aucun\u00A0pouvoir",
           "image": "/assets/ImgCards/forcePouvoir/aucunPouvoir.webp",
           "alt": ""
         },
         {
           "id": "forceBrute",
-          "label": "Force brute",
+          "label": "Force\u00A0brute",
           "image": "/assets/ImgCards/forcePouvoir/forceBrute.webp",
           "alt": ""
         },
@@ -136,7 +136,7 @@
         },
         {
           "id": "technoAvancee",
-          "label": "Technologie avancée",
+          "label": "Technologie\u00A0avancée",
           "image": "/assets/ImgCards/forcePouvoir/technoAvancee.webp",
           "alt": ""
         }
@@ -145,7 +145,7 @@
     {
       "id": "temporality",
       "category": "temporalite",
-      "title": "Quelle temporalité choisis-tu ?",
+      "title": "Quelle temporalité\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "cyberpunk",
@@ -161,7 +161,7 @@
         },
         {
           "id": "moyenAge",
-          "label": "Moyen Âge",
+          "label": "Moyen\u00A0Âge",
           "image": "/assets/ImgCards/temporalite/moyenAge.webp",
           "alt": ""
         },
@@ -182,11 +182,11 @@
     {
       "id": "tonaliteEmotionnelle",
       "category": "tonaliteEmotionnelle",
-      "title": "Quelle tonalité émotionnelle choisis-tu ?",
+      "title": "Quelle tonalité émotionnelle\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "atmosphereLumineuse",
-          "label": "Atmosphère lumineuse",
+          "label": "Atmosphère\u00A0lumineuse",
           "image": "/assets/ImgCards/tonaliteEmotionnelle/atmosphereLumineuse.webp",
           "alt": ""
         },
@@ -237,7 +237,7 @@
     {
       "id": "typeDeProta",
       "category": "typeDeProta",
-      "title": "Quel type de protagoniste choisis-tu ?",
+      "title": "Quel type de protagoniste\u00A0choisis-tu\u00A0?",
       "choices": [
         {
           "id": "antiHeros",
@@ -247,31 +247,31 @@
         },
         {
           "id": "duoInseparable",
-          "label": "Duo inséparable",
+          "label": "Duo\u00A0inséparable",
           "image": "/assets/ImgCards/typeDeProta/duoInseparable.webp",
           "alt": ""
         },
         {
           "id": "genieIncompris",
-          "label": "Génie incompris",
+          "label": "Génie\u00A0incompris",
           "image": "/assets/ImgCards/typeDeProta/genieIncompris.webp",
           "alt": ""
         },
         {
           "id": "groupeSoude",
-          "label": "Groupe soudé",
+          "label": "Groupe\u00A0soudé",
           "image": "/assets/ImgCards/typeDeProta/groupeSoude.webp",
           "alt": ""
         },
         {
           "id": "herosPur",
-          "label": "Héros pur",
+          "label": "Héros\u00A0pur",
           "image": "/assets/ImgCards/typeDeProta/herosPur.webp",
           "alt": ""
         },
         {
           "id": "persoNaifQuiEvolue",
-          "label": "Personnage naïf qui évolue",
+          "label": "Personnage naïf qui\u00A0évolue",
           "image": "/assets/ImgCards/typeDeProta/persoNaifQuiEvolue.webp",
           "alt": ""
         }
@@ -280,41 +280,41 @@
     {
       "id": "univers",
       "category": "univers",
-      "title": "Dans quel univers choisis-tu vivre l'histoire ?",
+      "title": "Dans quel univers choisis-tu vivre\u00A0l'histoire\u00A0?",
       "choices": [
         {
           "id": "mondeEnGuerre",
-          "label": "Monde en guerre",
+          "label": "Monde en\u00A0guerre",
           "image": "/assets/ImgCards/univers/mondeEnGuerre.webp",
           "alt": ""
         },
         {
           "id": "mondeEnPaixFragile",
-          "label": "Monde en paix fragile",
+          "label": "Monde en paix\u00A0fragile",
           "image": "/assets/ImgCards/univers/mondeEnPaixFragile.webp",
           "alt": ""
         },
         {
           "id": "mondeMagiqueCache",
-          "label": "Monde magique caché",
+          "label": "Monde magique\u00A0caché",
           "image": "/assets/ImgCards/univers/mondeMagiqueCache.webp",
           "alt": ""
         },
         {
           "id": "mondeParallele",
-          "label": "Monde parallèle",
+          "label": "Monde\u00A0parallèle",
           "image": "/assets/ImgCards/univers/mondeParallele.webp",
           "alt": ""
         },
         {
           "id": "mondeRealiste",
-          "label": "Monde réaliste",
+          "label": "Monde\u00A0réaliste",
           "image": "/assets/ImgCards/univers/mondeRealiste.webp",
           "alt": ""
         },
         {
           "id": "simulationVirtuel",
-          "label": "Simulation virtuelle",
+          "label": "Simulation\u00A0virtuelle",
           "image": "/assets/ImgCards/univers/simulationVirtuel.webp",
           "alt": ""
         }

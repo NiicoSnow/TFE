@@ -13,9 +13,9 @@ export const ANIME_LIST_STATUSES: AnimeListStatus[] = [
 ]
 
 export const ANIME_LIST_LABELS: Record<AnimeListStatus, string> = {
-  planned: "C'est prévu",
-  watching: 'En train de regarder',
-  paused: 'En pause',
+  planned: "C'est\u00A0prévu",
+  watching: 'En train de\u00A0regarder',
+  paused: 'En\u00A0pause',
   completed: 'Fini',
 }
 

@@ -83,7 +83,7 @@ export function ProfileView({ profile }: ProfileViewProps) {
         <input ref={fileInputRef} className="profile-view__avatar-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={handleAvatarChange} />
       </div>
 
-      <h5 className="profile-view__since">Membre depuis le {formatMemberSince(profile.created_at)}</h5>
+      <h5 className="profile-view__since">Membre depuis le&nbsp;{formatMemberSince(profile.created_at)}</h5>
       {error && <p className="profile-message profile-message--error">{error}</p>}
       {info && <p className="profile-message profile-message--info">{info}</p>}
 

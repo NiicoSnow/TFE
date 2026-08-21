@@ -269,7 +269,7 @@ export function SingleAnimePage() {
 
             {watchLinks.length > 0 ? (
               <section className="single-anime-page__section">
-                <h2 className="single-anime-page__section-title">Des liens utiles</h2>
+                    <h2 className="single-anime-page__section-title">Des liens&nbsp;utiles</h2>
                 <div className="single-anime-page__watch">
                   {watchLinks.map((link) => (
                     <a
@@ -328,7 +328,7 @@ export function SingleAnimePage() {
 
       {listPickerOpen && anime ? (
         <AnimeListPickerModal
-          title="Ajouter à une liste"
+          title="Ajouter à une\u00A0liste"
           animeTitle={title}
           currentStatus={libraryStatus}
           onSelect={(status) => void handleListSelect(status)}

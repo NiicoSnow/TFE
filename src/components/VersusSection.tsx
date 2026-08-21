@@ -34,11 +34,11 @@ function VersusPanel({
     <div className="versus__activity">
       <div className="versus__number-container">
         <span className="versus__number">{cardsDrawn}</span>
-        <h4>Cartes tirés</h4>
+        <h4>Cartes&nbsp;tirés</h4>
       </div>
       <div className="versus__number-container">
         <span className="versus__number">{drawsCompleted}</span>
-        <h4>Tirages fait</h4>
+        <h4>Tirages&nbsp;fait</h4>
       </div>
     </div>
   )
@@ -46,7 +46,7 @@ function VersusPanel({
   const streak = (
     <div className="versus__number-container column streak">
       <StreakDisplay value={uniqueDays} />
-      <h4>Tirages unique</h4>
+      <h4>Tirages&nbsp;unique</h4>
     </div>
   )
 
@@ -186,7 +186,7 @@ export function VersusSection() {
 
   return (
     <section className="versus grid">
-      <h2>Comparaison avec un ami</h2>
+      <h2>Comparaison avec un&nbsp;ami</h2>
 
       {!user ? (
         <p className="versus__status">
@@ -222,7 +222,7 @@ export function VersusSection() {
       )}
 
       <Link to="/amis" className="seemore">
-        Voir sa liste d&apos;amis
+        Voir sa liste&nbsp;d&apos;amis
       </Link>
     </section>
   )

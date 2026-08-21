@@ -20,7 +20,7 @@ export function MiniStatsSection() {
 
   return (
     <section className="ministats grid">
-      <h2>Mini stats</h2>
+      <h2>Mini&nbsp;stats</h2>
 
       {!user ? (
         <p className="ministats__guest">
@@ -33,22 +33,22 @@ export function MiniStatsSection() {
           <div className="ministats__board">
             <div className="ministats__element">
               <span className="ministats__number">{cardsDrawn}</span>
-              <h4>Cartes tirés</h4>
+              <h4>Cartes&nbsp;tirés</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{animesRecommended}</span>
-              <h4>Animes recommandés</h4>
+              <h4>Animes&nbsp;recommandés</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{drawsCompleted}</span>
-              <h4>Tirages fait</h4>
+              <h4>Tirages&nbsp;fait</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{recoInLists}</span>
-              <h4>Animes reco ajoutés dans tes listes</h4>
+              <h4>Animes reco ajoutés dans tes&nbsp;listes</h4>
             </div>
             <div className="ministats__element column">
-              <h4>Tu es</h4>
+              <h4>Tu&nbsp;es</h4>
               <span className="ministats__number">
                 {selfRank && friendsTotal > 1 ? (
                   <>
@@ -61,13 +61,13 @@ export function MiniStatsSection() {
                   '—'
                 )}
               </span>
-              <h4 className="ministats__element-subtitle">Parmi ta liste d&apos;amis</h4>
+              <h4 className="ministats__element-subtitle">Parmi ta liste&nbsp;d&apos;amis</h4>
             </div>
             <div className="stats-card stats-streak ministats__streak">
               <InfoTooltip text="Un jour compte dès le premier tirage. Les tirages suivants le même jour n’ajoutent rien." />
               <div className="ministats__streak-main">
                 <StreakDisplay value={uniqueDays} />
-                <h4 className="stats-streak__label">Tirages unique</h4>
+                <h4 className="stats-streak__label">Tirages&nbsp;unique</h4>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export function MiniStatsSection() {
       )}
 
       <Link to="/stats" className="seemore">
-        Voir les statistiques complètes
+        Voir les statistiques&nbsp;complètes
       </Link>
     </section>
   )

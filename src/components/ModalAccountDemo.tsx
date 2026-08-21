@@ -50,7 +50,7 @@ export function ModalAccountDemo() {
     >
       <div className="modal-account-demo__header">
         <h2 id="modal-account-demo-title" className="modal-account-demo__title">
-          Compte mis à disposition
+          Compte mis à&nbsp;disposition
         </h2>
         <button
           type="button"

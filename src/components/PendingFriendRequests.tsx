@@ -14,7 +14,7 @@ export function PendingFriendRequests({ requests, onAccept, onReject, busyId }: 
 
   return (
     <section className="friends-requests">
-      <h2 className="friends-requests__title">Demandes reçues</h2>
+      <h2 className="friends-requests__title">Demandes&nbsp;reçues</h2>
       <ul className="friends-requests__list">
         {requests.map((request) => {
           const name = request.profile.display_name ?? request.profile.username ?? 'Utilisateur'

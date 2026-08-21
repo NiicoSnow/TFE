@@ -87,7 +87,7 @@ export function SingleFriendPage() {
                 )}
               </div>
               <h5 className="profile-view__since">
-                Membre depuis le {formatMemberSince(profile.created_at)}
+                Membre depuis le&nbsp;{formatMemberSince(profile.created_at)}
               </h5>
             </header>
           ) : null}
@@ -106,7 +106,7 @@ export function SingleFriendPage() {
         <AnimeManagtSection
           libraryUserId={profile.id}
           readOnly
-          heading={`Les listes de ${displayProfileName(profile)}`}
+          heading={`Les listes de\u00A0${displayProfileName(profile)}`}
           libraryPublic={profile.library_public ?? true}
           ownerDisplayName={displayProfileName(profile)}
         />

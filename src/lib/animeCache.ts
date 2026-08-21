@@ -124,12 +124,12 @@ export function getCatalogSectionTitle(config: CatalogSectionProps): string {
   }
 
   if (config.variant === 'similar') {
-    return 'Anime similaire'
+    return 'Anime\u00A0similaire'
   }
 
   const titles: Record<CatalogSectionVariant, string> = {
-    'trending-year': 'Tendance cette année',
-    'trending-all-time': 'Tendance all time',
+    'trending-year': 'Tendance cette\u00A0année',
+    'trending-all-time': 'Tendance all\u00A0time',
     upcoming: 'Prochainement',
   }
   return titles[config.variant]
@@ -137,7 +137,7 @@ export function getCatalogSectionTitle(config: CatalogSectionProps): string {
 
 export function getCatalogSectionSubtitle(config: CatalogSectionProps): string | null {
   if (config.variant === 'trending-year' || config.variant === 'trending-all-time') {
-    return "Basé sur la note de l'animé"
+    return "Basé sur la note de\u00A0l'animé"
   }
   return null
 }

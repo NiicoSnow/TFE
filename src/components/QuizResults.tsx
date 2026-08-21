@@ -137,9 +137,9 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
 
   return (
     <section className="quiz-results" aria-busy={loading}>
-      <h2 className="quiz-results__title">Tes animes recommandés</h2>
+      <h2 className="quiz-results__title">Tes animes&nbsp;recommandés</h2>
       <p className="quiz-results__subtitle">
-        Voici les titres qui correspondent le mieux à tes choix.
+        Voici les titres qui correspondent le mieux à tes&nbsp;choix.
       </p>
 
       {error ? <p className="quiz-results__error">{error}</p> : null}
@@ -211,7 +211,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
                   role="region"
                   aria-label={`Détail de l'affinité pour ${title}`}
                 >
-                  <p className="quiz-results__breakdown-title">Détail par carte choisie</p>
+                  <p className="quiz-results__breakdown-title">Détail par carte&nbsp;choisie</p>
                   <ul className="quiz-results__breakdown-list">
                     {breakdown.map((item) => (
                       <li
@@ -252,7 +252,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
 
       {pickerTarget ? (
         <AnimeListPickerModal
-          title="Ajouter à une liste"
+          title="Ajouter à une\u00A0liste"
           animeTitle={pickerTarget.title}
           currentStatus={pickerStatus}
           onSelect={(status) => void handleListSelect(status)}

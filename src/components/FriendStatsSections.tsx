@@ -23,11 +23,11 @@ function VersusPanel({ name, stats, variant }: VersusPanelProps) {
     <div className="versus__activity">
       <div className="versus__number-container">
         <span className="versus__number">{stats.activity.cardsDrawn}</span>
-        <h4>Cartes tirés</h4>
+        <h4>Cartes&nbsp;tirés</h4>
       </div>
       <div className="versus__number-container">
         <span className="versus__number">{stats.activity.drawsCompleted}</span>
-        <h4>Tirages fait</h4>
+        <h4>Tirages&nbsp;fait</h4>
       </div>
     </div>
   )
@@ -35,7 +35,7 @@ function VersusPanel({ name, stats, variant }: VersusPanelProps) {
   const streak = (
     <div className="versus__number-container column streak">
       <StreakDisplay value={stats.streak.uniqueDays} />
-      <h4>Tirages unique</h4>
+      <h4>Tirages&nbsp;unique</h4>
     </div>
   )
 
@@ -83,7 +83,7 @@ export function FriendStatsSections({
     const label = rankLabel(friendRank.rank)
     return (
       <>
-        {friendName} est <span className="stats-friends__highlight">{label}</span> parmi tes amis !
+        {friendName} est <span className="stats-friends__highlight">{label}</span> parmi tes amis&nbsp;!
       </>
     )
   }, [friendName, friendRank, viewerStats])
@@ -111,7 +111,7 @@ export function FriendStatsSections({
   return (
     <div className="single-friend-page__stats">
       <section className="single-friend-stats__versus versus">
-        <h2 className="stats-block__title">Comparaison avec un ami</h2>
+        <h2 className="stats-block__title">Comparaison avec un&nbsp;ami</h2>
         <div className="versus__board">
           <VersusPanel name="Moi" stats={viewerStats} variant="self" />
           <h3 className="versus__vs">VS</h3>
@@ -124,7 +124,7 @@ export function FriendStatsSections({
         <h2 className="stats-block__title">Préférence</h2>
         <div className="stats-card stats-prefs">
           <p className="stats-prefs__intro">
-            Les 3 cartes que {friendName} a choisi le plus parmi tous les thèmes sont
+            Les 3 cartes que {friendName} a choisi le plus parmi tous les thèmes&nbsp;sont
           </p>
           {friendStats.topChoices.length === 0 ? (
             <p className="stats-card__empty">Pas encore assez de choix pour un top 3.</p>
@@ -209,7 +209,7 @@ export function FriendStatsSections({
                   )
                 })}
               </ol>
-              <p className="stats-friends__footnote">Le classement se base sur le streak</p>
+              <p className="stats-friends__footnote">Le classement se base sur le&nbsp;streak</p>
             </>
           )}
         </div>

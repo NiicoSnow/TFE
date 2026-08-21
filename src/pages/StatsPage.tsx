@@ -39,9 +39,9 @@ function StatsChartBlock({ charts }: { charts: StatsChartCategory[] }) {
           {chart.label}
           <img src={publicAsset('assets/switch2.svg')} alt="" width={22} height={18} />
         </span>
-        <span className="stats-chart__switch-sub">que tu as choisi</span>
+        <span className="stats-chart__switch-sub">que tu as&nbsp;choisi</span>
       </button>
-      <p className="stats-chart__axis-label">En pourcentage</p>
+      <p className="stats-chart__axis-label">En&nbsp;pourcentage</p>
       <div className="stats-chart__plot" role="img" aria-label={`Répartition ${chart.label}`}>
         <div className="stats-chart__y" aria-hidden>
           {[100, 75, 50, 25, 0].map((tick) => (
@@ -92,7 +92,7 @@ export function StatsPage() {
     const label = rankLabel(stats.friends.selfRank)
     return (
       <>
-        Tu es <span className="stats-friends__highlight">{label}</span> parmi tes amis !
+        Tu es <span className="stats-friends__highlight">{label}</span> parmi tes amis&nbsp;!
       </>
     )
   }, [stats])
@@ -117,9 +117,9 @@ export function StatsPage() {
                 text="Un jour compte dès le premier tirage. Les tirages suivants le même jour n’ajoutent rien."
               />
               <StreakDisplay value={stats.streak.uniqueDays} />
-              <h3 className="stats-streak__label">Tirages unique</h3>
+              <h3 className="stats-streak__label">Tirages&nbsp;unique</h3>
               <p className="stats-streak__week">
-                Dont <strong>{stats.streak.uniqueDaysThisWeek}</strong> cette semaine !
+                Dont <strong>{stats.streak.uniqueDaysThisWeek}</strong> cette semaine&nbsp;!
               </p>
             </div>
           </section>
@@ -134,15 +134,15 @@ export function StatsPage() {
             <div className="stats-card stats-activity">
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.cardsDrawn}</span>
-                <h4 className="stats-activity__label">Cartes tirés</h4>
+                <h4 className="stats-activity__label">Cartes&nbsp;tirés</h4>
               </div>
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.drawsCompleted}</span>
-                <h4 className="stats-activity__label">Tirages fait</h4>
+                <h4 className="stats-activity__label">Tirages&nbsp;fait</h4>
               </div>
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.animesRecommended}</span>
-                <h4 className="stats-activity__label">Animes recommandés</h4>
+                <h4 className="stats-activity__label">Animes&nbsp;recommandés</h4>
               </div>
             </div>
           </section>
@@ -151,7 +151,7 @@ export function StatsPage() {
             <h2 className="stats-block__title">Préférence</h2>
             <div className="stats-card stats-prefs">
               <p className="stats-prefs__intro">
-                Les 3 cartes que tu as choisi le plus parmi tous les thèmes sont
+                Les 3 cartes que tu as choisi le plus parmi tous les thèmes&nbsp;sont
               </p>
               {stats.topChoices.length === 0 ? (
                 <p className="stats-card__empty">Pas encore assez de choix pour un top 3.</p>
@@ -232,19 +232,19 @@ export function StatsPage() {
                       </li>
                     ))}
                   </ol>
-                  <p className="stats-friends__footnote">Le classement se base sur le streak</p>
+                  <p className="stats-friends__footnote">Le classement se base sur le&nbsp;streak</p>
                 </>
               )}
             </div>
           </section>
 
           <section className="stats-block stats-block--perf">
-            <h2 className="stats-block__title">Performance des recommandations</h2>
+            <h2 className="stats-block__title">Performance des&nbsp;recommandations</h2>
             <div className="stats-card stats-perf">
               <p className="stats-perf__intro">
-                Après tous tes tests passés, on t'a recommandé{' '}
-                <strong>{stats.performance.totalRecommended} animés </strong>! Voyons ensemble ce que
-                tu en as fait.
+                Après tous tes tests passés, on t&apos;a recommandé{' '}
+                <strong>{stats.performance.totalRecommended} animés</strong>
+                &nbsp;! Voyons ensemble ce que tu en as&nbsp;fait.
               </p>
 
               <div className="stats-perf__metrics">
@@ -258,14 +258,14 @@ export function StatsPage() {
                 ).map(([status, count]) => (
                   <div key={status} className="stats-perf__row">
                     <p className="stats-perf__num">{count}</p>
-                    <p className="stats-perf__text">Ont été ajouté dans ta liste</p>
+                    <p className="stats-perf__text">Ont été ajouté dans ta&nbsp;liste</p>
                     <p className="stats-perf__status">{ANIME_LIST_LABELS[status]}</p>
                   </div>
                 ))}
 
                 <div className="stats-perf__row">
                   <p className="stats-perf__num">{stats.performance.ignored}</p>
-                  <p className="stats-perf__text">Ont été ignoré</p>
+                  <p className="stats-perf__text">Ont été&nbsp;ignoré</p>
                 </div>
               </div>
             </div>
