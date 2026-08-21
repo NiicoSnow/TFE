@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { AnimeManagtSection } from '../components/AnimeManagtSection'
+import { FriendStatsSections } from '../components/FriendStatsSections'
 import { useAuth } from '../hooks/useAuth'
 import { getFriendProfileForViewer } from '../lib/friends'
 import { getQueryErrorMessage } from '../lib/animeCache'
@@ -92,6 +93,14 @@ export function SingleFriendPage() {
           ) : null}
         </div>
       </div>
+
+      {!loading && !error && profile && user ? (
+        <FriendStatsSections
+          viewerId={user.id}
+          friendUserId={profile.id}
+          friendName={displayProfileName(profile)}
+        />
+      ) : null}
 
       {!loading && !error && profile ? (
         <AnimeManagtSection

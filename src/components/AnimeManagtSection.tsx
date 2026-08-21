@@ -202,9 +202,7 @@ export function AnimeManagtSection({
 
   return (
     <section className={sectionClassName}>
-      <div className="anime-management__heading">
-        <h2>{heading}</h2>
-      </div>
+      <h2 className="anime-management__heading">{heading}</h2>
 
       <div className={elementClassName}>
         {!readOnly && !authLoading && !authUser ? (
