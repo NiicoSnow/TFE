@@ -134,15 +134,15 @@ export function StatsPage() {
             <div className="stats-card stats-activity">
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.cardsDrawn}</span>
-                <h4 className="stats-activity__label">Cartes&nbsp;tirés</h4>
+                <h4 className="stats-activity__label">Cartes tirés</h4>
               </div>
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.drawsCompleted}</span>
-                <h4 className="stats-activity__label">Tirages&nbsp;fait</h4>
+                <h4 className="stats-activity__label">Tirages fait</h4>
               </div>
               <div className="stats-activity__row">
                 <span className="stats-activity__num">{stats.activity.animesRecommended}</span>
-                <h4 className="stats-activity__label">Animes&nbsp;recommandés</h4>
+                <h4 className="stats-activity__label">Animes recommandés</h4>
               </div>
             </div>
           </section>

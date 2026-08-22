@@ -33,22 +33,22 @@ export function MiniStatsSection() {
           <div className="ministats__board">
             <div className="ministats__element">
               <span className="ministats__number">{cardsDrawn}</span>
-              <h4>Cartes&nbsp;tirés</h4>
+              <h4>Cartes tirés</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{animesRecommended}</span>
-              <h4>Animes&nbsp;recommandés</h4>
+              <h4>Animes recommandés</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{drawsCompleted}</span>
-              <h4>Tirages&nbsp;fait</h4>
+              <h4>Tirages fait</h4>
             </div>
             <div className="ministats__element">
               <span className="ministats__number">{recoInLists}</span>
-              <h4>Animes reco ajoutés dans tes&nbsp;listes</h4>
+              <h4>Animes reco ajoutés dans tes listes</h4>
             </div>
             <div className="ministats__element column">
-              <h4>Tu&nbsp;es</h4>
+              <h4>Tu es</h4>
               <span className="ministats__number">
                 {selfRank && friendsTotal > 1 ? (
                   <>

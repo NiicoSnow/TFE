@@ -252,7 +252,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
 
       {pickerTarget ? (
         <AnimeListPickerModal
-          title="Ajouter à une\u00A0liste"
+          title={'Ajouter à une\u00A0liste'}
           animeTitle={pickerTarget.title}
           currentStatus={pickerStatus}
           onSelect={(status) => void handleListSelect(status)}

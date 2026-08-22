@@ -328,7 +328,7 @@ export function SingleAnimePage() {
 
       {listPickerOpen && anime ? (
         <AnimeListPickerModal
-          title="Ajouter à une\u00A0liste"
+          title={'Ajouter à une\u00A0liste'}
           animeTitle={title}
           currentStatus={libraryStatus}
           onSelect={(status) => void handleListSelect(status)}

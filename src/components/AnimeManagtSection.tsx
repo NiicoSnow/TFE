@@ -321,7 +321,7 @@ export function AnimeManagtSection({
 
       {!readOnly && moveTarget ? (
         <AnimeListPickerModal
-          title="Déplacer vers une\u00A0liste"
+          title={'Déplacer vers une\u00A0liste'}
           animeTitle={moveTarget.anime.title}
           currentStatus={currentMoveStatus}
           onSelect={(status) => void confirmMoveTo(status)}

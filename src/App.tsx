@@ -4,6 +4,7 @@ import { ProfilePage } from './pages/ProfilePage'
 import './App.scss'
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { useMediaQuery } from './hooks/useMediaQuery'
 import { StatsPage } from './pages/StatsPage'
 import { CataloguePage} from './pages/CataloguePage'
 import { SingleAnimePage } from './pages/SingleAnimePage'
@@ -21,10 +22,29 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const backdropRef = useRef<HTMLButtonElement>(null)
+  const isDesktopNav = useMediaQuery('(min-width: 1024px)')
 
   useEffect(() => {
     document.querySelector('.root')?.classList.toggle('root--no-gradient-bg', isSingleAnimePage)
   }, [isSingleAnimePage])
+
+  useEffect(() => {
+    if (!isDesktopNav) {
+      return
+    }
+
+    setIsMenuOpen(false)
+
+    if (menuRef.current) {
+      gsap.killTweensOf(menuRef.current)
+      gsap.set(menuRef.current, { clearProps: 'all' })
+    }
+
+    if (backdropRef.current) {
+      gsap.killTweensOf(backdropRef.current)
+      gsap.set(backdropRef.current, { clearProps: 'all' })
+    }
+  }, [isDesktopNav])
 
   const closeMenu = () => {
     if (!isMenuOpen) {
