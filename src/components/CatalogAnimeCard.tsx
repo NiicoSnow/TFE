@@ -220,7 +220,9 @@ export function CatalogAnimeCard({
       setRingProgress(1)
       chargingRef.current = false
       setCharging(false)
-      suppressNavRef.current = true
+      if (!window.matchMedia(DESKTOP_CATALOG_MQ).matches) {
+        suppressNavRef.current = true
+      }
       onExpandRequest?.(anime.anilist_id)
     }, delay)
   }
@@ -308,10 +310,12 @@ export function CatalogAnimeCard({
   }
 
   const handlePosterClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (suppressNavRef.current || chargingRef.current) {
+    if (suppressNavRef.current) {
       event.preventDefault()
       suppressNavRef.current = false
+      return
     }
+    stopCharging()
   }
 
   const openListPicker = async (event: MouseEvent<HTMLButtonElement>) => {
