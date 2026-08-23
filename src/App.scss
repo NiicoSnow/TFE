@@ -1255,7 +1255,7 @@
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .catalog-anime-card--interactive .catalog-anime-card__poster img {

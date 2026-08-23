@@ -171,16 +171,8 @@ export function CatalogAnimeCard({
     }
 
     const onTouchMove = (event: TouchEvent) => {
-      if (!gestureClaimedRef.current && !chargingRef.current) return
-      if (!pointerStartRef.current || event.touches.length === 0) return
-
-      const touch = event.touches[0]
-      const dx = touch.clientX - pointerStartRef.current.x
-      const dy = touch.clientY - pointerStartRef.current.y
-
-      if (gestureClaimedRef.current || Math.hypot(dx, dy) <= LONG_PRESS_MOVE_THRESHOLD_PX) {
-        event.preventDefault()
-      }
+      if (!gestureClaimedRef.current) return
+      event.preventDefault()
     }
 
     el.addEventListener('contextmenu', blockNative)
@@ -269,17 +261,21 @@ export function CatalogAnimeCard({
     gestureClaimedRef.current = false
     activePointerIdRef.current = event.pointerId
 
-    try {
-      event.currentTarget.setPointerCapture(event.pointerId)
-    } catch {
-      // ignore
-    }
-
     clearClaimTimer()
     claimTimerRef.current = window.setTimeout(() => {
       claimTimerRef.current = null
-      if (!chargingRef.current || expandedRef.current) return
+      if (!chargingRef.current || expandedRef.current || !pointerStartRef.current) return
+
       gestureClaimedRef.current = true
+      const el = posterLinkRef.current
+      const pointerId = activePointerIdRef.current
+      if (el && pointerId != null) {
+        try {
+          el.setPointerCapture(pointerId)
+        } catch {
+          // ignore
+        }
+      }
     }, CLAIM_GESTURE_MS)
 
     beginCharge()
