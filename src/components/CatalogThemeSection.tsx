@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import {
   displayTitle,
@@ -8,36 +7,22 @@ import {
   getCatalogSectionTitle,
   listForCatalogSection,
 } from '../lib/animeCache'
+import { getCatalogExpandSpan, layoutCatalogExpandRow } from '../lib/catalogExpandLayout'
 import { publicAsset } from '../lib/publicPath'
 import type { CatalogSectionProps } from '../types/catalogSection'
 import type { AnimeCacheSummary } from '../types/animeCache'
-
-export type CatalogTrendItem = {
-  id: string
-  title: string
-  poster: string
-}
-
-const POSTER_FALLBACK =
-  'https://placehold.co/126x176/1e293b/9ca3af?text=Poster'
+import { CatalogAnimeCard } from './CatalogAnimeCard'
 
 const SECTION_MAX = 15
 const PAGE_SIZE = 5
 const DESKTOP_CATALOG_MQ = '(min-width: 1024px)'
 
-function mapToTrendItem(row: AnimeCacheSummary): CatalogTrendItem {
-  return {
-    id: String(row.anilist_id),
-    title: displayTitle(row),
-    poster: row.cover_url ?? POSTER_FALLBACK,
-  }
-}
-
 export function CatalogThemeSection(props: CatalogSectionProps) {
   const isDesktop = useMediaQuery(DESKTOP_CATALOG_MQ)
-  const [items, setItems] = useState<CatalogTrendItem[]>([])
+  const [items, setItems] = useState<AnimeCacheSummary[]>([])
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const [slideIndex, setSlideIndex] = useState(0)
+  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -61,9 +46,10 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
       try {
         const rows = await listForCatalogSection(props, sectionMax)
         if (!cancelled) {
-          setItems(rows.map(mapToTrendItem))
+          setItems(rows)
           setVisibleCount(PAGE_SIZE)
           setSlideIndex(0)
+          setExpandedId(null)
         }
       } catch (err) {
         if (!cancelled) {
@@ -87,6 +73,10 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
     setSlideIndex((index) => Math.min(index, totalPages - 1))
   }, [totalPages])
 
+  useEffect(() => {
+    setExpandedId(null)
+  }, [slideIndex, isDesktop])
+
   const showMore = () => {
     setVisibleCount((n) => Math.min(n + PAGE_SIZE, maxVisible))
   }
@@ -100,7 +90,26 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
 
   const desktopItems = items.slice(slideIndex * PAGE_SIZE, slideIndex * PAGE_SIZE + PAGE_SIZE)
   const mobileItems = items.slice(0, visibleCount)
-  const displayItems = isDesktop ? desktopItems : mobileItems
+  const pageItems = isDesktop ? desktopItems : mobileItems
+
+  const expandedIndex =
+    expandedId != null
+      ? pageItems.findIndex((item) => item.anilist_id === expandedId)
+      : -1
+
+  const expandSpan =
+    isDesktop && expandedIndex >= 0
+      ? getCatalogExpandSpan(displayTitle(pageItems[expandedIndex]))
+      : 3
+
+  const displaySlots =
+    isDesktop && expandedIndex >= 0
+      ? layoutCatalogExpandRow(pageItems, expandedIndex, PAGE_SIZE, expandSpan)
+      : pageItems.map((item) => ({
+          item,
+          expanded: expandedId === item.anilist_id,
+          wide: false,
+        }))
 
   const canShowMoreMobile = !isDesktop && visibleCount < maxVisible
   const canGoNextDesktop = isDesktop && slideIndex < totalPages - 1
@@ -154,95 +163,98 @@ export function CatalogThemeSection(props: CatalogSectionProps) {
           <p className="catalog-theme-section__status">{emptyMessage}</p>
         ) : null}
 
-        {!loading && !error && displayItems.length > 0 ? (
+        {!loading && !error && displaySlots.length > 0 ? (
           <div className={contentClassName}>
             {isDesktop ? (
               <button
-              type="button"
-              className={
-                canGoPrevDesktop
-                  ? 'catalog-theme-section__nav catalog-theme-section__nav--prev'
-                  : 'catalog-theme-section__nav catalog-theme-section__nav--prev catalog-theme-section__nav--placeholder'
-              }
-              aria-label="Afficher les 5 animes précédents"
-              aria-hidden={!canGoPrevDesktop}
-              tabIndex={canGoPrevDesktop ? 0 : -1}
-              disabled={!canGoPrevDesktop}
-              onClick={() => setSlideIndex((i) => i - 1)}
-            >
-              <img
-                src={publicAsset('assets/fleche.svg')}
-                alt=""
-                className="catalog-theme-section__nav-icon catalog-theme-section__nav-icon--left"
-                width={17}
-                height={27}
-              />
+                type="button"
+                className={
+                  canGoPrevDesktop
+                    ? 'catalog-theme-section__nav catalog-theme-section__nav--prev'
+                    : 'catalog-theme-section__nav catalog-theme-section__nav--prev catalog-theme-section__nav--placeholder'
+                }
+                aria-label="Afficher les 5 animes précédents"
+                aria-hidden={!canGoPrevDesktop}
+                tabIndex={canGoPrevDesktop ? 0 : -1}
+                disabled={!canGoPrevDesktop}
+                onClick={() => {
+                  setExpandedId(null)
+                  setSlideIndex((i) => i - 1)
+                }}
+              >
+                <img
+                  src={publicAsset('assets/fleche.svg')}
+                  alt=""
+                  className="catalog-theme-section__nav-icon catalog-theme-section__nav-icon--left"
+                  width={17}
+                  height={27}
+                />
               </button>
             ) : null}
 
             <div
-            key={isDesktop ? slideIndex : 'mobile'}
-            className={
-              isDesktop
-                ? 'catalog-theme-section__track catalog-theme-section__track--slide'
-                : 'catalog-theme-section__track'
-            }
+              key={isDesktop ? slideIndex : 'mobile'}
+              className={
+                isDesktop
+                  ? 'catalog-theme-section__track catalog-theme-section__track--slide'
+                  : 'catalog-theme-section__track'
+              }
             >
-              {displayItems.map((item) => (
-              <Link
-                key={item.id}
-                to={`/catalogue/anime/${item.id}`}
-                className="catalog-theme-section__card"
-              >
-                <figure className="catalog-theme-section__poster">
-                  <img src={item.poster} alt="" loading="lazy" />
-                </figure>
-                <div className="catalog-theme-section__meta">
-                  <h5 className="catalog-theme-section__card-title">{item.title}</h5>
-                </div>
-              </Link>
+              {displaySlots.map(({ item, expanded, wide }) => (
+                <CatalogAnimeCard
+                  key={item.anilist_id}
+                  anime={item}
+                  expandEnabled
+                  isExpanded={expanded}
+                  expandWide={Boolean(wide)}
+                  onExpandRequest={setExpandedId}
+                  onCollapse={() => setExpandedId(null)}
+                />
               ))}
             </div>
 
             {isDesktop ? (
               <button
-              type="button"
-              className={
-                canGoNextDesktop
-                  ? 'catalog-theme-section__nav catalog-theme-section__nav--next'
-                  : 'catalog-theme-section__nav catalog-theme-section__nav--next catalog-theme-section__nav--placeholder'
-              }
-              aria-label="Afficher les 5 animes suivants"
-              aria-hidden={!canGoNextDesktop}
-              tabIndex={canGoNextDesktop ? 0 : -1}
-              disabled={!canGoNextDesktop}
-              onClick={() => setSlideIndex((i) => i + 1)}
-            >
-              <img
-                src={publicAsset('assets/fleche.svg')}
-                alt=""
-                className="catalog-theme-section__nav-icon"
-                width={17}
-                height={27}
-              />
+                type="button"
+                className={
+                  canGoNextDesktop
+                    ? 'catalog-theme-section__nav catalog-theme-section__nav--next'
+                    : 'catalog-theme-section__nav catalog-theme-section__nav--next catalog-theme-section__nav--placeholder'
+                }
+                aria-label="Afficher les 5 animes suivants"
+                aria-hidden={!canGoNextDesktop}
+                tabIndex={canGoNextDesktop ? 0 : -1}
+                disabled={!canGoNextDesktop}
+                onClick={() => {
+                  setExpandedId(null)
+                  setSlideIndex((i) => i + 1)
+                }}
+              >
+                <img
+                  src={publicAsset('assets/fleche.svg')}
+                  alt=""
+                  className="catalog-theme-section__nav-icon"
+                  width={17}
+                  height={27}
+                />
               </button>
             ) : null}
 
             {canShowMoreMobile ? (
-            <button
-              type="button"
-              className="catalog-theme-section__nav"
-              aria-label="Afficher 5 animes de plus"
-              onClick={showMore}
-            >
-              <img
-                src={publicAsset('assets/fleche.svg')}
-                alt=""
-                className="catalog-theme-section__nav-icon"
-                width={17}
-                height={27}
-              />
-            </button>
+              <button
+                type="button"
+                className="catalog-theme-section__nav"
+                aria-label="Afficher 5 animes de plus"
+                onClick={showMore}
+              >
+                <img
+                  src={publicAsset('assets/fleche.svg')}
+                  alt=""
+                  className="catalog-theme-section__nav-icon"
+                  width={17}
+                  height={27}
+                />
+              </button>
             ) : null}
           </div>
         ) : null}

@@ -3,7 +3,7 @@ import type { CatalogSectionProps, CatalogSectionVariant } from '../types/catalo
 import type { AnimeCacheRow, AnimeCacheSummary } from '../types/animeCache'
 
 const SUMMARY_COLUMNS =
-  'anilist_id, title_romaji, title_english, title_native, cover_url, average_score, episodes, season_year'
+  'anilist_id, title_romaji, title_english, title_native, cover_url, average_score, episodes, season, season_year, genres, studios'
 
 const CATALOG_EXCLUDED_FORMATS = ['OVA', 'SPECIAL'] as const
 
@@ -177,10 +177,6 @@ export function formatSeasonRelease(season: string | null, seasonYear: number | 
   return label ?? (seasonYear != null ? String(seasonYear) : null)
 }
 
-type SimilarCandidate = AnimeCacheSummary & {
-  genres: string[]
-}
-
 const SIMILAR_CANDIDATE_POOL = 80
 
 function countGenreOverlap(candidateGenres: string[], sourceGenres: string[]) {
@@ -208,7 +204,7 @@ export async function listSimilarAnimeFromCache(
 
   const { data, error } = await supabase
     .from('anime_cache')
-    .select(`${SUMMARY_COLUMNS}, genres`)
+    .select(SUMMARY_COLUMNS)
     .not('format', 'in', `(${CATALOG_EXCLUDED_FORMATS.join(',')})`)
     .neq('anilist_id', anilistId)
     .or(orFilter)
@@ -218,7 +214,7 @@ export async function listSimilarAnimeFromCache(
 
   const minOverlap = minGenreOverlapForSimilar(genres.length)
 
-  const ranked = ((data ?? []) as SimilarCandidate[])
+  const ranked = ((data ?? []) as AnimeCacheSummary[])
     .map((row) => ({
       row,
       genreOverlap: countGenreOverlap(row.genres ?? [], genres),
@@ -231,7 +227,7 @@ export async function listSimilarAnimeFromCache(
     .slice(0, limit)
     .map(({ row }) => row)
 
-  return ranked as AnimeCacheSummary[]
+  return ranked
 }
 
 export function getQueryErrorMessage(err: unknown, fallback: string) {

@@ -66,5 +66,8 @@ export type AnimeCacheSummary = Pick<
   | 'cover_url'
   | 'average_score'
   | 'episodes'
+  | 'season'
   | 'season_year'
+  | 'genres'
+  | 'studios'
 >
