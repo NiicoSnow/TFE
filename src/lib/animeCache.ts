@@ -7,11 +7,28 @@ const SUMMARY_COLUMNS =
 
 const CATALOG_EXCLUDED_FORMATS = ['OVA', 'SPECIAL'] as const
 
-function catalogSectionBaseQuery() {
+function catalogSectionBaseQuery(opts?: { count?: 'exact' }) {
   return supabase
     .from('anime_cache')
-    .select(SUMMARY_COLUMNS)
+    .select(SUMMARY_COLUMNS, opts?.count ? { count: opts.count } : undefined)
     .not('format', 'in', `(${CATALOG_EXCLUDED_FORMATS.join(',')})`)
+}
+
+export type AnimeCachePage = {
+  rows: AnimeCacheSummary[]
+  total: number
+}
+
+export const CATALOG_SEARCH_PAGE_SIZE = 48
+
+function emptyAnimeCachePage(): AnimeCachePage {
+  return { rows: [], total: 0 }
+}
+
+function pageRange(page: number, pageSize: number) {
+  const safePage = Math.max(0, page)
+  const from = safePage * pageSize
+  return { from, to: from + pageSize - 1 }
 }
 
 export async function getAnimeFromCache(anilistId: number) {
@@ -41,19 +58,78 @@ export async function getAnimeSummariesFromCache(anilistIds: number[]) {
     .filter((row): row is AnimeCacheSummary => row != null)
 }
 
-export async function searchAnimeFromCache(query: string, limit = 24) {
+export async function searchAnimeFromCache(
+  query: string,
+  page = 0,
+  pageSize = CATALOG_SEARCH_PAGE_SIZE,
+): Promise<AnimeCachePage> {
   const q = query.trim()
-  if (!q) return [] as AnimeCacheSummary[]
+  if (!q) return emptyAnimeCachePage()
 
-  const { data, error } = await catalogSectionBaseQuery()
+  const { from, to } = pageRange(page, pageSize)
+  const { data, error, count } = await catalogSectionBaseQuery({ count: 'exact' })
     .or(
       `title_romaji.ilike.%${q}%,title_english.ilike.%${q}%,title_native.ilike.%${q}%`,
     )
     .order('average_score', { ascending: false, nullsFirst: false })
-    .limit(limit)
+    .range(from, to)
 
   if (error) throw error
-  return (data ?? []) as AnimeCacheSummary[]
+  return {
+    rows: (data ?? []) as AnimeCacheSummary[],
+    total: count ?? 0,
+  }
+}
+
+export const ANIME_CATALOG_GENRES = [
+  'Action',
+  'Adventure',
+  'Comedy',
+  'Drama',
+  'Ecchi',
+  'Fantasy',
+  'Horror',
+  'Mahou Shoujo',
+  'Mecha',
+  'Music',
+  'Mystery',
+  'Psychological',
+  'Romance',
+  'Sci-Fi',
+  'Slice of Life',
+  'Sports',
+  'Supernatural',
+  'Thriller',
+] as const
+
+export async function listAnimeByGenreFromCache(
+  genre: string,
+  page = 0,
+  pageSize = CATALOG_SEARCH_PAGE_SIZE,
+  titleQuery?: string,
+): Promise<AnimeCachePage> {
+  const g = genre.trim()
+  if (!g) return emptyAnimeCachePage()
+
+  const { from, to } = pageRange(page, pageSize)
+  let request = catalogSectionBaseQuery({ count: 'exact' })
+    .filter('genres', 'cs', JSON.stringify([g]))
+    .order('average_score', { ascending: false, nullsFirst: false })
+
+  const q = titleQuery?.trim()
+  if (q) {
+    request = request.or(
+      `title_romaji.ilike.%${q}%,title_english.ilike.%${q}%,title_native.ilike.%${q}%`,
+    )
+  }
+
+  const { data, error, count } = await request.range(from, to)
+
+  if (error) throw error
+  return {
+    rows: (data ?? []) as AnimeCacheSummary[],
+    total: count ?? 0,
+  }
 }
 
 export async function listTrendingFromCache(seasonYear: number, limit = 12) {
