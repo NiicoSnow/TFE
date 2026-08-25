@@ -531,6 +531,11 @@
   gap: 1.2rem;
 }
 
+.anime-management__pagination {
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+}
+
 .anime-management__card {
   display: flex;
   flex-direction: row;
@@ -644,16 +649,6 @@
   background: color-mix(in srgb, #f87171 12%, transparent);
 }
 
-.anime-management__modal-option--danger {
-  color: #f87171;
-  border-color: color-mix(in srgb, #f87171 35%, var(--border));
-}
-
-.anime-management__modal-option--danger:hover:not(:disabled) {
-  border-color: #f87171;
-  color: #f87171;
-}
-
 .anime-management__modal-root {
   position: fixed;
   inset: 0;
@@ -734,6 +729,11 @@
 .anime-management__modal-option:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.anime-management__modal-option--danger {
+  color: #f87171;
+  border-color: color-mix(in srgb, #f87171 45%, var(--border));
 }
 
 .anime-management__modal-current {

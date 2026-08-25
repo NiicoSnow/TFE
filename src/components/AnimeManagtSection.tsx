@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { ANIME_LIST_LABELS_ORDERED, categoryIndexToStatus, fetchUserLibraryByCategory, getQueryErrorMessage, removeAnimeFromLibrary, setAnimeListStatus, setLibraryPublic, statusToCategoryIndex } from '../lib/animeLibrary'
@@ -8,6 +8,7 @@ import type { AnimeListStatus, LibraryAnimeItem } from '../types/animeLibrary'
 import { AnimeListPickerModal } from './AnimeListPickerModal'
 
 const EMPTY_LISTS: LibraryAnimeItem[][] = [[], [], [], []]
+const LIBRARY_PAGE_SIZE = 8
 
 type MoveContext = {
   fromIndex: number
@@ -40,10 +41,15 @@ export function AnimeManagtSection({
   const [libraryLoading, setLibraryLoading] = useState(false)
   const [libraryError, setLibraryError] = useState<string | null>(null)
   const [categoryIndex, setCategoryIndex] = useState(0)
+  const [page, setPage] = useState(0)
+  const [pageEditing, setPageEditing] = useState(false)
+  const [pageDraft, setPageDraft] = useState('1')
   const [moveTarget, setMoveTarget] = useState<MoveContext | null>(null)
   const [moveBusy, setMoveBusy] = useState(false)
   const [libraryPublic, setLibraryPublicState] = useState(true)
   const [visibilityBusy, setVisibilityBusy] = useState(false)
+  const pageInputRef = useRef<HTMLInputElement>(null)
+  const listTopRef = useRef<HTMLDivElement>(null)
 
   const canShowLibrary = isOwner || (readOnly && libraryPublicProp)
 
@@ -89,9 +95,69 @@ export function AnimeManagtSection({
   const n = ANIME_LIST_LABELS_ORDERED.length
   const currentLabel = ANIME_LIST_LABELS_ORDERED[categoryIndex]
   const items = lists[categoryIndex] ?? []
+  const pageCount = Math.max(1, Math.ceil(items.length / LIBRARY_PAGE_SIZE))
+  const safePage = Math.min(page, pageCount - 1)
+  const pageItems = items.slice(
+    safePage * LIBRARY_PAGE_SIZE,
+    safePage * LIBRARY_PAGE_SIZE + LIBRARY_PAGE_SIZE,
+  )
+  const canGoPrevPage = safePage > 0
+  const canGoNextPage = safePage < pageCount - 1 && items.length > 0
 
-  const goPrev = () => setCategoryIndex((i) => (i - 1 + n) % n)
-  const goNext = () => setCategoryIndex((i) => (i + 1) % n)
+  useEffect(() => {
+    if (!pageEditing) return
+    const input = pageInputRef.current
+    if (!input) return
+    input.focus()
+    input.select()
+  }, [pageEditing])
+
+  const goPrev = () => {
+    setPage(0)
+    setPageEditing(false)
+    setCategoryIndex((i) => (i - 1 + n) % n)
+  }
+  const goNext = () => {
+    setPage(0)
+    setPageEditing(false)
+    setCategoryIndex((i) => (i + 1) % n)
+  }
+
+  const goToPage = (nextPage: number) => {
+    const clamped = Math.min(Math.max(0, nextPage), pageCount - 1)
+    setPage(clamped)
+    setPageDraft(String(clamped + 1))
+    listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const commitPageDraft = () => {
+    const parsed = Number.parseInt(pageDraft.trim(), 10)
+    setPageEditing(false)
+    if (!Number.isFinite(parsed)) {
+      setPageDraft(String(safePage + 1))
+      return
+    }
+    goToPage(parsed - 1)
+  }
+
+  const handlePageFormSubmit = (event: FormEvent) => {
+    event.preventDefault()
+    commitPageDraft()
+  }
+
+  const handlePageInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      setPageDraft(String(safePage + 1))
+      setPageEditing(false)
+    }
+  }
+
+  const selectCategory = (index: number) => {
+    setPage(0)
+    setPageEditing(false)
+    setCategoryIndex(index)
+  }
 
   const openMovePicker = (anime: LibraryAnimeItem) => {
     setMoveTarget({ fromIndex: categoryIndex, anime })
@@ -248,7 +314,7 @@ export function AnimeManagtSection({
                 {ANIME_LIST_LABELS_ORDERED.map((label, i) => (
                   <Fragment key={label}>
                     {i > 0 ? <span className="anime-management__tab-sep" aria-hidden>|</span> : null}
-                    <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => setCategoryIndex(i)}>{label}</button>
+                    <button type="button" className={i === categoryIndex ? 'anime-management__tab anime-management__tab--active' : 'anime-management__tab'} onClick={() => selectCategory(i)}>{label}</button>
                   </Fragment>
                 ))}
               </nav>
@@ -261,11 +327,13 @@ export function AnimeManagtSection({
 
             <div className="anime-management__divider" aria-hidden />
 
+            <div ref={listTopRef} />
+
             <ul className="anime-management__list">
               {items.length === 0 ? (
                 <li className="anime-management__empty">Aucun anime dans cette liste.</li>
               ) : (
-                items.map((anime) => (
+                pageItems.map((anime) => (
                   <li key={anime.libraryId} className="anime-management__card">
                     <Link to={`/catalogue/anime/${anime.anilistId}`} className="anime-management__poster-link">
                       <img className="anime-management__poster" src={anime.poster} alt="" />
@@ -309,6 +377,76 @@ export function AnimeManagtSection({
                 ))
               )}
             </ul>
+
+            {items.length > LIBRARY_PAGE_SIZE ? (
+              <div className="catalogue-search__pagination anime-management__pagination">
+                <button
+                  type="button"
+                  className="catalog-theme-section__nav catalogue-search__page-btn"
+                  aria-label="Page précédente"
+                  disabled={!canGoPrevPage}
+                  onClick={() => goToPage(safePage - 1)}
+                >
+                  <img
+                    src={publicAsset('assets/fleche.svg')}
+                    alt=""
+                    className="catalog-theme-section__nav-icon catalog-theme-section__nav-icon--left"
+                    width={17}
+                    height={27}
+                  />
+                </button>
+
+                {pageEditing ? (
+                  <form className="catalogue-search__page-form" onSubmit={handlePageFormSubmit}>
+                    <label className="catalogue-search__page-edit">
+                      <span className="catalogue-search__page-edit-prefix">Page</span>
+                      <input
+                        ref={pageInputRef}
+                        type="number"
+                        inputMode="numeric"
+                        min={1}
+                        max={pageCount}
+                        className="catalogue-search__page-input"
+                        value={pageDraft}
+                        aria-label={`Aller à une page entre 1 et ${pageCount}`}
+                        onChange={(event) => setPageDraft(event.target.value)}
+                        onBlur={commitPageDraft}
+                        onKeyDown={handlePageInputKeyDown}
+                      />
+                      <span className="catalogue-search__page-edit-suffix">/ {pageCount}</span>
+                    </label>
+                  </form>
+                ) : (
+                  <button
+                    type="button"
+                    className="catalogue-search__page-label"
+                    aria-label={`Page ${safePage + 1} sur ${pageCount}. Cliquer pour choisir une page`}
+                    onClick={() => {
+                      setPageDraft(String(safePage + 1))
+                      setPageEditing(true)
+                    }}
+                  >
+                    Page {safePage + 1} / {pageCount}
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  className="catalog-theme-section__nav catalogue-search__page-btn"
+                  aria-label="Page suivante"
+                  disabled={!canGoNextPage}
+                  onClick={() => goToPage(safePage + 1)}
+                >
+                  <img
+                    src={publicAsset('assets/fleche.svg')}
+                    alt=""
+                    className="catalog-theme-section__nav-icon"
+                    width={17}
+                    height={27}
+                  />
+                </button>
+              </div>
+            ) : null}
 
             {visibilityControl ? (
               <div className="anime-management__visibility-slot anime-management__visibility-slot--mobile">
