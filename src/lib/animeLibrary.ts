@@ -53,6 +53,17 @@ export async function setLibraryPublic(userId: string, libraryPublic: boolean) {
   if (error) throw error
 }
 
+export async function getUserLibraryAnilistIds(userId: string): Promise<Set<number>> {
+  const { data, error } = await supabase
+    .from('user_anime_library')
+    .select('anilist_id')
+    .eq('user_id', userId)
+
+  if (error) throw error
+
+  return new Set((data ?? []).map((row) => row.anilist_id as number))
+}
+
 export async function getLibraryStatusesForAnimes(
   userId: string,
   anilistIds: number[],

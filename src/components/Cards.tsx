@@ -1,19 +1,21 @@
 import { useCallback, useRef } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useQuiz, type QuizCompletePayload } from '../hooks/useQuiz'
+import { getUserLibraryAnilistIds } from '../lib/animeLibrary'
 import { saveCompletedQuizSession } from '../lib/quizStats'
 import { QuizQuestion } from './QuizQuestion'
 import { QuizResults } from './QuizResults'
 
 export function Cards() {
   const { user } = useAuth()
+  const userId = user?.id
   const savingRef = useRef(false)
 
   const handleComplete = useCallback(
     (payload: QuizCompletePayload) => {
-      if (!user?.id || savingRef.current) return
+      if (!userId || savingRef.current) return
       savingRef.current = true
-      void saveCompletedQuizSession({ userId: user.id, ...payload })
+      void saveCompletedQuizSession({ userId, ...payload })
         .catch((err) => {
           console.error('Échec enregistrement du tirage:', err)
         })
@@ -21,8 +23,17 @@ export function Cards() {
           savingRef.current = false
         })
     },
-    [user?.id],
+    [userId],
   )
+
+  const getExcludeAnilistIds = useCallback(async () => {
+    if (!userId) return new Set<number>()
+    try {
+      return await getUserLibraryAnilistIds(userId)
+    } catch {
+      return new Set<number>()
+    }
+  }, [userId])
 
   const {
     phase,
@@ -38,7 +49,7 @@ export function Cards() {
     goBack,
     canGoBack,
     canSkip,
-  } = useQuiz({ onComplete: handleComplete })
+  } = useQuiz({ onComplete: handleComplete, getExcludeAnilistIds })
 
   const handleRestart = useCallback(() => {
     savingRef.current = false

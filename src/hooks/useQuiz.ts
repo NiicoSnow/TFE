@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import questionsData from '../assets/questionsCards.json'
 import poolData from '../assets/quizAnimePool.json'
-import { QUIZ_QUESTION_COUNT, QUIZ_SKIPPED_CHOICE_ID } from '../lib/quizConfig'
+import { QUIZ_QUESTION_COUNT, QUIZ_RESULT_COUNT, QUIZ_RESULT_RANK_DEPTH, QUIZ_SKIPPED_CHOICE_ID } from '../lib/quizConfig'
 import { getFixedFirstQuestion, pickNextQuestion } from '../lib/quizSelection'
 import { rankAnimePool } from '../lib/quizScoring'
 import type {
@@ -25,6 +25,7 @@ export type QuizCompletePayload = {
 
 type UseQuizOptions = {
   onComplete?: (payload: QuizCompletePayload) => void
+  getExcludeAnilistIds?: () => Promise<ReadonlySet<number>>
 }
 
 function createFirstQuestion(): QuizQuestion[] {
@@ -35,6 +36,8 @@ function createFirstQuestion(): QuizQuestion[] {
 export function useQuiz(options?: UseQuizOptions) {
   const onCompleteRef = useRef(options?.onComplete)
   onCompleteRef.current = options?.onComplete
+  const getExcludeAnilistIdsRef = useRef(options?.getExcludeAnilistIds)
+  getExcludeAnilistIdsRef.current = options?.getExcludeAnilistIds
 
   const [phase, setPhase] = useState<QuizPhase>('quiz')
   const [questions, setQuestions] = useState<QuizQuestion[]>(createFirstQuestion)
@@ -60,14 +63,17 @@ export function useQuiz(options?: UseQuizOptions) {
       setAnswers(nextAnswers)
 
       if (isLastQuestion) {
-        const ranked = rankAnimePool(animePool.animes, nextAnswers)
-        setResults(ranked)
-        setPhase('results')
-        onCompleteRef.current?.({
-          askedQuestions: questions,
-          answers: nextAnswers,
-          results: ranked,
-        })
+        void (async () => {
+          const excludeIds = (await getExcludeAnilistIdsRef.current?.()) ?? new Set()
+          const ranked = rankAnimePool(animePool.animes, nextAnswers, QUIZ_RESULT_RANK_DEPTH, excludeIds)
+          setResults(ranked)
+          setPhase('results')
+          onCompleteRef.current?.({
+            askedQuestions: questions,
+            answers: nextAnswers,
+            results: ranked.slice(0, QUIZ_RESULT_COUNT),
+          })
+        })()
         return
       }
 
@@ -97,14 +103,17 @@ export function useQuiz(options?: UseQuizOptions) {
     setAnswers(nextAnswers)
 
     if (isLastQuestion) {
-      const ranked = rankAnimePool(animePool.animes, nextAnswers)
-      setResults(ranked)
-      setPhase('results')
-      onCompleteRef.current?.({
-        askedQuestions: questions,
-        answers: nextAnswers,
-        results: ranked,
-      })
+      void (async () => {
+        const excludeIds = (await getExcludeAnilistIdsRef.current?.()) ?? new Set()
+        const ranked = rankAnimePool(animePool.animes, nextAnswers, QUIZ_RESULT_RANK_DEPTH, excludeIds)
+        setResults(ranked)
+        setPhase('results')
+        onCompleteRef.current?.({
+          askedQuestions: questions,
+          answers: nextAnswers,
+          results: ranked.slice(0, QUIZ_RESULT_COUNT),
+        })
+      })()
       return
     }
 

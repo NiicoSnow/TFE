@@ -1505,6 +1505,50 @@
   background: var(--element-bg);
   border-radius: 1.2rem;
   border: 1px solid var(--border);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    filter 0.28s ease;
+  will-change: opacity, transform;
+}
+
+.quiz-results__item--exit {
+  opacity: 0;
+  transform: translateX(-1.4rem) scale(0.98);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.quiz-results__item--enter {
+  animation: quiz-results-item-in 0.32s ease forwards;
+}
+
+@keyframes quiz-results-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.4rem) scale(0.98);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-results__item {
+    transition: none;
+  }
+
+  .quiz-results__item--exit,
+  .quiz-results__item--enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 .quiz-results__item-row {
@@ -1523,6 +1567,32 @@
   padding-top: 0.2rem;
 }
 
+.quiz-results__poster-link {
+  display: block;
+  width: 7rem;
+  max-width: 7rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 12px;
+}
+
+.quiz-results__poster-link:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.quiz-results__poster-link img {
+  pointer-events: none;
+  display: block;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .quiz-results__poster-link:hover .quiz-results__poster {
+    filter: brightness(1.08);
+  }
+}
+
 .quiz-results__poster {
   width: 7rem;
   max-width: 7rem;
@@ -1530,6 +1600,7 @@
   border-radius: 12px;
   object-fit: cover;
   background: var(--element-bg-secondary);
+  transition: filter 0.2s ease;
 }
 
 .quiz-results__info {
@@ -1713,6 +1784,7 @@
 }
 
 .quiz-results__error,
+.quiz-results__empty,
 .quiz-results__loading {
   color: var(--text-secondary);
   margin-bottom: 1.6rem;
@@ -4621,6 +4693,11 @@
   .quiz-results__rank {
     font-size: 2.4rem;
     padding-top: 0;
+  }
+
+  .quiz-results__poster-link {
+    width: 100%;
+    max-width: none;
   }
 
   .quiz-results__poster {
