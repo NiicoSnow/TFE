@@ -1,20 +1,10 @@
 import { supabase } from './supabase'
-import {
-  getQuizCategoryLabel,
-  getQuizChoiceMeta,
-  getQuizChoicesForCategory,
-  QUIZ_CATEGORY_ORDER,
-  quizChoiceImageSrc,
-} from './quizMeta'
+import { QUIZ_SKIPPED_CHOICE_ID } from './quizConfig'
+import { getQuizCategoryLabel, getQuizChoiceMeta, getQuizChoicesForCategory, QUIZ_CATEGORY_ORDER, quizChoiceImageSrc,} from './quizMeta'
 import { displayProfileName } from './profileDisplay'
 import type { AnimeListStatus } from '../types/animeLibrary'
 import type { QuizAnswers, QuizQuestion, ScoredAnime } from '../types/quiz'
-import type {
-  StatsChartCategory,
-  StatsFriendRank,
-  StatsTopChoice,
-  UserQuizStats,
-} from '../types/stats'
+import type { StatsChartCategory, StatsFriendRank, StatsTopChoice, UserQuizStats } from '../types/stats'
 
 export type SaveQuizSessionInput = {
   userId: string
@@ -42,7 +32,7 @@ export async function saveCompletedQuizSession({
 
   const choiceRows = askedQuestions.flatMap((question) => {
     const choiceId = answers[question.id]
-    if (!choiceId) return []
+    if (!choiceId || choiceId === QUIZ_SKIPPED_CHOICE_ID) return []
     return [
       {
         session_id: sessionId,

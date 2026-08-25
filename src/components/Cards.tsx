@@ -33,9 +33,11 @@ export function Cards() {
     answers,
     results,
     selectChoice,
+    skipQuestion,
     restart,
     goBack,
     canGoBack,
+    canSkip,
   } = useQuiz({ onComplete: handleComplete })
 
   const handleRestart = useCallback(() => {
@@ -64,7 +66,9 @@ export function Cards() {
       selectedChoiceId={selectedChoiceId}
       progressLabel={progressLabel}
       canGoBack={canGoBack}
+      canSkip={canSkip}
       onBack={goBack}
+      onSkip={skipQuestion}
       onSelect={selectChoice}
     />
   )

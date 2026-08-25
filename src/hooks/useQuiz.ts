@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import questionsData from '../assets/questionsCards.json'
 import poolData from '../assets/quizAnimePool.json'
-import { QUIZ_QUESTION_COUNT } from '../lib/quizConfig'
+import { QUIZ_QUESTION_COUNT, QUIZ_SKIPPED_CHOICE_ID } from '../lib/quizConfig'
 import { getFixedFirstQuestion, pickNextQuestion } from '../lib/quizSelection'
 import { rankAnimePool } from '../lib/quizScoring'
 import type {
@@ -87,6 +87,41 @@ export function useQuiz(options?: UseQuizOptions) {
     [answers, currentQuestion, isLastQuestion, phase, questionIndex, questions],
   )
 
+  const skipQuestion = useCallback(() => {
+    if (!currentQuestion || phase !== 'quiz') return
+
+    const nextAnswers: QuizAnswers = {
+      ...answers,
+      [currentQuestion.id]: QUIZ_SKIPPED_CHOICE_ID,
+    }
+    setAnswers(nextAnswers)
+
+    if (isLastQuestion) {
+      const ranked = rankAnimePool(animePool.animes, nextAnswers)
+      setResults(ranked)
+      setPhase('results')
+      onCompleteRef.current?.({
+        askedQuestions: questions,
+        answers: nextAnswers,
+        results: ranked,
+      })
+      return
+    }
+
+    const nextIndex = questionIndex + 1
+    const nextQuestion = pickNextQuestion(
+      allQuestions,
+      nextAnswers,
+      animePool.animes,
+      nextIndex,
+    )
+
+    if (!nextQuestion) return
+
+    setQuestions((prev) => [...prev.slice(0, nextIndex), nextQuestion])
+    setQuestionIndex(nextIndex)
+  }, [answers, currentQuestion, isLastQuestion, phase, questionIndex, questions])
+
   const restart = useCallback(() => {
     setPhase('quiz')
     setQuestions(createFirstQuestion())
@@ -110,8 +145,10 @@ export function useQuiz(options?: UseQuizOptions) {
     answers,
     results,
     selectChoice,
+    skipQuestion,
     restart,
     goBack,
     canGoBack: phase === 'quiz' && questionIndex > 0,
+    canSkip: phase === 'quiz',
   }
 }

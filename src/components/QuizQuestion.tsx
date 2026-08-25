@@ -8,7 +8,9 @@ type QuizQuestionProps = {
   selectedChoiceId: string | undefined
   progressLabel: string
   canGoBack: boolean
+  canSkip: boolean
   onBack: () => void
+  onSkip: () => void
   onSelect: (choiceId: string) => void
 }
 
@@ -17,7 +19,9 @@ export function QuizQuestion({
   selectedChoiceId,
   progressLabel,
   canGoBack,
+  canSkip,
   onBack,
+  onSkip,
   onSelect,
 }: QuizQuestionProps) {
   const choicesRef = useRef<HTMLDivElement>(null)
@@ -71,6 +75,18 @@ export function QuizQuestion({
         <p className="quiz-question__progress" aria-live="polite">
           Question {progressLabel}
         </p>
+        {canSkip ? (
+          <button
+            type="button"
+            className="quiz-question__skip"
+            onClick={onSkip}
+            disabled={isAnimating}
+          >
+            Passer la question
+          </button>
+        ) : (
+          <span className="quiz-question__skip-spacer" aria-hidden />
+        )}
       </div>
       <h2 className="quiz-question__title">{question.title}</h2>
       <div

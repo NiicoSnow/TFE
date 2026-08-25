@@ -1,4 +1,9 @@
 import type { AffinityBreakdownItem, QuizAnimePoolEntry, QuizAnswers, QuizQuestion, ScoredAnime} from '../types/quiz'
+import { QUIZ_SKIPPED_CHOICE_ID } from './quizConfig'
+
+export function isSkippedChoice(choiceId: string | undefined): boolean {
+  return choiceId === QUIZ_SKIPPED_CHOICE_ID
+}
 
 export function scoreAnimeEntry(
   entry: QuizAnimePoolEntry,
@@ -43,6 +48,16 @@ export function getAffinityBreakdown(
   return askedQuestions.flatMap((question) => {
     const choiceId = answers[question.id]
     if (!choiceId) return []
+
+    if (isSkippedChoice(choiceId)) {
+      return [
+        {
+          questionTitle: question.title,
+          choiceLabel: 'Question passée',
+          points: 0,
+        },
+      ]
+    }
 
     const choice = question.choices.find((c) => c.id === choiceId)
 
