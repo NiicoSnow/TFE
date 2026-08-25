@@ -1451,6 +1451,9 @@
   text-align: inherit;
 }
 
+.quiz-question__skip {
+  text-align: right;
+}
 .quiz-question__back:hover,
 .quiz-question__skip:hover {
   color: var(--accent);
@@ -4716,6 +4719,9 @@
     font-size: 1.6rem;
   }
 
+  .quiz-question__skip {
+    text-align: inherit;
+  }
   .quiz-results__add img {
     width: 4rem;
     height: 4rem;
