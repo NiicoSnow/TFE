@@ -156,6 +156,46 @@ export function CreditsPage() {
           <a href="https://supabase.com/docs/reference/javascript/insert" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/insert</a>
           <a href="https://supabase.com/docs/reference/javascript/update" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/update</a>
           <a href="https://www.youtube.com/watch?v=cnJ7luAg_fU" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=cnJ7luAg_fU</a>
+          <a href="https://supabase.com/docs/reference/javascript/using-filters" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/using-filters</a>
+          <a href="https://designrevision.com/blog/supabase-row-level-security" target="_blank" rel="noreferrer">https://designrevision.com/blog/supabase-row-level-security</a>
+          <a href="https://makerkit.dev/blog/tutorials/supabase-rls-best-practices" target="_blank" rel="noreferrer">https://makerkit.dev/blog/tutorials/supabase-rls-best-practices</a>
+          <a href="https://www.youtube.com/watch?v=Ow_Uzedfohk" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=Ow_Uzedfohk</a>
+        </div>
+
+        <div className="credits-page__group">
+          <h2>Stats</h2>
+          <a href="https://bobbyhadz.com/blog/javascript-count-occurrences-of-each-element-in-array" target="_blank" rel="noreferrer">https://bobbyhadz.com/blog/javascript-count-occurrences-of-each-element-in-array</a>
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all</a>
+          <a href="https://www.youtube.com/watch?v=uJ0f2ZH3fFE" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=uJ0f2ZH3fFE</a>
+          <a href="https://supabase.com/blog/postgrest-aggregate-functions" target="_blank" rel="noreferrer">https://supabase.com/blog/postgrest-aggregate-functions</a>
+          <a href="https://www.youtube.com/watch?v=hhudoSMM0yU" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=hhudoSMM0yU</a>
+        </div>
+
+        <div className="credits-page__group">
+          <h2>Filtre</h2>
+          <a href="https://react.dev/learn/thinking-in-react" target="_blank" rel="noreferrer">https://react.dev/learn/thinking-in-react</a>
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</a>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_interactivity_filtering_conditional_rendering" target="_blank" rel="noreferrer">https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_interactivity_filtering_conditional_rendering</a>
+          <a href="https://supabase.com/docs/reference/javascript/using-filters-contains" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/using-filters-contains</a>
+          <a href="https://www.youtube.com/watch?v=2o4qkLQ9bME" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=2o4qkLQ9bME</a>
+        </div>
+
+        <div className="credits-page__group">
+          <h2>Pagination</h2>
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/slice</a>
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil</a>
+          <a href="https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/" target="_blank" rel="noreferrer">https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/</a>
+          <a href="https://dev.to/pptrgi/navigable-websites-a-guide-to-react-pagination-without-packages-27bk" target="_blank" rel="noreferrer">https://dev.to/pptrgi/navigable-websites-a-guide-to-react-pagination-without-packages-27bk</a>
+          <a href="https://supabase.com/docs/reference/javascript/using-modifiers-range" target="_blank" rel="noreferrer">https://supabase.com/docs/reference/javascript/using-modifiers-range</a>
+          <a href="https://www.youtube.com/watch?v=wAGIOCqS8tk" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=wAGIOCqS8tk</a>
+        </div>
+
+        <div className="credits-page__group">
+          <h2>Exclusion des animes déjà&nbsp;classés</h2>
+          <a href="https://stackoverflow.com/questions/41670213/exclude-list-of-ids-from-an-array-list-in-java-script" target="_blank" rel="noreferrer">https://stackoverflow.com/questions/41670213/exclude-list-of-ids-from-an-array-list-in-java-script</a>
+          <a href="https://stackoverflow.com/questions/57218278/js-filter-array-object-by-array-object" target="_blank" rel="noreferrer">https://stackoverflow.com/questions/57218278/js-filter-array-object-by-array-object</a>
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Set/has" target="_blank" rel="noreferrer">https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Set/has</a>
+          <a href="https://www.youtube.com/watch?v=YRL-Uidsw0E" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=YRL-Uidsw0E</a>
         </div>
 
         <div className="credits-page__group">
