@@ -66,7 +66,6 @@ function VersusPanel({
       ) : (
         <h3 className="versus__name">{name}</h3>
       )}
-      <span className="versus__line" />
       {loading ? (
         <div className="versus__body versus__body--loading">
           <p className="versus__panel-status">Chargement…</p>

@@ -42,7 +42,6 @@ function VersusPanel({ name, stats, variant }: VersusPanelProps) {
   return (
     <div className={`versus__element versus__element--${variant}`}>
       <h3 className="versus__name">{name}</h3>
-      <span className="versus__line" />
       <div className="versus__body">
         {variant === 'self' ? (
           <>
