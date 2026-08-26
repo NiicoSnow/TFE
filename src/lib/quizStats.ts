@@ -69,6 +69,33 @@ export async function saveCompletedQuizSession({
   return sessionId
 }
 
+export async function appendQuizSessionRecommendation(
+  userId: string,
+  sessionId: string,
+  anime: ScoredAnime,
+): Promise<void> {
+  const { data: existing, error: existingError } = await supabase
+    .from('quiz_session_recommendations')
+    .select('rank')
+    .eq('session_id', sessionId)
+    .order('rank', { ascending: false })
+    .limit(1)
+
+  if (existingError) throw existingError
+
+  const nextRank = ((existing?.[0]?.rank as number | undefined) ?? 0) + 1
+
+  const { error } = await supabase.from('quiz_session_recommendations').insert({
+    session_id: sessionId,
+    user_id: userId,
+    anilist_id: anime.anilistId,
+    rank: nextRank,
+    score: anime.score,
+  })
+
+  if (error) throw error
+}
+
 function startOfWeekMonday(date = new Date()): Date {
   const d = new Date(date)
   const day = d.getDay()

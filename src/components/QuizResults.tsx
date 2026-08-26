@@ -27,6 +27,7 @@ type QuizResultsProps = {
   answers: QuizAnswers
   askedQuestions: QuizQuestion[]
   onRestart: () => void
+  onRecommendationShown?: (anime: ScoredAnime) => void
 }
 
 type PickerTarget = {
@@ -60,7 +61,13 @@ function waitForNextFrame() {
   })
 }
 
-export function QuizResults({ results, answers, askedQuestions, onRestart }: QuizResultsProps) {
+export function QuizResults({
+  results,
+  answers,
+  askedQuestions,
+  onRestart,
+  onRecommendationShown,
+}: QuizResultsProps) {
   const navigate = useNavigate()
   const { user, loading: authLoading } = useAuth()
   const [visibleResults, setVisibleResults] = useState<ScoredAnime[]>(() =>
@@ -246,6 +253,7 @@ export function QuizResults({ results, answers, askedQuestions, onRestart }: Qui
       setVisibleResults(nextVisible)
       setExitingAnilistId(null)
       setEnteringAnilistId(replacement.anilistId)
+      onRecommendationShown?.(replacement)
 
       if (!prefersReducedMotion()) {
         await waitForNextFrame()

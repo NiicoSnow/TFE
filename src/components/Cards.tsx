@@ -2,7 +2,11 @@ import { useCallback, useRef } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useQuiz, type QuizCompletePayload } from '../hooks/useQuiz'
 import { getUserLibraryAnilistIds } from '../lib/animeLibrary'
-import { saveCompletedQuizSession } from '../lib/quizStats'
+import {
+  appendQuizSessionRecommendation,
+  saveCompletedQuizSession,
+} from '../lib/quizStats'
+import type { ScoredAnime } from '../types/quiz'
 import { QuizQuestion } from './QuizQuestion'
 import { QuizResults } from './QuizResults'
 
@@ -10,12 +14,36 @@ export function Cards() {
   const { user } = useAuth()
   const userId = user?.id
   const savingRef = useRef(false)
+  const sessionIdRef = useRef<string | null>(null)
+  const pendingRecommendationsRef = useRef<ScoredAnime[]>([])
+
+  const flushPendingRecommendations = useCallback(
+    async (sessionId: string) => {
+      if (!userId) return
+      const pending = pendingRecommendationsRef.current
+      pendingRecommendationsRef.current = []
+      for (const anime of pending) {
+        try {
+          await appendQuizSessionRecommendation(userId, sessionId, anime)
+        } catch (err) {
+          console.error('Échec enregistrement recommandation:', err)
+        }
+      }
+    },
+    [userId],
+  )
 
   const handleComplete = useCallback(
     (payload: QuizCompletePayload) => {
       if (!userId || savingRef.current) return
       savingRef.current = true
+      sessionIdRef.current = null
+      pendingRecommendationsRef.current = []
       void saveCompletedQuizSession({ userId, ...payload })
+        .then(async (sessionId) => {
+          sessionIdRef.current = sessionId
+          await flushPendingRecommendations(sessionId)
+        })
         .catch((err) => {
           console.error('Échec enregistrement du tirage:', err)
         })
@@ -23,7 +51,7 @@ export function Cards() {
           savingRef.current = false
         })
     },
-    [userId],
+    [userId, flushPendingRecommendations],
   )
 
   const getExcludeAnilistIds = useCallback(async () => {
@@ -34,6 +62,21 @@ export function Cards() {
       return new Set<number>()
     }
   }, [userId])
+
+  const recordRecommendation = useCallback(
+    (anime: ScoredAnime) => {
+      if (!userId) return
+      const sessionId = sessionIdRef.current
+      if (!sessionId) {
+        pendingRecommendationsRef.current.push(anime)
+        return
+      }
+      void appendQuizSessionRecommendation(userId, sessionId, anime).catch((err) => {
+        console.error('Échec enregistrement recommandation:', err)
+      })
+    },
+    [userId],
+  )
 
   const {
     phase,
@@ -53,6 +96,8 @@ export function Cards() {
 
   const handleRestart = useCallback(() => {
     savingRef.current = false
+    sessionIdRef.current = null
+    pendingRecommendationsRef.current = []
     restart()
   }, [restart])
 
@@ -63,6 +108,7 @@ export function Cards() {
         answers={answers}
         askedQuestions={questions}
         onRestart={handleRestart}
+        onRecommendationShown={recordRecommendation}
       />
     )
   }
